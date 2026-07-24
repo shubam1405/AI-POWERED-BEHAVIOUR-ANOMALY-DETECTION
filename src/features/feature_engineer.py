@@ -3,7 +3,7 @@ import json
 import logging
 import os
 from datetime import datetime
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 
 from models.enums import Browser, OperatingSystem, DepartmentName, EventType, ResourceType, EventStatus, LoginMethod, AttackType, SessionStatus
 from models.session import Session
@@ -102,13 +102,13 @@ FEATURE_METADATA = {
     "file_download_position": {"category": "Sequence Features", "description": "Relative timeline position of first file download", "fields": ["timestamp"]},
     "process_execution_position": {"category": "Sequence Features", "description": "Relative timeline position of first process start", "fields": ["timestamp"]},
 
-    # Behavioral Deviations (Behavior Features)
-    "location_deviation": {"category": "Behavior Features", "description": "1.0 if geolocation differs from baseline, else 0.0", "fields": ["geo_location"]},
-    "device_deviation": {"category": "Behavior Features", "description": "1.0 if device fingerprint differs from baseline, else 0.0", "fields": ["device_fingerprint"]},
-    "browser_deviation": {"category": "Behavior Features", "description": "1.0 if browser differs from baseline, else 0.0", "fields": ["device_fingerprint"]},
-    "operating_system_deviation": {"category": "Behavior Features", "description": "1.0 if operating system differs from baseline, else 0.0", "fields": ["device_fingerprint"]},
-    "working_hours_deviation": {"category": "Behavior Features", "description": "1.0 if login hour is > 2 std dev outside average working hours, else 0.0", "fields": ["timestamp"]},
-    "resource_access_deviation": {"category": "Behavior Features", "description": "1.0 if accessing resource never accessed historically, else 0.0", "fields": ["resource_accessed"]}
+    # Behavioral Deviations (Behavior Features) — continuous [0.0, 1.0]
+    "location_deviation": {"category": "Behavior Features", "description": "Continuous deviation (0.0–1.0) based on location frequency in recent normal sessions", "fields": ["geo_location"]},
+    "device_deviation": {"category": "Behavior Features", "description": "Continuous deviation (0.0–1.0) based on device frequency in recent normal sessions", "fields": ["device_fingerprint"]},
+    "browser_deviation": {"category": "Behavior Features", "description": "Continuous deviation (0.0–1.0) based on browser frequency in recent normal sessions", "fields": ["device_fingerprint"]},
+    "operating_system_deviation": {"category": "Behavior Features", "description": "Continuous deviation (0.0–1.0) based on OS frequency in recent normal sessions", "fields": ["device_fingerprint"]},
+    "working_hours_deviation": {"category": "Behavior Features", "description": "Continuous deviation (0.0–1.0) via normalized linear distance from mean login hour", "fields": ["timestamp"]},
+    "resource_access_deviation": {"category": "Behavior Features", "description": "Mean Laplace-smoothed deviation (0.0–1.0) across unique resources accessed vs. recent normal sessions; ~0.25–0.45 for normal, higher for anomalous", "fields": ["resource_accessed"]}
 }
 
 class FeatureEngineer:
@@ -124,8 +124,23 @@ class FeatureEngineer:
         self.employees_file = os.path.join(data_dir, "employees.csv")
         self.company = company if company else Company()
 
-    def run(self, sessions: List[Session] = None) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, Any]]:
-        """Processes logs, extracts split features, computes risk scores, and outputs metadata context."""
+    def run(
+        self,
+        sessions: Optional[List[Session]] = None,
+        events: Optional[List[Event]] = None,
+    ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, Any]]:
+        """Processes logs, extracts split features, computes risk scores, and outputs metadata context.
+
+        Parameters
+        ----------
+        sessions : Optional[List[Session]]
+            In-memory Session objects (with is_anomalous / attack_type / risk_score already set).
+            When provided, CSV loading is skipped.  Pass ``None`` to fall back to the
+            CSV file-based workflow (sessions_anomalous.csv + events_anomalous.csv).
+        events : Optional[List[Event]]
+            Reserved for future use.  Currently unused when sessions carry their own
+            ``session.events`` lists.  Ignored silently.
+        """
         logger.info("Executing Intelligence Fusion & Feature Engineering Pipeline...")
         
         if sessions is None:
@@ -215,7 +230,14 @@ class FeatureEngineer:
             tabular_row["session_id"] = session.session_id
             tabular_row["employee_id"] = session.employee_id
             tabular_row["is_anomalous"] = 1.0 if session.is_anomalous else 0.0
-            tabular_row["attack_type"] = session.attack_type.value
+            # Serialize attack_type — handle both AttackType enum and raw string/None
+            atk = session.attack_type
+            if atk is None:
+                tabular_row["attack_type"] = "none"
+            elif hasattr(atk, "value"):
+                tabular_row["attack_type"] = atk.value
+            else:
+                tabular_row["attack_type"] = str(atk)
             tabular_row["risk_score"] = float(final_risk)
 
             # Merge features
@@ -247,7 +269,7 @@ class FeatureEngineer:
                 },
                 "risk_metadata": {
                     "integrated_risk_score": final_risk,
-                    "attack_type": session.attack_type.value,
+                    "attack_type": atk.value if hasattr(atk, "value") else (str(atk) if atk is not None else "none"),
                     "is_anomalous": session.is_anomalous,
                     "behavior_score": behavior_score,
                     "severity": severity

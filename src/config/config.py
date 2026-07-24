@@ -322,9 +322,67 @@ RISK_WEIGHTS = {
 }
 
 # Behavior Knowledge Base settings
-ENABLE_DRIFT_MONITORING = False  # Enabled dynamically if historical data is sufficient
+ENABLE_DRIFT_MONITORING = True   # Compute continuous behavioral deviations for all sessions
 DRIFT_WINDOW_SIZE = 10           # Slide baseline over the last 10 sessions
 
+# Drift Monitor deviation weights (must sum to 100.0 for 0-100 scale)
+DRIFT_DEVIATION_WEIGHTS = {
+    "location_deviation": 25.0,
+    "device_deviation": 15.0,
+    "browser_deviation": 5.0,
+    "operating_system_deviation": 5.0,
+    "working_hours_deviation": 20.0,
+    "resource_access_deviation": 30.0,
+}
+
+# Behavior score threshold for baseline updates.
+# Sessions with behavior_score >= this value will NOT update the sliding window,
+# preventing anomalous sessions from poisoning the behavioral baseline.
+DRIFT_UPDATE_THRESHOLD = 25.0
+
+# Minimum standard deviation for working hours (prevents division by zero
+# and avoids extreme sensitivity when all logins occur at the same hour).
+DRIFT_MIN_HOUR_STDDEV = 1.0
+
+# Laplace (additive) smoothing for resource_access_deviation.
+# Adds `alpha` pseudo-observations to every resource count before computing
+# the frequency ratio, shrinking cold-start scores away from the hard 1.0
+# ceiling.  Larger alpha → more shrinkage toward the global mean.
+#   alpha = 0 → no smoothing (original behaviour)
+#   alpha = 1 → light smoothing
+#   alpha = 2 → moderate smoothing (default — targets normal avg ~0.25–0.45)
+RESOURCE_DEVIATION_LAPLACE_ALPHA = 2.0
+
+# ===========================================================================
+# GRU Autoencoder — Anomaly Detection Engine (Phase 5)
+# ===========================================================================
+# These defaults are used when training via src/train_gru.py.  Override them
+# with CLI flags or by editing this block before a production training run.
+
+GRU_HIDDEN_SIZE: int   = 128      # GRU hidden units per layer
+GRU_NUM_LAYERS:  int   = 2        # Number of stacked GRU layers
+GRU_DROPOUT:     float = 0.3      # Dropout between GRU layers (0 = off)
+GRU_SEQ_LEN:     int   = 50       # Fixed sequence length (matches SequenceBuilder.max_len)
+GRU_FEATURE_DIM: int   = 21       # Event feature dimension (matches SequenceBuilder.feature_dim)
+
+GRU_TRAIN_EPOCHS:   int   = 50    # Maximum training epochs
+GRU_BATCH_SIZE:     int   = 64    # DataLoader batch size
+GRU_LEARNING_RATE:  float = 1e-3  # AdamW initial learning rate
+GRU_WEIGHT_DECAY:   float = 1e-5  # AdamW L2 regularisation
+GRU_GRAD_CLIP:      float = 1.0   # Gradient norm clipping (0 = disabled)
+GRU_PATIENCE:       int   = 10    # Early-stopping patience (epochs)
+GRU_LR_PATIENCE:    int   = 5     # ReduceLROnPlateau patience
+GRU_LR_FACTOR:      float = 0.5   # ReduceLROnPlateau decay factor
+GRU_SEED:           int   = 42    # Global random seed
+
+# Anomaly threshold estimation percentile (applied to validation reconstruction errors).
+# Increase to reduce false positives; decrease to increase recall.
+GRU_THRESHOLD_PERCENTILE: float = 95.0
+
+# File paths (relative to the project root when running src/train_gru.py)
+GRU_CHECKPOINT_PATH:  str = "models/gru_autoencoder.pt"
+GRU_OUTPUT_DIR:       str = "outputs"
+GRU_PLOTS_DIR:        str = "outputs/plots"
 
 ATTACK_PAYLOADS = {
     "malware_filenames": [
