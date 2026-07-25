@@ -4,7 +4,7 @@ import {
   Shield, AlertTriangle, Activity, Database, Server, Cpu, Terminal, 
   Play, Pause, RotateCcw, SkipForward, Send, Layers, GitBranch, 
   FileText, BarChart2, Bell, CheckCircle, RefreshCw, LogOut, Info,
-  MapPin, Clock, Search, ChevronRight, MessageSquare
+  MapPin, Clock, Search, ChevronRight, MessageSquare, Check, Zap, User
 } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, 
@@ -35,12 +35,15 @@ export default function App() {
 
   // Simulation pipeline state
   const [isSimulating, setIsSimulating] = useState(false);
-  const [simulationStage, setSimulationStage] = useState(0); // 0 = idle, 1 = logs, 2 = feature engineering, 3 = gru, 4 = xgboost, 5 = shap, 6 = copilot/completed
+  const [simulationStage, setSimulationStage] = useState(0);
   const [simulatedMetrics, setSimulatedMetrics] = useState({
     riskScore: 0,
     anomalyScore: 0,
     confidence: 0
   });
+
+  // Multi-select attack state
+  const [selectedBehaviours, setSelectedBehaviours] = useState([]);
 
   // Demo mode state
   const [demoActive, setDemoActive] = useState(false);
@@ -86,6 +89,17 @@ export default function App() {
     loadSessionDetails('SES-000614');
   }, []);
 
+  // Keep simulatedMetrics synchronized with sessionDetail when not actively simulating
+  useEffect(() => {
+    if (sessionDetail && !isSimulating) {
+      setSimulatedMetrics({
+        riskScore: sessionDetail.risk_score ?? 0,
+        anomalyScore: sessionDetail.anomaly_score ?? 0,
+        confidence: sessionDetail.confidence != null ? sessionDetail.confidence * 100 : 0
+      });
+    }
+  }, [sessionDetail, isSimulating]);
+
   // Scroll to bottom of chat whenever messages update
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -98,13 +112,13 @@ export default function App() {
         const nextAttack = attackTypes[demoIndex % attackTypes.length];
         setDemoIndex(prev => prev + 1);
         addToast(`[Demo Mode] Launching simulation: ${nextAttack.label}`, 'info');
-        triggerSimulation(nextAttack.value);
+        triggerSingleSimulation(nextAttack.value);
       };
       
       // Run immediately on activate
       runNextDemo();
       
-      const id = setInterval(runNextDemo, 25000); // simulation interval
+      const id = setInterval(runNextDemo, 25000);
       setDemoIntervalId(id);
     } else {
       if (demoIntervalId) {
@@ -178,85 +192,83 @@ export default function App() {
     }, 6000);
   };
 
-  // Live simulation execution
-  const triggerSimulation = async (attackType) => {
-    if (isSimulating) return;
-    
+  // --- Shared pipeline animation helper ---
+  const runPipelineAnimation = async (sessionData) => {
+    setSimulatedSessions(prev => [sessionData, ...prev]);
+    await delay(800); setSimulationStage(2);
+    await delay(850); setSimulationStage(3);
+    animateCounter('anomalyScore', 0, sessionData.anomaly_score, 800);
+    await delay(900); setSimulationStage(4);
+    animateCounter('confidence', 0, sessionData.confidence * 100, 800);
+    await delay(850); setSimulationStage(5);
+    animateCounter('riskScore', 0, sessionData.risk_score, 900);
+    await delay(950); setSimulationStage(6);
+    setSessionDetail(sessionData);
+    setSelectedSessionId(sessionData.session_id);
+    setStats(prev => ({
+      ...prev,
+      totalSessions: prev.totalSessions + 1,
+      anomalousSessions: sessionData.attack_type !== 'Normal' ? prev.anomalousSessions + 1 : prev.anomalousSessions,
+      normalSessions: sessionData.attack_type === 'Normal' ? prev.normalSessions + 1 : prev.normalSessions,
+      highSeverityAlerts: ['High', 'Critical'].includes(sessionData.severity) ? prev.highSeverityAlerts + 1 : prev.highSeverityAlerts
+    }));
+    if (sessionData.copilot_context?.campaign_id) fetchCampaigns();
+    if (['High', 'Critical'].includes(sessionData.severity)) {
+      addToast(`ALERT: [${sessionData.severity}] ${sessionData.attack_type} detected in session ${sessionData.session_id}!`, 'error');
+    } else {
+      addToast(`Triage completed: ${sessionData.attack_type} (${sessionData.severity})`, 'success');
+    }
+    setChatMessages([
+      { role: 'assistant', content: `AI Security Copilot context loaded for simulated session ${sessionData.session_id} (${sessionData.attack_type}). How can I assist you with this threat triage?` }
+    ]);
+  };
+
+  // Multi-select: toggle a behaviour card
+  const toggleBehaviour = (value) => {
+    setSelectedBehaviours(prev =>
+      prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]
+    );
+  };
+
+  // Generate combined multi-behaviour attack
+  const triggerCombinedSimulation = async () => {
+    if (isSimulating || selectedBehaviours.length === 0) return;
     setIsSimulating(true);
-    setSimulationStage(1); // Enterprise Logs
-    
-    // Reset temporary animated metrics
+    setSimulationStage(1);
     setSimulatedMetrics({ riskScore: 0, anomalyScore: 0, confidence: 0 });
-
     try {
-      // 1. Initiate API simulation call in background
-      const res = await axios.post(`/simulate/${attackType}`);
-      const sessionData = res.data;
-
-      // Ensure simulated session is accessible in future API queries
-      setSimulatedSessions(prev => [sessionData, ...prev]);
-
-      // 2. Animate pipeline stages
-      // Logs -> Feature Engineering
-      await delay(800);
-      setSimulationStage(2);
-      
-      // Feature Engineering -> GRU Autoencoder
-      await delay(850);
-      setSimulationStage(3);
-      animateCounter('anomalyScore', 0, sessionData.anomaly_score, 800);
-      
-      // GRU -> XGBoost Classifier
-      await delay(900);
-      setSimulationStage(4);
-      animateCounter('confidence', 0, sessionData.confidence * 100, 800);
-      
-      // XGBoost -> SHAP Explainability
-      await delay(850);
-      setSimulationStage(5);
-      animateCounter('riskScore', 0, sessionData.risk_score, 900);
-      
-      // SHAP -> Copilot (Completed)
-      await delay(950);
-      setSimulationStage(6);
-      
-      // Update active session views
-      setSessionDetail(sessionData);
-      setSelectedSessionId(sessionData.session_id);
-      
-      // Increment active simulation statistics locally
-      setStats(prev => ({
-        ...prev,
-        totalSessions: prev.totalSessions + 1,
-        anomalousSessions: sessionData.prediction !== 'Normal' ? prev.anomalousSessions + 1 : prev.anomalousSessions,
-        normalSessions: sessionData.prediction === 'Normal' ? prev.normalSessions + 1 : prev.normalSessions,
-        highSeverityAlerts: ['High', 'Critical'].includes(sessionData.severity) ? prev.highSeverityAlerts + 1 : prev.highSeverityAlerts
-      }));
-
-      // Check campaign relevance
-      if (sessionData.copilot_context?.campaign_id) {
-        fetchCampaigns();
-      }
-
-      // Notification toast trigger
-      if (['High', 'Critical'].includes(sessionData.severity)) {
-        addToast(`ALERT: [${sessionData.severity.upper()}] ${sessionData.prediction} detected in session ${sessionData.session_id}!`, 'error');
-      } else {
-        addToast(`Triage completed: ${sessionData.prediction} (${sessionData.severity})`, 'success');
-      }
-
-      // Load session chat
-      setChatMessages([
-        { role: 'assistant', content: `AI Security Copilot context loaded for simulated session ${sessionData.session_id} (${sessionData.prediction}). How can I assist you with this threat triage?` }
-      ]);
-
+      const res = await axios.post('/simulate', {
+        behaviours: selectedBehaviours,
+        employee_id: sessionDetail?.employee_id || null,
+      });
+      await runPipelineAnimation(res.data);
     } catch (e) {
-      console.error("Simulation failed", e);
-      addToast("Simulation pipeline encountered an error", "error");
+      console.error('Combined simulation failed', e);
+      addToast('Combined simulation pipeline encountered an error', 'error');
     } finally {
       setIsSimulating(false);
     }
   };
+
+  // Legacy single-type simulation (for demo mode and Next Attack button)
+  const triggerSingleSimulation = async (attackType) => {
+    if (isSimulating) return;
+    setIsSimulating(true);
+    setSimulationStage(1);
+    setSimulatedMetrics({ riskScore: 0, anomalyScore: 0, confidence: 0 });
+    try {
+      const res = await axios.post(`/simulate/${attackType}`);
+      await runPipelineAnimation(res.data);
+    } catch (e) {
+      console.error('Simulation failed', e);
+      addToast('Simulation pipeline encountered an error', 'error');
+    } finally {
+      setIsSimulating(false);
+    }
+  };
+
+  // Keep backward-compat alias used by old demo mode
+  const triggerSimulation = triggerSingleSimulation;
 
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -439,7 +451,7 @@ export default function App() {
               onClick={() => {
                 setDemoIndex(prev => prev + 1);
                 const nextAttack = attackTypes[demoIndex % attackTypes.length];
-                triggerSimulation(nextAttack.value);
+                triggerSingleSimulation(nextAttack.value);
               }}
               disabled={isSimulating}
               className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-400 hover:text-slate-100 disabled:opacity-50"
@@ -502,23 +514,74 @@ export default function App() {
                     <span className="text-xs text-slate-400">Trigger simulated payloads in real time</span>
                   </div>
                   
+                  {/* Multi-select Attack Card Grid */}
                   <div className="grid grid-cols-3 gap-2.5">
-                    {attackTypes.map(type => (
-                      <button
-                        key={type.value}
-                        onClick={() => triggerSimulation(type.value)}
-                        disabled={isSimulating}
-                        className={`py-3 px-4 rounded-xl border text-xs font-semibold tracking-wide text-left transition-all ${
-                          isSimulating
-                            ? 'bg-slate-900 border-slate-800 text-slate-500 cursor-not-allowed'
-                            : 'bg-slate-900/60 border-slate-800 hover:border-emerald-500/40 hover:bg-slate-800/60 text-slate-300 hover:text-slate-100 hover:scale-[1.01] hover:shadow-lg'
-                        }`}
-                      >
-                        <span className="text-[10px] text-slate-500 block uppercase mb-1 tracking-wider">{type.category}</span>
-                        {type.label}
-                      </button>
-                    ))}
+                    {attackTypes.map(type => {
+                      const isSelected = selectedBehaviours.includes(type.value);
+                      return (
+                        <button
+                          key={type.value}
+                          onClick={() => toggleBehaviour(type.value)}
+                          disabled={isSimulating}
+                          className={`py-3 px-4 rounded-xl border text-xs font-semibold tracking-wide text-left transition-all relative ${
+                            isSimulating
+                              ? 'bg-slate-900 border-slate-800 text-slate-500 cursor-not-allowed'
+                              : isSelected
+                                ? 'bg-emerald-950/40 border-emerald-500 text-emerald-300 shadow-[0_0_10px_rgba(52,211,153,0.15)]'
+                                : 'bg-slate-900/60 border-slate-800 hover:border-slate-600 text-slate-300 hover:text-slate-100 hover:scale-[1.01]'
+                          }`}
+                        >
+                          {isSelected && (
+                            <span className="absolute top-1.5 right-1.5 h-4 w-4 rounded-full bg-emerald-500 flex items-center justify-center">
+                              <Check className="h-2.5 w-2.5 text-slate-950" />
+                            </span>
+                          )}
+                          <span className="text-[10px] text-slate-500 block uppercase mb-1 tracking-wider">{type.category}</span>
+                          {type.label}
+                        </button>
+                      );
+                    })}
                   </div>
+
+                  {/* Selected behaviours chip strip */}
+                  <div className="mt-2">
+                    {selectedBehaviours.length > 0 ? (
+                      <div className="flex flex-wrap gap-1.5">
+                        {selectedBehaviours.map(val => {
+                          const t = attackTypes.find(a => a.value === val);
+                          return (
+                            <span
+                              key={val}
+                              className="px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[10px] font-semibold flex items-center gap-1.5 cursor-pointer hover:bg-red-500/10 hover:border-red-500/30 hover:text-red-300"
+                              onClick={() => toggleBehaviour(val)}
+                              title="Click to deselect"
+                            >
+                              <Check className="h-2.5 w-2.5" />
+                              {t?.label || val}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <p className="text-xs text-slate-500 italic">Select one or more attack behaviours above, then click Generate Combined Attack.</p>
+                    )}
+                  </div>
+
+                  {/* Generate Combined Attack button */}
+                  <button
+                    onClick={triggerCombinedSimulation}
+                    disabled={isSimulating || selectedBehaviours.length === 0}
+                    className={`w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${
+                      selectedBehaviours.length === 0 || isSimulating
+                        ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                        : 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-[0_0_20px_rgba(52,211,153,0.25)] hover:shadow-[0_0_30px_rgba(52,211,153,0.4)]'
+                    }`}
+                  >
+                    {isSimulating
+                      ? <><RefreshCw className="h-4 w-4 animate-spin" /> Running inference pipeline...</>
+                      : <><Zap className="h-4 w-4" /> Generate Combined Attack ({selectedBehaviours.length} behaviour{selectedBehaviours.length !== 1 ? 's' : ''})</>}
+                  </button>
+
                 </div>
 
                 {/* Pipeline visualizer panel */}
@@ -584,9 +647,9 @@ export default function App() {
                   {/* Score meters */}
                   <div className="space-y-4">
                     {[
-                      { label: 'Risk Score', value: simulatedMetrics.riskScore, max: 100, field: 'riskScore', desc: 'Cumulative severity weights' },
-                      { label: 'Anomaly score', value: simulatedMetrics.anomalyScore, max: 2, field: 'anomalyScore', desc: 'GRU reconstruction error threshold' },
-                      { label: 'Classifier confidence', value: simulatedMetrics.confidence, max: 100, field: 'confidence', desc: 'XGBoost class mapping confidence' }
+                      { label: 'Risk Score', value: isSimulating ? simulatedMetrics.riskScore : (sessionDetail?.risk_score ?? simulatedMetrics.riskScore), max: 100, field: 'riskScore', desc: 'Cumulative severity weights' },
+                      { label: 'Anomaly score', value: isSimulating ? simulatedMetrics.anomalyScore : (sessionDetail?.anomaly_score ?? simulatedMetrics.anomalyScore), max: 2, field: 'anomalyScore', desc: 'GRU reconstruction error threshold' },
+                      { label: 'Classifier confidence', value: isSimulating ? simulatedMetrics.confidence : (sessionDetail?.confidence != null ? sessionDetail.confidence * 100 : simulatedMetrics.confidence), max: 100, field: 'confidence', desc: 'XGBoost class mapping confidence' }
                     ].map((metric, idx) => (
                       <div key={idx} className="space-y-1.5 p-3.5 rounded-xl bg-slate-950/40 border border-slate-800/40">
                         <div className="flex items-center justify-between text-xs">
@@ -672,33 +735,51 @@ export default function App() {
                   
                   {sessionDetail ? (
                     <div className="relative pl-6 border-l border-slate-800 space-y-6 py-2">
-                      {/* Log 1 */}
-                      <div className="relative">
-                        <div className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full bg-slate-800 border-2 border-emerald-400"></div>
-                        <span className="text-[10px] text-slate-500 font-bold block tracking-wider">09:00:01</span>
-                        <h4 className="text-sm font-semibold text-slate-300 mt-0.5">Session Authentication</h4>
-                        <p className="text-xs text-slate-400 mt-0.5">User {sessionDetail.employee_id} authenticated successfully.</p>
-                      </div>
-
-                      {/* Dynamic attack logs */}
-                      {sessionDetail.positive_contributors.slice(0, 3).map((contrib, idx) => (
-                        <div key={idx} className="relative">
-                          <div className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full bg-slate-800 border-2 border-amber-400"></div>
-                          <span className="text-[10px] text-slate-500 font-bold block tracking-wider">09:00:0{idx * 4 + 4}</span>
-                          <h4 className="text-sm font-semibold text-slate-300 mt-0.5">{contrib.feature.replace(/_/g, ' ')} anomaly</h4>
-                          <p className="text-xs text-slate-400 mt-0.5">
-                            Behavioral anomaly flag: value of {contrib.value} was measured as significantly high (SHAP={contrib.shap_value.toFixed(4)}).
-                          </p>
-                        </div>
-                      ))}
-
-                      {/* Log End */}
-                      <div className="relative">
-                        <div className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full bg-red-400 border-2 border-slate-900 shadow-[0_0_8px_rgba(248,113,113,0.5)]"></div>
-                        <span className="text-[10px] text-slate-500 font-bold block tracking-wider">09:00:15</span>
-                        <h4 className="text-sm font-semibold text-red-300 mt-0.5">Incident Triage Complete</h4>
-                        <p className="text-xs text-slate-400 mt-0.5">XGBoost prediction finalized as **{sessionDetail.attack_type}**.</p>
-                      </div>
+                      {/* Use event_timeline from API if available, otherwise fallback to SHAP contributors */}
+                      {(sessionDetail.event_timeline || []).length > 0 ? (
+                        sessionDetail.event_timeline.map((evt, idx) => (
+                          <div key={idx} className="relative">
+                            <div className={`absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full border-2 ${
+                              evt.type === 'detection' ? 'bg-red-400 border-slate-900 shadow-[0_0_8px_rgba(248,113,113,0.5)]' :
+                              evt.type === 'attack'    ? 'bg-amber-400 border-slate-900' :
+                              'bg-slate-800 border-emerald-400'
+                            }`}></div>
+                            <span className="text-[10px] text-slate-500 font-bold block tracking-wider">{evt.time}</span>
+                            <h4 className={`text-sm font-semibold mt-0.5 ${
+                              evt.type === 'detection' ? 'text-red-300' :
+                              evt.type === 'attack'    ? 'text-amber-300' :
+                              'text-slate-300'
+                            }`}>{evt.event}</h4>
+                            <p className="text-xs text-slate-400 mt-0.5">{evt.detail}</p>
+                          </div>
+                        ))
+                      ) : (
+                        <>
+                          {/* Fallback: static entry + SHAP contributor slice */}
+                          <div className="relative">
+                            <div className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full bg-slate-800 border-2 border-emerald-400"></div>
+                            <span className="text-[10px] text-slate-500 font-bold block tracking-wider">09:00:01</span>
+                            <h4 className="text-sm font-semibold text-slate-300 mt-0.5">Session Authentication</h4>
+                            <p className="text-xs text-slate-400 mt-0.5">User {sessionDetail.employee_id} authenticated successfully.</p>
+                          </div>
+                          {sessionDetail.positive_contributors.slice(0, 3).map((contrib, idx) => (
+                            <div key={idx} className="relative">
+                              <div className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full bg-slate-800 border-2 border-amber-400"></div>
+                              <span className="text-[10px] text-slate-500 font-bold block tracking-wider">09:00:0{idx * 4 + 4}</span>
+                              <h4 className="text-sm font-semibold text-slate-300 mt-0.5">{contrib.feature.replace(/_/g, ' ')} anomaly</h4>
+                              <p className="text-xs text-slate-400 mt-0.5">
+                                Behavioral anomaly flag: value of {contrib.value} was measured as significantly high (SHAP={contrib.shap_value.toFixed(4)}).
+                              </p>
+                            </div>
+                          ))}
+                          <div className="relative">
+                            <div className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full bg-red-400 border-2 border-slate-900 shadow-[0_0_8px_rgba(248,113,113,0.5)]"></div>
+                            <span className="text-[10px] text-slate-500 font-bold block tracking-wider">09:00:15</span>
+                            <h4 className="text-sm font-semibold text-red-300 mt-0.5">Incident Triage Complete</h4>
+                            <p className="text-xs text-slate-400 mt-0.5">XGBoost prediction finalized as **{sessionDetail.attack_type}**.</p>
+                          </div>
+                        </>
+                      )}
                     </div>
                   ) : (
                     <div className="py-8 text-center text-slate-500 text-sm">No active session selected. Simulate an attack first.</div>
@@ -782,75 +863,87 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Graphic campaign visualizer */}
+              {/* Campaign graph: render campaign_chain if present, else legacy SVG */}
               <div className="col-span-2 p-6 rounded-2xl border border-slate-800 bg-slate-900/25 space-y-6">
                 <h3 className="font-bold text-slate-100 flex items-center gap-2">
                   <GitBranch className="h-5 w-5 text-emerald-400" />
                   Campaign relationship graph
                 </h3>
 
-                {selectedCampaign ? (
+                {sessionDetail?.campaign_chain && sessionDetail.campaign_chain.length > 0 ? (
+                  <div className="space-y-4">
+                    <p className="text-xs text-slate-400">Live attack chain from the latest combined simulation — showing the full AI processing pipeline.</p>
+                    {/* Vertical node chain */}
+                    <div className="flex flex-col gap-0">
+                      {sessionDetail.campaign_chain.map((node, idx) => {
+                        const isFirst = idx === 0;
+                        const isLast = idx === sessionDetail.campaign_chain.length - 1;
+                        const nodeColor =
+                          node.type === 'employee'  ? 'border-sky-500 bg-sky-950/40 text-sky-300' :
+                          node.type === 'behaviour' ? 'border-amber-500 bg-amber-950/30 text-amber-300' :
+                          node.type === 'model'     ? 'border-emerald-500 bg-emerald-950/30 text-emerald-300' :
+                          'border-red-500 bg-red-950/30 text-red-300';
+                        const dotColor =
+                          node.type === 'employee'  ? 'bg-sky-400' :
+                          node.type === 'behaviour' ? 'bg-amber-400' :
+                          node.type === 'model'     ? 'bg-emerald-400' :
+                          'bg-red-400';
+                        return (
+                          <div key={node.id} className="flex flex-col items-center">
+                            <div className={`w-full max-w-sm px-4 py-2.5 rounded-xl border text-xs font-semibold flex items-center gap-3 ${nodeColor}`}>
+                              <span className={`h-2.5 w-2.5 rounded-full shrink-0 ${dotColor}`}></span>
+                              {node.label}
+                            </div>
+                            {!isLast && (
+                              <div className="h-5 w-px bg-slate-700 my-0.5"></div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : selectedCampaign ? (
                   <div className="space-y-6">
-                    {/* SVG Graph representation */}
+                    {/* Legacy SVG campaign graph */}
                     <div className="h-48 rounded-xl bg-slate-950/60 border border-slate-800/80 flex items-center justify-center p-6 relative overflow-hidden">
                       <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl"></div>
-                      
                       <svg className="w-full h-full max-w-lg" viewBox="0 0 500 120">
-                        {/* Connecting lines */}
                         <line x1="50" y1="60" x2="180" y2="60" stroke="#475569" strokeWidth="2" strokeDasharray="4 4" />
                         <line x1="180" y1="60" x2="310" y2="30" stroke="#a855f7" strokeWidth="2" />
                         <line x1="180" y1="60" x2="310" y2="90" stroke="#a855f7" strokeWidth="2" />
                         <line x1="310" y1="30" x2="440" y2="60" stroke="#a855f7" strokeWidth="2" />
                         <line x1="310" y1="90" x2="440" y2="60" stroke="#a855f7" strokeWidth="2" />
-
-                        {/* Nodes */}
-                        {/* Source IP */}
                         <circle cx="50" cy="60" r="18" fill="#1e293b" stroke="#64748b" strokeWidth="2" />
                         <text x="50" y="64" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="bold">IP</text>
-                        <text x="50" y="92" textAnchor="middle" fill="#64748b" fontSize="8">{selectedCampaign.common_source_ips[0] || '10.10.X.X'}</text>
-
-                        {/* Campaign core */}
+                        <text x="50" y="92" textAnchor="middle" fill="#64748b" fontSize="8">{selectedCampaign.common_source_ips?.[0] || '10.10.X.X'}</text>
                         <circle cx="180" cy="60" r="22" fill="#701a75" stroke="#a855f7" strokeWidth="2" />
                         <text x="180" y="64" textAnchor="middle" fill="#f5f3ff" fontSize="9" fontWeight="bold">{selectedCampaign.campaign_id}</text>
-
-                        {/* Users */}
                         <circle cx="310" cy="30" r="18" fill="#0f172a" stroke="#a855f7" strokeWidth="2" />
                         <text x="310" y="34" textAnchor="middle" fill="#e9d5ff" fontSize="9">User</text>
-                        <text x="310" y="8" textAnchor="middle" fill="#a855f7" fontSize="8" fontWeight="bold">{selectedCampaign.affected_employees[0]}</text>
-
+                        <text x="310" y="8" textAnchor="middle" fill="#a855f7" fontSize="8" fontWeight="bold">{selectedCampaign.affected_employees?.[0]}</text>
                         <circle cx="310" cy="90" r="18" fill="#0f172a" stroke="#a855f7" strokeWidth="2" />
                         <text x="310" y="94" textAnchor="middle" fill="#e9d5ff" fontSize="9">Device</text>
-                        <text x="310" y="118" textAnchor="middle" fill="#a855f7" fontSize="8" fontWeight="bold">{selectedCampaign.common_devices[0] || 'DEV-001'}</text>
-
-                        {/* Target prediction node */}
+                        <text x="310" y="118" textAnchor="middle" fill="#a855f7" fontSize="8" fontWeight="bold">{selectedCampaign.common_devices?.[0] || 'DEV-001'}</text>
                         <circle cx="440" cy="60" r="18" fill="#7f1d1d" stroke="#ef4444" strokeWidth="2" />
                         <text x="440" y="64" textAnchor="middle" fill="#fecaca" fontSize="9">Alert</text>
                       </svg>
                     </div>
-
                     <div className="grid grid-cols-2 gap-6 text-sm">
                       <div className="space-y-1">
                         <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider block">Attack chain path</span>
-                        <div className="p-3.5 rounded-xl border border-slate-800 bg-slate-950/40 text-purple-300 font-mono text-xs flex flex-wrap gap-2 items-center">
-                          {selectedCampaign.is_attack_chain ? (
-                            <span>{selectedCampaign.chain_description}</span>
-                          ) : (
-                            <span>Clustered behavioral alert matches</span>
-                          )}
+                        <div className="p-3.5 rounded-xl border border-slate-800 bg-slate-950/40 text-purple-300 font-mono text-xs">
+                          {selectedCampaign.is_attack_chain ? selectedCampaign.chain_description : 'Clustered behavioral alert matches'}
                         </div>
                       </div>
-
                       <div className="space-y-1">
                         <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider block">Impact summary</span>
                         <p className="text-xs text-slate-400 leading-relaxed">{selectedCampaign.summary}</p>
                       </div>
                     </div>
-
-                    {/* Campaign playbook */}
                     <div className="space-y-2">
                       <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider block">Coordinated response actions</span>
                       <div className="space-y-2">
-                        {selectedCampaign.recommended_actions.map((act, idx) => (
+                        {selectedCampaign.recommended_actions?.map((act, idx) => (
                           <div key={idx} className="p-3 rounded-xl border border-slate-850 bg-slate-900/40 text-xs text-slate-300 flex items-start gap-3">
                             <span className="text-purple-400 font-bold font-mono">[{idx + 1}]</span>
                             <span>{act}</span>
@@ -860,7 +953,7 @@ export default function App() {
                     </div>
                   </div>
                 ) : (
-                  <div className="py-12 text-center text-slate-500 text-sm">Select a threat campaign to view relationships.</div>
+                  <div className="py-12 text-center text-slate-500 text-sm">Run a combined simulation to see the AI pipeline chain graph, or select a correlated campaign.</div>
                 )}
               </div>
             </div>

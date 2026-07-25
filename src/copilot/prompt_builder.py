@@ -156,6 +156,13 @@ def _serialize_context(ctx: IncidentContext) -> str:
     top3_str = ", ".join([f"{p['attack']} ({p['probability']:.0%})" for p in ctx.top3_predictions])
     steps_str = "\n".join([f"  - {step}" for step in ctx.investigation_steps])
 
+    # Multi-behaviour context (injected by CombinedSimulator)
+    detected_behaviours = (ctx.copilot_context or {}).get("detected_behaviours", [])
+    behaviours_block = ""
+    if detected_behaviours:
+        behaviour_list = "\n".join([f"  • {b}" for b in detected_behaviours])
+        behaviours_block = f"\nDetected Behaviours (multi-stage attack chain):\n{behaviour_list}\nPredicted Primary Attack: {ctx.attack_type} (Confidence: {ctx.confidence:.1%})\n"
+
     return f"""=== INCIDENT CONTEXT ===
 Session ID: {ctx.session_id}
 Employee ID: {ctx.employee_id}
@@ -169,7 +176,7 @@ Source IP: {ctx.source_ip or 'N/A'}
 Device ID: {ctx.device_id or 'N/A'}
 Session Hour: {ctx.session_start_hour or 'N/A'}
 Session Duration: {ctx.session_duration or 'N/A'} minutes
-
+{behaviours_block}
 MITRE ATT&CK Mapping:
   Tactic: {ctx.mitre_tactic or 'N/A'}
   Technique: {ctx.mitre_technique_id or 'N/A'} - {ctx.mitre_technique or 'N/A'}

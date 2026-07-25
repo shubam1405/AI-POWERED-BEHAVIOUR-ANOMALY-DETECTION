@@ -8,12 +8,16 @@ and serves the React production bundle from frontend/dist if available.
 
 from __future__ import annotations
 
+import json
 import logging
 import os
+import pickle
 import random
 import sys
 from typing import Dict, List, Optional
 from datetime import datetime
+
+import numpy as np
 
 # Path setup
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -78,9 +82,86 @@ campaign_index: Dict[str, Campaign] = {c.campaign_id: c for c in campaigns_list}
 # Live simulation cache (keeps simulated session contexts in memory)
 SIMULATION_CACHE: Dict[str, IncidentContext] = {}
 
+# ---------------------------------------------------------------------------
+# Load combined simulation engine at startup
+# ---------------------------------------------------------------------------
+_combined_sim = None
+try:
+    import shap
+    from simulator.company import Company
+    from anomaly_detection.inference import InferenceEngine
+    from attack_classification.inference import AttackInferenceEngine
+    from attack_classification.utils import ATTACK_LABELS, META_COLUMNS
+    from simulator.combined_simulator import CombinedSimulator
+    import pandas as pd
+
+    _company = Company()
+
+    # Load GRU engine
+    _gru_engine = InferenceEngine(
+        model_path="models/gru_autoencoder.pt",
+        threshold=0.05,
+    )
+    # Calibrate with approximate training-set min/max
+    _gru_engine.calibrate(err_min=0.0, err_max=1.0)
+
+    # Load XGBoost engine and retrieve feature names
+    _xgb_model_path = "models/xgboost_attack_classifier.pkl"
+    _xgb_engine = AttackInferenceEngine(
+        model_path=_xgb_model_path,
+        class_names=ATTACK_LABELS,
+    )
+
+    # Retrieve canonical 71 feature names matching training dataset (tabular + GRU scores)
+    _feature_names: List[str] = []
+    try:
+        from attack_classification.dataset_loader import AttackDatasetLoader
+        _loader = AttackDatasetLoader().load()
+        _feature_names = _loader.feature_names
+        logger.info("Retrieved %d canonical feature names from AttackDatasetLoader.", len(_feature_names))
+    except Exception as _dl_err:
+        logger.warning("Could not load feature names via AttackDatasetLoader: %s", _dl_err)
+        _tabular_csv = "data/processed/tabular_features.csv"
+        if os.path.exists(_tabular_csv):
+            import csv
+            with open(_tabular_csv, "r", encoding="utf-8") as _f:
+                _reader = csv.DictReader(_f)
+                _all_cols = _reader.fieldnames or []
+            _feature_names = [c for c in _all_cols if c not in META_COLUMNS]
+            if "reconstruction_error" not in _feature_names:
+                _feature_names.append("reconstruction_error")
+            if "anomaly_score" not in _feature_names:
+                _feature_names.append("anomaly_score")
+
+    _xgb_engine.feature_names = _feature_names
+
+    # Build SHAP TreeExplainer (cached at startup — fast for tree models)
+    logger.info("Initialising SHAP TreeExplainer ...")
+    _shap_explainer = shap.TreeExplainer(
+        _xgb_engine.get_model(),
+        feature_perturbation="interventional",
+        model_output="raw",
+    )
+
+    _combined_sim = CombinedSimulator(
+        company=_company,
+        gru_engine=_gru_engine,
+        xgb_engine=_xgb_engine,
+        shap_explainer=_shap_explainer,
+        feature_names=_feature_names,
+        class_names=ATTACK_LABELS,
+    )
+    logger.info("CombinedSimulator ready (%d features, %d classes).", len(_feature_names), len(ATTACK_LABELS))
+except Exception as _sim_init_err:
+    logger.warning("CombinedSimulator could not be initialised: %s", _sim_init_err)
+
 # Pydantic models for request bodies
 class ChatRequest(BaseModel):
     question: str
+
+class SimulationRequest(BaseModel):
+    behaviours: List[str]
+    employee_id: Optional[str] = None
 
 # Simulation mapping
 ATTACK_MAPPING = {
@@ -289,6 +370,60 @@ def get_campaign(campaign_id: str):
     if not camp:
         raise HTTPException(status_code=404, detail=f"Campaign {campaign_id} not found.")
     return camp
+
+
+@app.post("/simulate")
+def post_simulate_multi(request: SimulationRequest):
+    """Generate a combined multi-behaviour session using the full inference pipeline."""
+    if _combined_sim is None:
+        raise HTTPException(
+            status_code=503,
+            detail="CombinedSimulator not available. Check server startup logs."
+        )
+    try:
+        result = _combined_sim.simulate(
+            behaviours=request.behaviours,
+            employee_id=request.employee_id,
+        )
+
+        # Cache as IncidentContext so downstream endpoints (/chat, /report) work
+        sim_id = result["session_id"]
+        sim_ctx = IncidentContext(
+            session_id=sim_id,
+            employee_id=result["employee_id"],
+            attack_type=result["attack_type"],
+            confidence=result["confidence"],
+            severity=result["severity"],
+            risk_score=result["risk_score"],
+            anomaly_score=result["anomaly_score"],
+            mitre=result.get("mitre"),
+            positive_contributors=result["positive_contributors"],
+            negative_contributors=result["negative_contributors"],
+            investigation_steps=result["investigation_steps"],
+            nl_explanation=result["nl_explanation"],
+            summary=result["summary"],
+            copilot_context=result["copilot_context"],
+            top3_predictions=result["top3_predictions"],
+            session_start_hour=result.get("session_start_hour"),
+            session_duration=result.get("session_duration"),
+            source_ip=result.get("source_ip"),
+            device_id=result.get("device_id"),
+            timestamp=result.get("timestamp"),
+            true_label=result.get("true_label", result["attack_type"]),
+        )
+        SIMULATION_CACHE[sim_id] = sim_ctx
+
+        # Generate report and recommendations
+        report = generator.generate_report(sim_ctx)
+        recs = rec_engine.generate(sim_ctx)
+        result["report"] = report
+        result["recommendations"] = recs.__dict__
+
+        logger.info("Multi-behaviour simulation %s → %s complete.", sim_id, result["attack_type"])
+        return result
+    except Exception as e:
+        logger.error("Multi-behaviour simulation failed: %s", e, exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/simulate/{attack_type}")
