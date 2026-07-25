@@ -1,0 +1,60 @@
+{
+  "session_id": "SES-008642",
+  "employee_id": "EMP-0060",
+  "attack_type": "Credential Stuffing",
+  "severity": "High",
+  "confidence": 0.5,
+  "risk_score": 42.8,
+  "anomaly_score": 1.0,
+  "mitre": {
+    "tactic": "Credential Access",
+    "technique_id": "T1110.004",
+    "technique": "Credential Stuffing"
+  },
+  "report_text_markdown": "# SOC Incident Report: SES-008642\n\n## 1. Executive Summary\nThe Cyber Cage UEBA engine detected anomalous behaviors in session **SES-008642** associated with Employee **EMP-0060**. The session was classified as **Credential Stuffing** with a confidence score of **50.0%**, indicating a **High** severity risk. Immediate containment action is recommended.\n\n## 2. Incident Overview\n- **Session ID:** SES-008642\n- **Employee ID:** EMP-0060\n- **Source IP Address:** 10.10.140.217\n- **Device ID:** DEV-0060\n- **Hour of Day:** 16\n- **Duration:** Unknown\n\n## 3. Attack Classification & Prediction\n- **Primary Prediction:** Credential Stuffing\n- **Classifier Confidence:** 50.0%\n- **Top 3 Candidate Classes:** N/A\n\n## 4. Severity Assessment\nThe security risk level is determined to be **High**. This is based on a cumulative risk score of **42.80** and an isolated reconstruction reconstruction error of **1.0000** from the GRU autoencoder network.\n\n## 5. MITRE ATT&CK Mapping\n- **Tactic:** Credential Access\n- **Technique:** T1110.004 - Credential Stuffing\n- **Mapping Context:** Mapped directly based on Credential Access (T1110.004 - Credential Stuffing).\n\n## 6. Behavioral Indicators\nThe session exhibited significant deviations from historical employee baselines. Key anomalous variables include:\n- Total risk score: 42.8\n- Anomaly score: 1.0\n- Mapped attack signature similarity: 50.0%\n\n## 7. Key SHAP Evidence\nThe following behavioral features contributed most significantly to the anomaly detection:\n- **processes_started**: Value of 0.0 introduced a low positive deviation.\n- **process_execution_position**: Value of -1.0 introduced a negligible deviation.\n- **process_event_ratio**: Value of 0.0 introduced a negligible deviation.\n\n## 8. Exonerating/Counteracting Factors\nThe following features displayed baseline behaviors that counteracted the threat classification:\n- **external_connections**: Value of 0.0 acted as a mitigating factor (high negative).\n- **beaconing_event_count**: Value of 0.0 acted as a mitigating factor (high negative).\n- **resource_event_ratio**: Value of 0.1667 acted as a mitigating factor (low negative).\n- **processes_stopped**: Value of 0.0 acted as a mitigating factor (negligible).\n\n## 9. Risk Assessment\nWith a risk score of **42.80**, this session represents a marked deviation from regular activity. The GRU network's anomaly index (**1.0000**) verifies that sequence reconstruction was highly corrupted, establishing objective evidence of behavioral drift.\n\n## 10. Potential Business Impact\nAutomated credential attacks using breached credentials. Successful logins could expose customer or employee data. Potential impact: account takeover, data breach, regulatory fines.\n\n## 11. Containment Actions\nThe security operations team must perform these immediate containment steps:\n- [ ] Force password reset for all accounts targeted in the attack\\n- [ ] Block source IP ranges associated with the attack\\n- [ ] Implement temporary CAPTCHA on login endpoints\\n- [ ] Alert users whose accounts were targeted\\n- [ ] Notify IT Security Manager immediately\\n\n\n## 12. Investigation Checklist\nForensic and triage investigative checklist:\n- [ ] Cross-reference targeted usernames against known breach databases\\n- [ ] Determine whether any credential pairs successfully authenticated\\n- [ ] Review session activity for any successfully authenticated accounts\\n- [ ] Identify the credential source (purchased breach data, phishing kit)\\n- [ ] Perform full directory access audit for employee account\\n\n\n## 13. Remediation Plan\nFollow-up remediation steps to resolve root causes:\n- [ ] Deploy credential breach monitoring (e.g., HaveIBeenPwned integration)\\n- [ ] Enforce MFA for all user accounts\\n- [ ] Implement adaptive authentication based on risk scoring\\n- [ ] Block known credential stuffing proxy IP ranges\\n\n\n## 14. Recovery Recommendations\nSystems recovery playbooks:\n- [ ] Notify affected users per data breach notification requirements\\n- [ ] Monitor affected accounts for 30 days\\n- [ ] Review and harden authentication infrastructure\\n\n\n## 15. Lessons Learned\n- Verify user awareness concerning appropriate access policies.\n- Audit resource permission trees regularly to enforce least-privilege policies.\n- Deploy additional telemetry triggers based on the top SHAP indicators identified in this incident.\n",
+  "sections": {
+    "executive_summary": "The Cyber Cage UEBA engine detected anomalous behaviors in session **SES-008642** associated with Employee **EMP-0060**. The session was classified as **Credential Stuffing** with a confidence score of **50.0%**, indicating a **High** severity risk. Immediate containment action is recommended.",
+    "incident_overview": "- **Session ID:** SES-008642\n- **Employee ID:** EMP-0060\n- **Source IP Address:** 10.10.140.217\n- **Device ID:** DEV-0060\n- **Hour of Day:** 16\n- **Duration:** Unknown",
+    "attack_classification_and_prediction": "- **Primary Prediction:** Credential Stuffing\n- **Classifier Confidence:** 50.0%\n- **Top 3 Candidate Classes:** N/A",
+    "severity_assessment": "The security risk level is determined to be **High**. This is based on a cumulative risk score of **42.80** and an isolated reconstruction reconstruction error of **1.0000** from the GRU autoencoder network.",
+    "mitre_attandck_mapping": "- **Tactic:** Credential Access\n- **Technique:** T1110.004 - Credential Stuffing\n- **Mapping Context:** Mapped directly based on Credential Access (T1110.004 - Credential Stuffing).",
+    "behavioral_indicators": "The session exhibited significant deviations from historical employee baselines. Key anomalous variables include:\n- Total risk score: 42.8\n- Anomaly score: 1.0\n- Mapped attack signature similarity: 50.0%",
+    "key_shap_evidence": "The following behavioral features contributed most significantly to the anomaly detection:\n- **processes_started**: Value of 0.0 introduced a low positive deviation.\n- **process_execution_position**: Value of -1.0 introduced a negligible deviation.\n- **process_event_ratio**: Value of 0.0 introduced a negligible deviation.",
+    "exonerating/counteracting_factors": "The following features displayed baseline behaviors that counteracted the threat classification:\n- **external_connections**: Value of 0.0 acted as a mitigating factor (high negative).\n- **beaconing_event_count**: Value of 0.0 acted as a mitigating factor (high negative).\n- **resource_event_ratio**: Value of 0.1667 acted as a mitigating factor (low negative).\n- **processes_stopped**: Value of 0.0 acted as a mitigating factor (negligible).",
+    "risk_assessment": "With a risk score of **42.80**, this session represents a marked deviation from regular activity. The GRU network's anomaly index (**1.0000**) verifies that sequence reconstruction was highly corrupted, establishing objective evidence of behavioral drift.",
+    "potential_business_impact": "Automated credential attacks using breached credentials. Successful logins could expose customer or employee data. Potential impact: account takeover, data breach, regulatory fines.",
+    "containment_actions": "The security operations team must perform these immediate containment steps:\n- [ ] Force password reset for all accounts targeted in the attack\\n- [ ] Block source IP ranges associated with the attack\\n- [ ] Implement temporary CAPTCHA on login endpoints\\n- [ ] Alert users whose accounts were targeted\\n- [ ] Notify IT Security Manager immediately\\n",
+    "investigation_checklist": "Forensic and triage investigative checklist:\n- [ ] Cross-reference targeted usernames against known breach databases\\n- [ ] Determine whether any credential pairs successfully authenticated\\n- [ ] Review session activity for any successfully authenticated accounts\\n- [ ] Identify the credential source (purchased breach data, phishing kit)\\n- [ ] Perform full directory access audit for employee account\\n",
+    "remediation_plan": "Follow-up remediation steps to resolve root causes:\n- [ ] Deploy credential breach monitoring (e.g., HaveIBeenPwned integration)\\n- [ ] Enforce MFA for all user accounts\\n- [ ] Implement adaptive authentication based on risk scoring\\n- [ ] Block known credential stuffing proxy IP ranges\\n",
+    "recovery_recommendations": "Systems recovery playbooks:\n- [ ] Notify affected users per data breach notification requirements\\n- [ ] Monitor affected accounts for 30 days\\n- [ ] Review and harden authentication infrastructure\\n",
+    "lessons_learned": "- Verify user awareness concerning appropriate access policies.\n- Audit resource permission trees regularly to enforce least-privilege policies.\n- Deploy additional telemetry triggers based on the top SHAP indicators identified in this incident."
+  },
+  "recommendations": {
+    "immediate_containment": [
+      "Force password reset for all accounts targeted in the attack",
+      "Block source IP ranges associated with the attack",
+      "Implement temporary CAPTCHA on login endpoints",
+      "Alert users whose accounts were targeted",
+      "Notify IT Security Manager immediately"
+    ],
+    "investigation": [
+      "Cross-reference targeted usernames against known breach databases",
+      "Determine whether any credential pairs successfully authenticated",
+      "Review session activity for any successfully authenticated accounts",
+      "Identify the credential source (purchased breach data, phishing kit)",
+      "Perform full directory access audit for employee account"
+    ],
+    "remediation": [
+      "Deploy credential breach monitoring (e.g., HaveIBeenPwned integration)",
+      "Enforce MFA for all user accounts",
+      "Implement adaptive authentication based on risk scoring",
+      "Block known credential stuffing proxy IP ranges"
+    ],
+    "recovery": [
+      "Notify affected users per data breach notification requirements",
+      "Monitor affected accounts for 30 days",
+      "Review and harden authentication infrastructure"
+    ],
+    "priority_action": "Force password reset for all accounts targeted in the attack"
+  }
+}

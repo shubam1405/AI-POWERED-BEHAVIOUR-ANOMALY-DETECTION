@@ -1,0 +1,58 @@
+{
+  "session_id": "SES-000614",
+  "employee_id": "SVC-0002",
+  "attack_type": "Privilege Escalation",
+  "severity": "High",
+  "confidence": 0.4047,
+  "risk_score": 41.375,
+  "anomaly_score": 0.9694,
+  "mitre": {
+    "tactic": "Privilege Escalation",
+    "technique_id": "T1068",
+    "technique": "Exploitation for Privilege Escalation"
+  },
+  "report_text_markdown": "# SOC Incident Report: SES-000614\n\n## 1. Executive Summary\nThe Cyber Cage UEBA engine detected anomalous behaviors in session **SES-000614** associated with Employee **SVC-0002**. The session was classified as **Privilege Escalation** with a confidence score of **40.5%**, indicating a **High** severity risk. Immediate containment action is recommended.\n\n## 2. Incident Overview\n- **Session ID:** SES-000614\n- **Employee ID:** SVC-0002\n- **Source IP Address:** Not available\n- **Device ID:** Not available\n- **Hour of Day:** 2\n- **Duration:** Unknown\n\n## 3. Attack Classification & Prediction\n- **Primary Prediction:** Privilege Escalation\n- **Classifier Confidence:** 40.5%\n- **Top 3 Candidate Classes:** Privilege Escalation (40%), Brute Force (26%), Malware Execution (25%)\n\n## 4. Severity Assessment\nThe security risk level is determined to be **High**. This is based on a cumulative risk score of **41.38** and an isolated reconstruction reconstruction error of **0.9694** from the GRU autoencoder network.\n\n## 5. MITRE ATT&CK Mapping\n- **Tactic:** Privilege Escalation\n- **Technique:** T1068 - Exploitation for Privilege Escalation\n- **Mapping Context:** Mapped directly based on Privilege Escalation (T1068 - Exploitation for Privilege Escalation).\n\n## 6. Behavioral Indicators\nThe session exhibited significant deviations from historical employee baselines. Key anomalous variables include:\n- Total risk score: 41.375\n- Anomaly score: 0.9694\n- Mapped attack signature similarity: 40.5%\n\n## 7. Key SHAP Evidence\nThe following behavioral features contributed most significantly to the anomaly detection:\n- No positive contributors identified.\n\n## 8. Exonerating/Counteracting Factors\nThe following features displayed baseline behaviors that counteracted the threat classification:\n- **external_connections**: Value of 0.0 acted as a mitigating factor (high negative).\n- **beaconing_event_count**: Value of 0.0 acted as a mitigating factor (high negative).\n- **processes_started**: Value of 1.0 acted as a mitigating factor (medium negative).\n- **process_execution_position**: Value of 0.1667 acted as a mitigating factor (medium negative).\n\n## 9. Risk Assessment\nWith a risk score of **41.38**, this session represents a marked deviation from regular activity. The GRU network's anomaly index (**0.9694**) verifies that sequence reconstruction was highly corrupted, establishing objective evidence of behavioral drift.\n\n## 10. Potential Business Impact\nAttacker has gained or is attempting to gain elevated privileges. Admin-level access enables full system control. Potential impact: complete system compromise, mass data exfiltration.\n\n## 11. Containment Actions\nThe security operations team must perform these immediate containment steps:\n- [ ] Revoke the escalated privileges immediately\\n- [ ] Suspend the account if unauthorised escalation is confirmed\\n- [ ] Remove any backdoors or persistence mechanisms added with elevated privileges\\n- [ ] Notify IT Security Manager immediately\\n\n\n## 12. Investigation Checklist\nForensic and triage investigative checklist:\n- [ ] Determine how privilege escalation was achieved (exploit, misconfiguration, credential theft)\\n- [ ] Identify all actions taken with the elevated privileges\\n- [ ] Check for other accounts affected by the same escalation vector\\n- [ ] Perform full directory access audit for employee account\\n\n\n## 13. Remediation Plan\nFollow-up remediation steps to resolve root causes:\n- [ ] Patch the vulnerability or misconfiguration used for escalation\\n- [ ] Implement just-in-time privileged access management (PAM)\\n- [ ] Enable privileged access workstations (PAW) for admin tasks\\n- [ ] Audit all privileged group memberships\\n\n\n## 14. Recovery Recommendations\nSystems recovery playbooks:\n- [ ] Review and remediate all changes made with elevated access\\n- [ ] Conduct a full privilege access review\\n- [ ] Implement privileged activity monitoring\\n\n\n## 15. Lessons Learned\n- Verify user awareness concerning appropriate access policies.\n- Audit resource permission trees regularly to enforce least-privilege policies.\n- Deploy additional telemetry triggers based on the top SHAP indicators identified in this incident.\n",
+  "sections": {
+    "executive_summary": "The Cyber Cage UEBA engine detected anomalous behaviors in session **SES-000614** associated with Employee **SVC-0002**. The session was classified as **Privilege Escalation** with a confidence score of **40.5%**, indicating a **High** severity risk. Immediate containment action is recommended.",
+    "incident_overview": "- **Session ID:** SES-000614\n- **Employee ID:** SVC-0002\n- **Source IP Address:** Not available\n- **Device ID:** Not available\n- **Hour of Day:** 2\n- **Duration:** Unknown",
+    "attack_classification_and_prediction": "- **Primary Prediction:** Privilege Escalation\n- **Classifier Confidence:** 40.5%\n- **Top 3 Candidate Classes:** Privilege Escalation (40%), Brute Force (26%), Malware Execution (25%)",
+    "severity_assessment": "The security risk level is determined to be **High**. This is based on a cumulative risk score of **41.38** and an isolated reconstruction reconstruction error of **0.9694** from the GRU autoencoder network.",
+    "mitre_attandck_mapping": "- **Tactic:** Privilege Escalation\n- **Technique:** T1068 - Exploitation for Privilege Escalation\n- **Mapping Context:** Mapped directly based on Privilege Escalation (T1068 - Exploitation for Privilege Escalation).",
+    "behavioral_indicators": "The session exhibited significant deviations from historical employee baselines. Key anomalous variables include:\n- Total risk score: 41.375\n- Anomaly score: 0.9694\n- Mapped attack signature similarity: 40.5%",
+    "key_shap_evidence": "The following behavioral features contributed most significantly to the anomaly detection:\n- No positive contributors identified.",
+    "exonerating/counteracting_factors": "The following features displayed baseline behaviors that counteracted the threat classification:\n- **external_connections**: Value of 0.0 acted as a mitigating factor (high negative).\n- **beaconing_event_count**: Value of 0.0 acted as a mitigating factor (high negative).\n- **processes_started**: Value of 1.0 acted as a mitigating factor (medium negative).\n- **process_execution_position**: Value of 0.1667 acted as a mitigating factor (medium negative).",
+    "risk_assessment": "With a risk score of **41.38**, this session represents a marked deviation from regular activity. The GRU network's anomaly index (**0.9694**) verifies that sequence reconstruction was highly corrupted, establishing objective evidence of behavioral drift.",
+    "potential_business_impact": "Attacker has gained or is attempting to gain elevated privileges. Admin-level access enables full system control. Potential impact: complete system compromise, mass data exfiltration.",
+    "containment_actions": "The security operations team must perform these immediate containment steps:\n- [ ] Revoke the escalated privileges immediately\\n- [ ] Suspend the account if unauthorised escalation is confirmed\\n- [ ] Remove any backdoors or persistence mechanisms added with elevated privileges\\n- [ ] Notify IT Security Manager immediately\\n",
+    "investigation_checklist": "Forensic and triage investigative checklist:\n- [ ] Determine how privilege escalation was achieved (exploit, misconfiguration, credential theft)\\n- [ ] Identify all actions taken with the elevated privileges\\n- [ ] Check for other accounts affected by the same escalation vector\\n- [ ] Perform full directory access audit for employee account\\n",
+    "remediation_plan": "Follow-up remediation steps to resolve root causes:\n- [ ] Patch the vulnerability or misconfiguration used for escalation\\n- [ ] Implement just-in-time privileged access management (PAM)\\n- [ ] Enable privileged access workstations (PAW) for admin tasks\\n- [ ] Audit all privileged group memberships\\n",
+    "recovery_recommendations": "Systems recovery playbooks:\n- [ ] Review and remediate all changes made with elevated access\\n- [ ] Conduct a full privilege access review\\n- [ ] Implement privileged activity monitoring\\n",
+    "lessons_learned": "- Verify user awareness concerning appropriate access policies.\n- Audit resource permission trees regularly to enforce least-privilege policies.\n- Deploy additional telemetry triggers based on the top SHAP indicators identified in this incident."
+  },
+  "recommendations": {
+    "immediate_containment": [
+      "Revoke the escalated privileges immediately",
+      "Suspend the account if unauthorised escalation is confirmed",
+      "Remove any backdoors or persistence mechanisms added with elevated privileges",
+      "Notify IT Security Manager immediately"
+    ],
+    "investigation": [
+      "Determine how privilege escalation was achieved (exploit, misconfiguration, credential theft)",
+      "Identify all actions taken with the elevated privileges",
+      "Check for other accounts affected by the same escalation vector",
+      "Perform full directory access audit for employee account"
+    ],
+    "remediation": [
+      "Patch the vulnerability or misconfiguration used for escalation",
+      "Implement just-in-time privileged access management (PAM)",
+      "Enable privileged access workstations (PAW) for admin tasks",
+      "Audit all privileged group memberships"
+    ],
+    "recovery": [
+      "Review and remediate all changes made with elevated access",
+      "Conduct a full privilege access review",
+      "Implement privileged activity monitoring"
+    ],
+    "priority_action": "Revoke the escalated privileges immediately"
+  }
+}

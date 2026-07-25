@@ -1,0 +1,15 @@
+[
+  {
+    "session_id": "SES-000614",
+    "employee": "SVC-0002",
+    "attack_type": "Privilege Escalation",
+    "severity": "High",
+    "confidence": 0.4047,
+    "summary": "Anomalous session detected for employee SVC-0002 classified as Privilege Escalation (High severity, 40% confidence). Key contributing indicators include elevated values for behavioral markers. Immediate containment action: Review which privileged resources or accounts were accessed.",
+    "recommended_action": "Revoke the escalated privileges immediately",
+    "mitre": {
+      "tactic": "Privilege Escalation",
+      "technique": "Exploitation for Privilege Escalation"
+    }
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "session_id": "SES-008220",
+  "employee_id": "DEV-AGENT-0002",
+  "attack_type": "Brute Force",
+  "severity": "High",
+  "confidence": 0.7814,
+  "risk_score": 36.1,
+  "anomaly_score": 0.9415,
+  "mitre": {
+    "tactic": "Credential Access",
+    "technique_id": "T1110",
+    "technique": "Brute Force"
+  },
+  "report_text_markdown": "# SOC Incident Report: SES-008220\n\n## 1. Executive Summary\nThe Cyber Cage UEBA engine detected anomalous behaviors in session **SES-008220** associated with Employee **DEV-AGENT-0002**. The session was classified as **Brute Force** with a confidence score of **78.1%**, indicating a **High** severity risk. Immediate containment action is recommended.\n\n## 2. Incident Overview\n- **Session ID:** SES-008220\n- **Employee ID:** DEV-AGENT-0002\n- **Source IP Address:** 10.10.243.241\n- **Device ID:** DEV-0002\n- **Hour of Day:** 7\n- **Duration:** Unknown\n\n## 3. Attack Classification & Prediction\n- **Primary Prediction:** Brute Force\n- **Classifier Confidence:** 78.1%\n- **Top 3 Candidate Classes:** Brute Force (78%), Credential Stuffing (18%), Device Spoofing (1%)\n\n## 4. Severity Assessment\nThe security risk level is determined to be **High**. This is based on a cumulative risk score of **36.10** and an isolated reconstruction reconstruction error of **0.9415** from the GRU autoencoder network.\n\n## 5. MITRE ATT&CK Mapping\n- **Tactic:** Credential Access\n- **Technique:** T1110 - Brute Force\n- **Mapping Context:** Mapped directly based on Credential Access (T1110 - Brute Force).\n\n## 6. Behavioral Indicators\nThe session exhibited significant deviations from historical employee baselines. Key anomalous variables include:\n- Total risk score: 36.1\n- Anomaly score: 0.9415\n- Mapped attack signature similarity: 78.1%\n\n## 7. Key SHAP Evidence\nThe following behavioral features contributed most significantly to the anomaly detection:\n- **processes_started**: Value of 0.0 introduced a low positive deviation.\n- **process_execution_position**: Value of -1.0 introduced a negligible deviation.\n- **maximum_idle_time**: Value of 164.0 introduced a negligible deviation.\n- **process_event_ratio**: Value of 0.0 introduced a negligible deviation.\n\n## 8. Exonerating/Counteracting Factors\nThe following features displayed baseline behaviors that counteracted the threat classification:\n- **external_connections**: Value of 0.0 acted as a mitigating factor (high negative).\n- **beaconing_event_count**: Value of 0.0 acted as a mitigating factor (high negative).\n- **resource_event_ratio**: Value of 0.1429 acted as a mitigating factor (low negative).\n- **processes_stopped**: Value of 0.0 acted as a mitigating factor (negligible).\n\n## 9. Risk Assessment\nWith a risk score of **36.10**, this session represents a marked deviation from regular activity. The GRU network's anomaly index (**0.9415**) verifies that sequence reconstruction was highly corrupted, establishing objective evidence of behavioral drift.\n\n## 10. Potential Business Impact\nCredential compromise may allow unauthorised access to systems and sensitive data. If successful, attackers gain persistent access. Potential impact: data breach, compliance violation, account takeover.\n\n## 11. Containment Actions\nThe security operations team must perform these immediate containment steps:\n- [ ] Lock the targeted account(s) immediately\\n- [ ] Block the source IP address at the perimeter firewall\\n- [ ] Enable MFA on the targeted account if not already enforced\\n- [ ] Alert the account owner via a secondary channel\\n- [ ] Notify IT Security Manager immediately\\n\n\n## 12. Investigation Checklist\nForensic and triage investigative checklist:\n- [ ] Determine whether any login attempts succeeded\\n- [ ] Review all activity from the source IP across all accounts\\n- [ ] Check the source IP against threat intelligence feeds\\n- [ ] Identify whether multiple accounts were targeted simultaneously\\n- [ ] Perform full directory access audit for employee account\\n\n\n## 13. Remediation Plan\nFollow-up remediation steps to resolve root causes:\n- [ ] Enforce account lockout policy after N failed attempts\\n- [ ] Implement CAPTCHA or rate-limiting on the authentication endpoint\\n- [ ] Enable MFA organisation-wide for all privileged accounts\\n- [ ] Reset the targeted account's password\\n\n\n## 14. Recovery Recommendations\nSystems recovery playbooks:\n- [ ] Unlock account after credentials are confirmed reset\\n- [ ] Monitor account for 7 days for follow-on anomalous activity\\n- [ ] Review and update authentication policy\\n\n\n## 15. Lessons Learned\n- Verify user awareness concerning appropriate access policies.\n- Audit resource permission trees regularly to enforce least-privilege policies.\n- Deploy additional telemetry triggers based on the top SHAP indicators identified in this incident.\n",
+  "sections": {
+    "executive_summary": "The Cyber Cage UEBA engine detected anomalous behaviors in session **SES-008220** associated with Employee **DEV-AGENT-0002**. The session was classified as **Brute Force** with a confidence score of **78.1%**, indicating a **High** severity risk. Immediate containment action is recommended.",
+    "incident_overview": "- **Session ID:** SES-008220\n- **Employee ID:** DEV-AGENT-0002\n- **Source IP Address:** 10.10.243.241\n- **Device ID:** DEV-0002\n- **Hour of Day:** 7\n- **Duration:** Unknown",
+    "attack_classification_and_prediction": "- **Primary Prediction:** Brute Force\n- **Classifier Confidence:** 78.1%\n- **Top 3 Candidate Classes:** Brute Force (78%), Credential Stuffing (18%), Device Spoofing (1%)",
+    "severity_assessment": "The security risk level is determined to be **High**. This is based on a cumulative risk score of **36.10** and an isolated reconstruction reconstruction error of **0.9415** from the GRU autoencoder network.",
+    "mitre_attandck_mapping": "- **Tactic:** Credential Access\n- **Technique:** T1110 - Brute Force\n- **Mapping Context:** Mapped directly based on Credential Access (T1110 - Brute Force).",
+    "behavioral_indicators": "The session exhibited significant deviations from historical employee baselines. Key anomalous variables include:\n- Total risk score: 36.1\n- Anomaly score: 0.9415\n- Mapped attack signature similarity: 78.1%",
+    "key_shap_evidence": "The following behavioral features contributed most significantly to the anomaly detection:\n- **processes_started**: Value of 0.0 introduced a low positive deviation.\n- **process_execution_position**: Value of -1.0 introduced a negligible deviation.\n- **maximum_idle_time**: Value of 164.0 introduced a negligible deviation.\n- **process_event_ratio**: Value of 0.0 introduced a negligible deviation.",
+    "exonerating/counteracting_factors": "The following features displayed baseline behaviors that counteracted the threat classification:\n- **external_connections**: Value of 0.0 acted as a mitigating factor (high negative).\n- **beaconing_event_count**: Value of 0.0 acted as a mitigating factor (high negative).\n- **resource_event_ratio**: Value of 0.1429 acted as a mitigating factor (low negative).\n- **processes_stopped**: Value of 0.0 acted as a mitigating factor (negligible).",
+    "risk_assessment": "With a risk score of **36.10**, this session represents a marked deviation from regular activity. The GRU network's anomaly index (**0.9415**) verifies that sequence reconstruction was highly corrupted, establishing objective evidence of behavioral drift.",
+    "potential_business_impact": "Credential compromise may allow unauthorised access to systems and sensitive data. If successful, attackers gain persistent access. Potential impact: data breach, compliance violation, account takeover.",
+    "containment_actions": "The security operations team must perform these immediate containment steps:\n- [ ] Lock the targeted account(s) immediately\\n- [ ] Block the source IP address at the perimeter firewall\\n- [ ] Enable MFA on the targeted account if not already enforced\\n- [ ] Alert the account owner via a secondary channel\\n- [ ] Notify IT Security Manager immediately\\n",
+    "investigation_checklist": "Forensic and triage investigative checklist:\n- [ ] Determine whether any login attempts succeeded\\n- [ ] Review all activity from the source IP across all accounts\\n- [ ] Check the source IP against threat intelligence feeds\\n- [ ] Identify whether multiple accounts were targeted simultaneously\\n- [ ] Perform full directory access audit for employee account\\n",
+    "remediation_plan": "Follow-up remediation steps to resolve root causes:\n- [ ] Enforce account lockout policy after N failed attempts\\n- [ ] Implement CAPTCHA or rate-limiting on the authentication endpoint\\n- [ ] Enable MFA organisation-wide for all privileged accounts\\n- [ ] Reset the targeted account's password\\n",
+    "recovery_recommendations": "Systems recovery playbooks:\n- [ ] Unlock account after credentials are confirmed reset\\n- [ ] Monitor account for 7 days for follow-on anomalous activity\\n- [ ] Review and update authentication policy\\n",
+    "lessons_learned": "- Verify user awareness concerning appropriate access policies.\n- Audit resource permission trees regularly to enforce least-privilege policies.\n- Deploy additional telemetry triggers based on the top SHAP indicators identified in this incident."
+  },
+  "recommendations": {
+    "immediate_containment": [
+      "Lock the targeted account(s) immediately",
+      "Block the source IP address at the perimeter firewall",
+      "Enable MFA on the targeted account if not already enforced",
+      "Alert the account owner via a secondary channel",
+      "Notify IT Security Manager immediately"
+    ],
+    "investigation": [
+      "Determine whether any login attempts succeeded",
+      "Review all activity from the source IP across all accounts",
+      "Check the source IP against threat intelligence feeds",
+      "Identify whether multiple accounts were targeted simultaneously",
+      "Perform full directory access audit for employee account"
+    ],
+    "remediation": [
+      "Enforce account lockout policy after N failed attempts",
+      "Implement CAPTCHA or rate-limiting on the authentication endpoint",
+      "Enable MFA organisation-wide for all privileged accounts",
+      "Reset the targeted account's password"
+    ],
+    "recovery": [
+      "Unlock account after credentials are confirmed reset",
+      "Monitor account for 7 days for follow-on anomalous activity",
+      "Review and update authentication policy"
+    ],
+    "priority_action": "Lock the targeted account(s) immediately"
+  }
+}

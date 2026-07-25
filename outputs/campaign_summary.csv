@@ -1,0 +1,181 @@
+campaign_id,overall_severity,session_count,affected_employees,attack_types,is_attack_chain
+CAMP-001,Medium,10,EMP-0124,"Data Exfiltration, Device Spoofing, Impossible Travel, Insider Drift, Insider Threat, Off-hours Access, USB Data Theft",True
+CAMP-002,Low,4,EMP-0172,"Malware Execution, Off-hours Access, Privilege Escalation",True
+CAMP-003,Medium,7,EMP-0099,"Data Exfiltration, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, USB Data Theft",True
+CAMP-004,Medium,13,EMP-0155,"Brute Force, Data Exfiltration, Impossible Travel, Lateral Movement, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-005,Low,7,EMP-0130,"Data Exfiltration, Device Spoofing, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-006,Medium,18,"DEV-AGENT-0004, EMP-0004, SVC-0004","Beaconing C2, Brute Force, Data Exfiltration, Device Spoofing, Impossible Travel, Lateral Movement, Malware Execution, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-007,Medium,18,"DEV-AGENT-0009, EMP-0009, SVC-0009","Brute Force, Credential Stuffing, Device Spoofing, Impossible Travel, Lateral Movement, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-008,Critical,13,"DEV-AGENT-0002, EMP-0002, SVC-0002","Beaconing C2, Brute Force, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, Privilege Escalation",True
+CAMP-009,Medium,7,EMP-0145,"Brute Force, Data Exfiltration, Impossible Travel, Insider Threat, Privilege Escalation",True
+CAMP-010,Low,9,EMP-0131,"Insider Drift, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-011,Medium,7,EMP-0012,"Brute Force, Credential Stuffing, Insider Drift, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution",True
+CAMP-012,Low,14,EMP-0121,"Data Exfiltration, Impossible Travel, Insider Threat, Lateral Movement, Malware Execution, Privilege Escalation, USB Data Theft",True
+CAMP-013,Low,9,EMP-0027,"Beaconing C2, Brute Force, Insider Threat, Off-hours Access, Suspicious PowerShell, USB Data Theft",True
+CAMP-014,Low,4,EMP-0067,"Brute Force, Data Exfiltration, Device Spoofing, Off-hours Access",True
+CAMP-015,Medium,18,"DEV-AGENT-0008, EMP-0008, SVC-0008","Brute Force, Data Exfiltration, Impossible Travel, Insider Drift, Insider Threat, Lateral Movement, Malware Execution, Off-hours Access, Privilege Escalation",True
+CAMP-016,Low,6,EMP-0038,"Data Exfiltration, Device Spoofing, Impossible Travel, Privilege Escalation, USB Data Theft",True
+CAMP-017,Low,9,EMP-0096,"Credential Stuffing, Data Exfiltration, Impossible Travel, Malware Execution, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-018,Medium,19,EMP-0049,"Brute Force, Data Exfiltration, Device Spoofing, Impossible Travel, Insider Threat, Lateral Movement, Malware Execution, Off-hours Access, Privilege Escalation",True
+CAMP-019,Low,10,EMP-0118,"Brute Force, Credential Stuffing, Data Exfiltration, Device Spoofing, Insider Drift, Insider Threat, Malware Execution, Privilege Escalation, USB Data Theft",True
+CAMP-020,Low,8,EMP-0015,"Data Exfiltration, Impossible Travel, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution",True
+CAMP-021,Medium,10,EMP-0173,"Brute Force, Credential Stuffing, Data Exfiltration, Insider Threat, Lateral Movement, Malware Execution, Suspicious PowerShell, USB Data Theft",True
+CAMP-022,Medium,14,EMP-0018,"Brute Force, Credential Stuffing, Device Spoofing, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Off-hours Access, USB Data Theft",True
+CAMP-023,Low,7,EMP-0119,"Brute Force, Credential Stuffing, Device Spoofing, Insider Threat, USB Data Theft",True
+CAMP-024,Low,13,EMP-0174,"Device Spoofing, Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Privilege Escalation",True
+CAMP-025,Medium,9,EMP-0109,"Data Exfiltration, Low-and-Slow Exfiltration, Privilege Escalation, Suspicious PowerShell",True
+CAMP-026,Low,9,EMP-0135,"Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Privilege Escalation, USB Data Theft",True
+CAMP-027,Low,11,EMP-0068,"Credential Stuffing, Data Exfiltration, Device Spoofing, Impossible Travel, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution, Privilege Escalation, Suspicious PowerShell",True
+CAMP-028,Low,6,EMP-0106,"Data Exfiltration, Privilege Escalation, USB Data Theft",True
+CAMP-029,Medium,6,EMP-0035,"Lateral Movement, Low-and-Slow Exfiltration, Privilege Escalation, USB Data Theft",True
+CAMP-030,Low,10,EMP-0152,"Brute Force, Data Exfiltration, Insider Threat, Malware Execution, Privilege Escalation, Suspicious PowerShell",True
+CAMP-031,Low,15,EMP-0098,"Beaconing C2, Data Exfiltration, Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Malware Execution, USB Data Theft",True
+CAMP-032,Low,5,EMP-0170,"Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation",True
+CAMP-033,Medium,15,EMP-0097,"Device Spoofing, Insider Drift, Insider Threat, Lateral Movement, Privilege Escalation, USB Data Theft",True
+CAMP-034,Medium,25,"DEV-AGENT-0010, EMP-0010, SVC-0010","Brute Force, Data Exfiltration, Device Spoofing, Impossible Travel, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-035,Medium,11,EMP-0076,"Beaconing C2, Device Spoofing, Insider Threat, Low-and-Slow Exfiltration, Privilege Escalation, USB Data Theft",True
+CAMP-036,Low,6,EMP-0122,"Credential Stuffing, Insider Threat, Privilege Escalation, USB Data Theft",True
+CAMP-037,Medium,12,EMP-0069,"Data Exfiltration, Device Spoofing, Impossible Travel, Lateral Movement, Low-and-Slow Exfiltration, Suspicious PowerShell, USB Data Theft",True
+CAMP-038,Medium,11,EMP-0034,"Device Spoofing, Impossible Travel, Insider Threat, Lateral Movement, Malware Execution, Privilege Escalation",True
+CAMP-039,Medium,13,EMP-0116,"Brute Force, Credential Stuffing, Data Exfiltration, Device Spoofing, Insider Threat, Low-and-Slow Exfiltration, Malware Execution, USB Data Theft",True
+CAMP-040,Medium,7,EMP-0021,"Impossible Travel, Insider Threat, Lateral Movement, Malware Execution, Privilege Escalation",True
+CAMP-041,Medium,11,EMP-0161,"Data Exfiltration, Insider Threat, Lateral Movement, Malware Execution, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-042,Medium,23,"DEV-AGENT-0003, EMP-0003, SVC-0003","Data Exfiltration, Device Spoofing, Impossible Travel, Insider Threat, Lateral Movement, Off-hours Access, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-043,Medium,19,EMP-0088,"Brute Force, Credential Stuffing, Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Malware Execution, Privilege Escalation, USB Data Theft",True
+CAMP-044,Low,5,EMP-0033,"Data Exfiltration, Impossible Travel, Malware Execution, Suspicious PowerShell",True
+CAMP-045,Low,13,EMP-0011,"Brute Force, Data Exfiltration, Device Spoofing, Lateral Movement, Malware Execution, Privilege Escalation",True
+CAMP-046,Medium,7,EMP-0072,"Brute Force, Impossible Travel, Insider Threat, Malware Execution",True
+CAMP-047,Low,7,EMP-0089,"Brute Force, Credential Stuffing, Low-and-Slow Exfiltration, Privilege Escalation, USB Data Theft",True
+CAMP-048,Medium,11,EMP-0168,"Beaconing C2, Brute Force, Lateral Movement, Malware Execution, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-049,Medium,10,EMP-0056,"Data Exfiltration, Device Spoofing, Insider Drift, Low-and-Slow Exfiltration, Malware Execution, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-050,Medium,5,EMP-0043,"Brute Force, Credential Stuffing, Off-hours Access, Suspicious PowerShell",True
+CAMP-051,Medium,10,EMP-0156,"Beaconing C2, Data Exfiltration, Device Spoofing, Insider Threat, Lateral Movement, Off-hours Access, Suspicious PowerShell, USB Data Theft",True
+CAMP-052,Medium,9,EMP-0153,"Brute Force, Data Exfiltration, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation",True
+CAMP-053,Medium,10,EMP-0051,"Beaconing C2, Brute Force, Device Spoofing, Low-and-Slow Exfiltration, Off-hours Access, USB Data Theft",True
+CAMP-054,Medium,7,EMP-0146,"Brute Force, Insider Threat, Off-hours Access",True
+CAMP-055,Low,10,EMP-0024,"Brute Force, Credential Stuffing, Data Exfiltration, Device Spoofing, Malware Execution, Off-hours Access, Suspicious PowerShell, USB Data Theft",True
+CAMP-056,Medium,10,EMP-0120,"Credential Stuffing, Data Exfiltration, Device Spoofing, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-057,Medium,6,EMP-0125,"Credential Stuffing, Impossible Travel, Lateral Movement, Malware Execution, Off-hours Access, Suspicious PowerShell",True
+CAMP-058,Low,5,EMP-0055,"Brute Force, Credential Stuffing, Data Exfiltration, Malware Execution, USB Data Theft",True
+CAMP-059,Medium,13,EMP-0028,"Brute Force, Device Spoofing, Impossible Travel, Insider Drift, Lateral Movement, Malware Execution, Off-hours Access, USB Data Theft",True
+CAMP-060,Low,13,EMP-0169,"Data Exfiltration, Insider Threat, Lateral Movement, Off-hours Access, Privilege Escalation",True
+CAMP-061,Medium,15,EMP-0041,"Brute Force, Data Exfiltration, Impossible Travel, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation",True
+CAMP-062,Low,7,EMP-0087,"Device Spoofing, Impossible Travel, Lateral Movement, Privilege Escalation",True
+CAMP-063,Medium,10,"DEV-AGENT-0006, EMP-0006, SVC-0006","Beaconing C2, Impossible Travel, Insider Drift, Insider Threat, Low-and-Slow Exfiltration, Malware Execution",True
+CAMP-064,Medium,5,EMP-0077,"Data Exfiltration, Device Spoofing, Lateral Movement, Low-and-Slow Exfiltration",True
+CAMP-065,Medium,10,EMP-0117,"Data Exfiltration, Device Spoofing, Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-066,Medium,18,"DEV-AGENT-0005, EMP-0005, SVC-0005","Brute Force, Data Exfiltration, Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, Privilege Escalation, Suspicious PowerShell",True
+CAMP-067,Low,6,EMP-0154,"Credential Stuffing, Data Exfiltration, Device Spoofing, Lateral Movement, Off-hours Access, USB Data Theft",True
+CAMP-068,Medium,13,EMP-0133,"Beaconing C2, Brute Force, Device Spoofing, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Privilege Escalation, USB Data Theft",True
+CAMP-069,Medium,7,EMP-0115,"Brute Force, Credential Stuffing, Data Exfiltration, Device Spoofing, Privilege Escalation, USB Data Theft",True
+CAMP-070,Medium,8,EMP-0080,"Brute Force, Credential Stuffing, Lateral Movement, Malware Execution, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-071,Low,9,EMP-0092,"Brute Force, Data Exfiltration, Impossible Travel, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-072,Low,5,EMP-0053,"Impossible Travel, Insider Threat, Malware Execution, Privilege Escalation",True
+CAMP-073,Medium,7,EMP-0050,"Data Exfiltration, Impossible Travel, Malware Execution, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-074,Low,9,EMP-0057,"Brute Force, Device Spoofing, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-075,Medium,7,EMP-0058,"Brute Force, Data Exfiltration, Impossible Travel, Off-hours Access, USB Data Theft",True
+CAMP-076,Low,12,EMP-0019,"Credential Stuffing, Data Exfiltration, Device Spoofing, Impossible Travel, Insider Threat, Lateral Movement, Suspicious PowerShell",True
+CAMP-077,Medium,10,EMP-0031,"Brute Force, Impossible Travel, Insider Threat, Lateral Movement, Malware Execution, Privilege Escalation, USB Data Theft",True
+CAMP-078,Low,11,EMP-0054,"Credential Stuffing, Insider Threat, Lateral Movement, Malware Execution, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-079,Medium,7,EMP-0139,"Beaconing C2, Brute Force, Credential Stuffing, Insider Threat, Lateral Movement, Privilege Escalation",True
+CAMP-080,Critical,9,EMP-0060,"Brute Force, Credential Stuffing, Device Spoofing, Malware Execution",True
+CAMP-081,Low,7,EMP-0044,"Brute Force, Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Privilege Escalation, USB Data Theft",True
+CAMP-082,Low,6,EMP-0128,"Beaconing C2, Data Exfiltration, Device Spoofing, Privilege Escalation",True
+CAMP-083,Medium,8,EMP-0023,"Brute Force, Data Exfiltration, Device Spoofing, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation",True
+CAMP-084,Medium,13,EMP-0107,"Data Exfiltration, Insider Threat, Lateral Movement, Malware Execution, Off-hours Access, Suspicious PowerShell, USB Data Theft",True
+CAMP-085,Medium,9,EMP-0164,"Brute Force, Impossible Travel, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution, Privilege Escalation",True
+CAMP-086,Low,9,EMP-0095,"Beaconing C2, Brute Force, Impossible Travel, Insider Threat, Suspicious PowerShell, USB Data Theft",True
+CAMP-087,Medium,3,EMP-0070,"Device Spoofing, Insider Threat",True
+CAMP-088,Medium,7,EMP-0171,"Beaconing C2, Brute Force, Device Spoofing, Insider Threat, Malware Execution, Privilege Escalation, USB Data Theft",True
+CAMP-089,Low,9,EMP-0102,Privilege Escalation,False
+CAMP-090,Low,5,EMP-0160,"Device Spoofing, Insider Threat, Low-and-Slow Exfiltration, Off-hours Access, USB Data Theft",True
+CAMP-091,Medium,13,EMP-0013,"Beaconing C2, Brute Force, Credential Stuffing, Data Exfiltration, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, Suspicious PowerShell",True
+CAMP-092,Medium,12,EMP-0151,"Beaconing C2, Device Spoofing, Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Privilege Escalation",True
+CAMP-093,Low,11,EMP-0059,"Brute Force, Data Exfiltration, Impossible Travel, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-094,Medium,14,EMP-0025,"Beaconing C2, Brute Force, Device Spoofing, Insider Drift, Insider Threat, Low-and-Slow Exfiltration, Malware Execution, Suspicious PowerShell, USB Data Theft",True
+CAMP-095,Low,3,EMP-0157,"Impossible Travel, Insider Drift, Malware Execution",True
+CAMP-096,Medium,9,EMP-0108,"Brute Force, Data Exfiltration, Device Spoofing, Privilege Escalation, USB Data Theft",True
+CAMP-097,Medium,4,EMP-0091,"Credential Stuffing, Insider Threat, USB Data Theft",True
+CAMP-098,Medium,8,EMP-0147,"Brute Force, Insider Threat",True
+CAMP-099,Medium,9,EMP-0074,"Brute Force, Credential Stuffing, Data Exfiltration, Malware Execution, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-100,Low,3,EMP-0126,"Beaconing C2, Credential Stuffing, USB Data Theft",True
+CAMP-101,Low,8,EMP-0065,"Data Exfiltration, Device Spoofing, Insider Threat, Lateral Movement, USB Data Theft",True
+CAMP-102,Medium,8,EMP-0014,"Brute Force, Data Exfiltration, Device Spoofing, Lateral Movement, Low-and-Slow Exfiltration, Privilege Escalation",True
+CAMP-103,Low,8,EMP-0105,"Brute Force, Insider Threat, Lateral Movement, Malware Execution, USB Data Theft",True
+CAMP-104,Low,8,EMP-0136,"Beaconing C2, Brute Force, Data Exfiltration, Low-and-Slow Exfiltration, Privilege Escalation",True
+CAMP-105,Medium,10,EMP-0176,"Brute Force, Credential Stuffing, Data Exfiltration, Device Spoofing, Off-hours Access, USB Data Theft",True
+CAMP-106,Medium,8,EMP-0140,"Data Exfiltration, Low-and-Slow Exfiltration, Privilege Escalation, USB Data Theft",True
+CAMP-107,Medium,6,EMP-0127,"Brute Force, Credential Stuffing, Impossible Travel, Lateral Movement, Malware Execution, USB Data Theft",True
+CAMP-108,Medium,8,EMP-0020,"Brute Force, Data Exfiltration, Device Spoofing, Impossible Travel, Malware Execution, Privilege Escalation",True
+CAMP-109,Low,3,EMP-0178,"Beaconing C2, Device Spoofing, Low-and-Slow Exfiltration",True
+CAMP-110,Low,5,EMP-0045,"Beaconing C2, Impossible Travel, Malware Execution, USB Data Theft",True
+CAMP-111,Low,3,EMP-0142,"Credential Stuffing, Impossible Travel, Privilege Escalation",True
+CAMP-112,Medium,10,EMP-0046,"Data Exfiltration, Insider Drift, Insider Threat, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-113,Medium,11,EMP-0061,"Credential Stuffing, Device Spoofing, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution, Privilege Escalation, USB Data Theft",True
+CAMP-114,Medium,9,EMP-0165,"Brute Force, Insider Drift, Insider Threat, Off-hours Access, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-115,Low,7,EMP-0062,"Device Spoofing, Insider Threat, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation",True
+CAMP-116,Low,4,EMP-0175,"Device Spoofing, Lateral Movement, Off-hours Access, Privilege Escalation",True
+CAMP-117,Low,10,EMP-0071,"Beaconing C2, Brute Force, Insider Threat, Lateral Movement, Malware Execution, Off-hours Access, Privilege Escalation",True
+CAMP-118,Low,9,EMP-0017,"Brute Force, Device Spoofing, Insider Threat, Lateral Movement, Malware Execution",True
+CAMP-119,Low,4,EMP-0047,"Insider Threat, Lateral Movement, Privilege Escalation, USB Data Theft",True
+CAMP-120,Low,8,EMP-0084,"Device Spoofing, Impossible Travel, Lateral Movement, Off-hours Access, Suspicious PowerShell, USB Data Theft",True
+CAMP-121,Medium,14,EMP-0085,"Beaconing C2, Data Exfiltration, Device Spoofing, Impossible Travel, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution, Suspicious PowerShell, USB Data Theft",True
+CAMP-122,Medium,7,EMP-0082,"Brute Force, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation, Suspicious PowerShell",True
+CAMP-123,Medium,12,EMP-0110,"Beaconing C2, Brute Force, Data Exfiltration, Device Spoofing, Impossible Travel, Lateral Movement, Suspicious PowerShell, USB Data Theft",True
+CAMP-124,Low,16,EMP-0159,"Brute Force, Credential Stuffing, Device Spoofing, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution",True
+CAMP-125,Low,9,EMP-0086,"Brute Force, Device Spoofing, Impossible Travel, Privilege Escalation, Suspicious PowerShell, USB Data Theft",True
+CAMP-126,Medium,7,EMP-0079,"Credential Stuffing, Data Exfiltration, Device Spoofing, Insider Threat, Off-hours Access, USB Data Theft",True
+CAMP-127,Low,4,EMP-0149,"Credential Stuffing, USB Data Theft",True
+CAMP-128,Medium,11,EMP-0166,"Beaconing C2, Brute Force, Device Spoofing, Impossible Travel, Low-and-Slow Exfiltration, Malware Execution, Privilege Escalation, USB Data Theft",True
+CAMP-129,Low,5,EMP-0063,"Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-130,Low,8,EMP-0036,"Credential Stuffing, Low-and-Slow Exfiltration, USB Data Theft",True
+CAMP-131,Medium,7,EMP-0073,"Credential Stuffing, Insider Drift, Lateral Movement, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-132,Medium,13,EMP-0114,"Brute Force, Data Exfiltration, Impossible Travel, Insider Threat, Lateral Movement, Malware Execution, Privilege Escalation",True
+CAMP-133,Low,11,EMP-0064,"Brute Force, Insider Threat, Lateral Movement, Malware Execution, Privilege Escalation",True
+CAMP-134,Low,5,EMP-0093,"Brute Force, Malware Execution, Off-hours Access, USB Data Theft",True
+CAMP-135,Low,9,EMP-0040,"Beaconing C2, Brute Force, Data Exfiltration, Device Spoofing, Off-hours Access, USB Data Theft",True
+CAMP-136,Medium,5,EMP-0066,"Beaconing C2, Credential Stuffing, Malware Execution, Off-hours Access, USB Data Theft",True
+CAMP-137,Medium,13,EMP-0134,"Credential Stuffing, Data Exfiltration, Device Spoofing, Insider Drift, Lateral Movement, Low-and-Slow Exfiltration, Privilege Escalation, USB Data Theft",True
+CAMP-138,Low,8,EMP-0180,"Brute Force, Insider Threat, Malware Execution, Privilege Escalation, USB Data Theft",True
+CAMP-139,Medium,16,"DEV-AGENT-0001, EMP-0001, SVC-0001","Brute Force, Credential Stuffing, Data Exfiltration, Device Spoofing, Insider Drift, Insider Threat, Lateral Movement, Malware Execution, Off-hours Access, Suspicious PowerShell, USB Data Theft",True
+CAMP-140,Low,5,EMP-0101,"Brute Force, Impossible Travel, Insider Threat, Privilege Escalation, USB Data Theft",True
+CAMP-141,Medium,9,EMP-0052,"Data Exfiltration, Device Spoofing, Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-142,Low,4,EMP-0141,"Credential Stuffing, Data Exfiltration, Lateral Movement, Privilege Escalation",True
+CAMP-143,Medium,7,EMP-0016,"Data Exfiltration, Impossible Travel, Insider Threat, Lateral Movement, Malware Execution, Off-hours Access",True
+CAMP-144,Low,10,EMP-0042,"Beaconing C2, Impossible Travel, Insider Threat, Lateral Movement, Malware Execution, Privilege Escalation, USB Data Theft",True
+CAMP-145,Low,6,EMP-0037,"Device Spoofing, Lateral Movement, Low-and-Slow Exfiltration, USB Data Theft",True
+CAMP-146,Low,5,EMP-0075,"Impossible Travel, Insider Threat, Low-and-Slow Exfiltration",True
+CAMP-147,Medium,6,EMP-0177,"Brute Force, Credential Stuffing, Data Exfiltration, Device Spoofing, Low-and-Slow Exfiltration, USB Data Theft",True
+CAMP-148,Low,6,EMP-0132,"Impossible Travel, Lateral Movement, Off-hours Access",True
+CAMP-149,Low,4,EMP-0026,"Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-150,Medium,9,EMP-0138,"Credential Stuffing, Data Exfiltration, Impossible Travel",True
+CAMP-151,Low,10,EMP-0103,"Brute Force, Device Spoofing, Impossible Travel, Privilege Escalation, USB Data Theft",True
+CAMP-152,Low,7,EMP-0094,"Credential Stuffing, Lateral Movement, Low-and-Slow Exfiltration, Malware Execution, Off-hours Access, USB Data Theft",True
+CAMP-153,Medium,13,EMP-0129,"Beaconing C2, Data Exfiltration, Insider Threat, Low-and-Slow Exfiltration, Malware Execution, Privilege Escalation",True
+CAMP-154,Medium,7,EMP-0029,"Brute Force, Impossible Travel, Insider Drift, Malware Execution, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-155,Low,7,EMP-0113,"Credential Stuffing, Device Spoofing, USB Data Theft",True
+CAMP-156,Medium,7,EMP-0148,"Impossible Travel, Insider Threat, Low-and-Slow Exfiltration, Malware Execution, USB Data Theft",True
+CAMP-157,Medium,7,EMP-0090,"Device Spoofing, Insider Threat, Lateral Movement, Malware Execution",True
+CAMP-158,Medium,6,EMP-0100,"Credential Stuffing, Malware Execution, USB Data Theft",True
+CAMP-159,Low,10,"DEV-AGENT-0007, EMP-0007, SVC-0007","Beaconing C2, Data Exfiltration, Insider Threat, Malware Execution, Off-hours Access, USB Data Theft",True
+CAMP-160,Low,8,EMP-0048,"Data Exfiltration, Device Spoofing, Impossible Travel, Lateral Movement, Malware Execution, USB Data Theft",True
+CAMP-161,Medium,10,EMP-0163,"Credential Stuffing, Device Spoofing, Insider Threat, Malware Execution, Off-hours Access, Privilege Escalation, USB Data Theft",True
+CAMP-162,Medium,9,EMP-0150,"Device Spoofing, Impossible Travel, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Off-hours Access, Privilege Escalation",True
+CAMP-163,Low,3,EMP-0030,"Brute Force, Insider Drift, Privilege Escalation",True
+CAMP-164,Low,5,EMP-0123,"Brute Force, Credential Stuffing, Data Exfiltration, Insider Drift, Malware Execution",True
+CAMP-165,Low,3,EMP-0081,"Brute Force, Impossible Travel, Privilege Escalation",True
+CAMP-166,Low,6,EMP-0078,"Brute Force, Device Spoofing, Insider Threat, Privilege Escalation, USB Data Theft",True
+CAMP-167,Medium,10,EMP-0143,"Brute Force, Credential Stuffing, Data Exfiltration, Device Spoofing, Impossible Travel, Off-hours Access, USB Data Theft",True
+CAMP-168,Medium,3,EMP-0179,"Brute Force, Off-hours Access, USB Data Theft",True
+CAMP-169,Medium,6,EMP-0158,"Credential Stuffing, Data Exfiltration, Device Spoofing, Insider Threat, Malware Execution",True
+CAMP-170,Low,2,EMP-0112,"Lateral Movement, Suspicious PowerShell",True
+CAMP-171,Medium,3,EMP-0167,"Brute Force, Data Exfiltration, Lateral Movement",True
+CAMP-172,Medium,6,EMP-0039,"Impossible Travel, Insider Threat, Lateral Movement, Low-and-Slow Exfiltration, Off-hours Access",True
+CAMP-173,Medium,7,EMP-0104,"Beaconing C2, Brute Force, Data Exfiltration, Device Spoofing, Impossible Travel, USB Data Theft",True
+CAMP-174,Medium,7,EMP-0162,"Device Spoofing, Insider Threat, Suspicious PowerShell, USB Data Theft",True
+CAMP-175,Medium,7,EMP-0144,"Brute Force, Credential Stuffing, Data Exfiltration, Device Spoofing, Malware Execution, Privilege Escalation, Suspicious PowerShell",True
+CAMP-176,Medium,6,EMP-0022,"Credential Stuffing, Device Spoofing, Impossible Travel, Malware Execution, Privilege Escalation",True
+CAMP-177,Low,7,EMP-0137,"Brute Force, Impossible Travel, Insider Threat, Lateral Movement, Malware Execution, Suspicious PowerShell",True
+CAMP-178,Low,5,EMP-0111,"Data Exfiltration, Insider Threat, Malware Execution, Suspicious PowerShell, USB Data Theft",True
+CAMP-179,Low,3,EMP-0032,"Credential Stuffing, Privilege Escalation, Suspicious PowerShell",True
+CAMP-180,Medium,4,EMP-0083,"Beaconing C2, Insider Threat, Suspicious PowerShell, USB Data Theft",True
