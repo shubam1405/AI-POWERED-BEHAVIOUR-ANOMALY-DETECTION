@@ -128,24 +128,36 @@ def main() -> None:
         anomaly_exporter.export()
         logger.info("Anomalous CSV export completed.")
 
-        # 15. Standardize & Sessionize raw logs using DataAdapter
-        logger.info("Standardizing and sessionizing raw events...")
+        # 15. Pass anomalous sessions directly to FeatureEngineer
+        # ----------------------------------------------------------------
+        # KEY FIX: We skip DataAdapter re-sessionization here.  The
+        # anom_sessions objects already carry is_anomalous, attack_type,
+        # and risk_score set by AnomalyInjector.  Re-reading from CSV
+        # would reconstruct bare Session objects and lose all that metadata.
+        # ----------------------------------------------------------------
         feat_engineer = FeatureEngineer(data_dir="data/raw", company=company)
-        
-        from features.data_adapter import DataAdapter
-        raw_events = feat_engineer._read_raw_csv_events(feat_engineer.events_file)
-        employees_lookup = feat_engineer._load_employee_lookup()
-        adapter = DataAdapter()
-        sessionized_sessions = adapter.standardize_and_sessionize(raw_events, employees_lookup)
 
-        # Extract features from the sessionized sessions
+        # --- Pre-FE validation logging -----------------------------------
+        anomalous_preview = [s for s in anom_sessions if s.is_anomalous][:3]
+        if anomalous_preview:
+            logger.info("Pre-FE validation — sample anomalous sessions:")
+            for s in anomalous_preview:
+                logger.info(
+                    f"  {s.session_id}  is_anomalous={s.is_anomalous}  "
+                    f"attack_type={getattr(s.attack_type, 'value', s.attack_type)}  "
+                    f"risk_score={s.risk_score:.1f}"
+                )
+        else:
+            logger.warning("Pre-FE validation — no anomalous sessions found after injection!")
+
+        # Extract features from the in-memory anomalous sessions
         logger.info("Extracting session feature vectors...")
-        raw_features, scaled_features, copilot_context = feat_engineer.run(sessionized_sessions)
+        raw_features, scaled_features, copilot_context = feat_engineer.run(sessions=anom_sessions)
         logger.info(f"Feature engineering completed. Processed {len(raw_features)} feature vectors.")
 
         # 16. Feature Validation
         logger.info("Running feature validation...")
-        FeatureValidator().validate(raw_features, len(sessionized_sessions))
+        FeatureValidator().validate(raw_features, len(anom_sessions))
         logger.info("Feature validation successful.")
 
         # 17. Export Tabular Features to CSV
@@ -157,7 +169,7 @@ def main() -> None:
         # 18. Sequence Building (Sequential Features for GRU Autoencoder)
         logger.info("Building sequential features for GRU Autoencoder...")
         seq_builder = SequenceBuilder(max_len=50)
-        sequences, masks = seq_builder.build_sequences(sessionized_sessions)
+        sequences, masks = seq_builder.build_sequences(anom_sessions)
         seq_builder.save(sequences, masks, output_dir="data/processed")
         logger.info("Sequential features export completed.")
 
@@ -213,7 +225,7 @@ def main() -> None:
         
         # Feature stats
         logger.info(f"Total Tabular Columns  : {len(raw_features[0]) - 5}")
-        logger.info(f"Sequential Tensor Shape: ({len(sessionized_sessions)}, 50, 21)")
+        logger.info(f"Sequential Tensor Shape: ({len(anom_sessions)}, 50, 21)")
         logger.info(f"Intelligence Fusion    : Risk, SHAP Mapping, Copilot Context exported")
         logger.info("=" * 60)
         logger.info("Phase 4 execution completed successfully.")

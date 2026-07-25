@@ -1,0 +1,1954 @@
+session_id,true_label,predicted_label,confidence,correct,top_1,top_1_prob,top_2,top_2_prob,top_3,top_3_prob
+SES-004116,Impossible Travel,Impossible Travel,0.9867,1,Impossible Travel,0.9867,Normal,0.0054,Off-hours Access,0.0026
+SES-011159,Normal,Normal,0.9276,1,Normal,0.9276,USB Data Theft,0.0203,Device Spoofing,0.0123
+SES-006094,Normal,Normal,0.3566,1,Normal,0.3566,USB Data Theft,0.3053,Lateral Movement,0.0808
+SES-011690,Brute Force,Malware Execution,0.4928,0,Malware Execution,0.4928,Privilege Escalation,0.2234,Brute Force,0.1539
+SES-012811,Normal,Normal,0.5761,1,Normal,0.5761,USB Data Theft,0.1535,Insider Threat,0.0462
+SES-005855,Normal,Normal,0.4112,1,Normal,0.4112,Device Spoofing,0.3885,USB Data Theft,0.0911
+SES-006201,Normal,Normal,0.9435,1,Normal,0.9435,Impossible Travel,0.0097,Device Spoofing,0.0076
+SES-004901,Normal,Lateral Movement,0.4036,0,Lateral Movement,0.4036,Normal,0.3529,Device Spoofing,0.1176
+SES-006962,Privilege Escalation,Privilege Escalation,0.5059,1,Privilege Escalation,0.5059,Malware Execution,0.2578,Brute Force,0.171
+SES-011235,Normal,USB Data Theft,0.3873,0,USB Data Theft,0.3873,Normal,0.2657,Insider Threat,0.0715
+SES-003587,Normal,Normal,0.9388,1,Normal,0.9388,USB Data Theft,0.0128,Device Spoofing,0.0097
+SES-007701,Normal,Normal,0.7461,1,Normal,0.7461,Privilege Escalation,0.0915,Low-and-Slow Exfiltration,0.0325
+SES-006692,Normal,Normal,0.8935,1,Normal,0.8935,USB Data Theft,0.0479,Device Spoofing,0.0129
+SES-002991,Normal,Normal,0.887,1,Normal,0.887,Privilege Escalation,0.0428,Malware Execution,0.0174
+SES-003058,Normal,Malware Execution,0.3142,0,Malware Execution,0.3142,Privilege Escalation,0.2924,Normal,0.1157
+SES-011859,Normal,Normal,0.9215,1,Normal,0.9215,Privilege Escalation,0.022,Malware Execution,0.0199
+SES-001388,Normal,USB Data Theft,0.4651,0,USB Data Theft,0.4651,Normal,0.2401,Insider Threat,0.0561
+SES-008542,Normal,USB Data Theft,0.5045,0,USB Data Theft,0.5045,Normal,0.3547,Device Spoofing,0.0259
+SES-005319,Normal,USB Data Theft,0.4738,0,USB Data Theft,0.4738,Normal,0.2549,Insider Threat,0.0459
+SES-009289,Normal,Normal,0.8935,1,Normal,0.8935,USB Data Theft,0.0551,Impossible Travel,0.0101
+SES-001108,Normal,Normal,0.706,1,Normal,0.706,USB Data Theft,0.0933,Device Spoofing,0.0349
+SES-012117,Off-hours Access,Off-hours Access,0.9812,1,Off-hours Access,0.9812,Normal,0.0136,USB Data Theft,0.001
+SES-009297,Normal,Normal,0.2179,1,Normal,0.2179,USB Data Theft,0.196,Insider Threat,0.1257
+SES-000929,Normal,Normal,0.9302,1,Normal,0.9302,USB Data Theft,0.018,Device Spoofing,0.0159
+SES-008549,Normal,Normal,0.9126,1,Normal,0.9126,USB Data Theft,0.0398,Device Spoofing,0.0124
+SES-002335,Normal,Normal,0.9197,1,Normal,0.9197,USB Data Theft,0.0324,Device Spoofing,0.01
+SES-006119,Normal,Normal,0.9126,1,Normal,0.9126,Malware Execution,0.0306,Privilege Escalation,0.0192
+SES-000571,Normal,Insider Threat,0.3003,0,Insider Threat,0.3003,Privilege Escalation,0.2795,Malware Execution,0.1668
+SES-008476,Normal,Normal,0.8733,1,Normal,0.8733,Insider Threat,0.0565,USB Data Theft,0.0365
+SES-011915,Normal,Normal,0.6944,1,Normal,0.6944,Lateral Movement,0.1238,Off-hours Access,0.0393
+SES-005947,USB Data Theft,Normal,0.4898,0,Normal,0.4898,USB Data Theft,0.1454,Low-and-Slow Exfiltration,0.1022
+SES-006147,Normal,Normal,0.8985,1,Normal,0.8985,Privilege Escalation,0.0326,Malware Execution,0.0211
+SES-011112,Normal,Normal,0.8537,1,Normal,0.8537,USB Data Theft,0.0502,Device Spoofing,0.0104
+SES-003333,Normal,USB Data Theft,0.4089,0,USB Data Theft,0.4089,Normal,0.3845,Insider Threat,0.0377
+SES-004048,Normal,Normal,0.5689,1,Normal,0.5689,USB Data Theft,0.0859,Insider Threat,0.064
+SES-010380,Normal,Normal,0.6796,1,Normal,0.6796,Privilege Escalation,0.1126,Malware Execution,0.0931
+SES-010402,Normal,Normal,0.9098,1,Normal,0.9098,USB Data Theft,0.0309,Lateral Movement,0.0134
+SES-005654,Normal,Insider Threat,0.53,0,Insider Threat,0.53,USB Data Theft,0.217,Normal,0.1378
+SES-006617,Normal,Normal,0.9225,1,Normal,0.9225,USB Data Theft,0.0339,Device Spoofing,0.008
+SES-010743,Insider Threat,Insider Threat,0.3863,1,Insider Threat,0.3863,Normal,0.268,USB Data Theft,0.1537
+SES-004675,Normal,Normal,0.5777,1,Normal,0.5777,Device Spoofing,0.2719,USB Data Theft,0.0607
+SES-006847,Normal,Normal,0.9058,1,Normal,0.9058,USB Data Theft,0.0457,Device Spoofing,0.0095
+SES-005067,Normal,Normal,0.5903,1,Normal,0.5903,USB Data Theft,0.2676,Device Spoofing,0.0229
+SES-005913,Normal,Normal,0.7879,1,Normal,0.7879,Malware Execution,0.0967,Privilege Escalation,0.0377
+SES-001428,Normal,Normal,0.7818,1,Normal,0.7818,Privilege Escalation,0.0855,Malware Execution,0.0334
+SES-005039,Normal,Normal,0.9089,1,Normal,0.9089,Insider Threat,0.021,USB Data Theft,0.0143
+SES-000105,Normal,Normal,0.6874,1,Normal,0.6874,Privilege Escalation,0.0874,USB Data Theft,0.0681
+SES-007507,Normal,USB Data Theft,0.61,0,USB Data Theft,0.61,Normal,0.1868,Insider Threat,0.0347
+SES-012435,Normal,Normal,0.9277,1,Normal,0.9277,USB Data Theft,0.0234,Device Spoofing,0.0124
+SES-010545,Normal,Normal,0.913,1,Normal,0.913,USB Data Theft,0.0399,Device Spoofing,0.0077
+SES-010479,Normal,Normal,0.9136,1,Normal,0.9136,USB Data Theft,0.0349,Device Spoofing,0.0113
+SES-011104,Normal,Normal,0.8564,1,Normal,0.8564,USB Data Theft,0.0368,Device Spoofing,0.0152
+SES-010651,Normal,Normal,0.2749,1,Normal,0.2749,Malware Execution,0.2165,Device Spoofing,0.1937
+SES-007916,Normal,Normal,0.8266,1,Normal,0.8266,USB Data Theft,0.0545,Device Spoofing,0.016
+SES-003579,Normal,USB Data Theft,0.5713,0,USB Data Theft,0.5713,Normal,0.2478,Device Spoofing,0.0326
+SES-010855,Normal,Normal,0.8773,1,Normal,0.8773,Privilege Escalation,0.0659,Malware Execution,0.0188
+SES-010496,Normal,Normal,0.9259,1,Normal,0.9259,USB Data Theft,0.0183,Device Spoofing,0.0148
+SES-009509,Normal,Normal,0.9054,1,Normal,0.9054,Device Spoofing,0.0183,Brute Force,0.0073
+SES-000880,Normal,Normal,0.9499,1,Normal,0.9499,USB Data Theft,0.008,Device Spoofing,0.0073
+SES-003812,Normal,Normal,0.8293,1,Normal,0.8293,USB Data Theft,0.0343,Device Spoofing,0.0262
+SES-000154,Brute Force,Credential Stuffing,0.6872,0,Credential Stuffing,0.6872,Brute Force,0.2672,Lateral Movement,0.0074
+SES-006283,Normal,Normal,0.8761,1,Normal,0.8761,USB Data Theft,0.0226,Device Spoofing,0.0163
+SES-007943,Normal,Normal,0.9057,1,Normal,0.9057,USB Data Theft,0.0516,Device Spoofing,0.007
+SES-000373,Normal,Normal,0.9233,1,Normal,0.9233,Device Spoofing,0.0219,USB Data Theft,0.0133
+SES-000002,Normal,Normal,0.564,1,Normal,0.564,Off-hours Access,0.2751,Device Spoofing,0.05
+SES-004037,Normal,Normal,0.4927,1,Normal,0.4927,USB Data Theft,0.3263,Device Spoofing,0.0343
+SES-010121,Normal,Normal,0.8033,1,Normal,0.8033,USB Data Theft,0.0482,Insider Threat,0.0446
+SES-010459,Normal,Normal,0.7354,1,Normal,0.7354,Lateral Movement,0.2037,USB Data Theft,0.0159
+SES-001461,Normal,Normal,0.9346,1,Normal,0.9346,USB Data Theft,0.0156,Device Spoofing,0.01
+SES-009290,Normal,Normal,0.3599,1,Normal,0.3599,USB Data Theft,0.1754,Insider Threat,0.0639
+SES-001295,Normal,Normal,0.8154,1,Normal,0.8154,Insider Threat,0.0584,USB Data Theft,0.0347
+SES-003458,Normal,Normal,0.5718,1,Normal,0.5718,Device Spoofing,0.1516,Malware Execution,0.1193
+SES-008558,Normal,Normal,0.8793,1,Normal,0.8793,USB Data Theft,0.0205,Privilege Escalation,0.016
+SES-009370,Normal,Malware Execution,0.5519,0,Malware Execution,0.5519,Privilege Escalation,0.1803,Normal,0.1017
+SES-007611,Normal,Normal,0.7629,1,Normal,0.7629,Off-hours Access,0.0801,Device Spoofing,0.0404
+SES-009909,Normal,Normal,0.4614,1,Normal,0.4614,USB Data Theft,0.3429,Device Spoofing,0.0357
+SES-006564,Normal,Normal,0.6725,1,Normal,0.6725,USB Data Theft,0.1244,Lateral Movement,0.0348
+SES-002401,Normal,Normal,0.9289,1,Normal,0.9289,USB Data Theft,0.0278,Device Spoofing,0.0098
+SES-007926,Normal,Normal,0.9327,1,Normal,0.9327,USB Data Theft,0.018,Device Spoofing,0.013
+SES-002400,Normal,Privilege Escalation,0.4546,0,Privilege Escalation,0.4546,Normal,0.2423,USB Data Theft,0.0712
+SES-009356,Normal,Normal,0.9459,1,Normal,0.9459,USB Data Theft,0.0087,Privilege Escalation,0.0081
+SES-006184,Normal,Normal,0.867,1,Normal,0.867,Malware Execution,0.0428,Privilege Escalation,0.0303
+SES-011500,Normal,Normal,0.6914,1,Normal,0.6914,Privilege Escalation,0.0909,Malware Execution,0.0848
+SES-009826,Normal,Normal,0.9248,1,Normal,0.9248,USB Data Theft,0.0152,Device Spoofing,0.0093
+SES-012658,Normal,Device Spoofing,0.3865,0,Device Spoofing,0.3865,Normal,0.2831,USB Data Theft,0.2266
+SES-004819,Normal,Privilege Escalation,0.5392,0,Privilege Escalation,0.5392,Normal,0.2361,Malware Execution,0.1059
+SES-007306,Normal,USB Data Theft,0.64,0,USB Data Theft,0.64,Normal,0.1459,Insider Threat,0.0385
+SES-011788,Normal,Normal,0.5209,1,Normal,0.5209,Device Spoofing,0.3121,USB Data Theft,0.0745
+SES-001840,Normal,Normal,0.9293,1,Normal,0.9293,USB Data Theft,0.0224,Device Spoofing,0.0102
+SES-002975,Normal,Normal,0.7759,1,Normal,0.7759,Insider Drift,0.0475,USB Data Theft,0.0471
+SES-004808,Normal,Normal,0.8511,1,Normal,0.8511,USB Data Theft,0.0437,Device Spoofing,0.0113
+SES-010294,Normal,Normal,0.815,1,Normal,0.815,USB Data Theft,0.0599,Device Spoofing,0.0181
+SES-007405,Suspicious PowerShell,Suspicious PowerShell,0.9647,1,Suspicious PowerShell,0.9647,Privilege Escalation,0.0162,Malware Execution,0.0095
+SES-012291,Normal,Device Spoofing,0.6627,0,Device Spoofing,0.6627,Normal,0.2606,Impossible Travel,0.0148
+SES-000534,Suspicious PowerShell,Suspicious PowerShell,0.9671,1,Suspicious PowerShell,0.9671,Malware Execution,0.0118,USB Data Theft,0.0099
+SES-009338,Normal,Normal,0.4275,1,Normal,0.4275,USB Data Theft,0.3206,Device Spoofing,0.0422
+SES-006107,Normal,Normal,0.8081,1,Normal,0.8081,USB Data Theft,0.0518,Insider Threat,0.0514
+SES-003322,Normal,Normal,0.9332,1,Normal,0.9332,USB Data Theft,0.0128,Device Spoofing,0.0088
+SES-005043,Normal,USB Data Theft,0.5424,0,USB Data Theft,0.5424,Normal,0.2596,Insider Threat,0.0339
+SES-010202,Normal,Device Spoofing,0.4988,0,Device Spoofing,0.4988,Normal,0.3086,Malware Execution,0.0798
+SES-007034,Normal,Normal,0.7938,1,Normal,0.7938,USB Data Theft,0.0771,Device Spoofing,0.0242
+SES-012234,Impossible Travel,Impossible Travel,0.986,1,Impossible Travel,0.986,Normal,0.0091,USB Data Theft,0.0014
+SES-004850,Normal,Normal,0.9399,1,Normal,0.9399,Device Spoofing,0.0125,USB Data Theft,0.0119
+SES-012734,Normal,Insider Threat,0.3004,0,Insider Threat,0.3004,USB Data Theft,0.2693,Normal,0.2626
+SES-000961,Normal,Normal,0.502,1,Normal,0.502,USB Data Theft,0.3284,Lateral Movement,0.0299
+SES-000901,Off-hours Access,Off-hours Access,0.9543,1,Off-hours Access,0.9543,Device Spoofing,0.0241,USB Data Theft,0.0095
+SES-010870,Normal,Insider Threat,0.5551,0,Insider Threat,0.5551,USB Data Theft,0.1907,Normal,0.1416
+SES-005290,Normal,Normal,0.8462,1,Normal,0.8462,USB Data Theft,0.0448,Device Spoofing,0.0129
+SES-002564,Normal,USB Data Theft,0.4612,0,USB Data Theft,0.4612,Normal,0.3306,Insider Threat,0.0419
+SES-005183,Normal,Privilege Escalation,0.5259,0,Privilege Escalation,0.5259,Malware Execution,0.1856,Normal,0.1293
+SES-003013,Normal,Normal,0.7404,1,Normal,0.7404,Off-hours Access,0.0954,Device Spoofing,0.0377
+SES-006840,Normal,Normal,0.9249,1,Normal,0.9249,USB Data Theft,0.0356,Device Spoofing,0.0071
+SES-010895,Normal,Normal,0.362,1,Normal,0.362,USB Data Theft,0.2461,Insider Threat,0.0677
+SES-010826,Credential Stuffing,Brute Force,0.4606,0,Brute Force,0.4606,Credential Stuffing,0.4226,Insider Threat,0.0343
+SES-002224,Normal,USB Data Theft,0.662,0,USB Data Theft,0.662,Normal,0.1203,Privilege Escalation,0.045
+SES-008587,Normal,Device Spoofing,0.4727,0,Device Spoofing,0.4727,Normal,0.3801,USB Data Theft,0.0383
+SES-000087,Normal,Normal,0.8951,1,Normal,0.8951,Device Spoofing,0.053,USB Data Theft,0.0206
+SES-007918,Normal,Device Spoofing,0.641,0,Device Spoofing,0.641,Normal,0.1807,USB Data Theft,0.064
+SES-010276,Normal,Insider Threat,0.4559,0,Insider Threat,0.4559,USB Data Theft,0.209,Normal,0.2021
+SES-003531,Normal,Normal,0.8642,1,Normal,0.8642,USB Data Theft,0.0333,Privilege Escalation,0.0129
+SES-009303,Normal,USB Data Theft,0.4494,0,USB Data Theft,0.4494,Normal,0.2617,Insider Threat,0.0483
+SES-003875,Normal,Normal,0.9459,1,Normal,0.9459,Device Spoofing,0.0105,USB Data Theft,0.0087
+SES-007187,Normal,Normal,0.9525,1,Normal,0.9525,USB Data Theft,0.0104,Device Spoofing,0.004
+SES-002233,Normal,Normal,0.9312,1,Normal,0.9312,Device Spoofing,0.0128,Lateral Movement,0.0108
+SES-009789,Normal,Normal,0.9149,1,Normal,0.9149,USB Data Theft,0.0335,Device Spoofing,0.0118
+SES-005164,Normal,Normal,0.8655,1,Normal,0.8655,Insider Threat,0.0398,Privilege Escalation,0.0318
+SES-009996,Normal,Insider Threat,0.335,0,Insider Threat,0.335,Normal,0.3123,USB Data Theft,0.2216
+SES-008667,Normal,Normal,0.9413,1,Normal,0.9413,Device Spoofing,0.0168,Brute Force,0.0039
+SES-005546,Normal,USB Data Theft,0.4395,0,USB Data Theft,0.4395,Normal,0.3975,Device Spoofing,0.0259
+SES-012851,Normal,Normal,0.4329,1,Normal,0.4329,Device Spoofing,0.2831,USB Data Theft,0.1227
+SES-004620,Normal,Normal,0.8873,1,Normal,0.8873,Lateral Movement,0.0484,USB Data Theft,0.0249
+SES-000592,Normal,Normal,0.9454,1,Normal,0.9454,USB Data Theft,0.0115,Device Spoofing,0.0074
+SES-011862,Normal,Normal,0.8015,1,Normal,0.8015,Malware Execution,0.1018,Insider Drift,0.0339
+SES-005326,Normal,Device Spoofing,0.7896,0,Device Spoofing,0.7896,Normal,0.1296,Insider Threat,0.0311
+SES-011229,Normal,Normal,0.7226,1,Normal,0.7226,Malware Execution,0.1202,Privilege Escalation,0.0427
+SES-002554,Normal,Normal,0.9119,1,Normal,0.9119,Malware Execution,0.0338,Privilege Escalation,0.0211
+SES-007402,Normal,Normal,0.4755,1,Normal,0.4755,USB Data Theft,0.1937,Insider Threat,0.058
+SES-004934,Credential Stuffing,Brute Force,0.3767,0,Brute Force,0.3767,Privilege Escalation,0.3664,Credential Stuffing,0.1533
+SES-012319,Data Exfiltration,Data Exfiltration,0.9791,1,Data Exfiltration,0.9791,USB Data Theft,0.0076,Insider Threat,0.0066
+SES-005693,Normal,Normal,0.7923,1,Normal,0.7923,Insider Threat,0.0785,USB Data Theft,0.0204
+SES-010666,Normal,Normal,0.4555,1,Normal,0.4555,Device Spoofing,0.4404,USB Data Theft,0.0331
+SES-005735,Normal,Normal,0.6499,1,Normal,0.6499,USB Data Theft,0.1157,Insider Threat,0.035
+SES-011287,Normal,Normal,0.8394,1,Normal,0.8394,USB Data Theft,0.0539,Device Spoofing,0.0106
+SES-005803,Normal,Normal,0.9467,1,Normal,0.9467,USB Data Theft,0.012,Device Spoofing,0.0079
+SES-010324,Normal,USB Data Theft,0.7314,0,USB Data Theft,0.7314,Normal,0.1229,Insider Threat,0.0264
+SES-003900,Normal,USB Data Theft,0.5815,0,USB Data Theft,0.5815,Normal,0.2557,Insider Threat,0.0217
+SES-009793,Normal,Normal,0.9405,1,Normal,0.9405,USB Data Theft,0.0177,Device Spoofing,0.0076
+SES-012008,Normal,Normal,0.9108,1,Normal,0.9108,Malware Execution,0.0355,Privilege Escalation,0.0195
+SES-011516,Normal,Normal,0.6131,1,Normal,0.6131,Malware Execution,0.1441,Privilege Escalation,0.0842
+SES-008140,Normal,Malware Execution,0.6498,0,Malware Execution,0.6498,Privilege Escalation,0.1864,Normal,0.0481
+SES-006579,Data Exfiltration,Data Exfiltration,0.9607,1,Data Exfiltration,0.9607,Insider Threat,0.013,Privilege Escalation,0.0087
+SES-012698,Normal,Normal,0.4467,1,Normal,0.4467,USB Data Theft,0.3461,Device Spoofing,0.0467
+SES-009430,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.981,1,Low-and-Slow Exfiltration,0.981,USB Data Theft,0.0084,Normal,0.0036
+SES-009938,Normal,Normal,0.4689,1,Normal,0.4689,USB Data Theft,0.3505,Lateral Movement,0.0303
+SES-003684,Normal,Privilege Escalation,0.4218,0,Privilege Escalation,0.4218,Malware Execution,0.2692,Normal,0.145
+SES-012955,Normal,Normal,0.8067,1,Normal,0.8067,USB Data Theft,0.0911,Device Spoofing,0.0111
+SES-002258,Normal,Normal,0.908,1,Normal,0.908,USB Data Theft,0.0446,Device Spoofing,0.0053
+SES-009095,Normal,USB Data Theft,0.5001,0,USB Data Theft,0.5001,Normal,0.1905,Lateral Movement,0.0552
+SES-000137,Normal,Normal,0.9254,1,Normal,0.9254,Device Spoofing,0.0205,USB Data Theft,0.012
+SES-000150,Normal,Lateral Movement,0.5618,0,Lateral Movement,0.5618,Normal,0.3119,Device Spoofing,0.0489
+SES-012476,Normal,Normal,0.942,1,Normal,0.942,USB Data Theft,0.0175,Device Spoofing,0.0092
+SES-012874,Normal,Insider Threat,0.442,0,Insider Threat,0.442,USB Data Theft,0.286,Normal,0.1412
+SES-009681,Normal,Normal,0.5345,1,Normal,0.5345,Privilege Escalation,0.2078,Device Spoofing,0.0889
+SES-009985,Normal,Normal,0.5096,1,Normal,0.5096,USB Data Theft,0.3634,Device Spoofing,0.0221
+SES-001795,Normal,Normal,0.8284,1,Normal,0.8284,Privilege Escalation,0.0776,USB Data Theft,0.0352
+SES-005743,Normal,Normal,0.9075,1,Normal,0.9075,USB Data Theft,0.0563,Device Spoofing,0.0048
+SES-007796,Normal,Privilege Escalation,0.5014,0,Privilege Escalation,0.5014,Normal,0.2441,Malware Execution,0.0715
+SES-012856,Brute Force,Brute Force,0.579,1,Brute Force,0.579,Credential Stuffing,0.2868,Device Spoofing,0.0856
+SES-001083,Normal,Normal,0.9371,1,Normal,0.9371,USB Data Theft,0.0181,Device Spoofing,0.0091
+SES-002053,Normal,Device Spoofing,0.8413,0,Device Spoofing,0.8413,Normal,0.1162,USB Data Theft,0.0231
+SES-009688,Normal,Normal,0.6911,1,Normal,0.6911,Privilege Escalation,0.1433,Malware Execution,0.0838
+SES-000161,Normal,Normal,0.8263,1,Normal,0.8263,Lateral Movement,0.0633,Device Spoofing,0.0329
+SES-007488,Normal,Normal,0.8951,1,Normal,0.8951,Insider Threat,0.0234,USB Data Theft,0.023
+SES-001359,Normal,Insider Threat,0.5604,0,Insider Threat,0.5604,USB Data Theft,0.1968,Normal,0.1406
+SES-008381,Normal,Normal,0.511,1,Normal,0.511,USB Data Theft,0.2734,Device Spoofing,0.036
+SES-004461,Normal,Device Spoofing,0.4794,0,Device Spoofing,0.4794,Normal,0.4431,USB Data Theft,0.0174
+SES-007544,Normal,Normal,0.9461,1,Normal,0.9461,USB Data Theft,0.0108,Device Spoofing,0.0102
+SES-005966,USB Data Theft,Off-hours Access,0.9744,0,Off-hours Access,0.9744,Normal,0.0061,USB Data Theft,0.0037
+SES-002037,Normal,Normal,0.9197,1,Normal,0.9197,USB Data Theft,0.0298,Insider Drift,0.0092
+SES-007869,Normal,Malware Execution,0.3621,0,Malware Execution,0.3621,Privilege Escalation,0.2746,Normal,0.1989
+SES-010836,Normal,Normal,0.9235,1,Normal,0.9235,USB Data Theft,0.0245,Device Spoofing,0.0126
+SES-007257,Normal,Normal,0.921,1,Normal,0.921,USB Data Theft,0.0385,Device Spoofing,0.0064
+SES-006232,Normal,Privilege Escalation,0.4787,0,Privilege Escalation,0.4787,Normal,0.2547,Malware Execution,0.1245
+SES-000867,Normal,Normal,0.9296,1,Normal,0.9296,USB Data Theft,0.022,Device Spoofing,0.0135
+SES-003148,Normal,Normal,0.9329,1,Normal,0.9329,USB Data Theft,0.018,Device Spoofing,0.0079
+SES-006561,Normal,Normal,0.3862,1,Normal,0.3862,Lateral Movement,0.3765,Insider Drift,0.1463
+SES-002582,Normal,Normal,0.9261,1,Normal,0.9261,USB Data Theft,0.0218,Device Spoofing,0.0126
+SES-007111,Normal,Normal,0.6578,1,Normal,0.6578,USB Data Theft,0.1383,Insider Threat,0.0328
+SES-010359,Normal,Malware Execution,0.3005,0,Malware Execution,0.3005,Insider Threat,0.2719,Privilege Escalation,0.2104
+SES-010803,Normal,Normal,0.8862,1,Normal,0.8862,Insider Drift,0.0314,USB Data Theft,0.024
+SES-006238,Beaconing C2,Beaconing C2,0.9796,1,Beaconing C2,0.9796,Lateral Movement,0.0055,Insider Drift,0.0028
+SES-008391,Normal,Privilege Escalation,0.499,0,Privilege Escalation,0.499,Malware Execution,0.2412,Normal,0.1447
+SES-007715,Normal,Normal,0.5844,1,Normal,0.5844,USB Data Theft,0.2562,Device Spoofing,0.0281
+SES-011755,Normal,Normal,0.9155,1,Normal,0.9155,USB Data Theft,0.0293,Insider Threat,0.0138
+SES-006613,Normal,Normal,0.923,1,Normal,0.923,USB Data Theft,0.0296,Device Spoofing,0.0126
+SES-007780,Normal,Normal,0.8602,1,Normal,0.8602,USB Data Theft,0.0321,Device Spoofing,0.0215
+SES-010376,Normal,Normal,0.9438,1,Normal,0.9438,Impossible Travel,0.0092,Device Spoofing,0.0066
+SES-007618,Normal,Normal,0.9509,1,Normal,0.9509,Device Spoofing,0.0087,USB Data Theft,0.0068
+SES-005628,Normal,Normal,0.9421,1,Normal,0.9421,Device Spoofing,0.0126,Impossible Travel,0.0072
+SES-003832,Normal,Privilege Escalation,0.3057,0,Privilege Escalation,0.3057,Normal,0.2772,Malware Execution,0.1108
+SES-005639,Normal,Device Spoofing,0.8433,0,Device Spoofing,0.8433,Normal,0.1165,USB Data Theft,0.0129
+SES-010571,Normal,Normal,0.8509,1,Normal,0.8509,USB Data Theft,0.0328,Device Spoofing,0.0129
+SES-005204,Normal,Normal,0.8298,1,Normal,0.8298,USB Data Theft,0.0368,Insider Threat,0.027
+SES-011556,Normal,Normal,0.7066,1,Normal,0.7066,Privilege Escalation,0.1565,Malware Execution,0.0463
+SES-003457,Normal,Normal,0.9311,1,Normal,0.9311,USB Data Theft,0.0209,Device Spoofing,0.0124
+SES-008338,Normal,Normal,0.8938,1,Normal,0.8938,Insider Threat,0.0496,Device Spoofing,0.0126
+SES-012993,Normal,Normal,0.7871,1,Normal,0.7871,Privilege Escalation,0.0818,Malware Execution,0.0631
+SES-004750,Normal,Normal,0.6357,1,Normal,0.6357,Lateral Movement,0.1278,Device Spoofing,0.0874
+SES-009540,Normal,Normal,0.7152,1,Normal,0.7152,Privilege Escalation,0.1577,Malware Execution,0.033
+SES-001753,Normal,Normal,0.9554,1,Normal,0.9554,Device Spoofing,0.008,USB Data Theft,0.0056
+SES-003303,Normal,USB Data Theft,0.4999,0,USB Data Theft,0.4999,Normal,0.2948,Device Spoofing,0.0333
+SES-004624,Normal,USB Data Theft,0.5499,0,USB Data Theft,0.5499,Normal,0.3166,Insider Threat,0.025
+SES-007477,Normal,Normal,0.8471,1,Normal,0.8471,Device Spoofing,0.0285,USB Data Theft,0.0209
+SES-008141,Normal,Normal,0.8548,1,Normal,0.8548,Insider Threat,0.0542,USB Data Theft,0.0382
+SES-012902,Normal,Lateral Movement,0.3276,0,Lateral Movement,0.3276,Insider Drift,0.2128,Normal,0.1628
+SES-012326,Normal,Normal,0.9407,1,Normal,0.9407,USB Data Theft,0.0123,Device Spoofing,0.0084
+SES-002905,Normal,Device Spoofing,0.6382,0,Device Spoofing,0.6382,Normal,0.2494,USB Data Theft,0.0357
+SES-000297,Normal,Normal,0.9189,1,Normal,0.9189,Device Spoofing,0.0235,Impossible Travel,0.0111
+SES-007177,Normal,Normal,0.9304,1,Normal,0.9304,USB Data Theft,0.0227,Device Spoofing,0.0115
+SES-002231,Normal,Normal,0.8034,1,Normal,0.8034,USB Data Theft,0.08,Device Spoofing,0.0216
+SES-009666,Normal,USB Data Theft,0.6214,0,USB Data Theft,0.6214,Normal,0.1753,Insider Threat,0.0381
+SES-003094,Normal,Normal,0.5069,1,Normal,0.5069,Insider Threat,0.2592,Malware Execution,0.0753
+SES-009672,Normal,Normal,0.6817,1,Normal,0.6817,Privilege Escalation,0.1452,Malware Execution,0.0651
+SES-008654,Normal,Normal,0.4395,1,Normal,0.4395,Device Spoofing,0.3837,USB Data Theft,0.0568
+SES-004781,Normal,Insider Threat,0.4363,0,Insider Threat,0.4363,USB Data Theft,0.2264,Normal,0.2088
+SES-007113,Normal,Normal,0.3975,1,Normal,0.3975,USB Data Theft,0.1506,Insider Threat,0.0748
+SES-006869,Normal,Normal,0.7637,1,Normal,0.7637,Lateral Movement,0.0837,USB Data Theft,0.049
+SES-005974,Normal,Normal,0.7728,1,Normal,0.7728,Off-hours Access,0.0794,Device Spoofing,0.0388
+SES-007057,Normal,Normal,0.943,1,Normal,0.943,Device Spoofing,0.0108,Brute Force,0.0044
+SES-000086,Normal,Normal,0.3974,1,Normal,0.3974,Device Spoofing,0.2384,USB Data Theft,0.2126
+SES-009336,Normal,Device Spoofing,0.5001,0,Device Spoofing,0.5001,Normal,0.3206,USB Data Theft,0.0824
+SES-002943,Normal,Normal,0.7793,1,Normal,0.7793,Malware Execution,0.1236,Privilege Escalation,0.0248
+SES-011028,Normal,Privilege Escalation,0.4061,0,Privilege Escalation,0.4061,Malware Execution,0.293,Insider Threat,0.1319
+SES-006874,Normal,Normal,0.9491,1,Normal,0.9491,USB Data Theft,0.0142,Device Spoofing,0.0038
+SES-004456,Normal,Normal,0.9412,1,Normal,0.9412,Device Spoofing,0.0159,USB Data Theft,0.0053
+SES-007491,Normal,Normal,0.7935,1,Normal,0.7935,Privilege Escalation,0.0623,Malware Execution,0.0432
+SES-009463,Normal,Normal,0.4421,1,Normal,0.4421,Device Spoofing,0.2768,Insider Threat,0.0683
+SES-006025,Normal,Normal,0.9342,1,Normal,0.9342,USB Data Theft,0.0208,Device Spoofing,0.0082
+SES-009229,Normal,Normal,0.8074,1,Normal,0.8074,USB Data Theft,0.0541,Insider Drift,0.0145
+SES-000021,Normal,Normal,0.6815,1,Normal,0.6815,Off-hours Access,0.0992,Lateral Movement,0.0651
+SES-002778,USB Data Theft,USB Data Theft,0.6733,1,USB Data Theft,0.6733,Normal,0.1557,Insider Threat,0.0301
+SES-011881,Normal,Normal,0.8625,1,Normal,0.8625,Malware Execution,0.0382,Lateral Movement,0.0325
+SES-006725,Normal,Normal,0.7596,1,Normal,0.7596,Malware Execution,0.1008,Privilege Escalation,0.067
+SES-000167,Normal,Normal,0.6952,1,Normal,0.6952,Device Spoofing,0.1036,Insider Threat,0.0569
+SES-001515,Normal,Normal,0.7917,1,Normal,0.7917,Insider Threat,0.0598,USB Data Theft,0.0328
+SES-012901,Normal,Normal,0.9426,1,Normal,0.9426,USB Data Theft,0.02,Device Spoofing,0.0057
+SES-010746,Normal,Normal,0.943,1,Normal,0.943,Device Spoofing,0.0087,USB Data Theft,0.0065
+SES-008922,Normal,Normal,0.7759,1,Normal,0.7759,Off-hours Access,0.094,Device Spoofing,0.018
+SES-004874,Normal,Normal,0.6779,1,Normal,0.6779,Malware Execution,0.0925,Privilege Escalation,0.0804
+SES-011883,Normal,Normal,0.7581,1,Normal,0.7581,Insider Threat,0.0818,Insider Drift,0.0532
+SES-008872,Normal,USB Data Theft,0.4835,0,USB Data Theft,0.4835,Normal,0.3379,Device Spoofing,0.033
+SES-006680,Normal,Normal,0.9194,1,Normal,0.9194,USB Data Theft,0.031,Impossible Travel,0.009
+SES-003304,Normal,Normal,0.8953,1,Normal,0.8953,Malware Execution,0.045,USB Data Theft,0.0134
+SES-007353,Normal,Normal,0.4476,1,Normal,0.4476,Privilege Escalation,0.2152,Malware Execution,0.1652
+SES-011230,Normal,Normal,0.9358,1,Normal,0.9358,USB Data Theft,0.0139,Device Spoofing,0.0121
+SES-008128,Normal,Normal,0.955,1,Normal,0.955,USB Data Theft,0.0091,Device Spoofing,0.0045
+SES-009547,Normal,Normal,0.9515,1,Normal,0.9515,Device Spoofing,0.0086,Brute Force,0.004
+SES-008624,Normal,Normal,0.9182,1,Normal,0.9182,USB Data Theft,0.0264,Device Spoofing,0.0144
+SES-004773,Normal,Normal,0.9189,1,Normal,0.9189,Insider Threat,0.0292,USB Data Theft,0.0128
+SES-010849,Normal,Normal,0.4708,1,Normal,0.4708,Lateral Movement,0.4254,Malware Execution,0.0561
+SES-001029,Normal,Normal,0.9279,1,Normal,0.9279,USB Data Theft,0.0242,Device Spoofing,0.0077
+SES-002955,Normal,Normal,0.9441,1,Normal,0.9441,USB Data Theft,0.0169,Device Spoofing,0.0073
+SES-006253,Normal,Normal,0.8751,1,Normal,0.8751,Insider Threat,0.0655,USB Data Theft,0.022
+SES-012011,Normal,Normal,0.9357,1,Normal,0.9357,USB Data Theft,0.0168,Device Spoofing,0.0108
+SES-008932,Normal,Normal,0.7384,1,Normal,0.7384,Off-hours Access,0.1119,Device Spoofing,0.041
+SES-001369,Normal,Insider Threat,0.7619,0,Insider Threat,0.7619,Normal,0.093,USB Data Theft,0.0603
+SES-008873,Normal,Normal,0.4368,1,Normal,0.4368,USB Data Theft,0.2863,Device Spoofing,0.0492
+SES-007640,Normal,Normal,0.6871,1,Normal,0.6871,USB Data Theft,0.091,Device Spoofing,0.0394
+SES-011029,Normal,USB Data Theft,0.7535,0,USB Data Theft,0.7535,Normal,0.1116,Insider Threat,0.0182
+SES-004824,Normal,Normal,0.8532,1,Normal,0.8532,Insider Threat,0.0663,USB Data Theft,0.0326
+SES-010905,Normal,Normal,0.7895,1,Normal,0.7895,USB Data Theft,0.08,Device Spoofing,0.0249
+SES-005072,Normal,Normal,0.9404,1,Normal,0.9404,USB Data Theft,0.0111,Device Spoofing,0.0073
+SES-003225,Normal,USB Data Theft,0.6867,0,USB Data Theft,0.6867,Normal,0.1388,Insider Threat,0.0306
+SES-008657,Normal,Privilege Escalation,0.4186,0,Privilege Escalation,0.4186,Normal,0.2751,Malware Execution,0.1427
+SES-003201,Normal,USB Data Theft,0.4028,0,USB Data Theft,0.4028,Normal,0.2367,Lateral Movement,0.0789
+SES-008007,Normal,Normal,0.8352,1,Normal,0.8352,USB Data Theft,0.0374,Device Spoofing,0.0288
+SES-000913,Normal,USB Data Theft,0.2729,0,USB Data Theft,0.2729,Lateral Movement,0.1622,Normal,0.1597
+SES-010026,Normal,Privilege Escalation,0.4242,0,Privilege Escalation,0.4242,Normal,0.255,USB Data Theft,0.1279
+SES-003631,Normal,Normal,0.8674,1,Normal,0.8674,Malware Execution,0.0529,Privilege Escalation,0.016
+SES-005745,Data Exfiltration,Data Exfiltration,0.9675,1,Data Exfiltration,0.9675,Insider Threat,0.0177,USB Data Theft,0.0076
+SES-009323,Normal,Normal,0.8011,1,Normal,0.8011,Insider Threat,0.1397,Device Spoofing,0.0122
+SES-004705,Insider Threat,Insider Threat,0.5003,1,Insider Threat,0.5003,Privilege Escalation,0.3544,Normal,0.0502
+SES-005133,Normal,Normal,0.9221,1,Normal,0.9221,USB Data Theft,0.0321,Device Spoofing,0.0118
+SES-006178,Credential Stuffing,Credential Stuffing,0.5509,1,Credential Stuffing,0.5509,Brute Force,0.413,Normal,0.0071
+SES-000690,Normal,Malware Execution,0.3919,0,Malware Execution,0.3919,Insider Threat,0.2673,Privilege Escalation,0.1757
+SES-006931,Normal,Normal,0.937,1,Normal,0.937,USB Data Theft,0.0234,Device Spoofing,0.0048
+SES-011156,Normal,Normal,0.5173,1,Normal,0.5173,Device Spoofing,0.2377,USB Data Theft,0.1
+SES-004561,Normal,USB Data Theft,0.6213,0,USB Data Theft,0.6213,Normal,0.1631,Insider Threat,0.0374
+SES-008801,Normal,Normal,0.446,1,Normal,0.446,Insider Threat,0.1184,Malware Execution,0.1132
+SES-006222,Normal,Normal,0.5858,1,Normal,0.5858,USB Data Theft,0.1656,Device Spoofing,0.0438
+SES-003040,Normal,Normal,0.7419,1,Normal,0.7419,Insider Threat,0.1186,USB Data Theft,0.0542
+SES-003079,Normal,Normal,0.9429,1,Normal,0.9429,Device Spoofing,0.0103,USB Data Theft,0.0057
+SES-001767,Normal,USB Data Theft,0.5244,0,USB Data Theft,0.5244,Normal,0.2937,Insider Threat,0.0291
+SES-006189,Normal,Normal,0.9538,1,Normal,0.9538,USB Data Theft,0.0072,Privilege Escalation,0.0053
+SES-000620,Normal,Normal,0.7474,1,Normal,0.7474,Off-hours Access,0.1047,Device Spoofing,0.0396
+SES-009886,Normal,Privilege Escalation,0.3478,0,Privilege Escalation,0.3478,Malware Execution,0.2316,Normal,0.1909
+SES-011378,Normal,Normal,0.5088,1,Normal,0.5088,Privilege Escalation,0.1585,Device Spoofing,0.147
+SES-006983,Normal,Normal,0.6842,1,Normal,0.6842,Privilege Escalation,0.1781,Malware Execution,0.0512
+SES-004602,Normal,Normal,0.3919,1,Normal,0.3919,Insider Threat,0.2026,Device Spoofing,0.1959
+SES-004831,Normal,Insider Threat,0.4732,0,Insider Threat,0.4732,Normal,0.1913,USB Data Theft,0.1906
+SES-001511,Credential Stuffing,Credential Stuffing,0.611,1,Credential Stuffing,0.611,Brute Force,0.3347,Normal,0.0097
+SES-012241,Normal,Privilege Escalation,0.2911,0,Privilege Escalation,0.2911,Malware Execution,0.2075,Lateral Movement,0.1606
+SES-004650,Normal,Privilege Escalation,0.6296,0,Privilege Escalation,0.6296,Malware Execution,0.1903,Normal,0.0823
+SES-002791,Normal,Normal,0.9404,1,Normal,0.9404,USB Data Theft,0.0172,Device Spoofing,0.005
+SES-002811,Normal,Privilege Escalation,0.3281,0,Privilege Escalation,0.3281,Normal,0.2645,Malware Execution,0.2224
+SES-001904,Normal,Privilege Escalation,0.4597,0,Privilege Escalation,0.4597,Normal,0.1991,Malware Execution,0.1054
+SES-003472,Normal,USB Data Theft,0.5457,0,USB Data Theft,0.5457,Normal,0.1981,Privilege Escalation,0.0438
+SES-011452,Normal,Normal,0.928,1,Normal,0.928,USB Data Theft,0.0218,Privilege Escalation,0.0085
+SES-011793,Normal,Normal,0.9349,1,Normal,0.9349,USB Data Theft,0.0217,Device Spoofing,0.0059
+SES-000495,Normal,Normal,0.5172,1,Normal,0.5172,USB Data Theft,0.1699,Device Spoofing,0.0813
+SES-008135,Normal,Privilege Escalation,0.3753,0,Privilege Escalation,0.3753,Malware Execution,0.2071,Normal,0.1911
+SES-000724,Normal,Normal,0.4856,1,Normal,0.4856,USB Data Theft,0.3025,Device Spoofing,0.0386
+SES-012301,Normal,Normal,0.8381,1,Normal,0.8381,Lateral Movement,0.0235,USB Data Theft,0.0205
+SES-006706,Normal,Normal,0.6978,1,Normal,0.6978,Low-and-Slow Exfiltration,0.1162,Privilege Escalation,0.0596
+SES-011480,Normal,Normal,0.746,1,Normal,0.746,USB Data Theft,0.1375,Credential Stuffing,0.0105
+SES-012957,Normal,Privilege Escalation,0.3081,0,Privilege Escalation,0.3081,Normal,0.3055,Malware Execution,0.2232
+SES-004603,Normal,Privilege Escalation,0.4743,0,Privilege Escalation,0.4743,Malware Execution,0.3087,Normal,0.0943
+SES-004222,Normal,Privilege Escalation,0.5731,0,Privilege Escalation,0.5731,Normal,0.1651,Malware Execution,0.1186
+SES-001059,Normal,Normal,0.6673,1,Normal,0.6673,USB Data Theft,0.1604,Device Spoofing,0.0279
+SES-006163,Normal,Privilege Escalation,0.4648,0,Privilege Escalation,0.4648,Malware Execution,0.22,Normal,0.1752
+SES-004663,Normal,USB Data Theft,0.4313,0,USB Data Theft,0.4313,Normal,0.2045,Device Spoofing,0.0486
+SES-002652,Normal,Normal,0.8962,1,Normal,0.8962,USB Data Theft,0.0475,Device Spoofing,0.016
+SES-002443,Normal,Device Spoofing,0.8805,0,Device Spoofing,0.8805,Normal,0.0938,USB Data Theft,0.007
+SES-008832,Normal,Normal,0.9444,1,Normal,0.9444,Device Spoofing,0.015,Brute Force,0.0039
+SES-000129,Normal,Normal,0.8954,1,Normal,0.8954,Privilege Escalation,0.0375,Malware Execution,0.0212
+SES-002034,Normal,Normal,0.9442,1,Normal,0.9442,USB Data Theft,0.0141,Device Spoofing,0.0102
+SES-005525,Normal,Normal,0.9173,1,Normal,0.9173,USB Data Theft,0.0296,Impossible Travel,0.0094
+SES-001423,Normal,Normal,0.9136,1,Normal,0.9136,USB Data Theft,0.0292,Insider Threat,0.0235
+SES-001096,Normal,Privilege Escalation,0.374,0,Privilege Escalation,0.374,Normal,0.2528,Malware Execution,0.1619
+SES-004076,Normal,Normal,0.9311,1,Normal,0.9311,Insider Threat,0.0239,USB Data Theft,0.0072
+SES-011604,Normal,Privilege Escalation,0.4346,0,Privilege Escalation,0.4346,Normal,0.2951,USB Data Theft,0.0745
+SES-008751,Normal,Normal,0.9178,1,Normal,0.9178,Device Spoofing,0.0161,Brute Force,0.0062
+SES-008093,Normal,Normal,0.464,1,Normal,0.464,USB Data Theft,0.3856,Device Spoofing,0.0249
+SES-006857,Normal,Normal,0.9413,1,Normal,0.9413,Device Spoofing,0.014,USB Data Theft,0.008
+SES-003867,Normal,Malware Execution,0.4195,0,Malware Execution,0.4195,Privilege Escalation,0.2163,USB Data Theft,0.1777
+SES-003852,Normal,Normal,0.5159,1,Normal,0.5159,Lateral Movement,0.229,Insider Threat,0.1004
+SES-006276,Normal,Normal,0.9389,1,Normal,0.9389,USB Data Theft,0.0194,Device Spoofing,0.0047
+SES-012438,Normal,Normal,0.9422,1,Normal,0.9422,USB Data Theft,0.0133,Lateral Movement,0.0049
+SES-005507,Normal,Normal,0.523,1,Normal,0.523,USB Data Theft,0.2446,Device Spoofing,0.0447
+SES-002526,Normal,Malware Execution,0.5457,0,Malware Execution,0.5457,Privilege Escalation,0.1669,Normal,0.1032
+SES-012570,Normal,Normal,0.8734,1,Normal,0.8734,Lateral Movement,0.0649,USB Data Theft,0.0154
+SES-010601,Normal,USB Data Theft,0.4332,0,USB Data Theft,0.4332,Device Spoofing,0.2854,Normal,0.1805
+SES-009843,Normal,USB Data Theft,0.5158,0,USB Data Theft,0.5158,Normal,0.2416,Insider Threat,0.0446
+SES-006421,Normal,Normal,0.9353,1,Normal,0.9353,USB Data Theft,0.0224,Device Spoofing,0.0099
+SES-011817,Normal,Privilege Escalation,0.4611,0,Privilege Escalation,0.4611,Normal,0.2722,Malware Execution,0.0693
+SES-009961,Normal,Normal,0.8828,1,Normal,0.8828,Lateral Movement,0.0218,USB Data Theft,0.0154
+SES-005397,Normal,Normal,0.918,1,Normal,0.918,Insider Threat,0.0229,Device Spoofing,0.0133
+SES-012499,Normal,Device Spoofing,0.5356,0,Device Spoofing,0.5356,Normal,0.3651,USB Data Theft,0.0172
+SES-002255,Normal,Malware Execution,0.3997,0,Malware Execution,0.3997,Privilege Escalation,0.2909,Normal,0.1332
+SES-011329,Normal,Normal,0.4231,1,Normal,0.4231,Insider Threat,0.2702,USB Data Theft,0.1564
+SES-001739,Normal,Normal,0.7246,1,Normal,0.7246,Lateral Movement,0.1787,Malware Execution,0.048
+SES-001661,Off-hours Access,Off-hours Access,0.9758,1,Off-hours Access,0.9758,Normal,0.0141,USB Data Theft,0.0055
+SES-010367,Normal,Normal,0.8036,1,Normal,0.8036,USB Data Theft,0.0542,Impossible Travel,0.0191
+SES-012479,Normal,Normal,0.9391,1,Normal,0.9391,Impossible Travel,0.0093,USB Data Theft,0.0092
+SES-005705,Normal,Privilege Escalation,0.391,0,Privilege Escalation,0.391,Normal,0.2441,USB Data Theft,0.1243
+SES-000385,Normal,Normal,0.8228,1,Normal,0.8228,Device Spoofing,0.0636,Credential Stuffing,0.0106
+SES-012111,Normal,Normal,0.8255,1,Normal,0.8255,Device Spoofing,0.0211,Brute Force,0.0143
+SES-012709,Normal,Normal,0.8467,1,Normal,0.8467,Privilege Escalation,0.0688,Malware Execution,0.0425
+SES-006077,Normal,Normal,0.934,1,Normal,0.934,USB Data Theft,0.02,Device Spoofing,0.011
+SES-011245,Normal,Normal,0.4999,1,Normal,0.4999,USB Data Theft,0.197,Device Spoofing,0.0526
+SES-006427,Normal,USB Data Theft,0.3421,0,USB Data Theft,0.3421,Normal,0.2964,Insider Threat,0.0612
+SES-004726,Normal,Normal,0.6208,1,Normal,0.6208,USB Data Theft,0.2185,Insider Threat,0.025
+SES-003102,Normal,Normal,0.8619,1,Normal,0.8619,Privilege Escalation,0.0773,Malware Execution,0.0214
+SES-003522,Normal,Normal,0.3462,1,Normal,0.3462,USB Data Theft,0.2826,Insider Threat,0.0688
+SES-003833,Normal,USB Data Theft,0.5386,0,USB Data Theft,0.5386,Normal,0.2838,Device Spoofing,0.0562
+SES-012048,Normal,Normal,0.6903,1,Normal,0.6903,Privilege Escalation,0.1232,Malware Execution,0.0602
+SES-008339,Normal,Normal,0.9472,1,Normal,0.9472,Device Spoofing,0.0154,Brute Force,0.0034
+SES-003172,Normal,Normal,0.9451,1,Normal,0.9451,USB Data Theft,0.0112,Impossible Travel,0.0079
+SES-011352,Normal,Normal,0.4449,1,Normal,0.4449,USB Data Theft,0.3572,Device Spoofing,0.0332
+SES-006262,Normal,Insider Threat,0.7524,0,Insider Threat,0.7524,Malware Execution,0.0931,Privilege Escalation,0.0456
+SES-011906,Normal,Normal,0.7541,1,Normal,0.7541,Off-hours Access,0.0874,Device Spoofing,0.0224
+SES-010697,Normal,Normal,0.9444,1,Normal,0.9444,USB Data Theft,0.0104,Device Spoofing,0.0081
+SES-009451,Normal,Normal,0.623,1,Normal,0.623,Device Spoofing,0.2489,Impossible Travel,0.0216
+SES-000703,Normal,Normal,0.9411,1,Normal,0.9411,Device Spoofing,0.0168,Brute Force,0.004
+SES-004003,Normal,Insider Threat,0.4139,0,Insider Threat,0.4139,Malware Execution,0.1912,Privilege Escalation,0.1502
+SES-007223,Normal,Normal,0.8717,1,Normal,0.8717,Insider Threat,0.0537,Lateral Movement,0.0245
+SES-009197,Normal,Privilege Escalation,0.3153,0,Privilege Escalation,0.3153,USB Data Theft,0.2433,Normal,0.1488
+SES-001598,Normal,Normal,0.9036,1,Normal,0.9036,Insider Threat,0.0348,USB Data Theft,0.0156
+SES-010570,Normal,Normal,0.6139,1,Normal,0.6139,Device Spoofing,0.2505,USB Data Theft,0.0317
+SES-005160,Normal,Insider Threat,0.5774,0,Insider Threat,0.5774,USB Data Theft,0.2751,Normal,0.077
+SES-008882,Device Spoofing,Device Spoofing,0.7053,1,Device Spoofing,0.7053,Normal,0.1466,USB Data Theft,0.082
+SES-012630,Normal,Normal,0.8883,1,Normal,0.8883,Insider Threat,0.064,Device Spoofing,0.0097
+SES-000286,Normal,Normal,0.3188,1,Normal,0.3188,Insider Threat,0.2374,Device Spoofing,0.2251
+SES-009056,Normal,USB Data Theft,0.5209,0,USB Data Theft,0.5209,Normal,0.2795,Insider Threat,0.0341
+SES-007944,Normal,Normal,0.9511,1,Normal,0.9511,Device Spoofing,0.0069,USB Data Theft,0.0043
+SES-012260,Normal,Normal,0.9329,1,Normal,0.9329,Device Spoofing,0.018,Brute Force,0.0047
+SES-009892,Normal,Normal,0.8924,1,Normal,0.8924,Privilege Escalation,0.0368,USB Data Theft,0.0171
+SES-008142,Normal,Normal,0.9407,1,Normal,0.9407,Device Spoofing,0.0181,Brute Force,0.0039
+SES-000081,Normal,Normal,0.9025,1,Normal,0.9025,Insider Drift,0.026,Lateral Movement,0.0215
+SES-006823,Normal,Normal,0.5713,1,Normal,0.5713,Device Spoofing,0.1953,Privilege Escalation,0.1305
+SES-008964,Normal,Normal,0.9469,1,Normal,0.9469,Device Spoofing,0.0105,USB Data Theft,0.007
+SES-006915,Normal,Normal,0.9412,1,Normal,0.9412,Device Spoofing,0.0085,USB Data Theft,0.0064
+SES-012588,Normal,Normal,0.9308,1,Normal,0.9308,USB Data Theft,0.0301,Device Spoofing,0.005
+SES-004946,Normal,Normal,0.4379,1,Normal,0.4379,Insider Threat,0.3682,USB Data Theft,0.0707
+SES-006500,Normal,Normal,0.5449,1,Normal,0.5449,USB Data Theft,0.0854,Off-hours Access,0.081
+SES-010841,Normal,Low-and-Slow Exfiltration,0.3157,0,Low-and-Slow Exfiltration,0.3157,USB Data Theft,0.2937,Insider Threat,0.226
+SES-000769,Normal,Normal,0.9432,1,Normal,0.9432,USB Data Theft,0.0141,Device Spoofing,0.0074
+SES-001545,Normal,Normal,0.5449,1,Normal,0.5449,USB Data Theft,0.2754,Lateral Movement,0.0299
+SES-007737,Normal,Normal,0.4102,1,Normal,0.4102,USB Data Theft,0.3179,Insider Threat,0.0481
+SES-001472,Normal,USB Data Theft,0.3187,0,USB Data Theft,0.3187,Normal,0.3106,Insider Threat,0.0698
+SES-011208,Normal,Normal,0.9485,1,Normal,0.9485,Device Spoofing,0.0093,Off-hours Access,0.0042
+SES-005837,Normal,Insider Threat,0.5931,0,Insider Threat,0.5931,Lateral Movement,0.1689,Insider Drift,0.1144
+SES-008684,Lateral Movement,Lateral Movement,0.7153,1,Lateral Movement,0.7153,Insider Drift,0.1121,Insider Threat,0.0631
+SES-007046,Normal,Normal,0.7646,1,Normal,0.7646,Off-hours Access,0.0714,Device Spoofing,0.0474
+SES-013001,Normal,Privilege Escalation,0.4587,0,Privilege Escalation,0.4587,Normal,0.2411,Malware Execution,0.0892
+SES-002481,Normal,Normal,0.8195,1,Normal,0.8195,USB Data Theft,0.0389,Device Spoofing,0.0272
+SES-010907,Normal,Privilege Escalation,0.4257,0,Privilege Escalation,0.4257,Malware Execution,0.281,USB Data Theft,0.1573
+SES-010898,Normal,Normal,0.7803,1,Normal,0.7803,USB Data Theft,0.0741,Insider Threat,0.0431
+SES-004030,Normal,Normal,0.9489,1,Normal,0.9489,Device Spoofing,0.0111,Brute Force,0.004
+SES-006778,Normal,Normal,0.8942,1,Normal,0.8942,Privilege Escalation,0.0359,Malware Execution,0.0182
+SES-008661,Normal,Insider Threat,0.2918,0,Insider Threat,0.2918,USB Data Theft,0.2732,Normal,0.2363
+SES-003354,Normal,Device Spoofing,0.671,0,Device Spoofing,0.671,Normal,0.1644,Insider Threat,0.1096
+SES-005920,Normal,Normal,0.8233,1,Normal,0.8233,Lateral Movement,0.0554,Malware Execution,0.0481
+SES-003819,Normal,Normal,0.7669,1,Normal,0.7669,Malware Execution,0.0815,Privilege Escalation,0.0704
+SES-000526,Normal,Normal,0.7122,1,Normal,0.7122,Privilege Escalation,0.1477,Malware Execution,0.0323
+SES-005286,Normal,Normal,0.8281,1,Normal,0.8281,USB Data Theft,0.0428,Device Spoofing,0.0261
+SES-000614,Privilege Escalation,Privilege Escalation,0.4047,1,Privilege Escalation,0.4047,Brute Force,0.2621,Malware Execution,0.2482
+SES-009334,Normal,Normal,0.9297,1,Normal,0.9297,USB Data Theft,0.0196,Device Spoofing,0.016
+SES-005625,Normal,Normal,0.5872,1,Normal,0.5872,USB Data Theft,0.1908,Device Spoofing,0.038
+SES-007175,Normal,USB Data Theft,0.3284,0,USB Data Theft,0.3284,Device Spoofing,0.2915,Normal,0.2142
+SES-007591,Normal,Normal,0.2725,1,Normal,0.2725,USB Data Theft,0.2144,Lateral Movement,0.1329
+SES-009106,Normal,Normal,0.7214,1,Normal,0.7214,Malware Execution,0.1066,Privilege Escalation,0.0593
+SES-002570,Normal,Privilege Escalation,0.561,0,Privilege Escalation,0.561,Malware Execution,0.1854,Normal,0.1418
+SES-001572,Normal,USB Data Theft,0.4828,0,USB Data Theft,0.4828,Normal,0.2487,Insider Threat,0.0582
+SES-005556,Normal,Normal,0.8866,1,Normal,0.8866,Malware Execution,0.0396,Privilege Escalation,0.0279
+SES-006195,Normal,Normal,0.6369,1,Normal,0.6369,Device Spoofing,0.255,Insider Drift,0.0109
+SES-004330,Normal,Normal,0.942,1,Normal,0.942,USB Data Theft,0.0177,Device Spoofing,0.004
+SES-003509,Normal,Insider Threat,0.4266,0,Insider Threat,0.4266,Privilege Escalation,0.1612,Malware Execution,0.1328
+SES-000745,Normal,Normal,0.8432,1,Normal,0.8432,USB Data Theft,0.0424,Device Spoofing,0.024
+SES-010829,Normal,Normal,0.4466,1,Normal,0.4466,USB Data Theft,0.3535,Device Spoofing,0.0358
+SES-007839,Normal,USB Data Theft,0.3029,0,USB Data Theft,0.3029,Normal,0.3006,Insider Threat,0.0547
+SES-010844,Normal,Normal,0.8054,1,Normal,0.8054,USB Data Theft,0.0278,Device Spoofing,0.019
+SES-009648,Normal,USB Data Theft,0.4018,0,USB Data Theft,0.4018,Normal,0.2733,Insider Threat,0.0573
+SES-012617,Normal,Normal,0.939,1,Normal,0.939,USB Data Theft,0.0171,Device Spoofing,0.0092
+SES-005344,Brute Force,Credential Stuffing,0.6766,0,Credential Stuffing,0.6766,Brute Force,0.255,Device Spoofing,0.0269
+SES-004027,Normal,Device Spoofing,0.4186,0,Device Spoofing,0.4186,Normal,0.4017,USB Data Theft,0.0557
+SES-005834,Normal,Malware Execution,0.5607,0,Malware Execution,0.5607,Privilege Escalation,0.1053,Lateral Movement,0.1032
+SES-003571,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.8568,1,Low-and-Slow Exfiltration,0.8568,Lateral Movement,0.125,Insider Drift,0.0082
+SES-010630,Normal,Normal,0.6666,1,Normal,0.6666,Lateral Movement,0.0886,Off-hours Access,0.0824
+SES-001952,Normal,Normal,0.7896,1,Normal,0.7896,Malware Execution,0.0542,Privilege Escalation,0.0486
+SES-008737,Normal,Normal,0.8306,1,Normal,0.8306,Insider Threat,0.0589,Privilege Escalation,0.0386
+SES-004970,Impossible Travel,Impossible Travel,0.9658,1,Impossible Travel,0.9658,Device Spoofing,0.0203,Normal,0.0048
+SES-006696,Normal,Normal,0.4633,1,Normal,0.4633,Device Spoofing,0.4373,USB Data Theft,0.0184
+SES-012298,Normal,Normal,0.6391,1,Normal,0.6391,Insider Threat,0.1535,Lateral Movement,0.0636
+SES-004809,Normal,Normal,0.9338,1,Normal,0.9338,Device Spoofing,0.014,USB Data Theft,0.0056
+SES-001706,Normal,Normal,0.9475,1,Normal,0.9475,Device Spoofing,0.0142,Brute Force,0.0036
+SES-006741,Lateral Movement,Lateral Movement,0.7515,1,Lateral Movement,0.7515,Malware Execution,0.0989,Insider Drift,0.0629
+SES-003716,Normal,Device Spoofing,0.3842,0,Device Spoofing,0.3842,Normal,0.354,Privilege Escalation,0.1357
+SES-000746,Normal,Normal,0.8742,1,Normal,0.8742,USB Data Theft,0.0235,Device Spoofing,0.0125
+SES-011757,Normal,USB Data Theft,0.3773,0,USB Data Theft,0.3773,Normal,0.3051,Insider Threat,0.053
+SES-008157,Normal,Normal,0.8462,1,Normal,0.8462,Privilege Escalation,0.075,Malware Execution,0.0427
+SES-010918,Normal,Privilege Escalation,0.3371,0,Privilege Escalation,0.3371,Malware Execution,0.264,Normal,0.2246
+SES-000832,Normal,Normal,0.9509,1,Normal,0.9509,USB Data Theft,0.0121,Device Spoofing,0.0063
+SES-012524,Normal,Malware Execution,0.4503,0,Malware Execution,0.4503,Privilege Escalation,0.2002,USB Data Theft,0.1452
+SES-007583,Normal,Normal,0.4733,1,Normal,0.4733,USB Data Theft,0.157,Insider Threat,0.0653
+SES-012013,Normal,Privilege Escalation,0.384,0,Privilege Escalation,0.384,Normal,0.2395,Malware Execution,0.166
+SES-005691,Normal,USB Data Theft,0.5254,0,USB Data Theft,0.5254,Normal,0.2865,Device Spoofing,0.0302
+SES-005365,Normal,Normal,0.8956,1,Normal,0.8956,Privilege Escalation,0.0378,USB Data Theft,0.0142
+SES-003116,Normal,Normal,0.9376,1,Normal,0.9376,USB Data Theft,0.0167,Device Spoofing,0.0078
+SES-009328,Normal,Normal,0.5202,1,Normal,0.5202,Device Spoofing,0.3671,USB Data Theft,0.0384
+SES-001163,Normal,Normal,0.9442,1,Normal,0.9442,Device Spoofing,0.0147,Brute Force,0.0039
+SES-003122,Normal,Normal,0.9249,1,Normal,0.9249,USB Data Theft,0.0305,Device Spoofing,0.0089
+SES-004133,Normal,Normal,0.8614,1,Normal,0.8614,USB Data Theft,0.0355,Device Spoofing,0.0114
+SES-002056,Normal,Device Spoofing,0.6226,0,Device Spoofing,0.6226,USB Data Theft,0.2048,Normal,0.0838
+SES-009875,Normal,Normal,0.9336,1,Normal,0.9336,USB Data Theft,0.0177,Device Spoofing,0.013
+SES-001146,Normal,Normal,0.6886,1,Normal,0.6886,Off-hours Access,0.1228,Device Spoofing,0.0252
+SES-011557,Normal,Normal,0.7734,1,Normal,0.7734,Insider Threat,0.1143,Malware Execution,0.0455
+SES-004325,Normal,Normal,0.9211,1,Normal,0.9211,USB Data Theft,0.0191,Device Spoofing,0.0108
+SES-001701,Normal,Normal,0.936,1,Normal,0.936,USB Data Theft,0.0221,Device Spoofing,0.0047
+SES-005945,Normal,USB Data Theft,0.5152,0,USB Data Theft,0.5152,Normal,0.3126,Insider Threat,0.0314
+SES-007010,Normal,Normal,0.7692,1,Normal,0.7692,Insider Threat,0.0842,USB Data Theft,0.0578
+SES-010968,Normal,Privilege Escalation,0.4203,0,Privilege Escalation,0.4203,Malware Execution,0.2054,Normal,0.2046
+SES-010604,Normal,Normal,0.8629,1,Normal,0.8629,USB Data Theft,0.0226,Device Spoofing,0.0223
+SES-002302,Normal,Normal,0.9347,1,Normal,0.9347,USB Data Theft,0.0207,Device Spoofing,0.0072
+SES-012832,Normal,USB Data Theft,0.4972,0,USB Data Theft,0.4972,Insider Threat,0.214,Normal,0.1657
+SES-006295,Normal,USB Data Theft,0.4739,0,USB Data Theft,0.4739,Normal,0.3652,Device Spoofing,0.0307
+SES-002684,Normal,Normal,0.5433,1,Normal,0.5433,USB Data Theft,0.2894,Insider Threat,0.0275
+SES-008185,Insider Threat,Insider Threat,0.9274,1,Insider Threat,0.9274,USB Data Theft,0.0246,Normal,0.0231
+SES-007038,Normal,Normal,0.762,1,Normal,0.762,Off-hours Access,0.077,Device Spoofing,0.0432
+SES-007084,Normal,Normal,0.5907,1,Normal,0.5907,Device Spoofing,0.2325,USB Data Theft,0.0803
+SES-009426,Normal,Lateral Movement,0.5141,0,Lateral Movement,0.5141,Normal,0.4062,Malware Execution,0.0288
+SES-001450,Brute Force,Brute Force,0.7477,1,Brute Force,0.7477,Insider Threat,0.0954,Credential Stuffing,0.0596
+SES-005949,Normal,Normal,0.9342,1,Normal,0.9342,Device Spoofing,0.02,Brute Force,0.0044
+SES-009300,Normal,Normal,0.8746,1,Normal,0.8746,USB Data Theft,0.0191,Device Spoofing,0.0139
+SES-009156,Normal,Normal,0.8512,1,Normal,0.8512,USB Data Theft,0.0401,Device Spoofing,0.0191
+SES-001293,Normal,Normal,0.9225,1,Normal,0.9225,USB Data Theft,0.0171,Device Spoofing,0.0099
+SES-000583,Normal,USB Data Theft,0.4678,0,USB Data Theft,0.4678,Normal,0.327,Device Spoofing,0.0812
+SES-004985,Normal,USB Data Theft,0.4955,0,USB Data Theft,0.4955,Normal,0.1985,Insider Threat,0.0552
+SES-004023,Normal,Insider Threat,0.3973,0,Insider Threat,0.3973,USB Data Theft,0.2065,Normal,0.1818
+SES-001361,Normal,Normal,0.9089,1,Normal,0.9089,USB Data Theft,0.028,Insider Threat,0.026
+SES-012728,Normal,Privilege Escalation,0.398,0,Privilege Escalation,0.398,Normal,0.3156,Malware Execution,0.1372
+SES-001770,Normal,Normal,0.3967,1,Normal,0.3967,USB Data Theft,0.1938,Insider Threat,0.0737
+SES-003646,Normal,Normal,0.7679,1,Normal,0.7679,USB Data Theft,0.1078,Device Spoofing,0.0135
+SES-004585,Normal,Normal,0.9177,1,Normal,0.9177,USB Data Theft,0.0242,Device Spoofing,0.0099
+SES-012089,Normal,Normal,0.743,1,Normal,0.743,Privilege Escalation,0.1387,Malware Execution,0.0261
+SES-000116,Normal,Normal,0.7646,1,Normal,0.7646,Insider Threat,0.084,Device Spoofing,0.0554
+SES-004759,Normal,USB Data Theft,0.5782,0,USB Data Theft,0.5782,Normal,0.1678,Insider Threat,0.0546
+SES-008995,Normal,Normal,0.8774,1,Normal,0.8774,Insider Threat,0.0798,Device Spoofing,0.0095
+SES-004144,Malware Execution,Brute Force,0.6638,0,Brute Force,0.6638,Lateral Movement,0.1288,Malware Execution,0.0902
+SES-011681,Normal,USB Data Theft,0.3428,0,USB Data Theft,0.3428,Device Spoofing,0.2245,Normal,0.211
+SES-009353,Normal,USB Data Theft,0.6225,0,USB Data Theft,0.6225,Normal,0.2178,Insider Threat,0.0221
+SES-000159,Normal,Insider Threat,0.3818,0,Insider Threat,0.3818,Privilege Escalation,0.2797,USB Data Theft,0.1066
+SES-012376,Normal,USB Data Theft,0.4122,0,USB Data Theft,0.4122,Normal,0.2783,Insider Threat,0.0596
+SES-005138,Normal,Normal,0.9359,1,Normal,0.9359,USB Data Theft,0.0152,Device Spoofing,0.0123
+SES-008939,Normal,Normal,0.4935,1,Normal,0.4935,USB Data Theft,0.3371,Device Spoofing,0.0302
+SES-005629,Normal,Normal,0.8227,1,Normal,0.8227,Malware Execution,0.1101,Privilege Escalation,0.0284
+SES-001373,Normal,Normal,0.8478,1,Normal,0.8478,USB Data Theft,0.0388,Device Spoofing,0.0233
+SES-001579,Normal,Normal,0.9129,1,Normal,0.9129,Privilege Escalation,0.0351,Malware Execution,0.0101
+SES-005709,Normal,Normal,0.9493,1,Normal,0.9493,Device Spoofing,0.008,Insider Drift,0.0043
+SES-004573,Malware Execution,Privilege Escalation,0.6929,0,Privilege Escalation,0.6929,Malware Execution,0.1068,Normal,0.0583
+SES-010628,Normal,Normal,0.755,1,Normal,0.755,Off-hours Access,0.0868,Device Spoofing,0.0219
+SES-000426,Normal,Normal,0.686,1,Normal,0.686,Device Spoofing,0.2719,USB Data Theft,0.0114
+SES-011722,Normal,Normal,0.8166,1,Normal,0.8166,Privilege Escalation,0.0614,Malware Execution,0.0305
+SES-007121,Normal,Normal,0.3849,1,Normal,0.3849,USB Data Theft,0.2981,Insider Threat,0.0527
+SES-004799,Normal,Normal,0.8675,1,Normal,0.8675,Insider Threat,0.0655,USB Data Theft,0.0202
+SES-011155,Off-hours Access,Off-hours Access,0.6703,1,Off-hours Access,0.6703,Normal,0.2431,Device Spoofing,0.0173
+SES-005903,Normal,Normal,0.3971,1,Normal,0.3971,USB Data Theft,0.3613,Insider Threat,0.0401
+SES-001522,Normal,Normal,0.9351,1,Normal,0.9351,USB Data Theft,0.0122,Lateral Movement,0.0107
+SES-010245,Normal,Insider Threat,0.5092,0,Insider Threat,0.5092,Normal,0.2702,USB Data Theft,0.1273
+SES-010602,Normal,Normal,0.7073,1,Normal,0.7073,Insider Threat,0.1021,USB Data Theft,0.0896
+SES-005464,Normal,USB Data Theft,0.3678,0,USB Data Theft,0.3678,Normal,0.3029,Insider Threat,0.0605
+SES-002600,Normal,Normal,0.8518,1,Normal,0.8518,Insider Threat,0.0899,Privilege Escalation,0.0109
+SES-011078,Normal,Normal,0.9217,1,Normal,0.9217,USB Data Theft,0.0266,Device Spoofing,0.0132
+SES-002744,Normal,Normal,0.8664,1,Normal,0.8664,Malware Execution,0.0811,Privilege Escalation,0.0198
+SES-007894,Normal,Normal,0.9236,1,Normal,0.9236,USB Data Theft,0.0329,Device Spoofing,0.0086
+SES-001230,Normal,Normal,0.6154,1,Normal,0.6154,Malware Execution,0.1128,Device Spoofing,0.0718
+SES-006817,Normal,Normal,0.7928,1,Normal,0.7928,USB Data Theft,0.0759,Impossible Travel,0.0215
+SES-011562,Privilege Escalation,Privilege Escalation,0.6406,1,Privilege Escalation,0.6406,Malware Execution,0.1237,Brute Force,0.102
+SES-004978,Normal,Device Spoofing,0.6236,0,Device Spoofing,0.6236,Normal,0.3079,USB Data Theft,0.0205
+SES-004454,Normal,Normal,0.3821,1,Normal,0.3821,USB Data Theft,0.3344,Device Spoofing,0.0558
+SES-002626,Normal,Normal,0.8724,1,Normal,0.8724,Privilege Escalation,0.0428,USB Data Theft,0.0237
+SES-009760,Normal,USB Data Theft,0.507,0,USB Data Theft,0.507,Normal,0.3437,Device Spoofing,0.0278
+SES-005790,Normal,Normal,0.4918,1,Normal,0.4918,Malware Execution,0.1196,Insider Threat,0.1073
+SES-008067,Normal,Privilege Escalation,0.4658,0,Privilege Escalation,0.4658,Malware Execution,0.3275,Normal,0.1009
+SES-005201,Normal,Normal,0.8264,1,Normal,0.8264,Insider Threat,0.0428,Device Spoofing,0.0239
+SES-010711,Normal,Normal,0.9395,1,Normal,0.9395,Device Spoofing,0.0153,Brute Force,0.0043
+SES-006030,Normal,Normal,0.928,1,Normal,0.928,USB Data Theft,0.0197,Device Spoofing,0.0126
+SES-003466,Normal,Insider Threat,0.4014,0,Insider Threat,0.4014,Normal,0.397,USB Data Theft,0.0582
+SES-011939,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.9708,1,Low-and-Slow Exfiltration,0.9708,USB Data Theft,0.0118,Device Spoofing,0.0095
+SES-003730,Normal,Normal,0.855,1,Normal,0.855,Privilege Escalation,0.0536,USB Data Theft,0.038
+SES-011106,Normal,Privilege Escalation,0.3655,0,Privilege Escalation,0.3655,Normal,0.2204,USB Data Theft,0.2084
+SES-003898,Normal,Normal,0.9227,1,Normal,0.9227,USB Data Theft,0.0242,Device Spoofing,0.0134
+SES-006587,Normal,Privilege Escalation,0.3798,0,Privilege Escalation,0.3798,Normal,0.262,Malware Execution,0.1942
+SES-009617,Normal,Privilege Escalation,0.4301,0,Privilege Escalation,0.4301,Normal,0.3186,Malware Execution,0.0665
+SES-008774,Normal,Privilege Escalation,0.6093,0,Privilege Escalation,0.6093,Malware Execution,0.1822,Normal,0.0752
+SES-006835,Normal,Normal,0.9385,1,Normal,0.9385,USB Data Theft,0.0204,Device Spoofing,0.0087
+SES-006455,Malware Execution,Privilege Escalation,0.5706,0,Privilege Escalation,0.5706,Malware Execution,0.2956,USB Data Theft,0.0519
+SES-003431,Normal,Normal,0.5926,1,Normal,0.5926,USB Data Theft,0.1455,Insider Threat,0.0449
+SES-004057,Normal,Normal,0.9349,1,Normal,0.9349,USB Data Theft,0.0245,Device Spoofing,0.0079
+SES-006318,Lateral Movement,Lateral Movement,0.9283,1,Lateral Movement,0.9283,Normal,0.0179,USB Data Theft,0.0172
+SES-006484,Data Exfiltration,Data Exfiltration,0.9471,1,Data Exfiltration,0.9471,Privilege Escalation,0.0173,Device Spoofing,0.011
+SES-007752,Normal,Insider Threat,0.7354,0,Insider Threat,0.7354,Normal,0.0927,USB Data Theft,0.0649
+SES-000456,Normal,Privilege Escalation,0.5179,0,Privilege Escalation,0.5179,Normal,0.1903,Malware Execution,0.081
+SES-009177,Normal,Normal,0.6343,1,Normal,0.6343,USB Data Theft,0.1357,Device Spoofing,0.0426
+SES-010088,Lateral Movement,Lateral Movement,0.7139,1,Lateral Movement,0.7139,Malware Execution,0.1578,Insider Drift,0.0563
+SES-007923,Normal,Normal,0.9041,1,Normal,0.9041,USB Data Theft,0.0504,Device Spoofing,0.0081
+SES-006267,Normal,Normal,0.9407,1,Normal,0.9407,USB Data Theft,0.0175,Impossible Travel,0.0067
+SES-009110,Normal,Insider Threat,0.3747,0,Insider Threat,0.3747,Normal,0.2627,USB Data Theft,0.1608
+SES-009073,Normal,Normal,0.4184,1,Normal,0.4184,Device Spoofing,0.3885,USB Data Theft,0.1062
+SES-007714,Normal,Normal,0.5793,1,Normal,0.5793,USB Data Theft,0.2103,Device Spoofing,0.0355
+SES-001524,Normal,Normal,0.8679,1,Normal,0.8679,USB Data Theft,0.0333,Device Spoofing,0.0119
+SES-007354,Normal,Normal,0.3384,1,Normal,0.3384,USB Data Theft,0.3228,Privilege Escalation,0.0678
+SES-001370,Normal,USB Data Theft,0.4089,0,USB Data Theft,0.4089,Normal,0.2612,Insider Threat,0.2104
+SES-007652,Normal,Normal,0.8624,1,Normal,0.8624,Device Spoofing,0.0164,Brute Force,0.0115
+SES-011952,Normal,Normal,0.4742,1,Normal,0.4742,USB Data Theft,0.3096,Device Spoofing,0.0407
+SES-000443,Normal,Normal,0.8468,1,Normal,0.8468,Malware Execution,0.0573,Privilege Escalation,0.04
+SES-002574,Normal,Insider Threat,0.5058,0,Insider Threat,0.5058,USB Data Theft,0.3357,Normal,0.0787
+SES-006788,Normal,Normal,0.5335,1,Normal,0.5335,USB Data Theft,0.2548,Device Spoofing,0.0404
+SES-011110,Normal,Normal,0.9113,1,Normal,0.9113,Privilege Escalation,0.0377,Malware Execution,0.0135
+SES-003940,Normal,Normal,0.9497,1,Normal,0.9497,Device Spoofing,0.0105,Brute Force,0.004
+SES-001525,Normal,Normal,0.4432,1,Normal,0.4432,USB Data Theft,0.3575,Insider Threat,0.0357
+SES-006015,Malware Execution,Malware Execution,0.5175,1,Malware Execution,0.5175,Privilege Escalation,0.2766,Normal,0.1016
+SES-004916,Normal,Normal,0.4562,1,Normal,0.4562,USB Data Theft,0.3375,Device Spoofing,0.0365
+SES-002076,Normal,Privilege Escalation,0.4543,0,Privilege Escalation,0.4543,Malware Execution,0.352,Normal,0.084
+SES-009735,Normal,Normal,0.9209,1,Normal,0.9209,Device Spoofing,0.0171,USB Data Theft,0.0156
+SES-007190,Normal,Insider Threat,0.5674,0,Insider Threat,0.5674,USB Data Theft,0.1805,Normal,0.156
+SES-010562,Normal,Normal,0.8949,1,Normal,0.8949,Privilege Escalation,0.0555,Malware Execution,0.0145
+SES-005753,Normal,Normal,0.4825,1,Normal,0.4825,Device Spoofing,0.4015,USB Data Theft,0.0301
+SES-005194,Normal,Normal,0.953,1,Normal,0.953,USB Data Theft,0.0066,Device Spoofing,0.0045
+SES-009192,Normal,USB Data Theft,0.5985,0,USB Data Theft,0.5985,Normal,0.2781,Insider Threat,0.0206
+SES-000604,Normal,Normal,0.7537,1,Normal,0.7537,Off-hours Access,0.0972,Device Spoofing,0.0399
+SES-002541,Normal,Normal,0.9323,1,Normal,0.9323,USB Data Theft,0.0138,Device Spoofing,0.0118
+SES-001206,Normal,USB Data Theft,0.4798,0,USB Data Theft,0.4798,Normal,0.243,Lateral Movement,0.061
+SES-003549,Normal,Normal,0.7378,1,Normal,0.7378,Off-hours Access,0.1118,Device Spoofing,0.0419
+SES-009604,Normal,Normal,0.7744,1,Normal,0.7744,Malware Execution,0.0671,Privilege Escalation,0.0503
+SES-009854,Normal,Normal,0.7572,1,Normal,0.7572,Malware Execution,0.0847,Privilege Escalation,0.0608
+SES-002205,Normal,Normal,0.7993,1,Normal,0.7993,Insider Threat,0.1209,Insider Drift,0.0365
+SES-002914,Normal,Insider Threat,0.7011,0,Insider Threat,0.7011,Normal,0.0964,USB Data Theft,0.062
+SES-007115,Privilege Escalation,Privilege Escalation,0.7124,1,Privilege Escalation,0.7124,Malware Execution,0.1331,Normal,0.0623
+SES-005874,Normal,Insider Threat,0.5602,0,Insider Threat,0.5602,Malware Execution,0.1764,Privilege Escalation,0.1355
+SES-012540,Normal,Normal,0.8559,1,Normal,0.8559,USB Data Theft,0.0299,Device Spoofing,0.0219
+SES-000865,Normal,Normal,0.85,1,Normal,0.85,Malware Execution,0.0555,Privilege Escalation,0.0364
+SES-007075,Normal,Normal,0.946,1,Normal,0.946,Privilege Escalation,0.0073,USB Data Theft,0.0072
+SES-010123,Normal,USB Data Theft,0.394,0,USB Data Theft,0.394,Normal,0.3364,Device Spoofing,0.0512
+SES-012387,Normal,Normal,0.3254,1,Normal,0.3254,USB Data Theft,0.2486,Lateral Movement,0.0967
+SES-011079,Normal,Malware Execution,0.3474,0,Malware Execution,0.3474,Privilege Escalation,0.2411,Normal,0.2307
+SES-012641,Normal,Normal,0.834,1,Normal,0.834,USB Data Theft,0.0593,Device Spoofing,0.0155
+SES-001956,Normal,Normal,0.8889,1,Normal,0.8889,Privilege Escalation,0.0535,Malware Execution,0.0159
+SES-006259,Normal,Normal,0.4309,1,Normal,0.4309,USB Data Theft,0.4272,Insider Threat,0.0239
+SES-002447,Normal,Normal,0.8652,1,Normal,0.8652,Privilege Escalation,0.0602,Malware Execution,0.0255
+SES-012422,Normal,Normal,0.9251,1,Normal,0.9251,Device Spoofing,0.0143,Impossible Travel,0.0111
+SES-005686,Normal,Normal,0.9359,1,Normal,0.9359,USB Data Theft,0.0183,Device Spoofing,0.0082
+SES-009970,Normal,Normal,0.9302,1,Normal,0.9302,USB Data Theft,0.0142,Impossible Travel,0.0088
+SES-010611,Normal,Normal,0.9196,1,Normal,0.9196,Insider Threat,0.0265,USB Data Theft,0.0107
+SES-011912,Normal,Normal,0.7893,1,Normal,0.7893,Device Spoofing,0.0492,Off-hours Access,0.0478
+SES-003453,Normal,Normal,0.604,1,Normal,0.604,Malware Execution,0.144,Privilege Escalation,0.0952
+SES-006581,Normal,Normal,0.8848,1,Normal,0.8848,Insider Threat,0.0541,USB Data Theft,0.0203
+SES-000026,Normal,Normal,0.9443,1,Normal,0.9443,Device Spoofing,0.0166,Brute Force,0.0037
+SES-002389,Normal,USB Data Theft,0.5295,0,USB Data Theft,0.5295,Normal,0.1762,Insider Threat,0.052
+SES-009917,Normal,Normal,0.3898,1,Normal,0.3898,USB Data Theft,0.2052,Insider Threat,0.0762
+SES-000370,Normal,USB Data Theft,0.465,0,USB Data Theft,0.465,Normal,0.3655,Device Spoofing,0.0308
+SES-011254,Normal,Normal,0.8539,1,Normal,0.8539,Malware Execution,0.0398,Privilege Escalation,0.0293
+SES-011008,Normal,Normal,0.9305,1,Normal,0.9305,USB Data Theft,0.0237,Device Spoofing,0.0077
+SES-011213,Normal,Normal,0.6534,1,Normal,0.6534,Device Spoofing,0.1108,USB Data Theft,0.0896
+SES-006881,Normal,Normal,0.9385,1,Normal,0.9385,Device Spoofing,0.0092,Insider Drift,0.0052
+SES-007351,Normal,Normal,0.901,1,Normal,0.901,Privilege Escalation,0.0334,Malware Execution,0.0254
+SES-000083,Normal,Normal,0.81,1,Normal,0.81,Device Spoofing,0.0969,USB Data Theft,0.0154
+SES-006073,Normal,Normal,0.766,1,Normal,0.766,Insider Drift,0.0997,Insider Threat,0.0704
+SES-005867,Normal,Normal,0.7831,1,Normal,0.7831,Privilege Escalation,0.0771,Malware Execution,0.0364
+SES-011056,Normal,Normal,0.6008,1,Normal,0.6008,Device Spoofing,0.2281,USB Data Theft,0.0683
+SES-010131,Normal,Insider Threat,0.4107,0,Insider Threat,0.4107,Malware Execution,0.238,Privilege Escalation,0.2201
+SES-001529,Normal,Normal,0.8469,1,Normal,0.8469,USB Data Theft,0.0286,Device Spoofing,0.0221
+SES-006662,Normal,Normal,0.6306,1,Normal,0.6306,Device Spoofing,0.2467,USB Data Theft,0.0212
+SES-012242,Normal,Normal,0.8042,1,Normal,0.8042,USB Data Theft,0.0784,Insider Drift,0.017
+SES-003113,Normal,Normal,0.5051,1,Normal,0.5051,USB Data Theft,0.2186,Privilege Escalation,0.0714
+SES-009269,Impossible Travel,Impossible Travel,0.9815,1,Impossible Travel,0.9815,Normal,0.0104,USB Data Theft,0.0046
+SES-006292,Normal,Normal,0.9306,1,Normal,0.9306,USB Data Theft,0.0271,Device Spoofing,0.0075
+SES-001539,Normal,Normal,0.8179,1,Normal,0.8179,Malware Execution,0.0902,Privilege Escalation,0.0306
+SES-007517,Normal,Insider Threat,0.3409,0,Insider Threat,0.3409,Normal,0.2644,USB Data Theft,0.197
+SES-011005,Normal,Insider Threat,0.7152,0,Insider Threat,0.7152,USB Data Theft,0.1082,Normal,0.0928
+SES-001514,Data Exfiltration,Data Exfiltration,0.9883,1,Data Exfiltration,0.9883,Normal,0.0029,USB Data Theft,0.0028
+SES-001314,Normal,Normal,0.2985,1,Normal,0.2985,Insider Threat,0.2801,USB Data Theft,0.2672
+SES-003289,Normal,Normal,0.8331,1,Normal,0.8331,Malware Execution,0.0488,Privilege Escalation,0.0471
+SES-011870,Data Exfiltration,Data Exfiltration,0.9532,1,Data Exfiltration,0.9532,Malware Execution,0.0157,Privilege Escalation,0.0154
+SES-006911,Normal,Device Spoofing,0.3491,0,Device Spoofing,0.3491,Normal,0.3289,Lateral Movement,0.0964
+SES-002670,Normal,USB Data Theft,0.5184,0,USB Data Theft,0.5184,Normal,0.1398,Privilege Escalation,0.0864
+SES-011178,Normal,Normal,0.8795,1,Normal,0.8795,Impossible Travel,0.0163,USB Data Theft,0.0152
+SES-006486,Normal,Normal,0.8418,1,Normal,0.8418,USB Data Theft,0.0521,Lateral Movement,0.0133
+SES-011037,Normal,Device Spoofing,0.789,0,Device Spoofing,0.789,Normal,0.1188,USB Data Theft,0.0364
+SES-000608,Normal,Normal,0.6455,1,Normal,0.6455,Off-hours Access,0.1322,Lateral Movement,0.0673
+SES-008353,Normal,USB Data Theft,0.4315,0,USB Data Theft,0.4315,Normal,0.335,Insider Threat,0.0403
+SES-012213,Normal,Normal,0.9489,1,Normal,0.9489,Device Spoofing,0.0063,Brute Force,0.0043
+SES-005269,Normal,Normal,0.9393,1,Normal,0.9393,USB Data Theft,0.0137,Device Spoofing,0.0099
+SES-007062,Normal,Normal,0.9106,1,Normal,0.9106,Lateral Movement,0.032,USB Data Theft,0.0081
+SES-000893,Normal,Malware Execution,0.3828,0,Malware Execution,0.3828,Privilege Escalation,0.182,Lateral Movement,0.1618
+SES-006775,Normal,Normal,0.8099,1,Normal,0.8099,USB Data Theft,0.0742,Device Spoofing,0.0224
+SES-011976,Normal,Normal,0.9493,1,Normal,0.9493,Device Spoofing,0.0126,Brute Force,0.0035
+SES-012906,Normal,USB Data Theft,0.6198,0,USB Data Theft,0.6198,Normal,0.2201,Insider Threat,0.0272
+SES-012225,Normal,Normal,0.7351,1,Normal,0.7351,Insider Threat,0.0949,USB Data Theft,0.0685
+SES-002331,Normal,USB Data Theft,0.6981,0,USB Data Theft,0.6981,Normal,0.1473,Insider Threat,0.0277
+SES-011898,Normal,Normal,0.7326,1,Normal,0.7326,Off-hours Access,0.111,Device Spoofing,0.0477
+SES-006557,Normal,Normal,0.9323,1,Normal,0.9323,USB Data Theft,0.0184,Device Spoofing,0.0127
+SES-003883,Normal,Normal,0.909,1,Normal,0.909,Lateral Movement,0.0355,USB Data Theft,0.0089
+SES-005801,Normal,Normal,0.5163,1,Normal,0.5163,Lateral Movement,0.3026,Insider Drift,0.0707
+SES-009505,Insider Threat,Insider Threat,0.7554,1,Insider Threat,0.7554,USB Data Theft,0.1596,Normal,0.0397
+SES-005478,Normal,Normal,0.3677,1,Normal,0.3677,USB Data Theft,0.2097,Insider Threat,0.0821
+SES-004731,Normal,USB Data Theft,0.3493,0,USB Data Theft,0.3493,Device Spoofing,0.2517,Normal,0.1727
+SES-012430,Normal,Normal,0.5926,1,Normal,0.5926,Device Spoofing,0.219,USB Data Theft,0.0459
+SES-008849,Normal,USB Data Theft,0.3466,0,USB Data Theft,0.3466,Normal,0.279,Insider Threat,0.0678
+SES-010126,Normal,Insider Threat,0.8818,0,Insider Threat,0.8818,Normal,0.0346,USB Data Theft,0.0151
+SES-012174,Normal,Normal,0.7704,1,Normal,0.7704,Privilege Escalation,0.0874,USB Data Theft,0.0395
+SES-013011,Normal,Normal,0.9462,1,Normal,0.9462,Device Spoofing,0.0122,Brute Force,0.0039
+SES-007323,Normal,USB Data Theft,0.6028,0,USB Data Theft,0.6028,Normal,0.2135,Insider Threat,0.0335
+SES-000674,Normal,Normal,0.4636,1,Normal,0.4636,USB Data Theft,0.2651,Insider Threat,0.0459
+SES-008416,USB Data Theft,USB Data Theft,0.4663,1,USB Data Theft,0.4663,Normal,0.1975,Low-and-Slow Exfiltration,0.1301
+SES-011846,Normal,Normal,0.6857,1,Normal,0.6857,Malware Execution,0.1561,Privilege Escalation,0.0494
+SES-011670,Normal,Normal,0.9325,1,Normal,0.9325,USB Data Theft,0.0278,Device Spoofing,0.0068
+SES-011045,Normal,USB Data Theft,0.6101,0,USB Data Theft,0.6101,Normal,0.1923,Device Spoofing,0.0336
+SES-003984,Normal,Normal,0.9074,1,Normal,0.9074,Privilege Escalation,0.0322,Malware Execution,0.0158
+SES-011218,Normal,Normal,0.8608,1,Normal,0.8608,USB Data Theft,0.0229,Device Spoofing,0.0208
+SES-003553,Normal,Insider Threat,0.271,0,Insider Threat,0.271,Privilege Escalation,0.1815,Device Spoofing,0.1564
+SES-010724,Normal,Normal,0.438,1,Normal,0.438,USB Data Theft,0.253,Insider Threat,0.0553
+SES-003972,Normal,Lateral Movement,0.5704,0,Lateral Movement,0.5704,Malware Execution,0.2397,Insider Drift,0.0772
+SES-012045,Normal,USB Data Theft,0.6081,0,USB Data Theft,0.6081,Normal,0.1894,Insider Threat,0.0377
+SES-004172,Normal,Normal,0.5854,1,Normal,0.5854,USB Data Theft,0.1235,Device Spoofing,0.0524
+SES-002615,Normal,Normal,0.6757,1,Normal,0.6757,Malware Execution,0.1805,Privilege Escalation,0.0339
+SES-003728,Normal,Privilege Escalation,0.4042,0,Privilege Escalation,0.4042,Normal,0.3135,Malware Execution,0.1153
+SES-005447,Normal,Normal,0.4746,1,Normal,0.4746,Device Spoofing,0.1986,USB Data Theft,0.1571
+SES-011620,Normal,Normal,0.9058,1,Normal,0.9058,Malware Execution,0.0205,Privilege Escalation,0.0195
+SES-011482,Normal,Normal,0.9343,1,Normal,0.9343,Device Spoofing,0.0196,Brute Force,0.0044
+SES-010920,Data Exfiltration,Data Exfiltration,0.988,1,Data Exfiltration,0.988,USB Data Theft,0.0045,Normal,0.0016
+SES-002577,Normal,Normal,0.8452,1,Normal,0.8452,USB Data Theft,0.0469,Insider Drift,0.0122
+SES-000006,Normal,Normal,0.7236,1,Normal,0.7236,Off-hours Access,0.1371,Device Spoofing,0.0373
+SES-008668,Normal,Normal,0.939,1,Normal,0.939,USB Data Theft,0.0154,Device Spoofing,0.0093
+SES-001181,Normal,Insider Threat,0.304,0,Insider Threat,0.304,Normal,0.2954,USB Data Theft,0.1939
+SES-011477,Normal,Normal,0.9467,1,Normal,0.9467,Device Spoofing,0.009,USB Data Theft,0.0052
+SES-001926,Normal,Normal,0.8848,1,Normal,0.8848,Malware Execution,0.0392,Privilege Escalation,0.0218
+SES-007741,Normal,Normal,0.9085,1,Normal,0.9085,USB Data Theft,0.0292,Device Spoofing,0.0174
+SES-005564,Normal,Normal,0.7229,1,Normal,0.7229,Malware Execution,0.1158,Privilege Escalation,0.0582
+SES-006114,Normal,Normal,0.7542,1,Normal,0.7542,Insider Threat,0.0845,USB Data Theft,0.0317
+SES-001068,Normal,Device Spoofing,0.8764,0,Device Spoofing,0.8764,Normal,0.0967,USB Data Theft,0.0054
+SES-000702,Normal,Normal,0.8368,1,Normal,0.8368,USB Data Theft,0.0373,Device Spoofing,0.0222
+SES-012021,Normal,Malware Execution,0.3184,0,Malware Execution,0.3184,Privilege Escalation,0.3006,Lateral Movement,0.1598
+SES-012817,Normal,Normal,0.5002,1,Normal,0.5002,USB Data Theft,0.2925,Device Spoofing,0.0375
+SES-005345,Normal,Normal,0.9284,1,Normal,0.9284,USB Data Theft,0.0121,Device Spoofing,0.0118
+SES-009698,Normal,Device Spoofing,0.4395,0,Device Spoofing,0.4395,Normal,0.3742,USB Data Theft,0.0715
+SES-009920,Normal,Normal,0.2184,1,Normal,0.2184,USB Data Theft,0.1809,Insider Drift,0.1283
+SES-008681,Normal,USB Data Theft,0.4012,0,USB Data Theft,0.4012,Normal,0.3018,Insider Threat,0.0538
+SES-001441,Normal,Normal,0.7426,1,Normal,0.7426,Privilege Escalation,0.0707,Malware Execution,0.0575
+SES-011270,Normal,Insider Threat,0.3566,0,Insider Threat,0.3566,Normal,0.2394,Privilege Escalation,0.1186
+SES-009150,Normal,Normal,0.945,1,Normal,0.945,Device Spoofing,0.0147,Brute Force,0.0038
+SES-011796,Normal,Device Spoofing,0.532,0,Device Spoofing,0.532,Normal,0.3718,USB Data Theft,0.0296
+SES-003080,Malware Execution,Malware Execution,0.8838,1,Malware Execution,0.8838,Beaconing C2,0.0336,Privilege Escalation,0.028
+SES-012988,Normal,USB Data Theft,0.3957,0,USB Data Theft,0.3957,Device Spoofing,0.2359,Normal,0.1115
+SES-000905,Normal,Normal,0.6653,1,Normal,0.6653,Device Spoofing,0.1752,Insider Threat,0.0523
+SES-004592,Normal,Normal,0.9012,1,Normal,0.9012,Insider Threat,0.0357,Device Spoofing,0.012
+SES-009967,Normal,Normal,0.9296,1,Normal,0.9296,USB Data Theft,0.0184,Device Spoofing,0.0074
+SES-004120,Impossible Travel,Impossible Travel,0.9857,1,Impossible Travel,0.9857,Off-hours Access,0.0049,Normal,0.0048
+SES-000840,Normal,Malware Execution,0.3625,0,Malware Execution,0.3625,Privilege Escalation,0.2256,Normal,0.1434
+SES-008509,Normal,USB Data Theft,0.3981,0,USB Data Theft,0.3981,Privilege Escalation,0.3432,Normal,0.1109
+SES-006510,Normal,Normal,0.6171,1,Normal,0.6171,Privilege Escalation,0.1119,Malware Execution,0.082
+SES-002482,Normal,Normal,0.798,1,Normal,0.798,Malware Execution,0.0726,Insider Threat,0.0316
+SES-004583,Normal,USB Data Theft,0.6662,0,USB Data Theft,0.6662,Normal,0.1448,Insider Threat,0.0374
+SES-012457,Normal,Normal,0.7378,1,Normal,0.7378,Off-hours Access,0.1118,Device Spoofing,0.0419
+SES-003951,Normal,Normal,0.9432,1,Normal,0.9432,Device Spoofing,0.0122,USB Data Theft,0.0105
+SES-003505,Normal,Normal,0.9463,1,Normal,0.9463,USB Data Theft,0.0152,Credential Stuffing,0.0036
+SES-006942,Normal,Normal,0.9381,1,Normal,0.9381,USB Data Theft,0.0249,Device Spoofing,0.0038
+SES-006965,Normal,Normal,0.9158,1,Normal,0.9158,USB Data Theft,0.0182,Device Spoofing,0.014
+SES-002355,Normal,USB Data Theft,0.645,0,USB Data Theft,0.645,Normal,0.186,Insider Threat,0.0307
+SES-009769,Normal,Normal,0.9204,1,Normal,0.9204,USB Data Theft,0.0295,Impossible Travel,0.009
+SES-006714,Normal,Normal,0.9495,1,Normal,0.9495,Device Spoofing,0.007,USB Data Theft,0.0053
+SES-011014,Normal,Privilege Escalation,0.4299,0,Privilege Escalation,0.4299,Malware Execution,0.3908,Normal,0.0556
+SES-005989,Normal,Normal,0.5158,1,Normal,0.5158,USB Data Theft,0.3111,Insider Threat,0.0288
+SES-002123,Normal,Normal,0.8328,1,Normal,0.8328,USB Data Theft,0.0476,Impossible Travel,0.0189
+SES-009201,Normal,USB Data Theft,0.5164,0,USB Data Theft,0.5164,Normal,0.2714,Insider Threat,0.0406
+SES-003471,Normal,Privilege Escalation,0.3955,0,Privilege Escalation,0.3955,Normal,0.2831,Malware Execution,0.1014
+SES-010747,Suspicious PowerShell,Suspicious PowerShell,0.8656,1,Suspicious PowerShell,0.8656,USB Data Theft,0.065,Malware Execution,0.0357
+SES-007152,Normal,Device Spoofing,0.582,0,Device Spoofing,0.582,Normal,0.3149,USB Data Theft,0.0421
+SES-009523,Normal,Normal,0.8008,1,Normal,0.8008,Off-hours Access,0.0439,Device Spoofing,0.0422
+SES-003673,Normal,USB Data Theft,0.5926,0,USB Data Theft,0.5926,Normal,0.1681,Insider Threat,0.0422
+SES-004074,Normal,Normal,0.5985,1,Normal,0.5985,Insider Threat,0.0998,Lateral Movement,0.0853
+SES-008122,Normal,Device Spoofing,0.6928,0,Device Spoofing,0.6928,Normal,0.2445,Impossible Travel,0.0111
+SES-004495,Normal,Normal,0.7801,1,Normal,0.7801,Low-and-Slow Exfiltration,0.0576,USB Data Theft,0.0563
+SES-009034,Normal,Normal,0.9433,1,Normal,0.9433,Device Spoofing,0.0099,USB Data Theft,0.0087
+SES-001914,Normal,Normal,0.9451,1,Normal,0.9451,Impossible Travel,0.0091,Device Spoofing,0.0071
+SES-008352,Normal,Insider Threat,0.539,0,Insider Threat,0.539,USB Data Theft,0.2064,Normal,0.1307
+SES-004183,Malware Execution,Privilege Escalation,0.4027,0,Privilege Escalation,0.4027,Malware Execution,0.307,Normal,0.0659
+SES-005968,Normal,Off-hours Access,0.6836,0,Off-hours Access,0.6836,Normal,0.213,Device Spoofing,0.0134
+SES-006288,Normal,Normal,0.9443,1,Normal,0.9443,Impossible Travel,0.0091,Device Spoofing,0.0068
+SES-001755,Normal,Normal,0.4592,1,Normal,0.4592,USB Data Theft,0.346,Device Spoofing,0.0368
+SES-002954,Normal,Normal,0.8392,1,Normal,0.8392,Device Spoofing,0.0317,USB Data Theft,0.03
+SES-006058,Privilege Escalation,Privilege Escalation,0.6106,1,Privilege Escalation,0.6106,Brute Force,0.1342,Data Exfiltration,0.1029
+SES-011929,Normal,Normal,0.9443,1,Normal,0.9443,USB Data Theft,0.0144,Device Spoofing,0.0056
+SES-006855,Normal,Normal,0.8794,1,Normal,0.8794,USB Data Theft,0.0235,Device Spoofing,0.0104
+SES-008506,Normal,Normal,0.8826,1,Normal,0.8826,Privilege Escalation,0.0396,USB Data Theft,0.026
+SES-012664,Normal,Device Spoofing,0.8481,0,Device Spoofing,0.8481,Normal,0.1032,Insider Threat,0.023
+SES-012207,Normal,Normal,0.9457,1,Normal,0.9457,USB Data Theft,0.0179,Device Spoofing,0.0061
+SES-002485,Beaconing C2,Beaconing C2,0.9752,1,Beaconing C2,0.9752,USB Data Theft,0.0112,Normal,0.0033
+SES-003511,Normal,Normal,0.9008,1,Normal,0.9008,Lateral Movement,0.0423,USB Data Theft,0.017
+SES-011807,Normal,Normal,0.8533,1,Normal,0.8533,USB Data Theft,0.0169,Privilege Escalation,0.0138
+SES-006091,Normal,Normal,0.4764,1,Normal,0.4764,USB Data Theft,0.3197,Device Spoofing,0.0409
+SES-004024,Normal,Normal,0.4976,1,Normal,0.4976,USB Data Theft,0.2812,Device Spoofing,0.04
+SES-008520,Normal,Normal,0.478,1,Normal,0.478,Lateral Movement,0.1449,Malware Execution,0.1367
+SES-003062,Normal,Normal,0.9223,1,Normal,0.9223,USB Data Theft,0.0341,Device Spoofing,0.01
+SES-009717,Normal,Normal,0.8687,1,Normal,0.8687,Privilege Escalation,0.0592,Malware Execution,0.0256
+SES-004516,Normal,Device Spoofing,0.7204,0,Device Spoofing,0.7204,Normal,0.1697,USB Data Theft,0.0321
+SES-010321,Normal,Normal,0.9441,1,Normal,0.9441,USB Data Theft,0.0117,Device Spoofing,0.0104
+SES-007231,Normal,Normal,0.7716,1,Normal,0.7716,Malware Execution,0.079,Privilege Escalation,0.0552
+SES-008206,Normal,Normal,0.6404,1,Normal,0.6404,Malware Execution,0.1414,Privilege Escalation,0.0951
+SES-006543,Normal,Normal,0.8555,1,Normal,0.8555,Lateral Movement,0.0501,Malware Execution,0.0471
+SES-004161,Normal,Privilege Escalation,0.4337,0,Privilege Escalation,0.4337,Malware Execution,0.2438,Normal,0.1632
+SES-008734,Normal,Privilege Escalation,0.5566,0,Privilege Escalation,0.5566,Malware Execution,0.1841,Normal,0.1151
+SES-000143,Normal,Normal,0.8015,1,Normal,0.8015,Insider Threat,0.0904,Device Spoofing,0.0394
+SES-001471,Normal,Normal,0.9338,1,Normal,0.9338,USB Data Theft,0.0249,Device Spoofing,0.0088
+SES-002560,Normal,USB Data Theft,0.4982,0,USB Data Theft,0.4982,Normal,0.2482,Insider Threat,0.0454
+SES-006377,Device Spoofing,Device Spoofing,0.4141,1,Device Spoofing,0.4141,Privilege Escalation,0.2638,Malware Execution,0.221
+SES-005005,Normal,Normal,0.9393,1,Normal,0.9393,USB Data Theft,0.0129,Device Spoofing,0.0123
+SES-011850,Normal,Normal,0.4971,1,Normal,0.4971,Lateral Movement,0.4068,Insider Drift,0.0444
+SES-011867,Normal,Normal,0.4948,1,Normal,0.4948,Device Spoofing,0.2459,Privilege Escalation,0.137
+SES-009537,Normal,USB Data Theft,0.5498,0,USB Data Theft,0.5498,Normal,0.1835,Insider Threat,0.0514
+SES-012399,Normal,Normal,0.9277,1,Normal,0.9277,USB Data Theft,0.0186,Lateral Movement,0.0105
+SES-012006,Device Spoofing,Device Spoofing,0.9118,1,Device Spoofing,0.9118,Normal,0.0737,USB Data Theft,0.0026
+SES-005848,Normal,Normal,0.6297,1,Normal,0.6297,Insider Drift,0.2309,Malware Execution,0.0597
+SES-000986,Normal,Normal,0.9261,1,Normal,0.9261,USB Data Theft,0.0347,Device Spoofing,0.005
+SES-000259,Normal,Normal,0.9217,1,Normal,0.9217,Device Spoofing,0.0385,USB Data Theft,0.0068
+SES-011356,Normal,USB Data Theft,0.5428,0,USB Data Theft,0.5428,Normal,0.2679,Insider Threat,0.0323
+SES-001427,Normal,USB Data Theft,0.2681,0,USB Data Theft,0.2681,Insider Drift,0.1763,Normal,0.1761
+SES-006403,Normal,Device Spoofing,0.5843,0,Device Spoofing,0.5843,Normal,0.3426,USB Data Theft,0.024
+SES-007409,Normal,USB Data Theft,0.4689,0,USB Data Theft,0.4689,Normal,0.2451,Insider Threat,0.0456
+SES-011462,Normal,Normal,0.8801,1,Normal,0.8801,Privilege Escalation,0.0631,USB Data Theft,0.0104
+SES-007642,Normal,Malware Execution,0.38,0,Malware Execution,0.38,Lateral Movement,0.2013,Privilege Escalation,0.1589
+SES-006286,Normal,Normal,0.4948,1,Normal,0.4948,Device Spoofing,0.4179,USB Data Theft,0.0125
+SES-001905,Lateral Movement,Lateral Movement,0.6742,1,Lateral Movement,0.6742,Insider Drift,0.1357,Normal,0.0761
+SES-012678,Normal,Malware Execution,0.3255,0,Malware Execution,0.3255,Privilege Escalation,0.2851,Lateral Movement,0.1004
+SES-000645,Normal,Privilege Escalation,0.5894,0,Privilege Escalation,0.5894,Normal,0.1561,Malware Execution,0.1168
+SES-001855,Normal,USB Data Theft,0.6903,0,USB Data Theft,0.6903,Normal,0.1468,Insider Threat,0.0293
+SES-010231,Normal,USB Data Theft,0.6077,0,USB Data Theft,0.6077,Normal,0.2299,Device Spoofing,0.0473
+SES-005702,Normal,Normal,0.8887,1,Normal,0.8887,Insider Threat,0.0351,Device Spoofing,0.0176
+SES-003902,Normal,Normal,0.9122,1,Normal,0.9122,USB Data Theft,0.0405,Device Spoofing,0.0147
+SES-006802,Normal,Normal,0.9114,1,Normal,0.9114,USB Data Theft,0.0424,Device Spoofing,0.0101
+SES-004647,Normal,Privilege Escalation,0.6264,0,Privilege Escalation,0.6264,Normal,0.1471,Malware Execution,0.0658
+SES-002996,Insider Threat,Insider Threat,0.8399,1,Insider Threat,0.8399,USB Data Theft,0.0759,Normal,0.0448
+SES-012629,Normal,Normal,0.9487,1,Normal,0.9487,Device Spoofing,0.0078,Insider Drift,0.0045
+SES-010110,Normal,Normal,0.4616,1,Normal,0.4616,Lateral Movement,0.3424,Device Spoofing,0.0449
+SES-006477,Normal,Normal,0.9225,1,Normal,0.9225,Device Spoofing,0.0144,USB Data Theft,0.0136
+SES-007367,Normal,Normal,0.7833,1,Normal,0.7833,Privilege Escalation,0.0812,Malware Execution,0.048
+SES-000315,Normal,Normal,0.5408,1,Normal,0.5408,USB Data Theft,0.2967,Device Spoofing,0.0289
+SES-001062,Normal,Normal,0.9043,1,Normal,0.9043,Insider Threat,0.0273,USB Data Theft,0.0271
+SES-008257,Normal,Insider Threat,0.4829,0,Insider Threat,0.4829,USB Data Theft,0.2425,Normal,0.1596
+SES-007374,Normal,USB Data Theft,0.4478,0,USB Data Theft,0.4478,Normal,0.2629,Privilege Escalation,0.0457
+SES-005595,Normal,Normal,0.3616,1,Normal,0.3616,USB Data Theft,0.284,Low-and-Slow Exfiltration,0.1118
+SES-000652,Normal,Normal,0.9337,1,Normal,0.9337,USB Data Theft,0.0197,Device Spoofing,0.0104
+SES-009250,Data Exfiltration,Data Exfiltration,0.9617,1,Data Exfiltration,0.9617,Insider Threat,0.0132,Privilege Escalation,0.0089
+SES-007255,Normal,Normal,0.4799,1,Normal,0.4799,Device Spoofing,0.2356,Privilege Escalation,0.1693
+SES-011280,Normal,Normal,0.9305,1,Normal,0.9305,USB Data Theft,0.024,Device Spoofing,0.0095
+SES-011237,Normal,Normal,0.4861,1,Normal,0.4861,Device Spoofing,0.4156,USB Data Theft,0.0328
+SES-012514,Brute Force,Brute Force,0.3087,1,Brute Force,0.3087,Privilege Escalation,0.2653,Credential Stuffing,0.2336
+SES-005352,Impossible Travel,Impossible Travel,0.977,1,Impossible Travel,0.977,Normal,0.0141,USB Data Theft,0.0019
+SES-001413,Normal,USB Data Theft,0.5107,0,USB Data Theft,0.5107,Normal,0.2472,Insider Threat,0.0449
+SES-008904,Normal,Device Spoofing,0.555,0,Device Spoofing,0.555,Normal,0.2279,USB Data Theft,0.1368
+SES-010435,Normal,Normal,0.8411,1,Normal,0.8411,Insider Threat,0.1096,USB Data Theft,0.0116
+SES-010241,Brute Force,Brute Force,0.3741,1,Brute Force,0.3741,Privilege Escalation,0.2643,Credential Stuffing,0.1524
+SES-007022,Normal,Normal,0.7336,1,Normal,0.7336,USB Data Theft,0.1217,Device Spoofing,0.0191
+SES-009458,Normal,Normal,0.4439,1,Normal,0.4439,Insider Drift,0.3963,Lateral Movement,0.1324
+SES-005186,Normal,Normal,0.8659,1,Normal,0.8659,Malware Execution,0.0453,Privilege Escalation,0.0317
+SES-003269,Normal,Privilege Escalation,0.3134,0,Privilege Escalation,0.3134,Lateral Movement,0.2201,Malware Execution,0.1926
+SES-010750,Lateral Movement,Lateral Movement,0.7417,1,Lateral Movement,0.7417,Normal,0.083,Insider Drift,0.0521
+SES-007853,Credential Stuffing,Credential Stuffing,0.5021,1,Credential Stuffing,0.5021,Brute Force,0.2717,Privilege Escalation,0.1346
+SES-011448,Normal,Normal,0.874,1,Normal,0.874,Privilege Escalation,0.0454,USB Data Theft,0.0193
+SES-008697,Normal,Insider Threat,0.4479,0,Insider Threat,0.4479,Privilege Escalation,0.199,Malware Execution,0.1744
+SES-009607,Normal,Normal,0.8117,1,Normal,0.8117,Privilege Escalation,0.0631,Malware Execution,0.0356
+SES-006928,Normal,Normal,0.523,1,Normal,0.523,Device Spoofing,0.3702,Impossible Travel,0.0184
+SES-012124,Normal,Normal,0.6757,1,Normal,0.6757,Insider Threat,0.1067,Privilege Escalation,0.0648
+SES-001400,Normal,Normal,0.9323,1,Normal,0.9323,USB Data Theft,0.0206,Device Spoofing,0.0122
+SES-004481,Normal,Normal,0.9432,1,Normal,0.9432,Device Spoofing,0.0085,USB Data Theft,0.006
+SES-011209,Normal,Normal,0.6814,1,Normal,0.6814,Lateral Movement,0.0902,Malware Execution,0.0798
+SES-002628,Normal,Device Spoofing,0.6092,0,Device Spoofing,0.6092,Normal,0.2192,USB Data Theft,0.0934
+SES-012742,Normal,Normal,0.5448,1,Normal,0.5448,Device Spoofing,0.263,Privilege Escalation,0.0636
+SES-005487,Normal,Normal,0.9393,1,Normal,0.9393,USB Data Theft,0.0114,Device Spoofing,0.0078
+SES-008427,Normal,Normal,0.9355,1,Normal,0.9355,USB Data Theft,0.0213,Device Spoofing,0.0077
+SES-010683,Normal,Normal,0.9389,1,Normal,0.9389,Device Spoofing,0.0088,Brute Force,0.0053
+SES-002704,Normal,Normal,0.9175,1,Normal,0.9175,USB Data Theft,0.0302,Device Spoofing,0.0144
+SES-005550,Normal,USB Data Theft,0.5492,0,USB Data Theft,0.5492,Normal,0.2756,Insider Threat,0.0243
+SES-004472,Normal,Normal,0.8571,1,Normal,0.8571,USB Data Theft,0.0473,Privilege Escalation,0.0319
+SES-004870,Data Exfiltration,Data Exfiltration,0.8573,1,Data Exfiltration,0.8573,Low-and-Slow Exfiltration,0.0909,Privilege Escalation,0.0236
+SES-006512,Normal,Normal,0.9291,1,Normal,0.9291,USB Data Theft,0.0135,Impossible Travel,0.0094
+SES-007318,Malware Execution,Privilege Escalation,0.384,0,Privilege Escalation,0.384,Malware Execution,0.1666,USB Data Theft,0.1475
+SES-000333,Normal,USB Data Theft,0.492,0,USB Data Theft,0.492,Normal,0.3133,Device Spoofing,0.04
+SES-010370,Normal,Normal,0.4828,1,Normal,0.4828,Device Spoofing,0.2815,Insider Drift,0.0678
+SES-001577,Normal,Normal,0.6776,1,Normal,0.6776,USB Data Theft,0.0563,Insider Threat,0.0363
+SES-010069,Normal,Normal,0.7169,1,Normal,0.7169,Off-hours Access,0.1358,Device Spoofing,0.0386
+SES-009695,Normal,Normal,0.8571,1,Normal,0.8571,Privilege Escalation,0.0809,Malware Execution,0.0167
+SES-002640,Normal,Normal,0.9094,1,Normal,0.9094,Insider Drift,0.0308,Lateral Movement,0.0154
+SES-012655,Normal,Normal,0.9398,1,Normal,0.9398,Impossible Travel,0.0102,Device Spoofing,0.0074
+SES-012961,Normal,Insider Threat,0.5917,0,Insider Threat,0.5917,Insider Drift,0.2497,Normal,0.0464
+SES-009190,Normal,USB Data Theft,0.3841,0,USB Data Theft,0.3841,Normal,0.3287,Insider Threat,0.0494
+SES-008083,Normal,Normal,0.7468,1,Normal,0.7468,Low-and-Slow Exfiltration,0.1068,Lateral Movement,0.0877
+SES-008971,Normal,Normal,0.9471,1,Normal,0.9471,USB Data Theft,0.0135,Device Spoofing,0.0068
+SES-002083,Normal,Normal,0.6174,1,Normal,0.6174,Malware Execution,0.1254,Lateral Movement,0.1042
+SES-000669,Normal,Normal,0.8928,1,Normal,0.8928,USB Data Theft,0.0343,Lateral Movement,0.0235
+SES-006624,Normal,Normal,0.5706,1,Normal,0.5706,USB Data Theft,0.2335,Insider Threat,0.032
+SES-011708,Normal,Normal,0.9293,1,Normal,0.9293,USB Data Theft,0.0211,Impossible Travel,0.0095
+SES-012519,Normal,Normal,0.9382,1,Normal,0.9382,Device Spoofing,0.0157,Brute Force,0.0044
+SES-012956,Normal,Normal,0.8755,1,Normal,0.8755,USB Data Theft,0.0248,Device Spoofing,0.0152
+SES-011530,Normal,Normal,0.9398,1,Normal,0.9398,Device Spoofing,0.011,Impossible Travel,0.0093
+SES-011438,Normal,Normal,0.9446,1,Normal,0.9446,Device Spoofing,0.0091,USB Data Theft,0.0047
+SES-005917,Normal,Device Spoofing,0.4909,0,Device Spoofing,0.4909,Normal,0.3567,Privilege Escalation,0.0499
+SES-009346,Normal,Normal,0.9287,1,Normal,0.9287,USB Data Theft,0.0323,Device Spoofing,0.0068
+SES-012771,Normal,Normal,0.9186,1,Normal,0.9186,USB Data Theft,0.0335,Device Spoofing,0.0106
+SES-009937,Normal,USB Data Theft,0.3991,0,USB Data Theft,0.3991,Insider Threat,0.244,Normal,0.2061
+SES-007962,Normal,Normal,0.8561,1,Normal,0.8561,Device Spoofing,0.0259,USB Data Theft,0.025
+SES-009539,Normal,Normal,0.9302,1,Normal,0.9302,USB Data Theft,0.0265,Device Spoofing,0.0092
+SES-011848,Normal,Insider Threat,0.4106,0,Insider Threat,0.4106,Malware Execution,0.3254,Privilege Escalation,0.0904
+SES-012502,Normal,Normal,0.8717,1,Normal,0.8717,USB Data Theft,0.0256,Device Spoofing,0.0205
+SES-001432,Normal,Normal,0.8508,1,Normal,0.8508,Insider Threat,0.0939,USB Data Theft,0.0147
+SES-009038,Normal,Normal,0.9471,1,Normal,0.9471,Device Spoofing,0.0079,Insider Drift,0.0052
+SES-004622,Normal,Insider Threat,0.889,0,Insider Threat,0.889,Normal,0.0359,USB Data Theft,0.0165
+SES-006516,Normal,Normal,0.7669,1,Normal,0.7669,USB Data Theft,0.1036,Device Spoofing,0.0127
+SES-001009,Normal,Normal,0.9292,1,Normal,0.9292,Device Spoofing,0.016,USB Data Theft,0.0122
+SES-009314,Normal,USB Data Theft,0.3708,0,USB Data Theft,0.3708,Insider Threat,0.3056,Normal,0.1703
+SES-007370,Normal,Normal,0.4724,1,Normal,0.4724,USB Data Theft,0.3405,Insider Threat,0.032
+SES-004117,Normal,Normal,0.7965,1,Normal,0.7965,Off-hours Access,0.0436,Device Spoofing,0.0419
+SES-006819,Normal,Normal,0.7829,1,Normal,0.7829,Insider Threat,0.1084,USB Data Theft,0.0204
+SES-007463,Normal,Malware Execution,0.5365,0,Malware Execution,0.5365,Privilege Escalation,0.1525,Lateral Movement,0.0975
+SES-011443,Normal,Normal,0.3082,1,Normal,0.3082,USB Data Theft,0.2948,Insider Threat,0.054
+SES-009360,Normal,Insider Threat,0.7577,0,Insider Threat,0.7577,Normal,0.0788,USB Data Theft,0.06
+SES-000749,Normal,Normal,0.8358,1,Normal,0.8358,USB Data Theft,0.0568,Device Spoofing,0.0244
+SES-009072,Normal,Normal,0.9444,1,Normal,0.9444,USB Data Theft,0.0102,Device Spoofing,0.0079
+SES-004802,Normal,Normal,0.764,1,Normal,0.764,Insider Threat,0.0553,Malware Execution,0.0513
+SES-007213,Normal,Normal,0.8492,1,Normal,0.8492,USB Data Theft,0.0384,Device Spoofing,0.0227
+SES-009005,Device Spoofing,Normal,0.5286,0,Normal,0.5286,Device Spoofing,0.2301,USB Data Theft,0.0942
+SES-002756,Normal,Normal,0.9212,1,Normal,0.9212,Insider Threat,0.0128,Device Spoofing,0.0124
+SES-002223,Normal,Insider Threat,0.5866,0,Insider Threat,0.5866,USB Data Theft,0.1322,Normal,0.1301
+SES-010281,Normal,Device Spoofing,0.7634,0,Device Spoofing,0.7634,USB Data Theft,0.134,Normal,0.0561
+SES-009263,Insider Drift,Lateral Movement,0.7461,0,Lateral Movement,0.7461,Malware Execution,0.0685,Privilege Escalation,0.0668
+SES-000848,Normal,Normal,0.8475,1,Normal,0.8475,USB Data Theft,0.0475,Device Spoofing,0.0216
+SES-003725,Normal,Normal,0.7831,1,Normal,0.7831,Privilege Escalation,0.0905,Malware Execution,0.0761
+SES-009874,Normal,Normal,0.3675,1,Normal,0.3675,USB Data Theft,0.2259,Insider Threat,0.0793
+SES-003362,Normal,Normal,0.9471,1,Normal,0.9471,Device Spoofing,0.0078,Insider Drift,0.0045
+SES-012131,Normal,Privilege Escalation,0.5519,0,Privilege Escalation,0.5519,Normal,0.2158,Malware Execution,0.06
+SES-012336,Normal,USB Data Theft,0.562,0,USB Data Theft,0.562,Normal,0.2519,Device Spoofing,0.0337
+SES-006223,Malware Execution,Malware Execution,0.8003,1,Malware Execution,0.8003,Insider Threat,0.0483,Privilege Escalation,0.0468
+SES-007807,Normal,USB Data Theft,0.3342,0,USB Data Theft,0.3342,Normal,0.2947,Insider Threat,0.2098
+SES-008487,Privilege Escalation,Brute Force,0.4667,0,Brute Force,0.4667,Malware Execution,0.2514,Privilege Escalation,0.1389
+SES-009682,Normal,Normal,0.7871,1,Normal,0.7871,Insider Drift,0.0699,USB Data Theft,0.0383
+SES-004379,Device Spoofing,Device Spoofing,0.8691,1,Device Spoofing,0.8691,Normal,0.0662,USB Data Theft,0.0458
+SES-000013,Normal,Normal,0.7496,1,Normal,0.7496,Off-hours Access,0.0966,Device Spoofing,0.0455
+SES-011899,Normal,Normal,0.7672,1,Normal,0.7672,Off-hours Access,0.0775,Device Spoofing,0.0426
+SES-012076,Normal,Normal,0.8944,1,Normal,0.8944,USB Data Theft,0.026,Impossible Travel,0.0143
+SES-007059,Normal,Privilege Escalation,0.2893,0,Privilege Escalation,0.2893,Insider Threat,0.2558,Malware Execution,0.2106
+SES-009890,Normal,Normal,0.8668,1,Normal,0.8668,Privilege Escalation,0.05,Malware Execution,0.0413
+SES-006785,Normal,USB Data Theft,0.5973,0,USB Data Theft,0.5973,Normal,0.2354,Insider Threat,0.0295
+SES-009228,Normal,Normal,0.9283,1,Normal,0.9283,USB Data Theft,0.0174,Device Spoofing,0.0134
+SES-012966,Normal,Privilege Escalation,0.4958,0,Privilege Escalation,0.4958,Malware Execution,0.2773,Normal,0.1069
+SES-003576,Normal,Normal,0.9578,1,Normal,0.9578,USB Data Theft,0.0057,Device Spoofing,0.0042
+SES-005009,Normal,USB Data Theft,0.3729,0,USB Data Theft,0.3729,Normal,0.2709,Insider Threat,0.0738
+SES-004198,Normal,Normal,0.3844,1,Normal,0.3844,Insider Threat,0.3456,USB Data Theft,0.1434
+SES-008707,Normal,Normal,0.7,1,Normal,0.7,Device Spoofing,0.1809,USB Data Theft,0.0144
+SES-004135,Normal,Insider Threat,0.353,0,Insider Threat,0.353,Normal,0.298,USB Data Theft,0.124
+SES-006571,Normal,Privilege Escalation,0.5356,0,Privilege Escalation,0.5356,Malware Execution,0.3231,Normal,0.0628
+SES-003419,Normal,Normal,0.9257,1,Normal,0.9257,USB Data Theft,0.0333,Impossible Travel,0.0075
+SES-008921,Normal,Normal,0.7427,1,Normal,0.7427,Off-hours Access,0.1093,Device Spoofing,0.0396
+SES-000009,Off-hours Access,Normal,0.7098,0,Normal,0.7098,Off-hours Access,0.1463,Device Spoofing,0.0394
+SES-006203,Brute Force,Brute Force,0.7978,1,Brute Force,0.7978,Credential Stuffing,0.0673,Device Spoofing,0.0384
+SES-002591,Normal,Normal,0.6173,1,Normal,0.6173,Malware Execution,0.1774,Lateral Movement,0.065
+SES-012670,Normal,Normal,0.9002,1,Normal,0.9002,Privilege Escalation,0.0389,Malware Execution,0.0254
+SES-002088,Normal,Privilege Escalation,0.5653,0,Privilege Escalation,0.5653,Normal,0.1499,Malware Execution,0.0856
+SES-003943,Normal,Normal,0.9448,1,Normal,0.9448,Device Spoofing,0.0083,Insider Drift,0.0051
+SES-008503,Normal,USB Data Theft,0.4674,0,USB Data Theft,0.4674,Normal,0.3387,Insider Threat,0.0327
+SES-006490,Normal,Normal,0.6849,1,Normal,0.6849,Lateral Movement,0.1019,Off-hours Access,0.0758
+SES-004257,Normal,Normal,0.9454,1,Normal,0.9454,Device Spoofing,0.0106,USB Data Theft,0.0083
+SES-000765,Normal,Normal,0.9068,1,Normal,0.9068,Device Spoofing,0.0412,USB Data Theft,0.0167
+SES-008862,Normal,USB Data Theft,0.4883,0,USB Data Theft,0.4883,Normal,0.3033,Insider Threat,0.0374
+SES-004544,Normal,Normal,0.943,1,Normal,0.943,Device Spoofing,0.0158,USB Data Theft,0.0077
+SES-006413,Normal,Normal,0.8808,1,Normal,0.8808,USB Data Theft,0.0155,Device Spoofing,0.0118
+SES-011322,Normal,Normal,0.7596,1,Normal,0.7596,Privilege Escalation,0.0761,Malware Execution,0.0555
+SES-008282,Normal,Normal,0.5698,1,Normal,0.5698,USB Data Theft,0.0881,Privilege Escalation,0.085
+SES-011911,Normal,Normal,0.7684,1,Normal,0.7684,Off-hours Access,0.0718,Device Spoofing,0.0479
+SES-001318,Normal,Normal,0.8347,1,Normal,0.8347,Device Spoofing,0.0362,USB Data Theft,0.0359
+SES-011572,Normal,Normal,0.9283,1,Normal,0.9283,Device Spoofing,0.0113,Brute Force,0.0068
+SES-006302,Normal,Normal,0.9322,1,Normal,0.9322,USB Data Theft,0.0189,Device Spoofing,0.0074
+SES-000069,Normal,Privilege Escalation,0.4783,0,Privilege Escalation,0.4783,Normal,0.1815,Device Spoofing,0.1058
+SES-001043,Normal,Normal,0.6988,1,Normal,0.6988,Privilege Escalation,0.1397,USB Data Theft,0.0496
+SES-009125,Normal,Normal,0.4131,1,Normal,0.4131,USB Data Theft,0.3031,Device Spoofing,0.0564
+SES-000981,Normal,USB Data Theft,0.467,0,USB Data Theft,0.467,Normal,0.3161,Insider Threat,0.0356
+SES-004531,Normal,Normal,0.549,1,Normal,0.549,USB Data Theft,0.2918,Insider Threat,0.0253
+SES-001990,Normal,Privilege Escalation,0.4154,0,Privilege Escalation,0.4154,Malware Execution,0.296,Insider Threat,0.1549
+SES-007725,Normal,Normal,0.9487,1,Normal,0.9487,Device Spoofing,0.0063,Privilege Escalation,0.0043
+SES-008508,Normal,Normal,0.63,1,Normal,0.63,Malware Execution,0.1191,Privilege Escalation,0.0743
+SES-010623,Normal,Normal,0.5552,1,Normal,0.5552,Lateral Movement,0.1699,Off-hours Access,0.0876
+SES-008830,Normal,Lateral Movement,0.5199,0,Lateral Movement,0.5199,Malware Execution,0.2079,Privilege Escalation,0.1964
+SES-006433,Normal,USB Data Theft,0.4028,0,USB Data Theft,0.4028,Normal,0.3397,Device Spoofing,0.0428
+SES-000400,Normal,Normal,0.8579,1,Normal,0.8579,USB Data Theft,0.0282,Device Spoofing,0.0212
+SES-008585,Normal,Normal,0.8924,1,Normal,0.8924,Malware Execution,0.0363,Privilege Escalation,0.0291
+SES-000928,Normal,Normal,0.8777,1,Normal,0.8777,Insider Threat,0.0505,USB Data Theft,0.0287
+SES-006569,Normal,Normal,0.845,1,Normal,0.845,USB Data Theft,0.0474,Device Spoofing,0.01
+SES-003366,Normal,Normal,0.9423,1,Normal,0.9423,USB Data Theft,0.0135,Device Spoofing,0.0076
+SES-007613,Normal,Normal,0.4557,1,Normal,0.4557,Off-hours Access,0.4269,Device Spoofing,0.0149
+SES-007854,Normal,Normal,0.6932,1,Normal,0.6932,USB Data Theft,0.1177,Insider Threat,0.0313
+SES-007656,Normal,USB Data Theft,0.4472,0,USB Data Theft,0.4472,Normal,0.3631,Device Spoofing,0.0341
+SES-012480,Normal,Normal,0.9257,1,Normal,0.9257,USB Data Theft,0.0122,Privilege Escalation,0.0105
+SES-003125,Normal,Normal,0.8978,1,Normal,0.8978,Privilege Escalation,0.0471,Malware Execution,0.0185
+SES-009457,Normal,Normal,0.7514,1,Normal,0.7514,Privilege Escalation,0.0882,Malware Execution,0.0531
+SES-011635,Normal,USB Data Theft,0.5826,0,USB Data Theft,0.5826,Normal,0.296,Device Spoofing,0.0211
+SES-005935,Normal,Privilege Escalation,0.262,0,Privilege Escalation,0.262,USB Data Theft,0.2306,Malware Execution,0.1693
+SES-011227,Normal,Normal,0.5821,1,Normal,0.5821,Privilege Escalation,0.1512,Malware Execution,0.0961
+SES-000338,Normal,Normal,0.9447,1,Normal,0.9447,USB Data Theft,0.0136,Device Spoofing,0.0109
+SES-006482,Normal,Normal,0.9473,1,Normal,0.9473,Device Spoofing,0.0143,Brute Force,0.0037
+SES-012916,Normal,Normal,0.9402,1,Normal,0.9402,Device Spoofing,0.0096,USB Data Theft,0.0065
+SES-007672,Normal,Malware Execution,0.4745,0,Malware Execution,0.4745,Privilege Escalation,0.3611,Normal,0.0509
+SES-011148,Normal,USB Data Theft,0.572,0,USB Data Theft,0.572,Normal,0.2257,Insider Threat,0.0363
+SES-008037,Normal,Normal,0.8865,1,Normal,0.8865,Privilege Escalation,0.0543,Malware Execution,0.0154
+SES-009558,Normal,Normal,0.9403,1,Normal,0.9403,USB Data Theft,0.0145,Device Spoofing,0.009
+SES-008597,Insider Drift,Insider Threat,0.3912,0,Insider Threat,0.3912,Lateral Movement,0.2811,Normal,0.1237
+SES-011203,Normal,Normal,0.6745,1,Normal,0.6745,Off-hours Access,0.1067,Lateral Movement,0.0644
+SES-005659,Normal,Normal,0.908,1,Normal,0.908,Privilege Escalation,0.0354,Malware Execution,0.0128
+SES-008360,Normal,Device Spoofing,0.8886,0,Device Spoofing,0.8886,Normal,0.0875,USB Data Theft,0.0089
+SES-001667,Normal,Normal,0.9319,1,Normal,0.9319,Device Spoofing,0.0134,USB Data Theft,0.0125
+SES-008313,Normal,USB Data Theft,0.4398,0,USB Data Theft,0.4398,Device Spoofing,0.2308,Normal,0.2102
+SES-003777,Normal,USB Data Theft,0.4192,0,USB Data Theft,0.4192,Normal,0.3197,Insider Threat,0.0548
+SES-003756,Normal,Normal,0.91,1,Normal,0.91,Insider Threat,0.0426,USB Data Theft,0.0147
+SES-007315,Normal,Normal,0.8314,1,Normal,0.8314,USB Data Theft,0.0493,Device Spoofing,0.0231
+SES-012991,Normal,Malware Execution,0.5615,0,Malware Execution,0.5615,Privilege Escalation,0.265,Normal,0.0806
+SES-003794,Normal,Normal,0.9102,1,Normal,0.9102,USB Data Theft,0.0323,Device Spoofing,0.0109
+SES-006783,Normal,Normal,0.6762,1,Normal,0.6762,Insider Threat,0.1227,Malware Execution,0.08
+SES-006503,Normal,Normal,0.6491,1,Normal,0.6491,Off-hours Access,0.1091,Lateral Movement,0.0665
+SES-012377,Normal,Normal,0.405,1,Normal,0.405,USB Data Theft,0.3327,Insider Threat,0.0426
+SES-001347,Normal,Normal,0.9369,1,Normal,0.9369,USB Data Theft,0.0179,Impossible Travel,0.0088
+SES-005806,Normal,Normal,0.574,1,Normal,0.574,USB Data Theft,0.0722,Insider Threat,0.0634
+SES-005196,Normal,Normal,0.9042,1,Normal,0.9042,USB Data Theft,0.0358,Device Spoofing,0.0169
+SES-006337,Normal,Normal,0.8379,1,Normal,0.8379,USB Data Theft,0.0582,Device Spoofing,0.0212
+SES-007235,Normal,Insider Threat,0.4129,0,Insider Threat,0.4129,USB Data Theft,0.3697,Normal,0.1213
+SES-008731,Normal,Normal,0.8102,1,Normal,0.8102,Privilege Escalation,0.0625,Malware Execution,0.0512
+SES-009872,Normal,Malware Execution,0.3054,0,Malware Execution,0.3054,Privilege Escalation,0.2858,USB Data Theft,0.1509
+SES-002709,Normal,Device Spoofing,0.5969,0,Device Spoofing,0.5969,Normal,0.3045,USB Data Theft,0.0247
+SES-001790,Normal,Normal,0.875,1,Normal,0.875,USB Data Theft,0.0278,Privilege Escalation,0.013
+SES-002306,Normal,Normal,0.9083,1,Normal,0.9083,Privilege Escalation,0.0348,Malware Execution,0.0148
+SES-012253,Normal,USB Data Theft,0.5821,0,USB Data Theft,0.5821,Normal,0.2198,Insider Threat,0.0361
+SES-009484,Normal,Insider Threat,0.6041,0,Insider Threat,0.6041,Normal,0.1447,USB Data Theft,0.1015
+SES-003009,Normal,Normal,0.638,1,Normal,0.638,Lateral Movement,0.1503,Off-hours Access,0.0842
+SES-004354,Brute Force,Brute Force,0.6645,1,Brute Force,0.6645,Insider Threat,0.1381,Credential Stuffing,0.0815
+SES-008032,Impossible Travel,Impossible Travel,0.9792,1,Impossible Travel,0.9792,Normal,0.0095,Privilege Escalation,0.0062
+SES-011935,Credential Stuffing,Credential Stuffing,0.6277,1,Credential Stuffing,0.6277,Brute Force,0.3203,Normal,0.0082
+SES-008322,Normal,Normal,0.9117,1,Normal,0.9117,Insider Threat,0.0302,Device Spoofing,0.0084
+SES-000228,Normal,Normal,0.3532,1,Normal,0.3532,USB Data Theft,0.349,Device Spoofing,0.143
+SES-012395,Normal,Normal,0.9475,1,Normal,0.9475,Device Spoofing,0.0094,USB Data Theft,0.0079
+SES-011011,Normal,USB Data Theft,0.5183,0,USB Data Theft,0.5183,Normal,0.331,Insider Threat,0.0268
+SES-007380,Normal,Privilege Escalation,0.4952,0,Privilege Escalation,0.4952,Normal,0.2023,Malware Execution,0.0842
+SES-007739,Normal,Normal,0.8191,1,Normal,0.8191,USB Data Theft,0.0305,Device Spoofing,0.0297
+SES-001012,Normal,Device Spoofing,0.4403,0,Device Spoofing,0.4403,Normal,0.3438,USB Data Theft,0.1038
+SES-006657,Off-hours Access,Off-hours Access,0.9778,1,Off-hours Access,0.9778,Device Spoofing,0.0118,Normal,0.0057
+SES-001164,Normal,Normal,0.8531,1,Normal,0.8531,USB Data Theft,0.0364,Impossible Travel,0.0185
+SES-001405,Normal,Normal,0.84,1,Normal,0.84,Privilege Escalation,0.0544,Malware Execution,0.036
+SES-010258,Normal,Normal,0.6576,1,Normal,0.6576,Malware Execution,0.0791,Insider Drift,0.0604
+SES-000299,Normal,Normal,0.6643,1,Normal,0.6643,USB Data Theft,0.1469,Insider Threat,0.0305
+SES-002818,Normal,Normal,0.3787,1,Normal,0.3787,USB Data Theft,0.3707,Insider Threat,0.0438
+SES-007542,Insider Threat,Insider Threat,0.3827,1,Insider Threat,0.3827,Privilege Escalation,0.2848,Malware Execution,0.1001
+SES-008788,Credential Stuffing,Brute Force,0.935,0,Brute Force,0.935,Credential Stuffing,0.0223,USB Data Theft,0.0119
+SES-003791,Normal,Normal,0.9118,1,Normal,0.9118,USB Data Theft,0.0248,Insider Threat,0.0216
+SES-006676,Normal,Privilege Escalation,0.3858,0,Privilege Escalation,0.3858,Normal,0.2987,Malware Execution,0.1328
+SES-005526,Normal,USB Data Theft,0.5243,0,USB Data Theft,0.5243,Normal,0.2358,Insider Threat,0.0441
+SES-010515,Normal,Normal,0.9265,1,Normal,0.9265,USB Data Theft,0.0221,Device Spoofing,0.0103
+SES-003320,Normal,Normal,0.9456,1,Normal,0.9456,Device Spoofing,0.0123,USB Data Theft,0.0045
+SES-006251,Normal,Normal,0.9384,1,Normal,0.9384,USB Data Theft,0.0157,Device Spoofing,0.0106
+SES-004374,Normal,Normal,0.7699,1,Normal,0.7699,Privilege Escalation,0.0838,Malware Execution,0.0432
+SES-002064,Normal,USB Data Theft,0.4966,0,USB Data Theft,0.4966,Normal,0.3055,Device Spoofing,0.0401
+SES-000172,Normal,Normal,0.8253,1,Normal,0.8253,Device Spoofing,0.0566,USB Data Theft,0.0289
+SES-000730,Normal,Normal,0.9374,1,Normal,0.9374,USB Data Theft,0.0159,Device Spoofing,0.0077
+SES-003340,Impossible Travel,Impossible Travel,0.9707,1,Impossible Travel,0.9707,Device Spoofing,0.0164,Normal,0.0046
+SES-009155,Normal,Normal,0.8252,1,Normal,0.8252,USB Data Theft,0.0492,Impossible Travel,0.0221
+SES-004036,Normal,Normal,0.9412,1,Normal,0.9412,Device Spoofing,0.0128,USB Data Theft,0.0111
+SES-009553,Normal,Normal,0.9059,1,Normal,0.9059,Insider Threat,0.0239,USB Data Theft,0.0193
+SES-010975,Normal,Normal,0.9448,1,Normal,0.9448,USB Data Theft,0.0128,Device Spoofing,0.0102
+SES-000566,Normal,Normal,0.8446,1,Normal,0.8446,USB Data Theft,0.0416,Device Spoofing,0.0178
+SES-011111,Normal,Insider Threat,0.6561,0,Insider Threat,0.6561,Normal,0.1883,USB Data Theft,0.0623
+SES-008672,Normal,Normal,0.9376,1,Normal,0.9376,USB Data Theft,0.0169,Device Spoofing,0.0105
+SES-004928,Normal,Device Spoofing,0.8609,0,Device Spoofing,0.8609,Normal,0.0907,Insider Threat,0.0184
+SES-010008,Normal,Normal,0.7785,1,Normal,0.7785,Device Spoofing,0.0696,Privilege Escalation,0.0233
+SES-000688,Normal,Normal,0.931,1,Normal,0.931,USB Data Theft,0.0198,Lateral Movement,0.0088
+SES-001499,Normal,Normal,0.5876,1,Normal,0.5876,USB Data Theft,0.2063,Privilege Escalation,0.033
+SES-007863,Normal,Privilege Escalation,0.4802,0,Privilege Escalation,0.4802,Normal,0.241,USB Data Theft,0.0994
+SES-001889,Normal,Normal,0.4773,1,Normal,0.4773,Device Spoofing,0.4329,USB Data Theft,0.0238
+SES-009487,Normal,Device Spoofing,0.8453,0,Device Spoofing,0.8453,Normal,0.1097,USB Data Theft,0.0105
+SES-010592,Normal,Insider Threat,0.4811,0,Insider Threat,0.4811,USB Data Theft,0.1598,Device Spoofing,0.1508
+SES-012343,Normal,Normal,0.7598,1,Normal,0.7598,Insider Threat,0.1571,USB Data Theft,0.0208
+SES-007977,Normal,Device Spoofing,0.66,0,Device Spoofing,0.66,Normal,0.1804,Insider Threat,0.119
+SES-010540,Normal,Normal,0.7371,1,Normal,0.7371,Privilege Escalation,0.0818,USB Data Theft,0.069
+SES-012890,Normal,Privilege Escalation,0.4614,0,Privilege Escalation,0.4614,Normal,0.2249,Malware Execution,0.1337
+SES-011724,Normal,Normal,0.3541,1,Normal,0.3541,Insider Threat,0.2722,USB Data Theft,0.2264
+SES-012485,Normal,Normal,0.8643,1,Normal,0.8643,Impossible Travel,0.0205,Device Spoofing,0.0141
+SES-010759,Normal,Normal,0.7144,1,Normal,0.7144,Lateral Movement,0.0935,Malware Execution,0.0853
+SES-005239,Normal,Normal,0.6458,1,Normal,0.6458,Off-hours Access,0.1219,Lateral Movement,0.0665
+SES-005886,Normal,Privilege Escalation,0.3497,0,Privilege Escalation,0.3497,Malware Execution,0.3129,Lateral Movement,0.1035
+SES-012418,Normal,Normal,0.8855,1,Normal,0.8855,Privilege Escalation,0.0405,Malware Execution,0.0389
+SES-000361,Normal,Normal,0.8555,1,Normal,0.8555,Device Spoofing,0.094,USB Data Theft,0.0159
+SES-008891,Normal,Device Spoofing,0.6063,0,Device Spoofing,0.6063,Normal,0.1331,USB Data Theft,0.0735
+SES-011513,Normal,Normal,0.9067,1,Normal,0.9067,Insider Threat,0.0472,USB Data Theft,0.0072
+SES-002466,Normal,Device Spoofing,0.6894,0,Device Spoofing,0.6894,USB Data Theft,0.1908,Normal,0.0797
+SES-007638,Normal,Normal,0.5093,1,Normal,0.5093,Low-and-Slow Exfiltration,0.1797,Insider Threat,0.1278
+SES-009317,Normal,Normal,0.4877,1,Normal,0.4877,USB Data Theft,0.2979,Device Spoofing,0.0391
+SES-005250,Malware Execution,Privilege Escalation,0.6308,0,Privilege Escalation,0.6308,Malware Execution,0.2804,Off-hours Access,0.0189
+SES-004560,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.9803,1,Low-and-Slow Exfiltration,0.9803,Lateral Movement,0.0042,Insider Drift,0.0036
+SES-001052,Normal,Normal,0.8839,1,Normal,0.8839,Privilege Escalation,0.0307,Malware Execution,0.0261
+SES-000062,Normal,Normal,0.7515,1,Normal,0.7515,Device Spoofing,0.1558,USB Data Theft,0.0238
+SES-010478,Normal,Normal,0.9448,1,Normal,0.9448,Device Spoofing,0.0072,USB Data Theft,0.0063
+SES-007188,Normal,Device Spoofing,0.8141,0,Device Spoofing,0.8141,USB Data Theft,0.1001,Normal,0.0517
+SES-002147,Normal,Normal,0.9257,1,Normal,0.9257,Insider Threat,0.023,USB Data Theft,0.0131
+SES-012264,Normal,Device Spoofing,0.6094,0,Device Spoofing,0.6094,Normal,0.2001,Insider Threat,0.1439
+SES-008235,Normal,Normal,0.9457,1,Normal,0.9457,Device Spoofing,0.0105,USB Data Theft,0.0081
+SES-005918,Normal,Normal,0.9344,1,Normal,0.9344,USB Data Theft,0.0126,Impossible Travel,0.0096
+SES-002154,Normal,Normal,0.8244,1,Normal,0.8244,Device Spoofing,0.023,USB Data Theft,0.0188
+SES-000634,Normal,Normal,0.7352,1,Normal,0.7352,Privilege Escalation,0.134,Malware Execution,0.0354
+SES-006280,Normal,Normal,0.9341,1,Normal,0.9341,USB Data Theft,0.0181,Device Spoofing,0.0122
+SES-009332,Normal,Privilege Escalation,0.4486,0,Privilege Escalation,0.4486,Malware Execution,0.2441,Device Spoofing,0.0942
+SES-010722,Normal,Privilege Escalation,0.7176,0,Privilege Escalation,0.7176,Normal,0.0688,USB Data Theft,0.0679
+SES-005568,Normal,Insider Threat,0.3242,0,Insider Threat,0.3242,Normal,0.2789,USB Data Theft,0.176
+SES-004654,Normal,Insider Threat,0.7665,0,Insider Threat,0.7665,Lateral Movement,0.0817,Normal,0.0605
+SES-002310,Normal,Normal,0.9476,1,Normal,0.9476,Device Spoofing,0.0093,USB Data Theft,0.009
+SES-002899,Normal,Normal,0.9097,1,Normal,0.9097,USB Data Theft,0.0351,Impossible Travel,0.0088
+SES-006149,Normal,Normal,0.8972,1,Normal,0.8972,Insider Drift,0.0265,Lateral Movement,0.0257
+SES-010598,Normal,Lateral Movement,0.2858,0,Lateral Movement,0.2858,Normal,0.2808,USB Data Theft,0.117
+SES-009908,Normal,Normal,0.8424,1,Normal,0.8424,Privilege Escalation,0.1065,Malware Execution,0.0177
+SES-012086,Normal,USB Data Theft,0.4917,0,USB Data Theft,0.4917,Normal,0.2206,Low-and-Slow Exfiltration,0.0905
+SES-001958,Normal,Insider Threat,0.5588,0,Insider Threat,0.5588,USB Data Theft,0.2669,Normal,0.083
+SES-002589,Normal,Lateral Movement,0.7084,0,Lateral Movement,0.7084,Insider Drift,0.1711,Normal,0.0363
+SES-008819,Normal,Normal,0.9267,1,Normal,0.9267,Device Spoofing,0.0127,Impossible Travel,0.0119
+SES-007665,Normal,Normal,0.9288,1,Normal,0.9288,USB Data Theft,0.0237,Device Spoofing,0.0122
+SES-001695,Normal,Malware Execution,0.4196,0,Malware Execution,0.4196,Insider Threat,0.2933,Privilege Escalation,0.1606
+SES-000559,Normal,Normal,0.8784,1,Normal,0.8784,Device Spoofing,0.0217,USB Data Theft,0.0177
+SES-006637,Normal,Lateral Movement,0.2663,0,Lateral Movement,0.2663,Insider Threat,0.2577,Privilege Escalation,0.2271
+SES-003947,Normal,Privilege Escalation,0.6342,0,Privilege Escalation,0.6342,Malware Execution,0.1427,Normal,0.0773
+SES-011600,Normal,Normal,0.9471,1,Normal,0.9471,Device Spoofing,0.0101,USB Data Theft,0.008
+SES-012484,Normal,Device Spoofing,0.5935,0,Device Spoofing,0.5935,Insider Threat,0.2073,USB Data Theft,0.1018
+SES-003895,Normal,Device Spoofing,0.5379,0,Device Spoofing,0.5379,USB Data Theft,0.2037,Normal,0.1816
+SES-004370,Normal,Normal,0.6958,1,Normal,0.6958,Lateral Movement,0.0757,Privilege Escalation,0.0742
+SES-012463,Normal,Normal,0.7584,1,Normal,0.7584,Off-hours Access,0.086,Device Spoofing,0.0225
+SES-008359,Normal,Normal,0.9388,1,Normal,0.9388,Lateral Movement,0.0085,USB Data Theft,0.0083
+SES-001148,Normal,Normal,0.7553,1,Normal,0.7553,Off-hours Access,0.0868,Device Spoofing,0.0215
+SES-010882,Normal,Normal,0.8529,1,Normal,0.8529,USB Data Theft,0.0431,Privilege Escalation,0.0177
+SES-008934,Normal,Normal,0.7723,1,Normal,0.7723,Off-hours Access,0.0811,Device Spoofing,0.0338
+SES-000127,Normal,Normal,0.9416,1,Normal,0.9416,USB Data Theft,0.0149,Device Spoofing,0.0076
+SES-002044,Normal,Normal,0.4215,1,Normal,0.4215,Device Spoofing,0.1881,Malware Execution,0.1419
+SES-011965,Normal,Malware Execution,0.4448,0,Malware Execution,0.4448,Privilege Escalation,0.2478,Lateral Movement,0.098
+SES-007528,Normal,Normal,0.9254,1,Normal,0.9254,USB Data Theft,0.0204,Device Spoofing,0.0101
+SES-012119,Normal,Normal,0.919,1,Normal,0.919,USB Data Theft,0.0426,Device Spoofing,0.0064
+SES-004281,Normal,Device Spoofing,0.5315,0,Device Spoofing,0.5315,Normal,0.3912,USB Data Theft,0.0202
+SES-009399,Normal,Normal,0.5087,1,Normal,0.5087,USB Data Theft,0.2738,Device Spoofing,0.0399
+SES-007675,Normal,Normal,0.8342,1,Normal,0.8342,Privilege Escalation,0.0884,Malware Execution,0.0314
+SES-006415,Normal,Normal,0.9526,1,Normal,0.9526,Impossible Travel,0.0076,USB Data Theft,0.0046
+SES-009306,Normal,Normal,0.5269,1,Normal,0.5269,USB Data Theft,0.2086,Insider Threat,0.0556
+SES-011492,Normal,Normal,0.9472,1,Normal,0.9472,Device Spoofing,0.0154,Brute Force,0.0035
+SES-009737,Normal,Normal,0.9266,1,Normal,0.9266,USB Data Theft,0.0164,Device Spoofing,0.0089
+SES-005566,Normal,Normal,0.8564,1,Normal,0.8564,USB Data Theft,0.0402,Device Spoofing,0.0242
+SES-006048,Normal,Normal,0.7497,1,Normal,0.7497,Malware Execution,0.0896,Privilege Escalation,0.0763
+SES-004492,Normal,Normal,0.9178,1,Normal,0.9178,USB Data Theft,0.0354,Device Spoofing,0.0081
+SES-006710,Normal,Normal,0.8235,1,Normal,0.8235,USB Data Theft,0.0476,Device Spoofing,0.0197
+SES-001918,Normal,Normal,0.8083,1,Normal,0.8083,USB Data Theft,0.0702,Device Spoofing,0.0197
+SES-009673,Normal,Normal,0.4971,1,Normal,0.4971,USB Data Theft,0.2076,Insider Threat,0.0531
+SES-007606,Normal,Normal,0.7677,1,Normal,0.7677,Off-hours Access,0.0788,Device Spoofing,0.0394
+SES-007135,Normal,USB Data Theft,0.4471,0,USB Data Theft,0.4471,Normal,0.2677,Insider Threat,0.0544
+SES-007541,Normal,Malware Execution,0.3019,0,Malware Execution,0.3019,Privilege Escalation,0.2242,USB Data Theft,0.1387
+SES-004303,Normal,Normal,0.5179,1,Normal,0.5179,Insider Threat,0.1913,USB Data Theft,0.14
+SES-009725,Normal,Privilege Escalation,0.5479,0,Privilege Escalation,0.5479,Malware Execution,0.2585,Normal,0.0904
+SES-009012,Impossible Travel,Impossible Travel,0.9681,1,Impossible Travel,0.9681,Normal,0.017,Malware Execution,0.0051
+SES-003661,Normal,Normal,0.8362,1,Normal,0.8362,Insider Threat,0.1104,Device Spoofing,0.0091
+SES-003762,Normal,Normal,0.8916,1,Normal,0.8916,USB Data Theft,0.0567,Impossible Travel,0.0082
+SES-001521,Normal,Normal,0.8142,1,Normal,0.8142,Device Spoofing,0.0749,USB Data Theft,0.0346
+SES-005297,Normal,Normal,0.4742,1,Normal,0.4742,USB Data Theft,0.2857,Insider Threat,0.0431
+SES-006042,Normal,Normal,0.5071,1,Normal,0.5071,USB Data Theft,0.3072,Device Spoofing,0.032
+SES-007146,Normal,Normal,0.8607,1,Normal,0.8607,Privilege Escalation,0.068,Malware Execution,0.0168
+SES-004570,Normal,Normal,0.8104,1,Normal,0.8104,Insider Threat,0.1022,Insider Drift,0.027
+SES-012096,Normal,Normal,0.7824,1,Normal,0.7824,Privilege Escalation,0.0827,USB Data Theft,0.0241
+SES-003141,Normal,Normal,0.6053,1,Normal,0.6053,Lateral Movement,0.1709,Insider Drift,0.1171
+SES-007247,Normal,Device Spoofing,0.5233,0,Device Spoofing,0.5233,Normal,0.2885,USB Data Theft,0.0864
+SES-001991,Normal,Privilege Escalation,0.4474,0,Privilege Escalation,0.4474,Normal,0.2663,USB Data Theft,0.0844
+SES-000268,Privilege Escalation,Privilege Escalation,0.5412,1,Privilege Escalation,0.5412,Malware Execution,0.2373,Normal,0.1143
+SES-005757,Normal,USB Data Theft,0.5598,0,USB Data Theft,0.5598,Normal,0.2145,Insider Threat,0.0404
+SES-001176,Normal,Normal,0.9335,1,Normal,0.9335,USB Data Theft,0.0147,Device Spoofing,0.0115
+SES-001335,Normal,Normal,0.9412,1,Normal,0.9412,Device Spoofing,0.0125,USB Data Theft,0.0086
+SES-012294,Normal,Normal,0.7863,1,Normal,0.7863,Privilege Escalation,0.0751,Malware Execution,0.0536
+SES-003936,Normal,Normal,0.9414,1,Normal,0.9414,Privilege Escalation,0.0094,Device Spoofing,0.0063
+SES-009385,Normal,USB Data Theft,0.4062,0,USB Data Theft,0.4062,Normal,0.2763,Insider Threat,0.0629
+SES-004733,Normal,Normal,0.8445,1,Normal,0.8445,USB Data Theft,0.0495,Device Spoofing,0.0138
+SES-008363,Normal,USB Data Theft,0.6402,0,USB Data Theft,0.6402,Normal,0.1987,Insider Threat,0.0292
+SES-002947,Normal,Normal,0.9205,1,Normal,0.9205,USB Data Theft,0.0268,Device Spoofing,0.0107
+SES-012923,Normal,USB Data Theft,0.7111,0,USB Data Theft,0.7111,Normal,0.1121,Insider Threat,0.0327
+SES-011874,Normal,Normal,0.543,1,Normal,0.543,Device Spoofing,0.1462,Malware Execution,0.1113
+SES-007476,Normal,Malware Execution,0.3736,0,Malware Execution,0.3736,Lateral Movement,0.2741,Privilege Escalation,0.1505
+SES-010326,Normal,Insider Threat,0.6136,0,Insider Threat,0.6136,USB Data Theft,0.2576,Normal,0.0599
+SES-002295,Normal,Normal,0.9269,1,Normal,0.9269,USB Data Theft,0.0213,Device Spoofing,0.0106
+SES-012060,Normal,Normal,0.8308,1,Normal,0.8308,USB Data Theft,0.0308,Impossible Travel,0.0251
+SES-010640,Normal,Normal,0.9342,1,Normal,0.9342,USB Data Theft,0.015,Device Spoofing,0.0138
+SES-011509,Normal,Normal,0.7857,1,Normal,0.7857,USB Data Theft,0.0543,Insider Drift,0.0176
+SES-011361,Normal,Normal,0.9413,1,Normal,0.9413,USB Data Theft,0.0144,Device Spoofing,0.0095
+SES-003234,Normal,USB Data Theft,0.7909,0,USB Data Theft,0.7909,Normal,0.0961,Insider Threat,0.0203
+SES-001281,Normal,Normal,0.9504,1,Normal,0.9504,Device Spoofing,0.0103,USB Data Theft,0.0047
+SES-012569,Normal,Insider Threat,0.4111,0,Insider Threat,0.4111,USB Data Theft,0.2413,Normal,0.241
+SES-001965,Normal,Normal,0.7702,1,Normal,0.7702,Privilege Escalation,0.0783,Malware Execution,0.0535
+SES-000525,Normal,Normal,0.8495,1,Normal,0.8495,Malware Execution,0.0487,Lateral Movement,0.0487
+SES-003555,Normal,USB Data Theft,0.4562,0,USB Data Theft,0.4562,Normal,0.2897,Insider Threat,0.0459
+SES-008682,Normal,USB Data Theft,0.5061,0,USB Data Theft,0.5061,Normal,0.2011,Privilege Escalation,0.0633
+SES-002548,Normal,Normal,0.3909,1,Normal,0.3909,USB Data Theft,0.2039,Insider Threat,0.0719
+SES-012694,Normal,USB Data Theft,0.3432,0,USB Data Theft,0.3432,Normal,0.311,Insider Threat,0.0604
+SES-011926,Normal,Normal,0.8343,1,Normal,0.8343,Malware Execution,0.0394,Lateral Movement,0.0363
+SES-011765,Normal,Normal,0.4149,1,Normal,0.4149,Device Spoofing,0.2668,Insider Threat,0.1602
+SES-004314,Normal,Normal,0.9084,1,Normal,0.9084,Insider Threat,0.0362,USB Data Theft,0.0189
+SES-009753,Lateral Movement,Insider Drift,0.5212,0,Insider Drift,0.5212,Lateral Movement,0.4398,Normal,0.0133
+SES-010667,Normal,USB Data Theft,0.4279,0,USB Data Theft,0.4279,Normal,0.3902,Device Spoofing,0.0353
+SES-011388,Normal,Normal,0.82,1,Normal,0.82,Privilege Escalation,0.066,Malware Execution,0.0629
+SES-006468,Normal,USB Data Theft,0.5275,0,USB Data Theft,0.5275,Normal,0.2208,Insider Threat,0.0451
+SES-002243,Normal,Normal,0.8574,1,Normal,0.8574,Insider Threat,0.0797,USB Data Theft,0.0256
+SES-000842,Normal,Normal,0.8406,1,Normal,0.8406,Insider Threat,0.0914,USB Data Theft,0.0248
+SES-009965,Normal,Normal,0.9147,1,Normal,0.9147,Privilege Escalation,0.0263,Malware Execution,0.0189
+SES-004816,Normal,Normal,0.7784,1,Normal,0.7784,Malware Execution,0.0804,Privilege Escalation,0.0432
+SES-012010,Normal,Normal,0.6219,1,Normal,0.6219,Device Spoofing,0.2684,USB Data Theft,0.0278
+SES-007736,Normal,Normal,0.9451,1,Normal,0.9451,Device Spoofing,0.0083,Insider Drift,0.0047
+SES-003413,Normal,Normal,0.4535,1,Normal,0.4535,USB Data Theft,0.3525,Insider Threat,0.0333
+SES-011272,Normal,Normal,0.751,1,Normal,0.751,Privilege Escalation,0.072,Malware Execution,0.0663
+SES-000685,Normal,Normal,0.9481,1,Normal,0.9481,USB Data Theft,0.0065,Device Spoofing,0.0056
+SES-003459,Normal,Normal,0.9355,1,Normal,0.9355,USB Data Theft,0.016,Device Spoofing,0.0109
+SES-000978,Normal,Normal,0.9469,1,Normal,0.9469,USB Data Theft,0.014,Device Spoofing,0.0048
+SES-011837,Normal,Malware Execution,0.2801,0,Malware Execution,0.2801,Privilege Escalation,0.2532,Normal,0.1481
+SES-006773,Normal,Normal,0.7967,1,Normal,0.7967,USB Data Theft,0.0651,Device Spoofing,0.0252
+SES-012040,Normal,Normal,0.9025,1,Normal,0.9025,USB Data Theft,0.0502,Device Spoofing,0.0083
+SES-009329,Normal,Normal,0.83,1,Normal,0.83,USB Data Theft,0.0366,Impossible Travel,0.0205
+SES-006469,Normal,Normal,0.9405,1,Normal,0.9405,Device Spoofing,0.0093,USB Data Theft,0.0053
+SES-009887,Normal,Device Spoofing,0.6792,0,Device Spoofing,0.6792,Normal,0.2591,Impossible Travel,0.0121
+SES-010107,Normal,Device Spoofing,0.3854,0,Device Spoofing,0.3854,Normal,0.345,Insider Threat,0.1193
+SES-008231,Normal,Normal,0.9485,1,Normal,0.9485,Device Spoofing,0.0103,USB Data Theft,0.0046
+SES-007305,Normal,Normal,0.9364,1,Normal,0.9364,Device Spoofing,0.0138,USB Data Theft,0.0138
+SES-000843,Normal,Normal,0.7073,1,Normal,0.7073,Insider Threat,0.1011,USB Data Theft,0.0607
+SES-007848,Normal,USB Data Theft,0.3642,0,USB Data Theft,0.3642,Normal,0.2966,Insider Threat,0.0587
+SES-000377,Normal,Normal,0.8811,1,Normal,0.8811,Device Spoofing,0.0748,USB Data Theft,0.0099
+SES-002706,Normal,USB Data Theft,0.4593,0,USB Data Theft,0.4593,Insider Threat,0.2766,Normal,0.1327
+SES-009998,Normal,Normal,0.8453,1,Normal,0.8453,Insider Threat,0.1111,Device Spoofing,0.0095
+SES-010254,Normal,Normal,0.8631,1,Normal,0.8631,USB Data Theft,0.0323,Device Spoofing,0.0197
+SES-001896,Normal,Normal,0.951,1,Normal,0.951,USB Data Theft,0.0086,Device Spoofing,0.0048
+SES-008521,Normal,Normal,0.7608,1,Normal,0.7608,Insider Threat,0.1702,Device Spoofing,0.0164
+SES-006301,Normal,Privilege Escalation,0.2753,0,Privilege Escalation,0.2753,Malware Execution,0.2622,Normal,0.1935
+SES-008931,Normal,Normal,0.6059,1,Normal,0.6059,Lateral Movement,0.1257,Off-hours Access,0.0793
+SES-003750,Normal,Normal,0.451,1,Normal,0.451,Device Spoofing,0.165,Privilege Escalation,0.1356
+SES-007617,Normal,Normal,0.5497,1,Normal,0.5497,USB Data Theft,0.2099,Device Spoofing,0.0448
+SES-004594,Normal,Normal,0.8889,1,Normal,0.8889,USB Data Theft,0.0322,Insider Threat,0.0226
+SES-009930,Normal,Normal,0.8471,1,Normal,0.8471,USB Data Theft,0.0393,Device Spoofing,0.0227
+SES-010288,Normal,Normal,0.9364,1,Normal,0.9364,Lateral Movement,0.0108,Device Spoofing,0.0101
+SES-009939,Normal,Normal,0.8853,1,Normal,0.8853,Insider Threat,0.0696,Device Spoofing,0.0089
+SES-012638,Normal,Normal,0.8804,1,Normal,0.8804,Insider Threat,0.0449,USB Data Theft,0.0215
+SES-007670,Normal,Normal,0.9095,1,Normal,0.9095,Malware Execution,0.0363,Privilege Escalation,0.0193
+SES-002219,Lateral Movement,Lateral Movement,0.8829,1,Lateral Movement,0.8829,Insider Drift,0.0935,Normal,0.0069
+SES-012587,Normal,USB Data Theft,0.4662,0,USB Data Theft,0.4662,Normal,0.3185,Insider Threat,0.0359
+SES-003752,Normal,Insider Threat,0.7957,0,Insider Threat,0.7957,USB Data Theft,0.1263,Normal,0.0319
+SES-001417,Normal,Normal,0.9241,1,Normal,0.9241,USB Data Theft,0.0295,Device Spoofing,0.0088
+SES-009453,Normal,Normal,0.925,1,Normal,0.925,USB Data Theft,0.0281,Impossible Travel,0.0076
+SES-007961,Normal,Normal,0.9371,1,Normal,0.9371,Device Spoofing,0.0122,USB Data Theft,0.0086
+SES-011621,Normal,Insider Threat,0.5513,0,Insider Threat,0.5513,Normal,0.2339,USB Data Theft,0.0544
+SES-012816,Normal,Normal,0.3396,1,Normal,0.3396,USB Data Theft,0.2813,Insider Threat,0.0723
+SES-006548,Normal,Normal,0.8644,1,Normal,0.8644,Privilege Escalation,0.0666,Malware Execution,0.0301
+SES-007734,Normal,Normal,0.8595,1,Normal,0.8595,Insider Threat,0.0991,Device Spoofing,0.0067
+SES-008344,Normal,Normal,0.898,1,Normal,0.898,Insider Threat,0.0272,USB Data Theft,0.0227
+SES-005542,Normal,Normal,0.6797,1,Normal,0.6797,Privilege Escalation,0.1035,Malware Execution,0.0651
+SES-003983,Normal,Insider Threat,0.4083,0,Insider Threat,0.4083,Normal,0.265,USB Data Theft,0.1292
+SES-002386,Normal,Normal,0.9512,1,Normal,0.9512,Device Spoofing,0.0077,USB Data Theft,0.0057
+SES-004357,Normal,Normal,0.923,1,Normal,0.923,USB Data Theft,0.0257,Device Spoofing,0.0108
+SES-004352,Normal,Normal,0.9374,1,Normal,0.9374,USB Data Theft,0.0155,Device Spoofing,0.0128
+SES-002675,Normal,Normal,0.9292,1,Normal,0.9292,USB Data Theft,0.0236,Device Spoofing,0.0106
+SES-004932,Normal,Normal,0.9388,1,Normal,0.9388,USB Data Theft,0.012,Device Spoofing,0.0116
+SES-008220,Brute Force,Brute Force,0.7814,1,Brute Force,0.7814,Credential Stuffing,0.1778,Device Spoofing,0.0121
+SES-008230,Normal,Normal,0.9299,1,Normal,0.9299,Device Spoofing,0.0137,USB Data Theft,0.0108
+SES-006708,Normal,Device Spoofing,0.8213,0,Device Spoofing,0.8213,Normal,0.0898,Insider Threat,0.0518
+SES-004270,Privilege Escalation,Malware Execution,0.4407,0,Malware Execution,0.4407,Privilege Escalation,0.4358,Normal,0.051
+SES-003433,Normal,Normal,0.3119,1,Normal,0.3119,USB Data Theft,0.2953,Insider Threat,0.0735
+SES-003856,Normal,Normal,0.3617,1,Normal,0.3617,Insider Threat,0.2526,USB Data Theft,0.2507
+SES-001073,Privilege Escalation,Privilege Escalation,0.6528,1,Privilege Escalation,0.6528,Malware Execution,0.1578,Brute Force,0.1151
+SES-012469,Normal,Normal,0.821,1,Normal,0.821,USB Data Theft,0.0567,Device Spoofing,0.0249
+SES-001360,Normal,Normal,0.9114,1,Normal,0.9114,USB Data Theft,0.0438,Device Spoofing,0.0091
+SES-012392,Normal,Normal,0.9409,1,Normal,0.9409,USB Data Theft,0.016,Device Spoofing,0.0073
+SES-001863,Normal,Normal,0.9272,1,Normal,0.9272,USB Data Theft,0.0265,Device Spoofing,0.0111
+SES-000401,Normal,Normal,0.2597,1,Normal,0.2597,USB Data Theft,0.1761,Insider Threat,0.1146
+SES-001789,Normal,Normal,0.9497,1,Normal,0.9497,Device Spoofing,0.01,USB Data Theft,0.0069
+SES-010595,Normal,Normal,0.8686,1,Normal,0.8686,Impossible Travel,0.0195,USB Data Theft,0.0144
+SES-005802,Normal,USB Data Theft,0.3813,0,USB Data Theft,0.3813,Normal,0.2214,Privilege Escalation,0.0837
+SES-011648,Normal,Privilege Escalation,0.5915,0,Privilege Escalation,0.5915,Malware Execution,0.268,Normal,0.0487
+SES-004167,Normal,Normal,0.9118,1,Normal,0.9118,Insider Threat,0.0307,USB Data Theft,0.0151
+SES-000397,Malware Execution,Insider Threat,0.3843,0,Insider Threat,0.3843,Privilege Escalation,0.1924,Malware Execution,0.1783
+SES-000018,Normal,Normal,0.6961,1,Normal,0.6961,Off-hours Access,0.1386,Device Spoofing,0.0514
+SES-006896,Normal,Normal,0.9233,1,Normal,0.9233,USB Data Theft,0.0285,Device Spoofing,0.0088
+SES-005425,Malware Execution,Privilege Escalation,0.5522,0,Privilege Escalation,0.5522,Malware Execution,0.3384,Normal,0.0434
+SES-004713,Normal,Insider Threat,0.6284,0,Insider Threat,0.6284,Normal,0.1435,USB Data Theft,0.0811
+SES-004915,Normal,Normal,0.8854,1,Normal,0.8854,Privilege Escalation,0.0481,Malware Execution,0.0292
+SES-002021,Normal,Normal,0.8647,1,Normal,0.8647,USB Data Theft,0.0419,Malware Execution,0.0287
+SES-010854,Normal,Normal,0.9343,1,Normal,0.9343,USB Data Theft,0.017,Device Spoofing,0.0091
+SES-004520,Normal,Normal,0.8518,1,Normal,0.8518,USB Data Theft,0.0382,Device Spoofing,0.0214
+SES-006732,Normal,Normal,0.8918,1,Normal,0.8918,Privilege Escalation,0.0406,Malware Execution,0.0167
+SES-006594,Normal,Malware Execution,0.6609,0,Malware Execution,0.6609,Privilege Escalation,0.2094,Normal,0.0539
+SES-006976,Normal,Normal,0.5285,1,Normal,0.5285,USB Data Theft,0.2574,Device Spoofing,0.0386
+SES-004716,Normal,Privilege Escalation,0.3746,0,Privilege Escalation,0.3746,Normal,0.3123,Malware Execution,0.1265
+SES-004639,Normal,Normal,0.7802,1,Normal,0.7802,USB Data Theft,0.0684,Insider Threat,0.0465
+SES-006836,Normal,Normal,0.9292,1,Normal,0.9292,USB Data Theft,0.0228,Device Spoofing,0.0112
+SES-006757,Normal,Normal,0.8798,1,Normal,0.8798,Insider Threat,0.0727,USB Data Theft,0.0106
+SES-001235,Normal,Normal,0.9399,1,Normal,0.9399,USB Data Theft,0.013,Device Spoofing,0.0118
+SES-002588,Normal,Normal,0.8757,1,Normal,0.8757,Insider Threat,0.0609,USB Data Theft,0.0136
+SES-010516,Normal,Normal,0.9408,1,Normal,0.9408,USB Data Theft,0.0164,Device Spoofing,0.0095
+SES-010343,Normal,Normal,0.9388,1,Normal,0.9388,Device Spoofing,0.0162,Brute Force,0.0043
+SES-010161,Normal,Normal,0.9423,1,Normal,0.9423,Device Spoofing,0.0111,USB Data Theft,0.0088
+SES-007987,Normal,USB Data Theft,0.4966,0,USB Data Theft,0.4966,Normal,0.2312,Insider Threat,0.0492
+SES-009989,Normal,Normal,0.5747,1,Normal,0.5747,USB Data Theft,0.2292,Device Spoofing,0.0373
+SES-005205,Normal,Lateral Movement,0.9249,0,Lateral Movement,0.9249,Insider Drift,0.0294,Normal,0.014
+SES-008536,Normal,Device Spoofing,0.428,0,Device Spoofing,0.428,Normal,0.2736,USB Data Theft,0.1307
+SES-004054,Normal,Insider Threat,0.7557,0,Insider Threat,0.7557,Normal,0.0792,USB Data Theft,0.0537
+SES-002497,Normal,Normal,0.9439,1,Normal,0.9439,USB Data Theft,0.0128,Privilege Escalation,0.0079
+SES-005585,Normal,Normal,0.567,1,Normal,0.567,Insider Threat,0.1746,Lateral Movement,0.076
+SES-010247,Normal,Normal,0.9428,1,Normal,0.9428,USB Data Theft,0.012,Device Spoofing,0.0085
+SES-011119,Normal,Normal,0.399,1,Normal,0.399,USB Data Theft,0.1679,Insider Threat,0.0855
+SES-002948,Normal,Lateral Movement,0.6172,0,Lateral Movement,0.6172,Normal,0.1917,Insider Drift,0.1396
+SES-000428,Normal,Normal,0.9396,1,Normal,0.9396,Device Spoofing,0.0209,USB Data Theft,0.0081
+SES-002907,Normal,USB Data Theft,0.3215,0,USB Data Theft,0.3215,Insider Threat,0.2763,Normal,0.2635
+SES-012565,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.9721,1,Low-and-Slow Exfiltration,0.9721,USB Data Theft,0.0145,Device Spoofing,0.0058
+SES-010473,Normal,Normal,0.938,1,Normal,0.938,Impossible Travel,0.0105,Device Spoofing,0.0078
+SES-000334,Normal,Normal,0.4646,1,Normal,0.4646,Device Spoofing,0.2103,USB Data Theft,0.1684
+SES-012087,Normal,Normal,0.7325,1,Normal,0.7325,Malware Execution,0.0751,Privilege Escalation,0.0681
+SES-008749,Normal,Normal,0.8751,1,Normal,0.8751,Malware Execution,0.0528,Privilege Escalation,0.0295
+SES-009889,Normal,USB Data Theft,0.4587,0,USB Data Theft,0.4587,Normal,0.3211,Insider Threat,0.0358
+SES-005748,Normal,Normal,0.8539,1,Normal,0.8539,USB Data Theft,0.0301,Insider Drift,0.0144
+SES-005881,Normal,Privilege Escalation,0.5658,0,Privilege Escalation,0.5658,Normal,0.148,Malware Execution,0.1329
+SES-012547,Normal,Normal,0.8964,1,Normal,0.8964,Insider Drift,0.025,Lateral Movement,0.0232
+SES-007288,Normal,Malware Execution,0.4601,0,Malware Execution,0.4601,Insider Threat,0.3291,Privilege Escalation,0.096
+SES-011907,Normal,Normal,0.7476,1,Normal,0.7476,Off-hours Access,0.1007,Device Spoofing,0.0415
+SES-008951,Normal,Privilege Escalation,0.4691,0,Privilege Escalation,0.4691,Normal,0.175,Malware Execution,0.1359
+SES-007751,Normal,Insider Threat,0.3719,0,Insider Threat,0.3719,Normal,0.2981,USB Data Theft,0.1889
+SES-006969,Normal,Privilege Escalation,0.336,0,Privilege Escalation,0.336,Normal,0.2759,Malware Execution,0.2184
+SES-011673,Insider Threat,USB Data Theft,0.4703,0,USB Data Theft,0.4703,Insider Threat,0.2946,Normal,0.1064
+SES-009410,Normal,Privilege Escalation,0.7305,0,Privilege Escalation,0.7305,Malware Execution,0.0991,Normal,0.0834
+SES-005310,Normal,Normal,0.2725,1,Normal,0.2725,Insider Threat,0.267,USB Data Theft,0.2422
+SES-011901,Normal,Normal,0.7653,1,Normal,0.7653,Off-hours Access,0.0763,Device Spoofing,0.0441
+SES-006625,Normal,Normal,0.5288,1,Normal,0.5288,USB Data Theft,0.2426,Insider Threat,0.0437
+SES-000908,Normal,Normal,0.7936,1,Normal,0.7936,USB Data Theft,0.0878,Device Spoofing,0.0175
+SES-001014,Normal,Insider Threat,0.4526,0,Insider Threat,0.4526,Malware Execution,0.1881,Privilege Escalation,0.1334
+SES-008222,Normal,Normal,0.9524,1,Normal,0.9524,Device Spoofing,0.0096,USB Data Theft,0.0051
+SES-000275,Normal,Normal,0.3937,1,Normal,0.3937,USB Data Theft,0.2928,Device Spoofing,0.1763
+SES-007755,Normal,Device Spoofing,0.4268,0,Device Spoofing,0.4268,Normal,0.3723,USB Data Theft,0.0626
+SES-002418,Normal,USB Data Theft,0.5364,0,USB Data Theft,0.5364,Privilege Escalation,0.2497,Normal,0.0992
+SES-008013,Normal,Privilege Escalation,0.4389,0,Privilege Escalation,0.4389,Malware Execution,0.2369,Normal,0.1384
+SES-006908,Normal,Normal,0.8622,1,Normal,0.8622,Malware Execution,0.0385,Privilege Escalation,0.0341
+SES-010508,Normal,Normal,0.7056,1,Normal,0.7056,Privilege Escalation,0.0915,Malware Execution,0.0579
+SES-009849,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.9796,1,Low-and-Slow Exfiltration,0.9796,Lateral Movement,0.0052,USB Data Theft,0.0034
+SES-003349,Normal,Normal,0.6308,1,Normal,0.6308,Insider Threat,0.1558,Lateral Movement,0.0794
+SES-008332,Normal,Insider Threat,0.4852,0,Insider Threat,0.4852,Normal,0.2296,USB Data Theft,0.1063
+SES-000410,Normal,USB Data Theft,0.5627,0,USB Data Theft,0.5627,Normal,0.2945,Insider Threat,0.0258
+SES-007754,Normal,Normal,0.8528,1,Normal,0.8528,USB Data Theft,0.037,Lateral Movement,0.0201
+SES-002211,Normal,Normal,0.7914,1,Normal,0.7914,Insider Threat,0.0606,USB Data Theft,0.0373
+SES-008892,Normal,Malware Execution,0.4323,0,Malware Execution,0.4323,Privilege Escalation,0.2015,USB Data Theft,0.1384
+SES-012963,Normal,Normal,0.8027,1,Normal,0.8027,Insider Threat,0.0487,USB Data Theft,0.0276
+SES-012553,Normal,Normal,0.2196,1,Normal,0.2196,Device Spoofing,0.2065,USB Data Theft,0.1362
+SES-010185,Normal,Normal,0.6806,1,Normal,0.6806,Device Spoofing,0.1631,USB Data Theft,0.0388
+SES-001026,Normal,USB Data Theft,0.4364,0,USB Data Theft,0.4364,Normal,0.2979,Device Spoofing,0.1339
+SES-010018,Normal,Normal,0.8617,1,Normal,0.8617,Insider Threat,0.0871,USB Data Theft,0.0123
+SES-003548,Normal,Normal,0.7662,1,Normal,0.7662,Off-hours Access,0.0774,Device Spoofing,0.0435
+SES-000396,Normal,Normal,0.7865,1,Normal,0.7865,USB Data Theft,0.0835,Device Spoofing,0.0163
+SES-002172,Normal,Normal,0.9451,1,Normal,0.9451,Device Spoofing,0.0079,USB Data Theft,0.0069
+SES-000625,Normal,Normal,0.9419,1,Normal,0.9419,USB Data Theft,0.0114,Device Spoofing,0.0093
+SES-007954,Suspicious PowerShell,Suspicious PowerShell,0.9363,1,Suspicious PowerShell,0.9363,Malware Execution,0.0215,Privilege Escalation,0.0195
+SES-010530,Normal,Normal,0.8672,1,Normal,0.8672,USB Data Theft,0.0222,Device Spoofing,0.0136
+SES-007842,Normal,Normal,0.9293,1,Normal,0.9293,USB Data Theft,0.0279,Device Spoofing,0.011
+SES-002610,Normal,Normal,0.9338,1,Normal,0.9338,USB Data Theft,0.0129,Impossible Travel,0.0089
+SES-012703,Normal,Insider Threat,0.5934,0,Insider Threat,0.5934,Normal,0.1684,USB Data Theft,0.1091
+SES-006089,Data Exfiltration,Data Exfiltration,0.9674,1,Data Exfiltration,0.9674,Privilege Escalation,0.0123,Malware Execution,0.0087
+SES-011559,Data Exfiltration,Data Exfiltration,0.8842,1,Data Exfiltration,0.8842,Insider Threat,0.0738,USB Data Theft,0.016
+SES-004009,Normal,Normal,0.9237,1,Normal,0.9237,USB Data Theft,0.026,Device Spoofing,0.0139
+SES-004500,Normal,Privilege Escalation,0.4681,0,Privilege Escalation,0.4681,Normal,0.1927,Malware Execution,0.1298
+SES-002212,Normal,USB Data Theft,0.4246,0,USB Data Theft,0.4246,Normal,0.4222,Insider Threat,0.0249
+SES-001523,Normal,Normal,0.5254,1,Normal,0.5254,USB Data Theft,0.1935,Insider Threat,0.0476
+SES-003302,Normal,Normal,0.8344,1,Normal,0.8344,USB Data Theft,0.0457,Impossible Travel,0.0218
+SES-003575,Normal,Normal,0.9122,1,Normal,0.9122,Privilege Escalation,0.0324,Malware Execution,0.0152
+SES-011086,Insider Threat,Insider Threat,0.6908,1,Insider Threat,0.6908,USB Data Theft,0.1342,Normal,0.0571
+SES-005685,Normal,Device Spoofing,0.8845,0,Device Spoofing,0.8845,Normal,0.0696,USB Data Theft,0.0222
+SES-004252,Normal,Normal,0.3456,1,Normal,0.3456,Privilege Escalation,0.2709,Malware Execution,0.2278
+SES-008371,Normal,Device Spoofing,0.6211,0,Device Spoofing,0.6211,Normal,0.217,USB Data Theft,0.0665
+SES-004880,Normal,Normal,0.9136,1,Normal,0.9136,USB Data Theft,0.0193,Device Spoofing,0.0147
+SES-008582,Normal,Normal,0.8276,1,Normal,0.8276,USB Data Theft,0.0626,Device Spoofing,0.0174
+SES-001916,Normal,Normal,0.9428,1,Normal,0.9428,USB Data Theft,0.0116,Device Spoofing,0.0112
+SES-002862,Normal,Lateral Movement,0.6358,0,Lateral Movement,0.6358,Malware Execution,0.0966,Privilege Escalation,0.0926
+SES-007593,Normal,Lateral Movement,0.542,0,Lateral Movement,0.542,Insider Drift,0.1869,Device Spoofing,0.1581
+SES-007727,Normal,Normal,0.9318,1,Normal,0.9318,Impossible Travel,0.0116,Device Spoofing,0.0089
+SES-011226,Normal,Normal,0.6868,1,Normal,0.6868,Insider Drift,0.15,Lateral Movement,0.0697
+SES-005524,Normal,Normal,0.9375,1,Normal,0.9375,USB Data Theft,0.0246,Device Spoofing,0.005
+SES-011574,Credential Stuffing,Brute Force,0.4807,0,Brute Force,0.4807,Credential Stuffing,0.4646,Insider Threat,0.0314
+SES-005019,Beaconing C2,Beaconing C2,0.9889,1,Beaconing C2,0.9889,USB Data Theft,0.0039,Normal,0.0014
+SES-003713,Normal,USB Data Theft,0.6864,0,USB Data Theft,0.6864,Normal,0.1714,Device Spoofing,0.0247
+SES-007682,Normal,Normal,0.9342,1,Normal,0.9342,USB Data Theft,0.0132,Impossible Travel,0.0096
+SES-004464,Normal,Insider Threat,0.429,0,Insider Threat,0.429,Normal,0.2729,USB Data Theft,0.1293
+SES-006320,Normal,Normal,0.8377,1,Normal,0.8377,USB Data Theft,0.0494,Device Spoofing,0.0167
+SES-010987,Normal,Device Spoofing,0.5884,0,Device Spoofing,0.5884,Normal,0.244,USB Data Theft,0.0979
+SES-001817,Normal,Normal,0.9242,1,Normal,0.9242,USB Data Theft,0.0254,Device Spoofing,0.0111
+SES-009199,Normal,Insider Threat,0.3579,0,Insider Threat,0.3579,USB Data Theft,0.2951,Normal,0.2113
+SES-007801,Normal,Normal,0.9482,1,Normal,0.9482,Device Spoofing,0.0083,USB Data Theft,0.0054
+SES-005521,Privilege Escalation,Privilege Escalation,0.6739,1,Privilege Escalation,0.6739,Credential Stuffing,0.0931,Brute Force,0.0763
+SES-008453,Normal,Normal,0.9096,1,Normal,0.9096,Privilege Escalation,0.0346,Malware Execution,0.016
+SES-008670,Normal,Normal,0.9279,1,Normal,0.9279,USB Data Theft,0.0201,Device Spoofing,0.0106
+SES-001818,Normal,Normal,0.9487,1,Normal,0.9487,USB Data Theft,0.0105,Device Spoofing,0.0093
+SES-000324,Normal,Device Spoofing,0.3601,0,Device Spoofing,0.3601,Normal,0.2278,Privilege Escalation,0.2241
+SES-003938,Normal,Normal,0.9357,1,Normal,0.9357,USB Data Theft,0.0165,Device Spoofing,0.0108
+SES-009157,Normal,Normal,0.9394,1,Normal,0.9394,Device Spoofing,0.0188,Brute Force,0.004
+SES-009079,Normal,USB Data Theft,0.4989,0,USB Data Theft,0.4989,Normal,0.288,Insider Threat,0.0377
+SES-006463,Normal,Normal,0.8962,1,Normal,0.8962,Malware Execution,0.0369,Privilege Escalation,0.0286
+SES-001167,Normal,Normal,0.9329,1,Normal,0.9329,Device Spoofing,0.0113,USB Data Theft,0.0103
+SES-002456,Normal,Malware Execution,0.4239,0,Malware Execution,0.4239,Privilege Escalation,0.1908,USB Data Theft,0.1719
+SES-003052,Normal,Normal,0.4656,1,Normal,0.4656,Device Spoofing,0.4286,USB Data Theft,0.0356
+SES-003338,Normal,USB Data Theft,0.5714,0,USB Data Theft,0.5714,Normal,0.1803,Insider Threat,0.0367
+SES-002178,Normal,Normal,0.5903,1,Normal,0.5903,USB Data Theft,0.1918,Device Spoofing,0.0401
+SES-012506,Normal,Normal,0.9474,1,Normal,0.9474,USB Data Theft,0.0093,Device Spoofing,0.0074
+SES-004646,Normal,Normal,0.8947,1,Normal,0.8947,Privilege Escalation,0.049,USB Data Theft,0.014
+SES-003961,Normal,Normal,0.927,1,Normal,0.927,USB Data Theft,0.0317,Device Spoofing,0.006
+SES-005436,Normal,Normal,0.9565,1,Normal,0.9565,USB Data Theft,0.0063,Device Spoofing,0.0058
+SES-010338,Normal,Normal,0.9144,1,Normal,0.9144,USB Data Theft,0.0402,Device Spoofing,0.008
+SES-012805,Normal,Privilege Escalation,0.5672,0,Privilege Escalation,0.5672,Normal,0.1878,Malware Execution,0.1007
+SES-006568,Normal,Normal,0.9407,1,Normal,0.9407,USB Data Theft,0.0183,Device Spoofing,0.0052
+SES-005859,Suspicious PowerShell,Suspicious PowerShell,0.9652,1,Suspicious PowerShell,0.9652,Malware Execution,0.0114,Insider Drift,0.0057
+SES-000882,Normal,Privilege Escalation,0.5523,0,Privilege Escalation,0.5523,Malware Execution,0.1504,Normal,0.1149
+SES-000044,Normal,Normal,0.8295,1,Normal,0.8295,Insider Threat,0.1079,Lateral Movement,0.0226
+SES-002099,Normal,Privilege Escalation,0.3017,0,Privilege Escalation,0.3017,Normal,0.267,Malware Execution,0.2054
+SES-011084,Normal,Normal,0.873,1,Normal,0.873,Privilege Escalation,0.0689,Malware Execution,0.0141
+SES-005213,Normal,Normal,0.9546,1,Normal,0.9546,USB Data Theft,0.0099,Device Spoofing,0.0048
+SES-011441,Normal,Normal,0.9301,1,Normal,0.9301,Device Spoofing,0.0189,USB Data Theft,0.0065
+SES-008648,Normal,Device Spoofing,0.7234,0,Device Spoofing,0.7234,USB Data Theft,0.1581,Normal,0.048
+SES-003667,Normal,Normal,0.7952,1,Normal,0.7952,Insider Threat,0.0575,USB Data Theft,0.029
+SES-005620,Brute Force,Credential Stuffing,0.5173,0,Credential Stuffing,0.5173,Brute Force,0.2719,Device Spoofing,0.1292
+SES-001044,Normal,Normal,0.4566,1,Normal,0.4566,USB Data Theft,0.3226,Device Spoofing,0.041
+SES-000372,Normal,Normal,0.929,1,Normal,0.929,USB Data Theft,0.0256,Device Spoofing,0.0092
+SES-006846,Normal,Malware Execution,0.3806,0,Malware Execution,0.3806,Privilege Escalation,0.3387,Normal,0.1021
+SES-010790,Normal,Normal,0.4253,1,Normal,0.4253,Lateral Movement,0.3179,Malware Execution,0.0818
+SES-007946,Normal,Normal,0.8585,1,Normal,0.8585,Privilege Escalation,0.0681,USB Data Theft,0.0185
+SES-002872,Normal,Normal,0.2525,1,Normal,0.2525,USB Data Theft,0.2301,Insider Threat,0.1127
+SES-011185,Normal,Normal,0.7592,1,Normal,0.7592,Off-hours Access,0.0767,Device Spoofing,0.0467
+SES-008896,Normal,Insider Threat,0.6756,0,Insider Threat,0.6756,Privilege Escalation,0.1647,Malware Execution,0.0749
+SES-003991,Normal,Normal,0.9437,1,Normal,0.9437,USB Data Theft,0.0094,Device Spoofing,0.0076
+SES-007586,Normal,Normal,0.5832,1,Normal,0.5832,USB Data Theft,0.0755,Insider Threat,0.0611
+SES-013000,Normal,Normal,0.3239,1,Normal,0.3239,Privilege Escalation,0.2832,Malware Execution,0.2067
+SES-005696,Normal,Normal,0.9261,1,Normal,0.9261,USB Data Theft,0.0279,Device Spoofing,0.0116
+SES-011914,Malware Execution,Malware Execution,0.7017,1,Malware Execution,0.7017,Privilege Escalation,0.1679,Normal,0.0419
+SES-011035,Normal,Normal,0.8115,1,Normal,0.8115,USB Data Theft,0.0692,Device Spoofing,0.0212
+SES-006949,Impossible Travel,Impossible Travel,0.9899,1,Impossible Travel,0.9899,USB Data Theft,0.0026,Normal,0.0025
+SES-003220,Normal,USB Data Theft,0.4038,0,USB Data Theft,0.4038,Normal,0.3574,Device Spoofing,0.0437
+SES-008527,Normal,Normal,0.9025,1,Normal,0.9025,USB Data Theft,0.0458,Device Spoofing,0.013
+SES-003945,Normal,Normal,0.9275,1,Normal,0.9275,USB Data Theft,0.0194,Impossible Travel,0.0108
+SES-008944,Normal,Normal,0.9555,1,Normal,0.9555,Device Spoofing,0.0078,Brute Force,0.0035
+SES-002983,Normal,Normal,0.8533,1,Normal,0.8533,Malware Execution,0.0705,Privilege Escalation,0.0355
+SES-002112,Normal,Normal,0.8648,1,Normal,0.8648,Privilege Escalation,0.0548,Malware Execution,0.0244
+SES-003504,Normal,Normal,0.9138,1,Normal,0.9138,USB Data Theft,0.0271,Device Spoofing,0.0154
+SES-000063,Normal,Normal,0.9373,1,Normal,0.9373,USB Data Theft,0.0205,Device Spoofing,0.0108
+SES-005058,Normal,Normal,0.8118,1,Normal,0.8118,USB Data Theft,0.0661,Device Spoofing,0.0211
+SES-012912,Off-hours Access,Off-hours Access,0.7923,1,Off-hours Access,0.7923,Normal,0.1034,Malware Execution,0.0478
+SES-009559,Normal,Insider Threat,0.4258,0,Insider Threat,0.4258,Normal,0.2201,USB Data Theft,0.1241
+SES-010664,Normal,Normal,0.8537,1,Normal,0.8537,USB Data Theft,0.0142,Device Spoofing,0.0141
+SES-008629,Normal,Insider Drift,0.5303,0,Insider Drift,0.5303,Lateral Movement,0.2042,Normal,0.1809
+SES-011073,Normal,Normal,0.9359,1,Normal,0.9359,Device Spoofing,0.0131,USB Data Theft,0.0107
+SES-011433,Normal,Privilege Escalation,0.3522,0,Privilege Escalation,0.3522,Normal,0.2876,Malware Execution,0.1152
+SES-004908,Normal,Normal,0.8763,1,Normal,0.8763,Malware Execution,0.0352,Privilege Escalation,0.0227
+SES-002158,Normal,USB Data Theft,0.7062,0,USB Data Theft,0.7062,Normal,0.1299,Insider Threat,0.0329
+SES-005852,Normal,Normal,0.6922,1,Normal,0.6922,Device Spoofing,0.1776,USB Data Theft,0.0263
+SES-007216,Normal,Normal,0.9395,1,Normal,0.9395,Impossible Travel,0.0096,Insider Drift,0.0069
+SES-004695,Normal,Normal,0.8246,1,Normal,0.8246,USB Data Theft,0.0394,Device Spoofing,0.0304
+SES-002175,Normal,Normal,0.9305,1,Normal,0.9305,USB Data Theft,0.0154,Impossible Travel,0.0091
+SES-000311,Normal,Insider Threat,0.3305,0,Insider Threat,0.3305,Normal,0.2915,USB Data Theft,0.1588
+SES-000462,Privilege Escalation,Privilege Escalation,0.6767,1,Privilege Escalation,0.6767,Malware Execution,0.1499,Insider Threat,0.0639
+SES-003840,Normal,Normal,0.9045,1,Normal,0.9045,USB Data Theft,0.0479,Device Spoofing,0.0119
+SES-005658,Normal,Normal,0.9431,1,Normal,0.9431,Device Spoofing,0.0142,USB Data Theft,0.0088
+SES-001048,Normal,Normal,0.9452,1,Normal,0.9452,USB Data Theft,0.0087,Device Spoofing,0.0076
+SES-000569,Normal,Normal,0.7014,1,Normal,0.7014,Device Spoofing,0.0991,USB Data Theft,0.0938
+SES-001436,Normal,Normal,0.5107,1,Normal,0.5107,USB Data Theft,0.2403,Insider Threat,0.0444
+SES-003594,Off-hours Access,Off-hours Access,0.8118,1,Off-hours Access,0.8118,Normal,0.1376,Device Spoofing,0.0113
+SES-009422,Normal,Normal,0.9009,1,Normal,0.9009,USB Data Theft,0.0494,Device Spoofing,0.0086
+SES-011842,Data Exfiltration,Data Exfiltration,0.9744,1,Data Exfiltration,0.9744,USB Data Theft,0.0069,Off-hours Access,0.0048
+SES-003808,Normal,Device Spoofing,0.9074,0,Device Spoofing,0.9074,Normal,0.0692,USB Data Theft,0.0044
+SES-000853,Normal,Privilege Escalation,0.5694,0,Privilege Escalation,0.5694,Normal,0.1472,Malware Execution,0.1291
+SES-005119,Normal,USB Data Theft,0.5081,0,USB Data Theft,0.5081,Low-and-Slow Exfiltration,0.1423,Normal,0.1345
+SES-010425,Normal,Normal,0.8459,1,Normal,0.8459,USB Data Theft,0.0551,Device Spoofing,0.0142
+SES-000624,Normal,Normal,0.9037,1,Normal,0.9037,USB Data Theft,0.0414,Device Spoofing,0.0107
+SES-009165,Normal,USB Data Theft,0.5088,0,USB Data Theft,0.5088,Normal,0.2989,Insider Threat,0.0313
+SES-007322,Normal,Device Spoofing,0.5699,0,Device Spoofing,0.5699,Normal,0.238,USB Data Theft,0.1093
+SES-003597,Normal,Normal,0.6913,1,Normal,0.6913,Insider Threat,0.156,Lateral Movement,0.0715
+SES-012340,Normal,Normal,0.8925,1,Normal,0.8925,USB Data Theft,0.0116,Privilege Escalation,0.0105
+SES-008098,Normal,Insider Threat,0.3767,0,Insider Threat,0.3767,Normal,0.2365,USB Data Theft,0.2149
+SES-007696,Normal,Normal,0.7025,1,Normal,0.7025,USB Data Theft,0.0991,Insider Threat,0.0365
+SES-009912,Normal,Normal,0.8099,1,Normal,0.8099,USB Data Theft,0.0447,Device Spoofing,0.0319
+SES-008851,Normal,Normal,0.5502,1,Normal,0.5502,Device Spoofing,0.2805,USB Data Theft,0.0559
+SES-003069,Normal,Normal,0.5218,1,Normal,0.5218,USB Data Theft,0.1931,Device Spoofing,0.0606
+SES-005857,Normal,Device Spoofing,0.5485,0,Device Spoofing,0.5485,Normal,0.3469,USB Data Theft,0.0467
+SES-001203,Normal,Normal,0.8936,1,Normal,0.8936,Insider Threat,0.0638,USB Data Theft,0.0068
+SES-011428,Normal,Normal,0.9507,1,Normal,0.9507,USB Data Theft,0.0127,Device Spoofing,0.0046
+SES-004992,Normal,Normal,0.623,1,Normal,0.623,USB Data Theft,0.1703,Device Spoofing,0.0377
+SES-002897,Normal,USB Data Theft,0.6222,0,USB Data Theft,0.6222,Normal,0.1992,Insider Threat,0.0317
+SES-008459,Normal,Normal,0.921,1,Normal,0.921,USB Data Theft,0.0413,Device Spoofing,0.0047
+SES-011255,Normal,Normal,0.816,1,Normal,0.816,USB Data Theft,0.0617,Device Spoofing,0.0218
+SES-009671,Normal,USB Data Theft,0.7132,0,USB Data Theft,0.7132,Normal,0.1333,Insider Threat,0.0286
+SES-009396,Normal,Normal,0.8533,1,Normal,0.8533,Malware Execution,0.0513,Privilege Escalation,0.0324
+SES-003395,Normal,Normal,0.8699,1,Normal,0.8699,Device Spoofing,0.0253,USB Data Theft,0.0199
+SES-004854,Normal,Normal,0.8551,1,Normal,0.8551,Privilege Escalation,0.0692,Malware Execution,0.0372
+SES-002317,Normal,Normal,0.627,1,Normal,0.627,Insider Threat,0.1533,Privilege Escalation,0.0635
+SES-009159,Normal,Normal,0.9338,1,Normal,0.9338,USB Data Theft,0.0144,Device Spoofing,0.0101
+SES-005247,Normal,Normal,0.7111,1,Normal,0.7111,Off-hours Access,0.1378,Device Spoofing,0.0419
+SES-012538,Normal,Normal,0.398,1,Normal,0.398,USB Data Theft,0.2384,Insider Threat,0.064
+SES-000256,Normal,Normal,0.5768,1,Normal,0.5768,USB Data Theft,0.1573,Insider Threat,0.0493
+SES-012697,Normal,USB Data Theft,0.4875,0,USB Data Theft,0.4875,Normal,0.2998,Insider Threat,0.0333
+SES-007564,Normal,Normal,0.6953,1,Normal,0.6953,Privilege Escalation,0.1549,Malware Execution,0.0484
+SES-001773,Normal,Normal,0.9515,1,Normal,0.9515,Device Spoofing,0.0087,USB Data Theft,0.0068
+SES-012033,Normal,Malware Execution,0.3276,0,Malware Execution,0.3276,Privilege Escalation,0.2927,Normal,0.2405
+SES-009794,Normal,Normal,0.8728,1,Normal,0.8728,Privilege Escalation,0.0507,Malware Execution,0.0404
+SES-012473,Normal,Normal,0.7389,1,Normal,0.7389,Malware Execution,0.0738,Privilege Escalation,0.0707
+SES-011207,Normal,USB Data Theft,0.4289,0,USB Data Theft,0.4289,Normal,0.4066,Device Spoofing,0.0305
+SES-000500,Normal,Normal,0.8384,1,Normal,0.8384,USB Data Theft,0.0404,Device Spoofing,0.0274
+SES-003585,Normal,Normal,0.5168,1,Normal,0.5168,USB Data Theft,0.3164,Insider Threat,0.0281
+SES-006495,Normal,Normal,0.7582,1,Normal,0.7582,Off-hours Access,0.0891,Device Spoofing,0.019
+SES-008287,Normal,Lateral Movement,0.3574,0,Lateral Movement,0.3574,Insider Drift,0.1821,Normal,0.1409
+SES-011772,Normal,Normal,0.7846,1,Normal,0.7846,Off-hours Access,0.0575,Device Spoofing,0.0413
+SES-000325,Brute Force,Brute Force,0.4389,1,Brute Force,0.4389,Lateral Movement,0.3325,Credential Stuffing,0.1575
+SES-012475,Normal,Normal,0.6781,1,Normal,0.6781,Low-and-Slow Exfiltration,0.1087,Privilege Escalation,0.0904
+SES-003834,Insider Threat,Insider Threat,0.5515,1,Insider Threat,0.5515,USB Data Theft,0.1967,Normal,0.1249
+SES-009175,Beaconing C2,Beaconing C2,0.9835,1,Beaconing C2,0.9835,Insider Threat,0.0071,USB Data Theft,0.0032
+SES-007254,Normal,USB Data Theft,0.3972,0,USB Data Theft,0.3972,Normal,0.3769,Device Spoofing,0.039
+SES-005211,Normal,Insider Threat,0.5106,0,Insider Threat,0.5106,USB Data Theft,0.259,Normal,0.1158
+SES-000795,Normal,Normal,0.8076,1,Normal,0.8076,USB Data Theft,0.066,Device Spoofing,0.0178
+SES-004060,Normal,Normal,0.8795,1,Normal,0.8795,Privilege Escalation,0.0598,USB Data Theft,0.013
+SES-011297,Normal,USB Data Theft,0.4369,0,USB Data Theft,0.4369,Normal,0.2676,Insider Threat,0.068
+SES-008626,Normal,Normal,0.5326,1,Normal,0.5326,Device Spoofing,0.2654,USB Data Theft,0.0667
+SES-012559,Off-hours Access,Off-hours Access,0.9493,1,Off-hours Access,0.9493,Insider Threat,0.0424,Normal,0.0027
+SES-012201,Normal,Normal,0.918,1,Normal,0.918,USB Data Theft,0.0455,Device Spoofing,0.0033
+SES-000576,Normal,Normal,0.571,1,Normal,0.571,USB Data Theft,0.2363,Insider Threat,0.0345
+SES-011956,Normal,Device Spoofing,0.457,0,Device Spoofing,0.457,Normal,0.2888,Insider Threat,0.0735
+SES-002561,Normal,Normal,0.9097,1,Normal,0.9097,USB Data Theft,0.0299,Insider Threat,0.0214
+SES-012743,Normal,Privilege Escalation,0.3699,0,Privilege Escalation,0.3699,Normal,0.274,Malware Execution,0.1846
+SES-006743,Brute Force,Credential Stuffing,0.848,0,Credential Stuffing,0.848,Brute Force,0.1245,Impossible Travel,0.0043
+SES-003291,Normal,Normal,0.8422,1,Normal,0.8422,USB Data Theft,0.06,Device Spoofing,0.0153
+SES-009240,Normal,Normal,0.4283,1,Normal,0.4283,Insider Threat,0.3464,Device Spoofing,0.0669
+SES-002946,Normal,Normal,0.945,1,Normal,0.945,Device Spoofing,0.0139,Brute Force,0.0039
+SES-007769,Normal,USB Data Theft,0.5341,0,USB Data Theft,0.5341,Normal,0.279,Device Spoofing,0.036
+SES-010827,Credential Stuffing,Brute Force,0.4304,0,Brute Force,0.4304,Credential Stuffing,0.2744,Privilege Escalation,0.2463
+SES-001663,Normal,Normal,0.844,1,Normal,0.844,Insider Threat,0.048,Device Spoofing,0.0236
+SES-000686,Normal,Lateral Movement,0.8396,0,Lateral Movement,0.8396,Privilege Escalation,0.0398,Malware Execution,0.0383
+SES-002357,Normal,Normal,0.9181,1,Normal,0.9181,USB Data Theft,0.0182,Device Spoofing,0.0162
+SES-007602,Normal,Normal,0.768,1,Normal,0.768,Off-hours Access,0.0789,Device Spoofing,0.0394
+SES-012290,Normal,USB Data Theft,0.6957,0,USB Data Theft,0.6957,Normal,0.1187,Insider Threat,0.0312
+SES-011483,Normal,Malware Execution,0.4505,0,Malware Execution,0.4505,Privilege Escalation,0.2203,Lateral Movement,0.0912
+SES-005265,Normal,Normal,0.8572,1,Normal,0.8572,USB Data Theft,0.0299,Device Spoofing,0.0222
+SES-005777,Normal,Normal,0.7047,1,Normal,0.7047,Malware Execution,0.1039,Privilege Escalation,0.077
+SES-008308,Normal,Normal,0.9055,1,Normal,0.9055,Privilege Escalation,0.0396,Malware Execution,0.0114
+SES-003452,Normal,USB Data Theft,0.3636,0,USB Data Theft,0.3636,Insider Threat,0.2526,Normal,0.2028
+SES-011342,USB Data Theft,USB Data Theft,0.3436,1,USB Data Theft,0.3436,Normal,0.2757,Insider Threat,0.0499
+SES-006024,Normal,Normal,0.9384,1,Normal,0.9384,USB Data Theft,0.014,Device Spoofing,0.0123
+SES-001158,Normal,Normal,0.7674,1,Normal,0.7674,Off-hours Access,0.0788,Device Spoofing,0.0393
+SES-001138,Normal,Malware Execution,0.3336,0,Malware Execution,0.3336,Normal,0.2997,Privilege Escalation,0.2446
+SES-007609,Normal,Normal,0.7261,1,Normal,0.7261,Off-hours Access,0.0936,Device Spoofing,0.0492
+SES-000100,Normal,Normal,0.8064,1,Normal,0.8064,Device Spoofing,0.0869,USB Data Theft,0.029
+SES-008397,Normal,USB Data Theft,0.482,0,USB Data Theft,0.482,Normal,0.2176,Privilege Escalation,0.0518
+SES-005014,Normal,Device Spoofing,0.4173,0,Device Spoofing,0.4173,Normal,0.2882,Privilege Escalation,0.1192
+SES-001049,Normal,Insider Threat,0.4758,0,Insider Threat,0.4758,Malware Execution,0.191,Lateral Movement,0.1127
+SES-008488,Normal,Device Spoofing,0.6171,0,Device Spoofing,0.6171,Normal,0.2519,USB Data Theft,0.044
+SES-004967,Normal,Normal,0.8154,1,Normal,0.8154,USB Data Theft,0.0815,Device Spoofing,0.0111
+SES-006384,Normal,USB Data Theft,0.3667,0,USB Data Theft,0.3667,Normal,0.323,Insider Threat,0.0541
+SES-012814,Normal,Normal,0.9218,1,Normal,0.9218,USB Data Theft,0.0206,Device Spoofing,0.0097
+SES-012018,Normal,Normal,0.8691,1,Normal,0.8691,Malware Execution,0.072,Insider Drift,0.0138
+SES-005896,Normal,Normal,0.7246,1,Normal,0.7246,Off-hours Access,0.1221,Device Spoofing,0.0416
+SES-011351,Normal,Normal,0.2834,1,Normal,0.2834,USB Data Theft,0.1884,Insider Threat,0.1028
+SES-003577,Privilege Escalation,Malware Execution,0.4621,0,Malware Execution,0.4621,Privilege Escalation,0.202,Normal,0.1193
+SES-010152,Normal,Privilege Escalation,0.4495,0,Privilege Escalation,0.4495,Normal,0.232,USB Data Theft,0.1524
+SES-012026,Impossible Travel,Impossible Travel,0.9754,1,Impossible Travel,0.9754,Insider Threat,0.0088,Normal,0.0075
+SES-002136,Normal,Normal,0.9432,1,Normal,0.9432,USB Data Theft,0.0148,Device Spoofing,0.0101
+SES-012159,Suspicious PowerShell,Suspicious PowerShell,0.9724,1,Suspicious PowerShell,0.9724,Normal,0.0113,Privilege Escalation,0.0049
+SES-007988,Normal,Device Spoofing,0.7685,0,Device Spoofing,0.7685,Normal,0.1658,USB Data Theft,0.0214
+SES-007766,Normal,USB Data Theft,0.396,0,USB Data Theft,0.396,Insider Threat,0.3345,Normal,0.1625
+SES-008914,Normal,Lateral Movement,0.5291,0,Lateral Movement,0.5291,Normal,0.252,Malware Execution,0.0956
+SES-007036,Normal,Normal,0.8115,1,Normal,0.8115,Device Spoofing,0.0221,Brute Force,0.0155
+SES-006634,Normal,Insider Threat,0.3234,0,Insider Threat,0.3234,USB Data Theft,0.2871,Normal,0.2745
+SES-004051,Normal,Normal,0.9455,1,Normal,0.9455,Device Spoofing,0.008,Brute Force,0.0052
+SES-006937,Normal,Normal,0.8167,1,Normal,0.8167,USB Data Theft,0.0489,Insider Threat,0.0401
+SES-006243,Normal,Device Spoofing,0.5868,0,Device Spoofing,0.5868,USB Data Theft,0.2395,Normal,0.0999
+SES-002952,Normal,Normal,0.4144,1,Normal,0.4144,USB Data Theft,0.4072,Device Spoofing,0.0346
+SES-011149,Normal,Privilege Escalation,0.3287,0,Privilege Escalation,0.3287,Normal,0.3223,Malware Execution,0.2121
+SES-008294,Normal,Normal,0.8537,1,Normal,0.8537,Privilege Escalation,0.049,Malware Execution,0.0485
+SES-002745,Normal,Normal,0.2971,1,Normal,0.2971,USB Data Theft,0.1713,Insider Threat,0.0978
+SES-010886,Normal,Normal,0.5663,1,Normal,0.5663,Malware Execution,0.1304,Lateral Movement,0.1122
+SES-011588,Normal,Normal,0.7625,1,Normal,0.7625,USB Data Theft,0.1095,Device Spoofing,0.0128
+SES-004237,Normal,Malware Execution,0.3247,0,Malware Execution,0.3247,Privilege Escalation,0.1782,Lateral Movement,0.1746
+SES-011338,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.9579,1,Low-and-Slow Exfiltration,0.9579,Malware Execution,0.0196,Privilege Escalation,0.0066
+SES-012864,Normal,Normal,0.8217,1,Normal,0.8217,USB Data Theft,0.0658,Device Spoofing,0.0247
+SES-011518,Normal,Device Spoofing,0.7417,0,Device Spoofing,0.7417,Normal,0.2049,USB Data Theft,0.0171
+SES-011865,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.9297,1,Low-and-Slow Exfiltration,0.9297,Privilege Escalation,0.0347,Malware Execution,0.0183
+SES-011596,Normal,Normal,0.8706,1,Normal,0.8706,Malware Execution,0.0488,Privilege Escalation,0.0407
+SES-011958,Normal,Device Spoofing,0.4666,0,Device Spoofing,0.4666,USB Data Theft,0.2382,Normal,0.2197
+SES-008579,Normal,USB Data Theft,0.5312,0,USB Data Theft,0.5312,Normal,0.2727,Insider Threat,0.0349
+SES-000307,Normal,Normal,0.7143,1,Normal,0.7143,Device Spoofing,0.1432,USB Data Theft,0.0448
+SES-009582,Normal,Normal,0.4686,1,Normal,0.4686,Privilege Escalation,0.1681,Malware Execution,0.168
+SES-012278,Normal,Insider Threat,0.6374,0,Insider Threat,0.6374,Normal,0.1065,USB Data Theft,0.0727
+SES-002558,Normal,Normal,0.8192,1,Normal,0.8192,USB Data Theft,0.0701,Device Spoofing,0.0228
+SES-005517,Normal,Privilege Escalation,0.3269,0,Privilege Escalation,0.3269,Malware Execution,0.2476,Normal,0.2259
+SES-007730,Normal,Normal,0.7072,1,Normal,0.7072,Low-and-Slow Exfiltration,0.1153,Privilege Escalation,0.0596
+SES-003904,Normal,Device Spoofing,0.6652,0,Device Spoofing,0.6652,Normal,0.2445,USB Data Theft,0.043
+SES-001445,Normal,Normal,0.8956,1,Normal,0.8956,Privilege Escalation,0.0371,Malware Execution,0.0222
+SES-007080,Normal,Normal,0.9327,1,Normal,0.9327,USB Data Theft,0.0179,Device Spoofing,0.0109
+SES-007316,Normal,Normal,0.7323,1,Normal,0.7323,USB Data Theft,0.1481,Device Spoofing,0.0108
+SES-012869,Data Exfiltration,Data Exfiltration,0.9095,1,Data Exfiltration,0.9095,USB Data Theft,0.0378,Insider Threat,0.0373
+SES-005027,Normal,Normal,0.65,1,Normal,0.65,Device Spoofing,0.1226,Malware Execution,0.067
+SES-010798,Normal,Normal,0.5189,1,Normal,0.5189,USB Data Theft,0.2835,Device Spoofing,0.0373
+SES-008306,Normal,Normal,0.8026,1,Normal,0.8026,USB Data Theft,0.075,Device Spoofing,0.0225
+SES-007835,Normal,Normal,0.4154,1,Normal,0.4154,USB Data Theft,0.2965,Insider Threat,0.0551
+SES-012365,Normal,Normal,0.9309,1,Normal,0.9309,USB Data Theft,0.0159,Device Spoofing,0.0102
+SES-012848,Normal,Device Spoofing,0.4771,0,Device Spoofing,0.4771,Normal,0.4297,USB Data Theft,0.0357
+SES-010014,Normal,Normal,0.9315,1,Normal,0.9315,USB Data Theft,0.0226,Device Spoofing,0.0119
+SES-004021,Normal,Insider Threat,0.6229,0,Insider Threat,0.6229,Normal,0.208,USB Data Theft,0.0535
+SES-004929,Normal,Normal,0.7689,1,Normal,0.7689,Privilege Escalation,0.0945,Malware Execution,0.0277
+SES-006392,Normal,Insider Drift,0.8245,0,Insider Drift,0.8245,Lateral Movement,0.0533,Normal,0.0365
+SES-009543,Normal,Normal,0.9267,1,Normal,0.9267,USB Data Theft,0.0152,Device Spoofing,0.0129
+SES-006828,Normal,Normal,0.6105,1,Normal,0.6105,Device Spoofing,0.2865,USB Data Theft,0.018
+SES-009033,Normal,Normal,0.562,1,Normal,0.562,USB Data Theft,0.1116,Low-and-Slow Exfiltration,0.0954
+SES-012696,Beaconing C2,Beaconing C2,0.9875,1,Beaconing C2,0.9875,Normal,0.0026,USB Data Theft,0.0024
+SES-004807,Normal,Normal,0.8027,1,Normal,0.8027,USB Data Theft,0.0513,Insider Threat,0.0405
+SES-002753,Normal,Normal,0.8255,1,Normal,0.8255,USB Data Theft,0.0343,Device Spoofing,0.0265
+SES-002766,Normal,Privilege Escalation,0.526,0,Privilege Escalation,0.526,Normal,0.1987,Malware Execution,0.1154
+SES-001398,Normal,Normal,0.4696,1,Normal,0.4696,USB Data Theft,0.3235,Device Spoofing,0.0383
+SES-010096,Normal,Insider Drift,0.5369,0,Insider Drift,0.5369,Normal,0.1958,Lateral Movement,0.1597
+SES-003766,Normal,Normal,0.8887,1,Normal,0.8887,Insider Threat,0.0447,USB Data Theft,0.0161
+SES-001752,Normal,Device Spoofing,0.4863,0,Device Spoofing,0.4863,Normal,0.2983,Lateral Movement,0.0811
+SES-000179,Normal,Lateral Movement,0.577,0,Lateral Movement,0.577,Normal,0.3736,Malware Execution,0.0267
+SES-006655,Normal,Normal,0.8989,1,Normal,0.8989,Privilege Escalation,0.0381,Malware Execution,0.0188
+SES-004813,Normal,Normal,0.9391,1,Normal,0.9391,USB Data Theft,0.013,Device Spoofing,0.0129
+SES-005249,Normal,Normal,0.7482,1,Normal,0.7482,Off-hours Access,0.1025,Device Spoofing,0.0384
+SES-002328,Normal,Normal,0.9372,1,Normal,0.9372,USB Data Theft,0.0163,Device Spoofing,0.0106
+SES-004976,Normal,Normal,0.7241,1,Normal,0.7241,USB Data Theft,0.16,Device Spoofing,0.0148
+SES-000600,Normal,Off-hours Access,0.6968,0,Off-hours Access,0.6968,Normal,0.2326,Device Spoofing,0.0134
+SES-002776,Normal,Normal,0.9327,1,Normal,0.9327,USB Data Theft,0.015,Device Spoofing,0.0111
+SES-006727,Normal,Normal,0.3787,1,Normal,0.3787,Insider Threat,0.3713,Device Spoofing,0.1327
+SES-012855,Normal,Normal,0.9166,1,Normal,0.9166,USB Data Theft,0.0434,Impossible Travel,0.0074
+SES-002493,Normal,Normal,0.8983,1,Normal,0.8983,Privilege Escalation,0.0548,Malware Execution,0.0086
+SES-006365,Insider Drift,Lateral Movement,0.9491,0,Lateral Movement,0.9491,Insider Drift,0.0137,Normal,0.0095
+SES-008303,Normal,Normal,0.9452,1,Normal,0.9452,USB Data Theft,0.0089,Device Spoofing,0.0087
+SES-010206,Normal,Privilege Escalation,0.421,0,Privilege Escalation,0.421,Malware Execution,0.3785,Normal,0.1259
+SES-002375,Normal,Normal,0.9464,1,Normal,0.9464,USB Data Theft,0.0157,Device Spoofing,0.0036
+SES-004822,Normal,Normal,0.9284,1,Normal,0.9284,USB Data Theft,0.0254,Device Spoofing,0.0105
+SES-000245,Data Exfiltration,Data Exfiltration,0.9855,1,Data Exfiltration,0.9855,Insider Threat,0.0033,USB Data Theft,0.003
+SES-007492,Normal,Normal,0.947,1,Normal,0.947,Device Spoofing,0.0134,USB Data Theft,0.0059
+SES-008821,Normal,Normal,0.6754,1,Normal,0.6754,Insider Threat,0.0951,Malware Execution,0.0783
+SES-000248,Normal,Normal,0.9272,1,Normal,0.9272,Device Spoofing,0.0227,Impossible Travel,0.0097
+SES-008041,Normal,Normal,0.9411,1,Normal,0.9411,USB Data Theft,0.0143,Device Spoofing,0.007
+SES-002912,Normal,Normal,0.9284,1,Normal,0.9284,USB Data Theft,0.0285,Device Spoofing,0.0043
+SES-008430,Normal,Normal,0.4009,1,Normal,0.4009,Insider Threat,0.1786,Device Spoofing,0.1463
+SES-002825,Normal,Normal,0.8161,1,Normal,0.8161,Insider Threat,0.0922,Malware Execution,0.0314
+SES-006050,Normal,Normal,0.3915,1,Normal,0.3915,USB Data Theft,0.326,Insider Threat,0.0477
+SES-003682,Normal,USB Data Theft,0.4568,0,USB Data Theft,0.4568,Normal,0.2739,Insider Threat,0.053
+SES-008183,Normal,Normal,0.9457,1,Normal,0.9457,Device Spoofing,0.0122,Brute Force,0.004
+SES-007824,Normal,Normal,0.8586,1,Normal,0.8586,Malware Execution,0.0356,Privilege Escalation,0.0348
+SES-006524,Normal,Normal,0.7919,1,Normal,0.7919,USB Data Theft,0.0599,Privilege Escalation,0.0218
+SES-010334,Normal,USB Data Theft,0.4582,0,USB Data Theft,0.4582,Normal,0.3482,Lateral Movement,0.0445
+SES-004688,Normal,Normal,0.7429,1,Normal,0.7429,Off-hours Access,0.1001,Device Spoofing,0.0422
+SES-003624,Normal,Normal,0.344,1,Normal,0.344,USB Data Theft,0.3226,Insider Threat,0.0619
+SES-007005,Normal,Normal,0.9479,1,Normal,0.9479,Device Spoofing,0.0064,Brute Force,0.0043
+SES-000851,Normal,Normal,0.9414,1,Normal,0.9414,USB Data Theft,0.0171,Device Spoofing,0.0069
+SES-011937,Normal,Normal,0.9145,1,Normal,0.9145,USB Data Theft,0.0414,Device Spoofing,0.0092
+SES-010457,Normal,Normal,0.9359,1,Normal,0.9359,USB Data Theft,0.0209,Device Spoofing,0.0117
+SES-011687,Normal,Normal,0.9257,1,Normal,0.9257,USB Data Theft,0.0188,Impossible Travel,0.0107
+SES-009387,Normal,USB Data Theft,0.3702,0,USB Data Theft,0.3702,Normal,0.2638,Device Spoofing,0.0481
+SES-009371,Normal,Normal,0.85,1,Normal,0.85,USB Data Theft,0.0368,Device Spoofing,0.0205
+SES-000779,Normal,Normal,0.6765,1,Normal,0.6765,Device Spoofing,0.2065,USB Data Theft,0.0337
+SES-010522,Normal,USB Data Theft,0.6047,0,USB Data Theft,0.6047,Normal,0.1714,Insider Threat,0.0501
+SES-011819,Normal,Device Spoofing,0.4987,0,Device Spoofing,0.4987,Normal,0.4057,USB Data Theft,0.0399
+SES-009858,Normal,USB Data Theft,0.5708,0,USB Data Theft,0.5708,Normal,0.2039,Insider Threat,0.0392
+SES-009710,Normal,Normal,0.9479,1,Normal,0.9479,USB Data Theft,0.0164,Device Spoofing,0.0035
+SES-008072,Normal,Normal,0.6255,1,Normal,0.6255,Device Spoofing,0.2301,USB Data Theft,0.0351
+SES-002859,Normal,Normal,0.8362,1,Normal,0.8362,Insider Drift,0.0547,Malware Execution,0.0399
+SES-001832,Normal,Normal,0.9432,1,Normal,0.9432,USB Data Theft,0.0112,Privilege Escalation,0.0088
+SES-000841,Normal,Privilege Escalation,0.6873,0,Privilege Escalation,0.6873,Malware Execution,0.141,Normal,0.0554
+SES-007803,Normal,USB Data Theft,0.3424,0,USB Data Theft,0.3424,Normal,0.2431,Device Spoofing,0.187
+SES-011044,Normal,Normal,0.9472,1,Normal,0.9472,Device Spoofing,0.0103,USB Data Theft,0.0102
+SES-010744,Normal,Normal,0.9501,1,Normal,0.9501,Device Spoofing,0.0105,USB Data Theft,0.0043
+SES-011131,Normal,Lateral Movement,0.4729,0,Lateral Movement,0.4729,Normal,0.4144,Insider Drift,0.041
+SES-008165,Normal,Normal,0.8014,1,Normal,0.8014,USB Data Theft,0.0724,Device Spoofing,0.0236
+SES-002329,Normal,Normal,0.9176,1,Normal,0.9176,USB Data Theft,0.0304,Impossible Travel,0.0094
+SES-004564,Normal,Normal,0.3663,1,Normal,0.3663,Insider Threat,0.1052,USB Data Theft,0.0982
+SES-007120,Normal,Normal,0.9411,1,Normal,0.9411,Device Spoofing,0.0168,Brute Force,0.004
+SES-005334,Normal,Normal,0.8647,1,Normal,0.8647,Impossible Travel,0.0189,USB Data Theft,0.0152
+SES-004718,Off-hours Access,Off-hours Access,0.9766,1,Off-hours Access,0.9766,Normal,0.013,Privilege Escalation,0.0032
+SES-005264,Normal,Normal,0.9065,1,Normal,0.9065,USB Data Theft,0.0324,Lateral Movement,0.0176
+SES-010482,Normal,Normal,0.8411,1,Normal,0.8411,USB Data Theft,0.0403,Device Spoofing,0.0249
+SES-005441,Normal,Malware Execution,0.3524,0,Malware Execution,0.3524,Privilege Escalation,0.269,Normal,0.2
+SES-002635,Normal,Normal,0.4879,1,Normal,0.4879,USB Data Theft,0.2919,Device Spoofing,0.0448
+SES-005307,Normal,Normal,0.7412,1,Normal,0.7412,Insider Threat,0.1299,USB Data Theft,0.0244
+SES-011127,Normal,Normal,0.9284,1,Normal,0.9284,USB Data Theft,0.0314,Device Spoofing,0.0051
+SES-000260,Normal,Normal,0.7715,1,Normal,0.7715,Insider Threat,0.0745,Device Spoofing,0.0541
+SES-001668,Normal,Normal,0.9316,1,Normal,0.9316,USB Data Theft,0.0242,Device Spoofing,0.0075
+SES-010740,Normal,Normal,0.9513,1,Normal,0.9513,Device Spoofing,0.0073,Insider Threat,0.004
+SES-005366,Normal,USB Data Theft,0.5471,0,USB Data Theft,0.5471,Normal,0.3245,Insider Threat,0.0219
+SES-005907,Normal,USB Data Theft,0.3629,0,USB Data Theft,0.3629,Normal,0.2775,Insider Threat,0.0694
+SES-007551,Normal,Device Spoofing,0.7729,0,Device Spoofing,0.7729,Normal,0.1753,USB Data Theft,0.0051
+SES-011419,Normal,Device Spoofing,0.6789,0,Device Spoofing,0.6789,Normal,0.2422,USB Data Theft,0.0409
+SES-005483,Normal,Normal,0.9354,1,Normal,0.9354,USB Data Theft,0.0198,Device Spoofing,0.0104
+SES-010328,Normal,Normal,0.2999,1,Normal,0.2999,Lateral Movement,0.2173,USB Data Theft,0.1223
+SES-002097,Normal,Normal,0.8412,1,Normal,0.8412,Privilege Escalation,0.0785,Malware Execution,0.0343
+SES-003214,Normal,Device Spoofing,0.4807,0,Device Spoofing,0.4807,Normal,0.3847,USB Data Theft,0.0738
+SES-009600,Normal,Device Spoofing,0.4897,0,Device Spoofing,0.4897,USB Data Theft,0.3614,Normal,0.0868
+SES-011792,Normal,Normal,0.8742,1,Normal,0.8742,USB Data Theft,0.0255,Device Spoofing,0.0185
+SES-007524,Normal,Normal,0.941,1,Normal,0.941,Impossible Travel,0.0098,Device Spoofing,0.0076
+SES-001079,Normal,Malware Execution,0.2963,0,Malware Execution,0.2963,Privilege Escalation,0.2626,Insider Drift,0.1983
+SES-002691,Normal,Normal,0.9052,1,Normal,0.9052,USB Data Theft,0.0452,Device Spoofing,0.0057
+SES-007585,Normal,Normal,0.6067,1,Normal,0.6067,Privilege Escalation,0.1412,Device Spoofing,0.1371
+SES-000979,Normal,Device Spoofing,0.6774,0,Device Spoofing,0.6774,Normal,0.233,USB Data Theft,0.0449
+SES-001860,Normal,Normal,0.8369,1,Normal,0.8369,USB Data Theft,0.0526,Device Spoofing,0.0216
+SES-008763,Normal,Normal,0.4788,1,Normal,0.4788,Privilege Escalation,0.156,Malware Execution,0.0928
+SES-001103,Normal,Normal,0.357,1,Normal,0.357,Privilege Escalation,0.3038,Malware Execution,0.1113
+SES-007624,Normal,Normal,0.8541,1,Normal,0.8541,USB Data Theft,0.0324,Device Spoofing,0.0128
+SES-007396,Normal,Normal,0.861,1,Normal,0.861,USB Data Theft,0.035,Device Spoofing,0.0195
+SES-003871,Normal,Normal,0.5859,1,Normal,0.5859,USB Data Theft,0.1966,Insider Threat,0.0353
+SES-008070,Normal,Normal,0.9327,1,Normal,0.9327,USB Data Theft,0.022,Device Spoofing,0.0103
+SES-012279,Normal,Normal,0.6326,1,Normal,0.6326,Insider Threat,0.1144,Lateral Movement,0.0875
+SES-001378,Normal,Normal,0.928,1,Normal,0.928,USB Data Theft,0.0247,Device Spoofing,0.0111
+SES-011389,Normal,Device Spoofing,0.6994,0,Device Spoofing,0.6994,USB Data Theft,0.1908,Normal,0.0548
+SES-006110,Normal,Normal,0.5712,1,Normal,0.5712,Malware Execution,0.1632,Privilege Escalation,0.1168
+SES-011108,Normal,Normal,0.9582,1,Normal,0.9582,USB Data Theft,0.0037,Brute Force,0.0036
+SES-009202,Normal,Device Spoofing,0.4629,0,Device Spoofing,0.4629,USB Data Theft,0.3167,Normal,0.11
+SES-010760,Normal,Normal,0.4597,1,Normal,0.4597,Device Spoofing,0.4306,USB Data Theft,0.0327
+SES-002969,Normal,USB Data Theft,0.3968,0,USB Data Theft,0.3968,Normal,0.22,Insider Threat,0.0748
+SES-004131,Normal,Normal,0.9429,1,Normal,0.9429,USB Data Theft,0.0141,Device Spoofing,0.0067
+SES-001829,Normal,Normal,0.7156,1,Normal,0.7156,Malware Execution,0.127,USB Data Theft,0.0364
+SES-004862,Normal,Normal,0.4854,1,Normal,0.4854,Insider Threat,0.3419,Insider Drift,0.0695
+SES-009248,Normal,Normal,0.8104,1,Normal,0.8104,USB Data Theft,0.0552,Impossible Travel,0.0203
+SES-001082,Normal,USB Data Theft,0.342,0,USB Data Theft,0.342,Insider Threat,0.2602,Normal,0.2489
+SES-004587,Normal,Normal,0.9496,1,Normal,0.9496,Device Spoofing,0.0134,Brute Force,0.0035
+SES-009286,Normal,Normal,0.9271,1,Normal,0.9271,USB Data Theft,0.0197,Device Spoofing,0.0136
+SES-009818,Normal,Normal,0.9302,1,Normal,0.9302,USB Data Theft,0.0234,Impossible Travel,0.0076
+SES-007224,Normal,Normal,0.449,1,Normal,0.449,USB Data Theft,0.3401,Device Spoofing,0.0351
+SES-002168,Normal,Normal,0.8648,1,Normal,0.8648,Malware Execution,0.0662,Privilege Escalation,0.0294
+SES-001796,Normal,Normal,0.7914,1,Normal,0.7914,Malware Execution,0.0696,Lateral Movement,0.062
+SES-009856,Normal,USB Data Theft,0.416,0,USB Data Theft,0.416,Normal,0.4106,Insider Threat,0.0299
+SES-007496,Normal,Normal,0.4251,1,Normal,0.4251,Lateral Movement,0.1562,Malware Execution,0.1524
+SES-001517,Normal,USB Data Theft,0.4856,0,USB Data Theft,0.4856,Normal,0.3066,Insider Threat,0.0362
+SES-007545,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.9816,1,Low-and-Slow Exfiltration,0.9816,USB Data Theft,0.0072,Normal,0.0041
+SES-008461,Normal,Normal,0.869,1,Normal,0.869,USB Data Theft,0.0473,Privilege Escalation,0.0235
+SES-010703,Normal,Normal,0.89,1,Normal,0.89,Privilege Escalation,0.0531,Malware Execution,0.0141
+SES-010599,Normal,Normal,0.8995,1,Normal,0.8995,Malware Execution,0.0371,Privilege Escalation,0.0222
+SES-005070,Normal,USB Data Theft,0.3145,0,USB Data Theft,0.3145,Insider Threat,0.296,Normal,0.2221
+SES-000016,Normal,Normal,0.6953,1,Normal,0.6953,Device Spoofing,0.1217,Off-hours Access,0.0842
+SES-009891,Normal,Privilege Escalation,0.3928,0,Privilege Escalation,0.3928,Normal,0.2343,USB Data Theft,0.1151
+SES-002971,Normal,Normal,0.3512,1,Normal,0.3512,USB Data Theft,0.2659,Insider Threat,0.0889
+SES-005403,Normal,Privilege Escalation,0.4384,0,Privilege Escalation,0.4384,Normal,0.2447,Malware Execution,0.1237
+SES-012973,Normal,Normal,0.9344,1,Normal,0.9344,USB Data Theft,0.0163,Device Spoofing,0.0076
+SES-012028,Normal,Normal,0.9227,1,Normal,0.9227,Device Spoofing,0.0172,USB Data Theft,0.0159
+SES-006281,Normal,Normal,0.9297,1,Normal,0.9297,Insider Threat,0.0272,USB Data Theft,0.0083
+SES-009629,Normal,Normal,0.3264,1,Normal,0.3264,USB Data Theft,0.2866,Lateral Movement,0.0669
+SES-004200,Normal,Normal,0.8177,1,Normal,0.8177,Privilege Escalation,0.0878,Malware Execution,0.0346
+SES-007364,Normal,Normal,0.8068,1,Normal,0.8068,USB Data Theft,0.043,Insider Threat,0.033
+SES-002146,Normal,Normal,0.9325,1,Normal,0.9325,USB Data Theft,0.0288,Impossible Travel,0.0067
+SES-007116,Normal,Normal,0.8419,1,Normal,0.8419,Insider Threat,0.0464,USB Data Theft,0.0205
+SES-011176,Data Exfiltration,Data Exfiltration,0.9766,1,Data Exfiltration,0.9766,Insider Threat,0.0093,USB Data Theft,0.0077
+SES-008315,Normal,Device Spoofing,0.606,0,Device Spoofing,0.606,Normal,0.2816,Insider Threat,0.0492
+SES-010268,Normal,Normal,0.5188,1,Normal,0.5188,USB Data Theft,0.2995,Device Spoofing,0.0295
+SES-004139,Normal,Privilege Escalation,0.6451,0,Privilege Escalation,0.6451,Malware Execution,0.1219,Normal,0.0775
+SES-009780,Normal,Privilege Escalation,0.4037,0,Privilege Escalation,0.4037,Normal,0.2671,Malware Execution,0.1286
+SES-000748,Normal,Normal,0.8842,1,Normal,0.8842,USB Data Theft,0.0385,Insider Threat,0.0333
+SES-012312,Normal,Malware Execution,0.2514,0,Malware Execution,0.2514,Privilege Escalation,0.2335,USB Data Theft,0.2163
+SES-011113,Normal,Malware Execution,0.3798,0,Malware Execution,0.3798,Privilege Escalation,0.3736,Normal,0.0792
+SES-000719,Normal,Normal,0.9238,1,Normal,0.9238,USB Data Theft,0.0185,Device Spoofing,0.0175
+SES-012115,Normal,Normal,0.7439,1,Normal,0.7439,Lateral Movement,0.0797,Malware Execution,0.0685
+SES-007098,Normal,Normal,0.9324,1,Normal,0.9324,USB Data Theft,0.0221,Device Spoofing,0.0099
+SES-004553,Normal,Normal,0.8697,1,Normal,0.8697,USB Data Theft,0.0262,Device Spoofing,0.0234
+SES-009137,USB Data Theft,USB Data Theft,0.5374,1,USB Data Theft,0.5374,Normal,0.1998,Insider Threat,0.0353
+SES-009944,Normal,Normal,0.4781,1,Normal,0.4781,Insider Threat,0.1598,Malware Execution,0.111
+SES-011241,Normal,Privilege Escalation,0.3173,0,Privilege Escalation,0.3173,Malware Execution,0.2638,Normal,0.2448
+SES-011977,Normal,Normal,0.5486,1,Normal,0.5486,Device Spoofing,0.2947,USB Data Theft,0.0817
+SES-012710,Normal,Normal,0.8917,1,Normal,0.8917,USB Data Theft,0.0393,Device Spoofing,0.019
+SES-009873,Normal,Normal,0.9457,1,Normal,0.9457,USB Data Theft,0.0113,Device Spoofing,0.0112
+SES-011461,Normal,Normal,0.8638,1,Normal,0.8638,Privilege Escalation,0.0556,Malware Execution,0.0259
+SES-010585,Normal,Insider Threat,0.434,0,Insider Threat,0.434,Privilege Escalation,0.3376,Malware Execution,0.0961
+SES-011128,Normal,Malware Execution,0.3923,0,Malware Execution,0.3923,Privilege Escalation,0.3595,USB Data Theft,0.0869
+SES-008225,Normal,Normal,0.6994,1,Normal,0.6994,Insider Threat,0.1209,Insider Drift,0.0765
+SES-008643,Normal,Normal,0.8777,1,Normal,0.8777,Insider Threat,0.0644,USB Data Theft,0.0179
+SES-004097,Normal,Normal,0.8573,1,Normal,0.8573,USB Data Theft,0.0436,Device Spoofing,0.0137
+SES-005102,Normal,Normal,0.3402,1,Normal,0.3402,USB Data Theft,0.3093,Insider Threat,0.1901
+SES-004532,Normal,Privilege Escalation,0.3941,0,Privilege Escalation,0.3941,Normal,0.2969,Malware Execution,0.1374
+SES-000637,Brute Force,Credential Stuffing,0.8046,0,Credential Stuffing,0.8046,Brute Force,0.1654,Normal,0.0059
+SES-004556,Normal,Insider Threat,0.5545,0,Insider Threat,0.5545,Normal,0.1581,USB Data Theft,0.1142
+SES-004534,Normal,Normal,0.9415,1,Normal,0.9415,USB Data Theft,0.0165,Device Spoofing,0.0096
+SES-010249,Normal,Privilege Escalation,0.2723,0,Privilege Escalation,0.2723,Insider Threat,0.2214,Malware Execution,0.2202
+SES-007537,Normal,USB Data Theft,0.4425,0,USB Data Theft,0.4425,Normal,0.3079,Insider Threat,0.0502
+SES-001367,Normal,Normal,0.4717,1,Normal,0.4717,Device Spoofing,0.4119,USB Data Theft,0.0482
+SES-002239,Normal,Normal,0.782,1,Normal,0.782,USB Data Theft,0.1064,Device Spoofing,0.0247
+SES-005216,Normal,Normal,0.9398,1,Normal,0.9398,Device Spoofing,0.0114,USB Data Theft,0.0088
+SES-009711,Normal,Normal,0.4106,1,Normal,0.4106,USB Data Theft,0.3583,Insider Threat,0.0387
+SES-009867,Privilege Escalation,Privilege Escalation,0.4318,1,Privilege Escalation,0.4318,Malware Execution,0.3786,Normal,0.0533
+SES-001604,Normal,Normal,0.9391,1,Normal,0.9391,USB Data Theft,0.0165,Device Spoofing,0.0086
+SES-012078,Normal,Normal,0.8441,1,Normal,0.8441,USB Data Theft,0.0268,Impossible Travel,0.0204
+SES-005218,Normal,Normal,0.745,1,Normal,0.745,Privilege Escalation,0.1614,Malware Execution,0.0184
+SES-003506,Normal,Privilege Escalation,0.4656,0,Privilege Escalation,0.4656,Normal,0.2433,Malware Execution,0.1601
+SES-007398,Normal,Normal,0.8774,1,Normal,0.8774,Insider Threat,0.0593,USB Data Theft,0.0224
+SES-010340,Normal,Normal,0.9426,1,Normal,0.9426,Device Spoofing,0.0078,USB Data Theft,0.0063
+SES-002395,Normal,Privilege Escalation,0.6011,0,Privilege Escalation,0.6011,Malware Execution,0.1503,Normal,0.1054
+SES-011628,Normal,Privilege Escalation,0.4443,0,Privilege Escalation,0.4443,Normal,0.2795,Malware Execution,0.0805
+SES-000162,Normal,Normal,0.9159,1,Normal,0.9159,Lateral Movement,0.0226,USB Data Theft,0.0168
+SES-005579,Normal,USB Data Theft,0.4342,0,USB Data Theft,0.4342,Normal,0.3834,Device Spoofing,0.0334
+SES-001986,Normal,Normal,0.7245,1,Normal,0.7245,Privilege Escalation,0.0744,Malware Execution,0.0733
+SES-004629,Normal,Normal,0.5256,1,Normal,0.5256,Device Spoofing,0.3817,USB Data Theft,0.0157
+SES-009149,Normal,Privilege Escalation,0.3827,0,Privilege Escalation,0.3827,Normal,0.3739,Malware Execution,0.0597
+SES-012934,Normal,Device Spoofing,0.6826,0,Device Spoofing,0.6826,Normal,0.1621,Insider Threat,0.0578
+SES-007712,Normal,Normal,0.9379,1,Normal,0.9379,Device Spoofing,0.0158,Brute Force,0.0044
+SES-007728,Normal,Normal,0.9467,1,Normal,0.9467,Device Spoofing,0.0129,USB Data Theft,0.0048
+SES-007096,Normal,USB Data Theft,0.6566,0,USB Data Theft,0.6566,Normal,0.154,Insider Threat,0.0329
+SES-001036,Normal,Normal,0.9351,1,Normal,0.9351,Device Spoofing,0.0147,Brute Force,0.0047
+SES-011720,Normal,Normal,0.9261,1,Normal,0.9261,USB Data Theft,0.0198,Device Spoofing,0.0131
+SES-005369,Normal,USB Data Theft,0.7055,0,USB Data Theft,0.7055,Normal,0.1391,Insider Threat,0.0341
+SES-010688,Normal,Normal,0.9408,1,Normal,0.9408,USB Data Theft,0.0097,Device Spoofing,0.0079
+SES-008238,Normal,Device Spoofing,0.5633,0,Device Spoofing,0.5633,Normal,0.28,USB Data Theft,0.0394
+SES-003995,Normal,Normal,0.8507,1,Normal,0.8507,Malware Execution,0.0702,Privilege Escalation,0.0192
+SES-002430,Insider Threat,Insider Threat,0.5102,1,Insider Threat,0.5102,Privilege Escalation,0.2264,Malware Execution,0.1171
+SES-010317,Normal,Normal,0.9099,1,Normal,0.9099,USB Data Theft,0.0446,Device Spoofing,0.0114
+SES-012612,Normal,Normal,0.9109,1,Normal,0.9109,Privilege Escalation,0.0308,Malware Execution,0.0163
+SES-001047,Normal,Privilege Escalation,0.3395,0,Privilege Escalation,0.3395,Malware Execution,0.2413,Normal,0.161
+SES-011288,Normal,Normal,0.8547,1,Normal,0.8547,Privilege Escalation,0.037,Insider Threat,0.0365
+SES-007445,Normal,Normal,0.8764,1,Normal,0.8764,Insider Threat,0.0463,USB Data Theft,0.0259
+SES-007762,Normal,Normal,0.5418,1,Normal,0.5418,USB Data Theft,0.2516,Insider Threat,0.0353
+SES-008175,Normal,Normal,0.6571,1,Normal,0.6571,Malware Execution,0.1667,Privilege Escalation,0.0885
+SES-000153,Normal,Device Spoofing,0.4435,0,Device Spoofing,0.4435,Normal,0.2882,USB Data Theft,0.1631
+SES-010176,Normal,Privilege Escalation,0.6414,0,Privilege Escalation,0.6414,Malware Execution,0.1206,Normal,0.1015
+SES-002078,Normal,Normal,0.8731,1,Normal,0.8731,Insider Threat,0.0595,USB Data Theft,0.0226
+SES-005222,Normal,Normal,0.8967,1,Normal,0.8967,Privilege Escalation,0.0302,Malware Execution,0.0299
+SES-005940,Normal,Normal,0.911,1,Normal,0.911,USB Data Theft,0.0185,Device Spoofing,0.0183
+SES-009406,Normal,Normal,0.9418,1,Normal,0.9418,Impossible Travel,0.0098,Device Spoofing,0.0075
+SES-004954,Normal,Normal,0.3339,1,Normal,0.3339,Privilege Escalation,0.2455,Device Spoofing,0.1522
+SES-011756,Normal,Normal,0.9286,1,Normal,0.9286,USB Data Theft,0.0324,Device Spoofing,0.0059
+SES-009786,Normal,Insider Threat,0.6201,0,Insider Threat,0.6201,USB Data Theft,0.1455,Normal,0.1105
+SES-001321,Normal,Normal,0.9341,1,Normal,0.9341,USB Data Theft,0.0175,Device Spoofing,0.0122
+SES-010322,Normal,Normal,0.8053,1,Normal,0.8053,Privilege Escalation,0.0758,Malware Execution,0.0665
+SES-003864,Normal,Insider Threat,0.5235,0,Insider Threat,0.5235,USB Data Theft,0.1792,Device Spoofing,0.0879
+SES-006146,Normal,Normal,0.8966,1,Normal,0.8966,Insider Threat,0.0405,Device Spoofing,0.0156
+SES-005813,Normal,Normal,0.9429,1,Normal,0.9429,Device Spoofing,0.0113,Brute Force,0.0044
+SES-012971,Normal,Normal,0.4648,1,Normal,0.4648,Malware Execution,0.2281,Device Spoofing,0.1049
+SES-010663,Normal,Normal,0.835,1,Normal,0.835,Insider Threat,0.0483,Privilege Escalation,0.0296
+SES-012853,Normal,USB Data Theft,0.4608,0,USB Data Theft,0.4608,Normal,0.3938,Device Spoofing,0.0253
+SES-012969,Normal,USB Data Theft,0.4561,0,USB Data Theft,0.4561,Normal,0.3998,Insider Threat,0.0241
+SES-002681,Normal,Normal,0.3555,1,Normal,0.3555,Privilege Escalation,0.2821,Malware Execution,0.1654
+SES-001248,Normal,Normal,0.3248,1,Normal,0.3248,USB Data Theft,0.2304,Insider Threat,0.092
+SES-002808,Normal,Normal,0.876,1,Normal,0.876,USB Data Theft,0.0236,Device Spoofing,0.018
+SES-004943,Normal,USB Data Theft,0.3593,0,USB Data Theft,0.3593,Normal,0.2833,Insider Threat,0.0607
+SES-008723,Normal,Normal,0.601,1,Normal,0.601,Privilege Escalation,0.1737,Device Spoofing,0.0949
+SES-003298,Normal,Normal,0.4885,1,Normal,0.4885,USB Data Theft,0.341,Insider Threat,0.0313
+SES-009752,Normal,Device Spoofing,0.4492,0,Device Spoofing,0.4492,USB Data Theft,0.2452,Normal,0.1464
+SES-002678,Normal,Normal,0.8038,1,Normal,0.8038,Insider Threat,0.0654,Lateral Movement,0.0393
+SES-001989,Normal,Normal,0.8288,1,Normal,0.8288,USB Data Theft,0.0637,Device Spoofing,0.012
+SES-008445,Normal,Normal,0.943,1,Normal,0.943,USB Data Theft,0.0182,Device Spoofing,0.0042
+SES-008546,Normal,Lateral Movement,0.6898,0,Lateral Movement,0.6898,Insider Threat,0.1319,Insider Drift,0.1025
+SES-005245,Normal,Normal,0.5258,1,Normal,0.5258,USB Data Theft,0.1234,Off-hours Access,0.0723
+SES-009151,Normal,Normal,0.5619,1,Normal,0.5619,USB Data Theft,0.1881,Device Spoofing,0.0539
+SES-003088,Privilege Escalation,Privilege Escalation,0.5972,1,Privilege Escalation,0.5972,Insider Threat,0.1107,USB Data Theft,0.101
+SES-004107,Normal,USB Data Theft,0.4829,0,USB Data Theft,0.4829,Normal,0.1542,Device Spoofing,0.1366
+SES-004225,Normal,Malware Execution,0.3593,0,Malware Execution,0.3593,Privilege Escalation,0.2544,Insider Threat,0.1854
+SES-001886,Normal,Normal,0.9373,1,Normal,0.9373,Device Spoofing,0.0171,Brute Force,0.0044
+SES-004569,Normal,Normal,0.937,1,Normal,0.937,USB Data Theft,0.0173,Insider Drift,0.005
+SES-008937,Normal,Normal,0.9032,1,Normal,0.9032,Device Spoofing,0.0169,Off-hours Access,0.0094
+SES-011343,Normal,Normal,0.8906,1,Normal,0.8906,Insider Threat,0.061,USB Data Theft,0.0078
+SES-003797,Normal,Normal,0.9283,1,Normal,0.9283,USB Data Theft,0.0248,Device Spoofing,0.0091
+SES-006811,Normal,Normal,0.9463,1,Normal,0.9463,USB Data Theft,0.0094,Device Spoofing,0.0076
+SES-003280,Normal,Device Spoofing,0.6394,0,Device Spoofing,0.6394,Normal,0.2834,Impossible Travel,0.0119
+SES-001917,Normal,Device Spoofing,0.5459,0,Device Spoofing,0.5459,Normal,0.3754,USB Data Theft,0.0205
+SES-004566,Normal,Normal,0.5364,1,Normal,0.5364,USB Data Theft,0.2809,Insider Threat,0.0314
+SES-010957,Lateral Movement,Lateral Movement,0.8881,1,Lateral Movement,0.8881,Insider Drift,0.0742,Normal,0.0126
+SES-011725,Privilege Escalation,Privilege Escalation,0.4553,1,Privilege Escalation,0.4553,Malware Execution,0.4193,Normal,0.0502
+SES-011053,Normal,Device Spoofing,0.572,0,Device Spoofing,0.572,Normal,0.2981,USB Data Theft,0.0363
+SES-000903,Normal,Insider Threat,0.3814,0,Insider Threat,0.3814,Privilege Escalation,0.2319,Malware Execution,0.1708
+SES-009265,Normal,Normal,0.9099,1,Normal,0.9099,USB Data Theft,0.046,Device Spoofing,0.0074
+SES-009374,Normal,Privilege Escalation,0.4561,0,Privilege Escalation,0.4561,Normal,0.304,Malware Execution,0.0655
+SES-000234,Normal,Privilege Escalation,0.3943,0,Privilege Escalation,0.3943,Normal,0.1951,Device Spoofing,0.1334
+SES-001056,Normal,Normal,0.9189,1,Normal,0.9189,Insider Threat,0.0212,USB Data Theft,0.0175
+SES-007401,Normal,Normal,0.7156,1,Normal,0.7156,Malware Execution,0.1022,Privilege Escalation,0.0744
+SES-000572,Normal,Normal,0.9377,1,Normal,0.9377,USB Data Theft,0.0135,Device Spoofing,0.0092
+SES-010483,Normal,Normal,0.9002,1,Normal,0.9002,Insider Threat,0.0548,Device Spoofing,0.0097
+SES-000193,Data Exfiltration,Data Exfiltration,0.9549,1,Data Exfiltration,0.9549,Malware Execution,0.0132,Privilege Escalation,0.0111
+SES-007792,Normal,Normal,0.8614,1,Normal,0.8614,USB Data Theft,0.0256,Device Spoofing,0.0137
+SES-001641,Normal,Insider Threat,0.6228,0,Insider Threat,0.6228,Normal,0.0905,USB Data Theft,0.0737
+SES-010952,Normal,Device Spoofing,0.8501,0,Device Spoofing,0.8501,Normal,0.1124,USB Data Theft,0.0171
+SES-007332,Suspicious PowerShell,Suspicious PowerShell,0.9733,1,Suspicious PowerShell,0.9733,Normal,0.0071,Privilege Escalation,0.0068
+SES-003520,Normal,Normal,0.934,1,Normal,0.934,USB Data Theft,0.0175,Device Spoofing,0.0084
+SES-012227,Normal,Privilege Escalation,0.4536,0,Privilege Escalation,0.4536,Normal,0.2682,Malware Execution,0.1038
+SES-001788,Normal,Normal,0.8709,1,Normal,0.8709,Insider Threat,0.0762,USB Data Theft,0.0134
+SES-006020,Normal,Normal,0.9465,1,Normal,0.9465,Device Spoofing,0.0118,USB Data Theft,0.0065
+SES-004724,Normal,Normal,0.8463,1,Normal,0.8463,USB Data Theft,0.0315,Device Spoofing,0.0243
+SES-002637,Normal,USB Data Theft,0.5471,0,USB Data Theft,0.5471,Normal,0.2168,Insider Threat,0.0413
+SES-006993,Normal,Normal,0.9491,1,Normal,0.9491,Device Spoofing,0.0101,Brute Force,0.0039
+SES-007218,Normal,USB Data Theft,0.425,0,USB Data Theft,0.425,Insider Threat,0.3152,Normal,0.137
+SES-012228,Normal,Normal,0.8592,1,Normal,0.8592,Privilege Escalation,0.0612,Malware Execution,0.0322
+SES-007357,Normal,Normal,0.4914,1,Normal,0.4914,USB Data Theft,0.2785,Device Spoofing,0.042
+SES-011200,Normal,Normal,0.7075,1,Normal,0.7075,Off-hours Access,0.0783,Lateral Movement,0.0627
+SES-008897,Normal,Normal,0.4918,1,Normal,0.4918,Device Spoofing,0.3455,USB Data Theft,0.0449
+SES-003497,Normal,Normal,0.9402,1,Normal,0.9402,Impossible Travel,0.0091,Privilege Escalation,0.0076
+SES-004615,Normal,Normal,0.9118,1,Normal,0.9118,Privilege Escalation,0.034,Malware Execution,0.0103
+SES-007510,Normal,Normal,0.8213,1,Normal,0.8213,USB Data Theft,0.0364,Insider Drift,0.0235
+SES-009857,Normal,Device Spoofing,0.4521,0,Device Spoofing,0.4521,Normal,0.4218,USB Data Theft,0.04
+SES-004150,Normal,Normal,0.9172,1,Normal,0.9172,USB Data Theft,0.0206,Device Spoofing,0.012
+SES-011249,Normal,USB Data Theft,0.3098,0,USB Data Theft,0.3098,Device Spoofing,0.2823,Normal,0.255
+SES-000138,Normal,Normal,0.5261,1,Normal,0.5261,Device Spoofing,0.1902,USB Data Theft,0.1291
+SES-002248,Normal,Normal,0.905,1,Normal,0.905,Privilege Escalation,0.0314,Malware Execution,0.0249
+SES-004373,Normal,Privilege Escalation,0.4795,0,Privilege Escalation,0.4795,Normal,0.1828,Malware Execution,0.1615
+SES-002234,Normal,Normal,0.9172,1,Normal,0.9172,Privilege Escalation,0.0246,Malware Execution,0.0224
+SES-008198,Impossible Travel,Impossible Travel,0.9704,1,Impossible Travel,0.9704,Off-hours Access,0.0201,Normal,0.0053
+SES-005323,Lateral Movement,Lateral Movement,0.6429,1,Lateral Movement,0.6429,Insider Drift,0.1193,Insider Threat,0.1131
+SES-005032,Normal,Normal,0.8551,1,Normal,0.8551,USB Data Theft,0.0356,Device Spoofing,0.0188
+SES-004877,Normal,Normal,0.9315,1,Normal,0.9315,USB Data Theft,0.0257,Device Spoofing,0.0096
+SES-005025,Malware Execution,Malware Execution,0.8467,1,Malware Execution,0.8467,Beaconing C2,0.066,Insider Threat,0.0236
+SES-011609,Normal,Normal,0.9392,1,Normal,0.9392,USB Data Theft,0.0088,Device Spoofing,0.0079
+SES-001081,Normal,Normal,0.9178,1,Normal,0.9178,USB Data Theft,0.0191,Device Spoofing,0.0104
+SES-002227,Brute Force,Brute Force,0.718,1,Brute Force,0.718,Credential Stuffing,0.1482,Insider Threat,0.0908
+SES-006683,Data Exfiltration,Data Exfiltration,0.972,1,Data Exfiltration,0.972,Insider Threat,0.0154,USB Data Theft,0.0062
+SES-006070,Normal,Normal,0.6347,1,Normal,0.6347,USB Data Theft,0.1734,Insider Threat,0.0364
+SES-001010,Normal,Normal,0.9269,1,Normal,0.9269,USB Data Theft,0.0227,Device Spoofing,0.0136
+SES-012163,Normal,Normal,0.9228,1,Normal,0.9228,USB Data Theft,0.0228,Device Spoofing,0.0102
+SES-006774,Normal,Device Spoofing,0.4759,0,Device Spoofing,0.4759,Normal,0.4104,USB Data Theft,0.0351
+SES-004957,Normal,Normal,0.7725,1,Normal,0.7725,USB Data Theft,0.1055,Impossible Travel,0.0199
+SES-012646,Normal,Normal,0.9191,1,Normal,0.9191,USB Data Theft,0.0194,Insider Drift,0.0121
+SES-010256,Normal,Normal,0.8784,1,Normal,0.8784,USB Data Theft,0.0352,Device Spoofing,0.022
+SES-011611,Normal,Normal,0.9289,1,Normal,0.9289,USB Data Theft,0.03,Device Spoofing,0.006
+SES-012461,Normal,Off-hours Access,0.6728,0,Off-hours Access,0.6728,Normal,0.2621,Device Spoofing,0.0146
+SES-007654,Normal,Normal,0.7962,1,Normal,0.7962,Privilege Escalation,0.08,Malware Execution,0.0374
+SES-010754,Normal,Device Spoofing,0.3898,0,Device Spoofing,0.3898,Privilege Escalation,0.3204,Malware Execution,0.1045
+SES-002106,Normal,Normal,0.9476,1,Normal,0.9476,USB Data Theft,0.016,Device Spoofing,0.0059
+SES-000532,Normal,Normal,0.7471,1,Normal,0.7471,Privilege Escalation,0.0904,Device Spoofing,0.0351
+SES-001387,Normal,Malware Execution,0.4004,0,Malware Execution,0.4004,Privilege Escalation,0.3969,Normal,0.1172
+SES-012379,Normal,Normal,0.9344,1,Normal,0.9344,Device Spoofing,0.0154,USB Data Theft,0.0142
+SES-009757,Normal,Device Spoofing,0.6535,0,Device Spoofing,0.6535,Normal,0.2938,USB Data Theft,0.011
+SES-008560,Impossible Travel,Impossible Travel,0.9656,1,Impossible Travel,0.9656,Insider Threat,0.013,Normal,0.0106
+SES-008020,Normal,Normal,0.5749,1,Normal,0.5749,USB Data Theft,0.2205,Insider Threat,0.0333
+SES-009819,Normal,Normal,0.8125,1,Normal,0.8125,Malware Execution,0.06,Privilege Escalation,0.0519
+SES-008766,Normal,Normal,0.6376,1,Normal,0.6376,Malware Execution,0.2009,Privilege Escalation,0.055
+SES-011101,Normal,Normal,0.9445,1,Normal,0.9445,Device Spoofing,0.0093,Insider Drift,0.0054
+SES-003387,Normal,Normal,0.9253,1,Normal,0.9253,USB Data Theft,0.0265,Device Spoofing,0.0094
+SES-001463,Normal,Normal,0.9526,1,Normal,0.9526,USB Data Theft,0.0096,Device Spoofing,0.0045
+SES-011963,Normal,Normal,0.8361,1,Normal,0.8361,USB Data Theft,0.0443,Device Spoofing,0.0246
+SES-012132,Normal,Normal,0.9208,1,Normal,0.9208,USB Data Theft,0.0304,Device Spoofing,0.0108
+SES-001676,Normal,Malware Execution,0.3431,0,Malware Execution,0.3431,Normal,0.272,Privilege Escalation,0.2098
+SES-011164,Normal,Normal,0.4006,1,Normal,0.4006,USB Data Theft,0.2693,Privilege Escalation,0.0714
+SES-002393,Normal,Normal,0.9434,1,Normal,0.9434,Device Spoofing,0.0112,USB Data Theft,0.0088
+SES-002603,Normal,Normal,0.885,1,Normal,0.885,USB Data Theft,0.0305,Malware Execution,0.0241
+SES-000349,Normal,USB Data Theft,0.3016,0,USB Data Theft,0.3016,Insider Threat,0.2785,Normal,0.2561
+SES-009235,Normal,Normal,0.9046,1,Normal,0.9046,Lateral Movement,0.0255,USB Data Theft,0.0214
+SES-003634,Normal,Normal,0.862,1,Normal,0.862,USB Data Theft,0.0375,Device Spoofing,0.0151
+SES-009661,Normal,Normal,0.8197,1,Normal,0.8197,Insider Threat,0.0841,Privilege Escalation,0.0337
+SES-007137,Normal,Lateral Movement,0.6219,0,Lateral Movement,0.6219,Normal,0.2185,Malware Execution,0.0715
+SES-003751,Normal,Normal,0.4843,1,Normal,0.4843,Insider Threat,0.2102,USB Data Theft,0.135
+SES-010751,Normal,Normal,0.544,1,Normal,0.544,Device Spoofing,0.3153,USB Data Theft,0.0538
+SES-003246,Normal,Normal,0.9203,1,Normal,0.9203,Malware Execution,0.0204,Privilege Escalation,0.0203
+SES-003128,Normal,Normal,0.525,1,Normal,0.525,Malware Execution,0.1381,Device Spoofing,0.0877
+SES-012490,Brute Force,Brute Force,0.6595,1,Brute Force,0.6595,Credential Stuffing,0.2281,Insider Drift,0.0297
+SES-010913,Normal,Normal,0.9374,1,Normal,0.9374,Impossible Travel,0.0101,Device Spoofing,0.0073
+SES-006473,Normal,USB Data Theft,0.6157,0,USB Data Theft,0.6157,Normal,0.1622,Insider Threat,0.0392
+SES-007903,Normal,Privilege Escalation,0.4187,0,Privilege Escalation,0.4187,Malware Execution,0.1873,Normal,0.1642
+SES-010109,Credential Stuffing,Credential Stuffing,0.8541,1,Credential Stuffing,0.8541,Brute Force,0.1209,Normal,0.0038
+SES-003146,Normal,Normal,0.9331,1,Normal,0.9331,Device Spoofing,0.0159,USB Data Theft,0.0122
+SES-009879,Normal,Privilege Escalation,0.4911,0,Privilege Escalation,0.4911,Normal,0.2207,Malware Execution,0.0978
+SES-007732,Normal,Normal,0.9428,1,Normal,0.9428,USB Data Theft,0.0139,Device Spoofing,0.009
+SES-002873,Malware Execution,Insider Threat,0.5285,0,Insider Threat,0.5285,Malware Execution,0.1668,Privilege Escalation,0.1299
+SES-006052,Normal,Normal,0.7814,1,Normal,0.7814,Malware Execution,0.0746,Insider Threat,0.069
+SES-002976,Normal,Normal,0.9298,1,Normal,0.9298,USB Data Theft,0.0187,Device Spoofing,0.0089
+SES-007165,Brute Force,Brute Force,0.5319,1,Brute Force,0.5319,Credential Stuffing,0.3313,Insider Threat,0.036
+SES-011752,Normal,Device Spoofing,0.7681,0,Device Spoofing,0.7681,Normal,0.1032,USB Data Theft,0.0786
+SES-005632,Normal,Normal,0.9178,1,Normal,0.9178,USB Data Theft,0.0385,Device Spoofing,0.0104
+SES-012945,Normal,Normal,0.3564,1,Normal,0.3564,USB Data Theft,0.2802,Insider Threat,0.0642
+SES-003026,Normal,Normal,0.6923,1,Normal,0.6923,Device Spoofing,0.145,USB Data Theft,0.0556
+SES-007536,Normal,Insider Threat,0.3895,0,Insider Threat,0.3895,USB Data Theft,0.2484,Normal,0.2102
+SES-009913,Normal,Normal,0.9316,1,Normal,0.9316,USB Data Theft,0.025,Device Spoofing,0.0107
+SES-006536,Normal,Normal,0.8725,1,Normal,0.8725,Device Spoofing,0.0216,USB Data Theft,0.0183
+SES-005227,Normal,USB Data Theft,0.625,0,USB Data Theft,0.625,Normal,0.1585,Insider Threat,0.0463
+SES-002263,Normal,Normal,0.9385,1,Normal,0.9385,USB Data Theft,0.0139,Device Spoofing,0.0101
+SES-012723,Normal,Normal,0.8425,1,Normal,0.8425,USB Data Theft,0.0524,Impossible Travel,0.0173
+SES-000694,Normal,Normal,0.8517,1,Normal,0.8517,Impossible Travel,0.0205,Privilege Escalation,0.0142
+SES-011049,Normal,Device Spoofing,0.6512,0,Device Spoofing,0.6512,Normal,0.1984,Insider Threat,0.1148
+SES-012071,Normal,Normal,0.9443,1,Normal,0.9443,USB Data Theft,0.0148,Device Spoofing,0.0044
+SES-012199,Normal,Normal,0.9441,1,Normal,0.9441,USB Data Theft,0.0111,Privilege Escalation,0.0083
+SES-007813,Normal,Normal,0.7952,1,Normal,0.7952,Privilege Escalation,0.0684,Malware Execution,0.0412
+SES-003351,Normal,Device Spoofing,0.4884,0,Device Spoofing,0.4884,Normal,0.3965,USB Data Theft,0.0526
+SES-005289,Normal,Insider Drift,0.4412,0,Insider Drift,0.4412,Normal,0.3535,Lateral Movement,0.1182
+SES-010702,Normal,Normal,0.8186,1,Normal,0.8186,USB Data Theft,0.0402,Device Spoofing,0.0287
+SES-008915,Normal,Normal,0.8707,1,Normal,0.8707,Device Spoofing,0.0238,USB Data Theft,0.0231
+SES-011186,Normal,Normal,0.659,1,Normal,0.659,Lateral Movement,0.1081,Off-hours Access,0.0798
+SES-001621,Normal,Normal,0.8218,1,Normal,0.8218,USB Data Theft,0.0582,Device Spoofing,0.0182
+SES-003773,Normal,Normal,0.5,1,Normal,0.5,Device Spoofing,0.2682,Privilege Escalation,0.0834
+SES-002249,Normal,Normal,0.4116,1,Normal,0.4116,Insider Threat,0.3502,USB Data Theft,0.0666
+SES-011460,Normal,Normal,0.9419,1,Normal,0.9419,USB Data Theft,0.0131,Device Spoofing,0.0084
+SES-003240,Normal,Normal,0.8383,1,Normal,0.8383,USB Data Theft,0.0651,Device Spoofing,0.0207
+SES-011474,Normal,Normal,0.9328,1,Normal,0.9328,USB Data Theft,0.0176,Device Spoofing,0.0121
+SES-003915,Normal,Insider Threat,0.3639,0,Insider Threat,0.3639,Normal,0.2633,USB Data Theft,0.1497
+SES-009042,Low-and-Slow Exfiltration,Low-and-Slow Exfiltration,0.9778,1,Low-and-Slow Exfiltration,0.9778,USB Data Theft,0.0087,Device Spoofing,0.0062
+SES-007864,Normal,Privilege Escalation,0.5389,0,Privilege Escalation,0.5389,Malware Execution,0.1922,Device Spoofing,0.0962
+SES-003263,Normal,Normal,0.9178,1,Normal,0.9178,USB Data Theft,0.037,Device Spoofing,0.0082
+SES-012092,Insider Threat,Insider Threat,0.9545,1,Insider Threat,0.9545,Normal,0.0111,USB Data Theft,0.0103
+SES-007794,Normal,Normal,0.9052,1,Normal,0.9052,Insider Threat,0.0518,Device Spoofing,0.0095
+SES-005046,Off-hours Access,Off-hours Access,0.9823,1,Off-hours Access,0.9823,Normal,0.0126,USB Data Theft,0.0011
+SES-009460,Normal,Normal,0.5826,1,Normal,0.5826,Insider Drift,0.177,Device Spoofing,0.101
+SES-006275,Privilege Escalation,Privilege Escalation,0.4936,1,Privilege Escalation,0.4936,Malware Execution,0.3672,USB Data Theft,0.0536
+SES-005957,Suspicious PowerShell,Suspicious PowerShell,0.965,1,Suspicious PowerShell,0.965,USB Data Theft,0.0128,Privilege Escalation,0.01
+SES-012303,Normal,Normal,0.8666,1,Normal,0.8666,USB Data Theft,0.0231,Impossible Travel,0.0174
+SES-001474,Normal,USB Data Theft,0.4022,0,USB Data Theft,0.4022,Normal,0.2721,Insider Threat,0.0612
+SES-012825,Normal,Normal,0.8163,1,Normal,0.8163,USB Data Theft,0.0543,Impossible Travel,0.0203
+SES-007142,Normal,Normal,0.5857,1,Normal,0.5857,Device Spoofing,0.289,USB Data Theft,0.0237
+SES-004434,Normal,Normal,0.8786,1,Normal,0.8786,Insider Threat,0.0739,USB Data Theft,0.0096
+SES-011709,Normal,Normal,0.9408,1,Normal,0.9408,USB Data Theft,0.019,Device Spoofing,0.0038
+SES-006806,Normal,Privilege Escalation,0.476,0,Privilege Escalation,0.476,USB Data Theft,0.2114,Normal,0.1127
+SES-004070,Normal,Insider Threat,0.3672,0,Insider Threat,0.3672,Normal,0.2992,USB Data Theft,0.1778
+SES-010610,Normal,Normal,0.9279,1,Normal,0.9279,Device Spoofing,0.0128,USB Data Theft,0.0122
+SES-010806,Normal,Privilege Escalation,0.4637,0,Privilege Escalation,0.4637,Malware Execution,0.2027,Normal,0.1983
+SES-011103,Normal,USB Data Theft,0.4099,0,USB Data Theft,0.4099,Normal,0.3575,Lateral Movement,0.0484
