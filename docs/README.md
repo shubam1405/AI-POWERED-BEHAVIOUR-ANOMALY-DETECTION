@@ -28,7 +28,34 @@ Since real enterprise security logs are highly sensitive and rarely labeled, Cyb
   - Resource permissions
 
 ---
+---
 
+### 🔄 Universal Dataset Adapter
+
+Cyber Cage is designed to work with both its **synthetic enterprise environment** and **external enterprise security datasets**.
+
+A built-in **Universal Dataset Adapter** automatically converts heterogeneous security log formats into Cyber Cage's internal behavioural schema without requiring any modifications to the machine learning pipeline.
+
+### Capabilities
+
+- Automatic schema detection
+- Flexible column mapping
+- Timestamp normalization
+- Event type normalization
+- Internal event representation
+- Smart session reconstruction
+- Dataset compatibility validation
+- Feature compatibility validation
+- Confidence scoring
+- Graceful handling of missing fields
+
+### Supported Input Formats
+
+- CSV
+- JSON
+- Pandas DataFrames
+
+This enables Cyber Cage to ingest third-party enterprise datasets while preserving the existing GRU → XGBoost → SHAP → Copilot pipeline.
 ### 📊 Realistic User Activity Generation
 
 Creates complete employee sessions containing events such as:
@@ -86,11 +113,25 @@ Cyber Cage injects realistic attack behaviors into a subset of sessions across *
 
 ### 🧠 Feature Engineering
 
-- Extracts **71 behavioral features** per session
-- Creates sequential representations for time-series modeling
-- Includes behavioral statistics, temporal patterns, authentication behavior, device usage, file activity, and network behavior
+Cyber Cage extracts **69 engineered behavioural features** from each reconstructed user session.
 
----
+These features include:
+
+- Authentication behaviour
+- Device usage
+- Network activity
+- File operations
+- Resource access
+- Temporal behaviour
+- Process execution
+- Session statistics
+
+The GRU Autoencoder then produces:
+
+- Reconstruction Error
+- Anomaly Score
+
+These outputs are appended to create the final **71-feature vector**, which is used by the XGBoost attack classifier.
 
 ### 🔍 Anomaly Detection
 
@@ -135,67 +176,137 @@ LLM-powered assistant capable of:
 
 ---
 
-### 📊 Interactive Dashboard
+### 📊 Interactive SOC Dashboard
 
-Built using **React** and served through **FastAPI**.
+Built using **React**, **Tailwind CSS**, and **FastAPI**.
 
-Includes:
+The dashboard provides:
 
-- Live dashboards
+- Live attack simulation
 - Session analytics
-- Attack visualization
-- Incident reports
+- Behaviour anomaly detection
+- Attack classification
+- SHAP explainability
 - Campaign correlation
-- Live simulation endpoints
+- Threat timeline
+- Incident reports
+- AI Security Copilot
+- Model Evaluation Dashboard
+- Pipeline health monitoring
+- Performance analytics
+- ---
 
----
+### 📈 Model Evaluation & Analytics
+
+Cyber Cage includes a dedicated analytics dashboard for evaluating model performance and system health.
+
+Features include:
+
+- GRU ROC Curve
+- Precision–Recall Curve
+- Interactive Confusion Matrix
+- Model performance metrics
+- Enterprise dataset statistics
+- Pipeline latency analysis
+- Dynamic confidence indicators
+- Circular risk gauge
+- SHAP evidence visualization
+- System health monitoring
+- Evaluation report export
 
 # 🏗️ System Architecture
 
 ```text
-Enterprise Generator
+External Enterprise Dataset
         │
-        ▼
-Session Generator
         │
-        ▼
-Event Generator
-        │
-        ▼
-Attack Simulator
-        │
-        ▼
-Feature Engineering (71 Features)
-        │
-        ▼
-Sequence Builder
-        │
-        ▼
-GRU/LSTM Autoencoder
-        │
-        ▼
-Anomaly Detection
-(Reconstruction Scores)
-        │
-        ▼
-XGBoost Attack Classifier
-        │
-        ▼
-Attack Type Prediction
-        │
-        ▼
-SHAP Explainability
-(Global + Local)
-        │
-        ▼
-LLM Security Copilot
-        │
-        ▼
-React Dashboard (FastAPI)
+        ├──────────────────────┐
+        │                      │
+Synthetic Enterprise           │
+Generator                      │
+        │                      │
+        └──────────────┬───────┘
+                       ▼
+        Universal Dataset Adapter
+                       │
+      ┌────────────────────────────────┐
+      │ Schema Detection               │
+      │ Column Mapping                 │
+      │ Timestamp Normalization        │
+      │ Event Normalization            │
+      │ Session Reconstruction         │
+      └────────────────────────────────┘
+                       │
+                       ▼
+       Feature Engineering (69 Features)
+                       │
+                       ▼
+            GRU Autoencoder
+                       │
+      Reconstruction Error
+         + Anomaly Score
+                       │
+                       ▼
+           71-Feature Vector
+                       │
+                       ▼
+      XGBoost Attack Classification
+                       │
+                       ▼
+         SHAP Explainability
+                       │
+                       ▼
+        AI Security Copilot
+                       │
+                       ▼
+     React Dashboard (FastAPI)
 ```
 
 ---
+# 🌐 External Dataset Compatibility
 
+Cyber Cage is **dataset-agnostic**.
+
+Alongside its synthetic enterprise generator, it supports ingestion of external enterprise security logs using the Universal Dataset Adapter.
+
+The adapter automatically:
+
+- Detects dataset schema
+- Maps heterogeneous column names
+- Normalizes timestamps
+- Standardizes event types
+- Reconstructs behavioural sessions
+- Validates dataset compatibility
+- Produces Cyber Cage native sessions
+
+Workflow:
+
+```text
+External Dataset
+        │
+        ▼
+Universal Dataset Adapter
+        │
+        ▼
+Cyber Cage Session Schema
+        │
+        ▼
+Feature Engineering
+        │
+        ▼
+GRU Autoencoder
+        │
+        ▼
+XGBoost Classifier
+        │
+        ▼
+SHAP Explainability
+        │
+        ▼
+AI Security Copilot
+```
+
+If the uploaded dataset lacks sufficient behavioural information, Cyber Cage generates a compatibility report highlighting missing fields and whether inference can proceed successfully.
 # 📊 Model Performance
 
 Evaluation performed on **1,953 held-out sessions**.
@@ -215,32 +326,210 @@ Evaluation performed on **1,953 held-out sessions**.
 ```text
 Cyber-Cage/
 │
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── package.json
+├── .gitignore
 ├── main.py
 ├── test.py
+├── dataset_adapter.py                  # Universal Dataset Adapter CLI
 │
-├── src/
-│   ├── config/
-│   ├── models/
-│   ├── generators/
-│   ├── simulator/
-│   ├── validators/
-│   ├── exporters/
-│   ├── features/
-│   ├── anomaly_detection/
-│   ├── attack_classification/
-│   ├── explainability/
-│   ├── copilot/
-│   ├── copilot_api.py
-│   ├── train_gru.py
-│   ├── train_xgboost.py
-│   ├── run_copilot.py
-│   └── tests/
+├── config/
+│   ├── settings.yaml
+│   ├── attack_profiles.yaml
+│   ├── organization.yaml
+│   ├── feature_config.yaml
+│   ├── dataset_mapping.json
+│   └── logging.yaml
 │
-├── frontend/
+├── docs/
+│   ├── architecture.md
+│   ├── methodology.md
+│   ├── system_design.md
+│   ├── model_evaluation.md
+│   ├── dataset_adapter.md
+│   ├── dashboard.md
+│   ├── assumptions.md
+│   ├── experimental_results.md
+│   └── design_decisions.md
+│
+├── models/
+│   ├── gru_autoencoder.pt
+│   ├── xgboost_attack_classifier.pkl
+│   ├── shap_explainer.pkl
+│   ├── scaler.pkl
+│   └── label_encoder.pkl
 │
 ├── outputs/
+│   ├── datasets/
+│   ├── reports/
+│   ├── explanations/
+│   ├── metrics/
+│   ├── simulations/
+│   └── logs/
 │
-└── docs/
+├── src/
+│   │
+│   ├── config/
+│   │   ├── constants.py
+│   │   ├── paths.py
+│   │   └── settings.py
+│   │
+│   ├── models/
+│   │   ├── employee.py
+│   │   ├── session.py
+│   │   ├── event.py
+│   │   ├── device.py
+│   │   ├── department.py
+│   │   ├── enums.py
+│   │   └── attack_types.py
+│   │
+│   ├── generators/
+│   │   ├── enterprise_generator.py
+│   │   ├── employee_generator.py
+│   │   ├── device_generator.py
+│   │   ├── event_generator.py
+│   │   ├── session_generator.py
+│   │   └── activity_generator.py
+│   │
+│   ├── simulator/
+│   │   ├── attack_simulator.py
+│   │   ├── combined_simulator.py
+│   │   ├── campaign_simulator.py
+│   │   ├── timeline_generator.py
+│   │   └── scenario_builder.py
+│   │
+│   ├── features/
+│   │   ├── feature_engineering.py
+│   │   ├── sequence_builder.py
+│   │   ├── dataset_adapter.py
+│   │   ├── schema_detector.py
+│   │   ├── event_normalizer.py
+│   │   ├── session_builder.py
+│   │   ├── feature_validator.py
+│   │   └── compatibility_report.py
+│   │
+│   ├── behavior/
+│   │   ├── behavior_knowledge_base.py
+│   │   ├── cold_start_engine.py
+│   │   ├── drift_monitor.py
+│   │   └── profile_manager.py
+│   │
+│   ├── anomaly_detection/
+│   │   ├── gru_autoencoder.py
+│   │   ├── train_gru.py
+│   │   ├── inference.py
+│   │   └── thresholding.py
+│   │
+│   ├── attack_classification/
+│   │   ├── train_xgboost.py
+│   │   ├── inference.py
+│   │   ├── dataset_loader.py
+│   │   └── metrics.py
+│   │
+│   ├── explainability/
+│   │   ├── shap_engine.py
+│   │   ├── global_explanations.py
+│   │   ├── local_explanations.py
+│   │   └── explanation_report.py
+│   │
+│   ├── copilot/
+│   │   ├── copilot_engine.py
+│   │   ├── recommendation_engine.py
+│   │   ├── incident_report.py
+│   │   ├── campaign_analysis.py
+│   │   ├── threat_summary.py
+│   │   └── prompts.py
+│   │
+│   ├── dashboard/
+│   │   ├── analytics.py
+│   │   ├── metrics.py
+│   │   ├── health_monitor.py
+│   │   └── report_exporter.py
+│   │
+│   ├── api/
+│   │   ├── routes.py
+│   │   ├── simulation_api.py
+│   │   ├── copilot_api.py
+│   │   ├── analytics_api.py
+│   │   └── health_api.py
+│   │
+│   ├── exporters/
+│   │   ├── csv_exporter.py
+│   │   ├── json_exporter.py
+│   │   └── report_exporter.py
+│   │
+│   ├── validators/
+│   │   ├── schema_validator.py
+│   │   ├── feature_validator.py
+│   │   └── data_validator.py
+│   │
+│   ├── utils/
+│   │   ├── helpers.py
+│   │   ├── logger.py
+│   │   ├── timers.py
+│   │   └── visualization.py
+│   │
+│   └── tests/
+│       ├── test_dataset_adapter.py
+│       ├── test_feature_engineering.py
+│       ├── test_gru.py
+│       ├── test_xgboost.py
+│       ├── test_shap.py
+│       ├── test_copilot.py
+│       └── test_validation.py
+│
+├── frontend/
+│   │
+│   ├── public/
+│   │
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── api/
+│   │   ├── hooks/
+│   │   ├── utils/
+│   │   ├── styles/
+│   │   │
+│   │   ├── components/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── SessionAnalytics.jsx
+│   │   │   ├── ThreatTimeline.jsx
+│   │   │   ├── CampaignGraph.jsx
+│   │   │   ├── IncidentReport.jsx
+│   │   │   ├── SecurityCopilot.jsx
+│   │   │   ├── SHAPExplanation.jsx
+│   │   │   ├── RiskGauge.jsx
+│   │   │   ├── ConfidenceBadge.jsx
+│   │   │   ├── SystemHealth.jsx
+│   │   │   ├── ModelEvaluation.jsx
+│   │   │   ├── PipelineLatency.jsx
+│   │   │   ├── DatasetStatistics.jsx
+│   │   │   ├── WhyFlagged.jsx
+│   │   │   └── ExportReport.jsx
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   ├── synthetic/
+│   ├── external/
+│   └── evaluation/
+│
+└── screenshots/
+    ├── dashboard.png
+    ├── analytics.png
+    ├── copilot.png
+    ├── campaign_graph.png
+    ├── threat_timeline.png
+    ├── model_evaluation.png
+    └── dataset_adapter.png
 ```
 
 ### Directory Overview
