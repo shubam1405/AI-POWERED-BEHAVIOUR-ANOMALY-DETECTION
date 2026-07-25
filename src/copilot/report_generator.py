@@ -95,6 +95,12 @@ class ReportGenerator:
 
         top3_predictions = ", ".join([f"{p['attack']} ({p['probability']:.0%})" for p in ctx.top3_predictions])
 
+        # Precompute checklist strings — backslashes are not allowed inside f-string expressions
+        containment_text = "".join(f"- [ ] {action}\n" for action in recs.immediate_containment)
+        investigation_text = "".join(f"- [ ] {step}\n" for step in recs.investigation)
+        remediation_text = "".join(f"- [ ] {step}\n" for step in recs.remediation)
+        recovery_text = "".join(f"- [ ] {step}\n" for step in recs.recovery)
+
         return f"""# SOC Incident Report: {ctx.session_id}
 
 ## 1. Executive Summary
@@ -143,19 +149,16 @@ With a risk score of **{ctx.risk_score:.2f}**, this session represents a marked 
 
 ## 11. Containment Actions
 The security operations team must perform these immediate containment steps:
-{"".join([f"- [ ] {action}\\n" for action in recs.immediate_containment])}
-
+{containment_text}
 ## 12. Investigation Checklist
 Forensic and triage investigative checklist:
-{"".join([f"- [ ] {step}\\n" for step in recs.investigation])}
-
+{investigation_text}
 ## 13. Remediation Plan
 Follow-up remediation steps to resolve root causes:
-{"".join([f"- [ ] {step}\\n" for step in recs.remediation])}
-
+{remediation_text}
 ## 14. Recovery Recommendations
 Systems recovery playbooks:
-{"".join([f"- [ ] {step}\\n" for step in recs.recovery])}
+{recovery_text}
 
 ## 15. Lessons Learned
 - Verify user awareness concerning appropriate access policies.
