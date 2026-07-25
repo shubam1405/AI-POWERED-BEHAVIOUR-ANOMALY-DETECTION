@@ -43,6 +43,7 @@ import logging
 import os
 import random
 import sys
+import time
 import uuid
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -238,14 +239,18 @@ class CombinedSimulator:
         injector._deduplicate_timestamps(session)
 
         # ----------------------------------------------------------------
-        # Step 4 – Feature Engineering
+        # Step 4 – Feature Engineering  [TIMED]
         # ----------------------------------------------------------------
+        _t_fe_start = time.perf_counter()
         raw_features = self._extract_features(session)
+        _t_fe_ms = (time.perf_counter() - _t_fe_start) * 1000
 
         # ----------------------------------------------------------------
-        # Step 5 – GRU scoring
+        # Step 5 – GRU scoring  [TIMED]
         # ----------------------------------------------------------------
+        _t_gru_start = time.perf_counter()
         gru_result = self._score_gru(session)
+        _t_gru_ms = (time.perf_counter() - _t_gru_start) * 1000
         reconstruction_error = gru_result["reconstruction_error"]
         anomaly_score_norm = gru_result["anomaly_score"]
 
@@ -268,27 +273,32 @@ class CombinedSimulator:
             )
 
         # ----------------------------------------------------------------
-        # Step 7 – XGBoost inference (no scaling)
+        # Step 7 – XGBoost inference (no scaling)  [TIMED]
         # ----------------------------------------------------------------
         sim_id = f"SIM-{self.rng.randint(100000, 999999)}"
+        _t_xgb_start = time.perf_counter()
         xgb_result = self.xgb_engine.predict(sim_id, feature_vector, top_k=3)
+        _t_xgb_ms = (time.perf_counter() - _t_xgb_start) * 1000
         predicted_label = xgb_result["prediction"]
         confidence = xgb_result["confidence"]
         top3_predictions = xgb_result["top_predictions"]
 
         # ----------------------------------------------------------------
-        # Step 8 – SHAP (fresh computation on the combined vector)
+        # Step 8 – SHAP (fresh computation on the combined vector)  [TIMED]
         # ----------------------------------------------------------------
+        _t_shap_start = time.perf_counter()
         shap_matrix, positive_contributors, negative_contributors = self._compute_shap(
             feature_vector, predicted_label, confidence, anomaly_score_norm, session.risk_score
         )
+        _t_shap_ms = (time.perf_counter() - _t_shap_start) * 1000
 
         # ----------------------------------------------------------------
-        # Step 9 – NL explanation + severity + MITRE
+        # Step 9 – NL explanation + severity + MITRE  [TIMED]
         # ----------------------------------------------------------------
         from explainability.utils import MITRE_MAPPING, INVESTIGATION_STEPS, compute_severity
         from explainability.explanation_generator import ExplanationGenerator
 
+        _t_copilot_start = time.perf_counter()
         severity = compute_severity(confidence, anomaly_score_norm, session.risk_score)
         mitre = MITRE_MAPPING.get(predicted_label)
         steps = INVESTIGATION_STEPS.get(predicted_label, INVESTIGATION_STEPS.get("Normal", []))
@@ -308,6 +318,22 @@ class CombinedSimulator:
         }
         gen = ExplanationGenerator()
         gen.generate(explanation_dict)  # mutates in-place: adds nl_explanation, summary
+        _t_copilot_ms = (time.perf_counter() - _t_copilot_start) * 1000
+
+        # Aggregate total pipeline time across instrumented stages
+        _t_total_ms = _t_fe_ms + _t_gru_ms + _t_xgb_ms + _t_shap_ms + _t_copilot_ms
+        timing_ms = {
+            "feature_engineering":    round(_t_fe_ms, 2),
+            "gru_inference":          round(_t_gru_ms, 2),
+            "xgboost_classification": round(_t_xgb_ms, 2),
+            "shap_explainability":    round(_t_shap_ms, 2),
+            "copilot_summary":        round(_t_copilot_ms, 2),
+            "total_pipeline":         round(_t_total_ms, 2),
+        }
+        logger.info(
+            "Pipeline timing (ms): FE=%.1f GRU=%.1f XGB=%.1f SHAP=%.1f Copilot=%.1f Total=%.1f",
+            _t_fe_ms, _t_gru_ms, _t_xgb_ms, _t_shap_ms, _t_copilot_ms, _t_total_ms,
+        )
 
         # ----------------------------------------------------------------
         # Step 10 – Build event timeline & campaign chain
@@ -341,6 +367,8 @@ class CombinedSimulator:
             "session_duration":     session.duration_seconds / 60.0,
             "timestamp":            now.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "true_label":           predicted_label,
+            # Live pipeline timing breakdown
+            "timing_ms":            timing_ms,
             # Extended fields for the dashboard
             "detected_behaviours":  [BEHAVIOUR_LABELS.get(b, b) for b in valid_behaviours],
             "event_timeline":       event_timeline,
