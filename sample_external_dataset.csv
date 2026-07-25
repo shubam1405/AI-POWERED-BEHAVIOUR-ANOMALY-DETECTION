@@ -1,0 +1,6 @@
+user_name,datetime,action_name,hostname,ip_addr,browser_ver
+emp_sarah,2026-07-26 09:00:00,user_login_success,PC-FINANCE-01,10.0.4.12,v122
+emp_sarah,2026-07-26 09:15:20,file_access_read,PC-FINANCE-01,10.0.4.12,v122
+emp_sarah,2026-07-26 09:30:10,data_download,PC-FINANCE-01,10.0.4.12,v122
+emp_alex,2026-07-26 23:45:00,vpn_connect,LAPTOP-DEV-99,192.168.1.100,v120
+emp_alex,2026-07-26 23:50:12,cmd_exec,LAPTOP-DEV-99,192.168.1.100,v120

@@ -1,0 +1,163 @@
+{
+  "synonyms": {
+    "employee_id": [
+      "username",
+      "user",
+      "user_id",
+      "employee_id",
+      "emp_id",
+      "employee",
+      "account",
+      "subject",
+      "actor",
+      "principal",
+      "uid"
+    ],
+    "session_id": [
+      "session_id",
+      "sess_id",
+      "session",
+      "sid",
+      "login_session"
+    ],
+    "event_timestamp": [
+      "timestamp",
+      "time",
+      "datetime",
+      "date_time",
+      "event_time",
+      "created_at",
+      "@timestamp",
+      "ts",
+      "log_time"
+    ],
+    "event_type": [
+      "action",
+      "event",
+      "event_type",
+      "activity",
+      "operation",
+      "method",
+      "command",
+      "event_name"
+    ],
+    "device_id": [
+      "device",
+      "host",
+      "hostname",
+      "device_id",
+      "machine",
+      "workstation",
+      "system",
+      "computer_name"
+    ],
+    "source_ip": [
+      "src_ip",
+      "source_ip",
+      "ip",
+      "client_ip",
+      "ip_address",
+      "src",
+      "remote_ip"
+    ],
+    "destination_ip": [
+      "dst_ip",
+      "destination_ip",
+      "target_ip",
+      "dest_ip",
+      "dst",
+      "server_ip"
+    ],
+    "resource": [
+      "resource",
+      "resource_accessed",
+      "target",
+      "file",
+      "url",
+      "uri",
+      "db",
+      "database",
+      "table",
+      "path"
+    ],
+    "status": [
+      "status",
+      "result",
+      "outcome",
+      "success",
+      "flag",
+      "status_code"
+    ],
+    "location": [
+      "geo_location",
+      "office_location",
+      "location",
+      "city",
+      "country",
+      "region"
+    ],
+    "auth_method": [
+      "auth_method",
+      "login_method",
+      "authentication",
+      "mfa",
+      "auth_type"
+    ],
+    "bytes_transferred": [
+      "bytes",
+      "bytes_transferred",
+      "size",
+      "data_size",
+      "upload_bytes",
+      "download_bytes"
+    ],
+    "process_name": [
+      "process_name",
+      "process",
+      "exe",
+      "image",
+      "file_name",
+      "binary"
+    ],
+    "command_line": [
+      "command_line",
+      "cmd",
+      "cmdline",
+      "command_sequence",
+      "args",
+      "command"
+    ]
+  },
+  "event_type_regex": {
+    "(?i).*(login|signin|logon|auth|authenticate).*": "LOGIN",
+    "(?i).*(logout|signout|logoff).*": "LOGOUT",
+    "(?i).*(download|fetch|pull|exfil).*": "FILE_DOWNLOAD",
+    "(?i).*(upload|push|post).*": "FILE_UPLOAD",
+    "(?i).*(read|open|access_file).*": "FILE_READ",
+    "(?i).*(write|save|modify_file).*": "FILE_WRITE",
+    "(?i).*(process|exec|cmd|powershell|run).*": "PROCESS_START",
+    "(?i).*(stop|kill|terminate).*": "PROCESS_STOP",
+    "(?i).*(sql|query|select|database).*": "DATABASE_QUERY",
+    "(?i).*(vpn).*": "VPN_CONNECT",
+    "(?i).*(api|http|rest).*": "API_CALL",
+    "(?i).*(resource|view|access).*": "RESOURCE_ACCESS"
+  },
+  "defaults": {
+    "employee_id": "EMP-UNKNOWN",
+    "device_id": "DEV-UNKNOWN",
+    "source_ip": "127.0.0.1",
+    "geo_location": "Office",
+    "department": "IT",
+    "role": "Staff",
+    "preferred_browser": "Chrome",
+    "preferred_os": "Windows",
+    "status": "SUCCESS",
+    "auth_method": "Password",
+    "entity_type": "user"
+  },
+  "core_fields": [
+    "employee_id",
+    "event_timestamp",
+    "event_type"
+  ]
+}
