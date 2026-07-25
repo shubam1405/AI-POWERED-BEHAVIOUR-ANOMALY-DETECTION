@@ -10,6 +10,7 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, 
   Cell, LineChart, Line, PieChart, Pie
 } from 'recharts';
+import ModelEvaluation from './ModelEvaluation.jsx';
 
 export default function App() {
   // Navigation tabs
@@ -1152,65 +1153,9 @@ export default function App() {
             </div>
           )}
 
-          {/* TABS 6: Analytics */}
+          {/* TABS 6: Analytics — Model Evaluation Dashboard */}
           {activeTab === 'analytics' && (
-            <div className="space-y-8">
-              <div className="grid grid-cols-2 gap-8">
-                
-                {/* Feature importance chart */}
-                <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/25 space-y-4">
-                  <h3 className="font-bold text-slate-100 flex items-center gap-2">
-                    <BarChart2 className="h-5 w-5 text-emerald-400" />
-                    Global Feature Importance (SHAP)
-                  </h3>
-                  <p className="text-xs text-slate-400">Mean absolute SHAP value impact across all 13,015 triage iterations</p>
-
-                  <div className="h-64 mt-4">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={chartData} layout="vertical" margin={{ left: 10, right: 10, top: 10, bottom: 10 }}>
-                        <XAxis type="number" stroke="#475569" fontSize={10} />
-                        <YAxis dataKey="name" type="category" stroke="#475569" fontSize={10} width={80} />
-                        <Tooltip contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b' }} labelStyle={{ color: '#f8fafc' }} />
-                        <Bar dataKey="shap" fill="#10b981" radius={[0, 4, 4, 0]}>
-                          {chartData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={index % 2 === 0 ? '#10b981' : '#34d399'} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-
-                {/* Anomaly score chart */}
-                <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/25 space-y-4">
-                  <h3 className="font-bold text-slate-100 flex items-center gap-2">
-                    <Activity className="h-5 w-5 text-emerald-400" />
-                    GRU Reconstruction anomaly thresholds
-                  </h3>
-                  <p className="text-xs text-slate-400">Reconstruction error baseline (threshold: 0.05)</p>
-
-                  <div className="h-64 mt-4">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={[
-                        { tick: 1, error: 0.012 },
-                        { tick: 2, error: 0.015 },
-                        { tick: 3, error: 0.024 },
-                        { tick: 4, error: 0.089 }, // Anomaly
-                        { tick: 5, error: 0.042 },
-                        { tick: 6, error: 0.011 }
-                      ]} margin={{ left: 10, right: 10, top: 10, bottom: 10 }}>
-                        <XAxis dataKey="tick" stroke="#475569" fontSize={10} />
-                        <YAxis stroke="#475569" fontSize={10} />
-                        <Tooltip contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b' }} />
-                        <Line type="monotone" dataKey="error" stroke="#10b981" strokeWidth={2} />
-                        {/* Threshold line */}
-                        <Line type="monotone" dataKey={() => 0.05} stroke="#f87171" strokeDasharray="5 5" dot={false} strokeWidth={1.5} name="Threshold" />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ModelEvaluation sessionDetail={sessionDetail} />
           )}
 
         </div>
