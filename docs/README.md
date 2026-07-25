@@ -1,118 +1,427 @@
-Cyber Cage — AI-Powered Behavioral Anomaly Detection
+# 🛡️ Cyber Cage — AI-Powered Behavioral Anomaly Detection
 
-Cyber Cage is a full-stack User & Entity Behavior Analytics (UEBA) platform that detects insider threats and cyberattacks by learning what "normal" looks like for every employee in an organization — then flagging, explaining, and triaging the sessions that deviate from it.
+> **Cyber Cage** is a full-stack **User & Entity Behavior Analytics (UEBA)** platform that detects insider threats and cyberattacks by learning what **"normal"** behavior looks like for every employee in an organization, then identifying, explaining, and prioritizing anomalous sessions for security analysts.
 
-Since real enterprise security logs are sensitive and rarely labeled, Cyber Cage generates its own realistic synthetic enterprise: employees, devices, departments, working hours, and day-to-day activity — then injects 15 categories of real-world attack behavior into that data to train and evaluate the detection pipeline end-to-end.
+Since real enterprise security logs are highly sensitive and rarely labeled, Cyber Cage creates a realistic **synthetic enterprise environment** consisting of employees, devices, departments, working hours, and daily activities. It then injects **15 real-world cyberattack scenarios** into the generated data, enabling end-to-end training and evaluation of anomaly detection and attack classification models.
 
-What it does
-Simulates a virtual enterprise — employees across 8 roles (System Admin, Software Engineer, HR, Finance, Sales, Security Analyst, DBA, Network Engineer), each with role-specific behavioral profiles (working hours, devices, apps, access patterns).
-Generates realistic activity sessions — authentication, file operations, process activity, network activity, email, and application usage, sequenced with realistic timing (e.g. login → email → IDE → lunch → commits → logout).
-Injects attack scenarios into a subset of sessions across 15 categories: Insider Threat, Credential Theft, Brute Force, Credential Stuffing, Impossible Travel, Privilege Escalation, Data Exfiltration, Lateral Movement, PowerShell Abuse, Malware Execution, Suspicious Process Execution, Device Spoofing, USB Data Theft, Off-hours Access, and Unusual File Access.
-Engineers 71 behavioral features per session and builds sequential representations for time-series modeling.
-Detects anomalies with a GRU/LSTM Autoencoder trained on normal behavior — sessions with high reconstruction error are flagged as anomalous.
-Classifies attack type with a tuned XGBoost model across 16 classes (15 attack types + Normal).
-Explains every prediction using SHAP (global feature importance, per-class importance, and per-session local explanations).
-Summarizes incidents with an LLM Security Copilot — generates human-readable incident reports, recommendations, campaign correlation across related sessions, and supports analyst Q&A chat.
-Visualizes everything in a React dashboard served via a FastAPI backend, with live simulation endpoints for SOC-style demos.
-Architecture
+---
+
+# 🚀 Features
+
+### 🏢 Synthetic Enterprise Simulation
+
+- Simulates a realistic enterprise with employees across **8 organizational roles**
+  - System Admin
+  - Software Engineer
+  - HR
+  - Finance
+  - Sales
+  - Security Analyst
+  - Database Administrator
+  - Network Engineer
+
+- Generates role-specific behavioral profiles including:
+  - Working hours
+  - Device usage
+  - Application access
+  - Network behavior
+  - Resource permissions
+
+---
+
+### 📊 Realistic User Activity Generation
+
+Creates complete employee sessions containing events such as:
+
+- Authentication
+- File operations
+- Process execution
+- Network activity
+- Email usage
+- Application usage
+
+Example workflow:
+
+```text
+Login
+   ↓
+Email
+   ↓
+IDE Usage
+   ↓
+Lunch Break
+   ↓
+Git Commits
+   ↓
+Logout
+```
+
+All events are generated with realistic timestamps and sequencing.
+
+---
+
+### ⚠️ Attack Simulation
+
+Cyber Cage injects realistic attack behaviors into a subset of sessions across **15 attack categories**.
+
+| Attack Categories |
+|-------------------|
+| Insider Threat |
+| Credential Theft |
+| Brute Force |
+| Credential Stuffing |
+| Impossible Travel |
+| Privilege Escalation |
+| Data Exfiltration |
+| Lateral Movement |
+| PowerShell Abuse |
+| Malware Execution |
+| Suspicious Process Execution |
+| Device Spoofing |
+| USB Data Theft |
+| Off-hours Access |
+| Unusual File Access |
+
+---
+
+### 🧠 Feature Engineering
+
+- Extracts **71 behavioral features** per session
+- Creates sequential representations for time-series modeling
+- Includes behavioral statistics, temporal patterns, authentication behavior, device usage, file activity, and network behavior
+
+---
+
+### 🔍 Anomaly Detection
+
+Uses a **GRU/LSTM Autoencoder** trained exclusively on normal user behavior.
+
+- Learns normal behavioral patterns
+- Computes reconstruction error
+- Flags sessions with unusually high reconstruction errors as anomalies
+
+---
+
+### 🎯 Attack Classification
+
+A tuned **XGBoost** classifier predicts the specific attack type.
+
+- **16 total classes**
+  - 15 attack categories
+  - Normal behavior
+
+---
+
+### 📈 Explainable AI (XAI)
+
+Every prediction is explained using **SHAP**.
+
+Provides:
+
+- Global feature importance
+- Per-class feature importance
+- Local explanations for every session
+
+---
+
+### 🤖 AI Security Copilot
+
+LLM-powered assistant capable of:
+
+- Incident report generation
+- Security recommendations
+- Campaign correlation
+- Interactive analyst Q&A
+
+---
+
+### 📊 Interactive Dashboard
+
+Built using **React** and served through **FastAPI**.
+
+Includes:
+
+- Live dashboards
+- Session analytics
+- Attack visualization
+- Incident reports
+- Campaign correlation
+- Live simulation endpoints
+
+---
+
+# 🏗️ System Architecture
+
+```text
 Enterprise Generator
-      ↓
-Session Generator → Event Generator → Attack Simulator
-      ↓
-Feature Engineering (71 features) → Sequence Builder
-      ↓
-GRU/LSTM Autoencoder  →  Anomaly / Reconstruction Scores
-      ↓
-XGBoost Attack Classifier  →  Attack Type Predictions
-      ↓
-SHAP Explainability  →  Global + Local Explanations
-      ↓
-LLM Security Copilot  →  Incident Reports, Recommendations, Campaign Correlation
-      ↓
-React Dashboard (via FastAPI)
-Results
+        │
+        ▼
+Session Generator
+        │
+        ▼
+Event Generator
+        │
+        ▼
+Attack Simulator
+        │
+        ▼
+Feature Engineering (71 Features)
+        │
+        ▼
+Sequence Builder
+        │
+        ▼
+GRU/LSTM Autoencoder
+        │
+        ▼
+Anomaly Detection
+(Reconstruction Scores)
+        │
+        ▼
+XGBoost Attack Classifier
+        │
+        ▼
+Attack Type Prediction
+        │
+        ▼
+SHAP Explainability
+(Global + Local)
+        │
+        ▼
+LLM Security Copilot
+        │
+        ▼
+React Dashboard (FastAPI)
+```
 
-On the held-out evaluation set (1,953 sessions):
+---
 
-Model	Metric	Score
-GRU Autoencoder (anomaly detection)	ROC-AUC	0.82
-GRU Autoencoder (anomaly detection)	F1 (anomaly class)	0.46
-XGBoost (16-class attack classification)	Accuracy	0.71
-XGBoost (16-class attack classification)	ROC-AUC (OvR)	0.97
-XGBoost (16-class attack classification)	Recall (macro)	0.76
-Project structure
-├── main.py                    # Generates enterprise, sessions, events, attacks, and features
-├── test.py                    # Test runner
+# 📊 Model Performance
+
+Evaluation performed on **1,953 held-out sessions**.
+
+| Model | Metric | Score |
+|--------|---------|------:|
+| GRU Autoencoder | ROC-AUC | **0.82** |
+| GRU Autoencoder | F1 Score (Anomaly) | **0.46** |
+| XGBoost | Accuracy | **0.71** |
+| XGBoost | ROC-AUC (OvR) | **0.97** |
+| XGBoost | Macro Recall | **0.76** |
+
+---
+
+# 📂 Project Structure
+
+```text
+Cyber-Cage/
+│
+├── main.py
+├── test.py
+│
 ├── src/
-│   ├── config/                # Simulation configuration
-│   ├── models/                # Core entity dataclasses & enums (Employee, Device, Session, ...)
-│   ├── generators/             # Employee / device / resource / enterprise / event generators
-│   ├── simulator/              # Company state, virtual clock, session scheduling, attack injection
-│   ├── validators/              # Data integrity checks
-│   ├── exporters/               # CSV / JSON dataset export
-│   ├── features/                # Feature engineering, scaling, sequence building, behavior knowledge base
-│   ├── anomaly_detection/       # GRU/LSTM Autoencoder — training, inference, evaluation
-│   ├── attack_classification/   # XGBoost classifier — training, inference, evaluation
-│   ├── explainability/          # SHAP-based global & local explanations
-│   ├── copilot/                 # LLM-powered incident summarization, recommendations, chat, correlation
-│   ├── copilot_api.py           # FastAPI REST server (dashboard, reports, chat, simulation)
-│   ├── train_gru.py             # CLI: train the anomaly detection model
-│   ├── train_xgboost.py         # CLI: train the attack classifier
-│   ├── run_copilot.py           # CLI: generate incident reports / chat with the copilot
-│   └── tests/                   # Unit test suite
-├── frontend/                   # React + Vite dashboard (Tailwind, Recharts)
-├── outputs/                     # Generated datasets, model outputs, metrics, SHAP values, plots
-└── docs/                        # Architecture & design documentation
-Getting started
-Prerequisites
-Python >= 3.9
-Node.js (for the dashboard)
-1. Install dependencies
-bash
+│   ├── config/
+│   ├── models/
+│   ├── generators/
+│   ├── simulator/
+│   ├── validators/
+│   ├── exporters/
+│   ├── features/
+│   ├── anomaly_detection/
+│   ├── attack_classification/
+│   ├── explainability/
+│   ├── copilot/
+│   ├── copilot_api.py
+│   ├── train_gru.py
+│   ├── train_xgboost.py
+│   ├── run_copilot.py
+│   └── tests/
+│
+├── frontend/
+│
+├── outputs/
+│
+└── docs/
+```
+
+### Directory Overview
+
+| Directory | Description |
+|------------|-------------|
+| `config/` | Simulation configuration |
+| `models/` | Core entity models and enums |
+| `generators/` | Enterprise, employee, device, event generators |
+| `simulator/` | Session scheduling and attack injection |
+| `validators/` | Data integrity validation |
+| `exporters/` | CSV and JSON export utilities |
+| `features/` | Feature engineering and sequence building |
+| `anomaly_detection/` | GRU/LSTM Autoencoder |
+| `attack_classification/` | XGBoost classifier |
+| `explainability/` | SHAP explanations |
+| `copilot/` | LLM Security Copilot |
+| `frontend/` | React dashboard |
+| `outputs/` | Generated datasets and model outputs |
+| `docs/` | Architecture and design documentation |
+
+---
+
+# ⚙️ Getting Started
+
+## Prerequisites
+
+- Python **3.9+**
+- Node.js
+- npm
+
+---
+
+## 1️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
-2. Generate the synthetic enterprise dataset
+```
 
-Simulates the enterprise, schedules and generates sessions/events, injects attacks, and builds engineered features:
+---
 
-bash
+## 2️⃣ Generate Synthetic Enterprise Dataset
+
+Generates:
+
+- Enterprise
+- Employees
+- Sessions
+- Events
+- Attack scenarios
+- Engineered features
+
+```bash
 python main.py
-3. Train the models
+```
 
-Train the GRU/LSTM autoencoder for anomaly detection:
+---
 
-bash
+## 3️⃣ Train Models
+
+### Train GRU/LSTM Autoencoder
+
+```bash
 python src/train_gru.py
+```
 
-Train the XGBoost attack classifier:
+### Train XGBoost Classifier
 
-bash
+```bash
 python src/train_xgboost.py
+```
 
-Both scripts accept CLI flags for hyperparameters, output paths, and tuning — run with --help for the full list.
+Both scripts support configurable hyperparameters via CLI.
 
-4. Generate explanations & incident reports
-bash
+```bash
+python src/train_gru.py --help
+python src/train_xgboost.py --help
+```
+
+---
+
+## 4️⃣ Generate Explanations & Incident Reports
+
+```bash
 python src/explain_xgboost.py
+
 python src/run_copilot.py --all
-5. Run the API + dashboard
-bash
-# Backend
+```
+
+---
+
+## 5️⃣ Run Backend & Dashboard
+
+### Backend
+
+```bash
 python src/copilot_api.py
+```
 
-# Frontend (in a separate terminal)
+### Frontend
+
+```bash
 cd frontend
+
 npm install
+
 npm run dev
+```
 
-The FastAPI server exposes endpoints for session data, incident reports, dashboard feeds, campaign correlation, analyst chat, and live attack simulation for demos.
+The FastAPI server exposes APIs for:
 
-6. Run tests
-bash
+- Session analytics
+- Dashboard feeds
+- Incident reports
+- Campaign correlation
+- Analyst chat
+- Live attack simulation
+
+---
+
+## 6️⃣ Run Tests
+
+```bash
 python -m unittest src/tests/test_validation.py
-Tech stack
+```
 
-ML/Backend: Python, PyTorch (GRU Autoencoder), XGBoost, SHAP, FastAPI, scikit-learn Frontend: React, Vite, Tailwind CSS, Recharts Data generation: Faker
+---
 
-Documentation
+# 🛠️ Tech Stack
 
-See docs/architecture.md and docs/design_decisions.md for a deeper dive into system design.
+## Machine Learning
+
+- PyTorch
+- GRU/LSTM Autoencoder
+- XGBoost
+- SHAP
+- scikit-learn
+
+## Backend
+
+- Python
+- FastAPI
+
+## Frontend
+
+- React
+- Vite
+- Tailwind CSS
+- Recharts
+
+## Synthetic Data Generation
+
+- Faker
+
+---
+
+# 📖 Documentation
+
+For more detailed information, refer to:
+
+```text
+docs/
+├── architecture.md
+└── design_decisions.md
+```
+
+---
+
+# 🎯 Key Highlights
+
+- ✅ End-to-end UEBA platform
+- ✅ Synthetic enterprise data generation
+- ✅ 15 realistic cyberattack simulations
+- ✅ 71 engineered behavioral features
+- ✅ GRU/LSTM Autoencoder anomaly detection
+- ✅ XGBoost multi-class attack classification
+- ✅ SHAP explainability
+- ✅ LLM-powered Security Copilot
+- ✅ React + FastAPI dashboard
+- ✅ Live SOC demonstration support
+
+---
+
+## ⭐ If you find this project useful, consider giving it a star!
