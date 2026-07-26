@@ -393,75 +393,81 @@ def list_sessions(
             for s in unique_sessions
         ]
     except Exception as e:
-        logger.error("GET /sessions failed", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("GET /sessions failed")
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.get("/session/{session_id}")
 def get_session(session_id: str):
     try:
+        logger.info("Fetching session %s", session_id)
         ctx = _get_context(session_id)
         return ctx.__dict__
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
-        logger.error("GET /session/%s failed", session_id, exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("GET /session/%s failed", session_id)
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.get("/report/{session_id}")
 def get_report(session_id: str):
     try:
+        logger.info("Generating report for session %s", session_id)
         ctx = _get_context(session_id)
         return get_generator().generate_report(ctx)
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
-        logger.error("GET /report/%s failed", session_id, exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("GET /report/%s failed", session_id)
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.get("/report/{session_id}/markdown")
 def get_report_markdown(session_id: str):
     try:
+        logger.info("Fetching markdown report for session %s", session_id)
         ctx = _get_context(session_id)
         report = get_generator().generate_report(ctx)
         return report["report_text_markdown"]
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
-        logger.error("GET /report/%s/markdown failed", session_id, exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("GET /report/%s/markdown failed", session_id)
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.get("/summary/{session_id}")
 def get_summary(session_id: str):
     try:
+        logger.info("Generating summary for session %s", session_id)
         ctx = _get_context(session_id)
         return get_summarizer().generate_all(ctx)
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
-        logger.error("GET /summary/%s failed", session_id, exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("GET /summary/%s failed", session_id)
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.get("/recommendations/{session_id}")
 def get_recommendations(session_id: str):
     try:
+        logger.info("Generating recommendations for session %s", session_id)
         ctx = _get_context(session_id)
         recs = get_rec_engine().generate(ctx)
         return recs.__dict__
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
-        logger.error("GET /recommendations/%s failed", session_id, exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("GET /recommendations/%s failed", session_id)
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.post("/chat/{session_id}")
 def post_chat(session_id: str, request: ChatRequest):
     try:
+        logger.info("Chat request for session %s: %s", session_id, request.question)
         ctx = _get_context(session_id)
         response = get_chat().ask(ctx, request.question)
         return {
@@ -472,13 +478,14 @@ def post_chat(session_id: str, request: ChatRequest):
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
-        logger.error("POST /chat/%s failed", session_id, exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("POST /chat/%s failed", session_id)
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.get("/dashboard")
 def get_dashboard_cards(high_severity_only: bool = False):
     try:
+        logger.info("Fetching dashboard cards (high_severity_only=%s)", high_severity_only)
         sessions = list(SIMULATION_CACHE.values())
         if high_severity_only:
             sessions += get_builder().get_high_critical()
@@ -512,22 +519,24 @@ def get_dashboard_cards(high_severity_only: bool = False):
             })
         return cards
     except Exception as e:
-        logger.error("GET /dashboard failed", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("GET /dashboard failed")
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.get("/campaigns")
 def list_campaigns():
     try:
+        logger.info("Listing all campaigns")
         return list(get_campaign_index().values())
     except Exception as e:
-        logger.error("GET /campaigns failed", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("GET /campaigns failed")
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.get("/campaign/{campaign_id}")
 def get_campaign(campaign_id: str):
     try:
+        logger.info("Fetching campaign details for %s", campaign_id)
         camp = get_campaign_index().get(campaign_id.upper())
         if not camp:
             raise HTTPException(status_code=404, detail=f"Campaign {campaign_id} not found.")
@@ -535,8 +544,8 @@ def get_campaign(campaign_id: str):
     except HTTPException:
         raise
     except Exception as e:
-        logger.error("GET /campaign/%s failed", campaign_id, exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("GET /campaign/%s failed", campaign_id)
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.post("/simulate")
@@ -544,6 +553,7 @@ def post_simulate_multi(request: SimulationRequest):
     """Generate a combined multi-behaviour session using the full inference pipeline."""
     from copilot.utils import IncidentContext
 
+    logger.info("Triggering multi-behaviour simulation for %s", request.employee_id)
     sim = get_combined_sim()
     if sim is None:
         raise HTTPException(
@@ -590,8 +600,9 @@ def post_simulate_multi(request: SimulationRequest):
         logger.info("Multi-behaviour simulation %s → %s complete.", sim_id, result["attack_type"])
         return result
     except Exception as e:
-        logger.error("Multi-behaviour simulation failed: %s", e, exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("Multi-behaviour simulation failed")
+        raise HTTPException(status_code=500, detail={"error": str(e)})
+
 
 
 @app.post("/simulate/{attack_type}")
@@ -600,6 +611,7 @@ def post_simulate(attack_type: str):
     from copilot.utils import IncidentContext
     from config.config import RISK_ALERT_THRESHOLD
 
+    logger.info("Triggering simulation for attack type: %s", attack_type)
     try:
         mapped_class = ATTACK_MAPPING.get(attack_type.lower())
         if not mapped_class:
@@ -709,8 +721,8 @@ def post_simulate(attack_type: str):
         return result
 
     except Exception as e:
-        logger.error("Simulation endpoint failed: %s", e)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("Simulation endpoint failed")
+        raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 # ---------------------------------------------------------------------------
