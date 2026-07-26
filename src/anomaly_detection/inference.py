@@ -6,11 +6,21 @@ Given a single session (as a raw sequence array or a
 :class:`InferenceEngine` runs the trained GRU Autoencoder, computes the
 reconstruction error, compares it against the stored threshold, and returns
 a structured result dict suitable for downstream consumers (SHAP, Copilot).
+
+Improvements
+------------
+* Automatically loads the optimal threshold from the checkpoint (saved by
+  :meth:`~anomaly_detection.trainer.GRUTrainer.save_checkpoint_with_meta`).
+* Automatically loads and applies the StandardScaler from the checkpoint
+  so sequences are normalised before inference — consistent with training.
+* Falls back to a configurable default threshold if the checkpoint does
+  not embed one (backwards-compatible with old checkpoints).
 """
 
 from __future__ import annotations
 
 import logging
+import pickle
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 
@@ -25,6 +35,9 @@ logger = logging.getLogger("AnomalyDetection.Inference")
 # Type alias for a single raw sequence (list-of-lists or ndarray)
 RawSequence = Union[List[List[float]], np.ndarray]
 
+# Default threshold used when the checkpoint does not embed one
+_DEFAULT_THRESHOLD = 0.05
+
 
 class InferenceEngine:
     """Scores new sessions using a trained GRU Autoencoder.
@@ -33,15 +46,16 @@ class InferenceEngine:
     ----------
     model_path : str
         Path to the saved model checkpoint (``models/gru_autoencoder.pt``).
-    threshold : float
-        Anomaly threshold.  Sessions whose reconstruction error exceeds this
-        value are classified as *Anomalous*.
+    threshold : float, optional
+        Override the threshold.  If *None* (default), the threshold embedded
+        in the checkpoint is used.  If neither is available, falls back to
+        ``_DEFAULT_THRESHOLD``.
     device : torch.device, optional
         Defaults to automatic CPU/GPU selection.
 
     Example
     -------
-    >>> engine = InferenceEngine("models/gru_autoencoder.pt", threshold=0.042)
+    >>> engine = InferenceEngine("models/gru_autoencoder.pt")
     >>> result = engine.score_sequence(session_id="S-001", sequence=seq_array)
     >>> print(result["prediction"])   # "Normal" or "Anomalous"
     """
@@ -49,18 +63,57 @@ class InferenceEngine:
     def __init__(
         self,
         model_path: str = "models/gru_autoencoder.pt",
-        threshold: float = 0.05,
+        threshold: Optional[float] = None,
         device: Optional[torch.device] = None,
     ) -> None:
-        self.threshold = threshold
-        self.device = device or get_device()
+        self.device       = device or get_device()
         self._err_min: float = 0.0
         self._err_max: float = 1.0
+        self._scaler      = None   # StandardScaler or None
 
-        logger.info(
-            "Loading inference model from %s  (threshold=%.6f) …",
-            model_path, threshold,
-        )
+        # Load checkpoint to extract threshold and scaler BEFORE building model
+        checkpoint = torch.load(model_path, map_location=self.device, weights_only=False)
+
+        # Resolve threshold: explicit arg → checkpoint → default
+        if threshold is not None:
+            self.threshold = threshold
+            logger.info("Using provided threshold=%.6f", self.threshold)
+        elif "threshold" in checkpoint:
+            self.threshold = float(checkpoint["threshold"])
+            method = checkpoint.get("threshold_method", "unknown")
+            logger.info(
+                "Loaded threshold=%.6f from checkpoint (method=%s)",
+                self.threshold, method,
+            )
+        else:
+            self.threshold = _DEFAULT_THRESHOLD
+            logger.warning(
+                "Checkpoint has no embedded threshold. "
+                "Using default threshold=%.6f. "
+                "Run train_gru.py to embed the optimal threshold.",
+                self.threshold,
+            )
+
+        # Load scaler if embedded in checkpoint
+        if "scaler" in checkpoint:
+            try:
+                self._scaler = pickle.loads(checkpoint["scaler"])
+                logger.info(
+                    "StandardScaler loaded from checkpoint "
+                    "(mean shape=%s).",
+                    self._scaler.mean_.shape,
+                )
+            except Exception as exc:
+                logger.warning("Failed to deserialise scaler from checkpoint: %s", exc)
+                self._scaler = None
+        else:
+            logger.info(
+                "No scaler found in checkpoint. "
+                "Sequences will be used without normalisation."
+            )
+
+        # Build the model
+        logger.info("Loading inference model from %s …", model_path)
         self.model = GRUAutoencoder.load(model_path, device=self.device)
         self.model.eval()
 
@@ -121,6 +174,10 @@ class InferenceEngine:
                 f"Sequence must be 2-D (seq_len × feature_dim), got shape {seq_arr.shape}."
             )
 
+        # Apply scaler if available (consistent with training normalisation)
+        if self._scaler is not None:
+            seq_arr = self._scaler.transform(seq_arr).astype(np.float32)
+
         if mask is not None:
             msk_arr = np.array(mask, dtype=np.float32)
         else:
@@ -133,10 +190,10 @@ class InferenceEngine:
         with torch.no_grad():
             recon = self.model(seq_t)
 
-        # Per-sample masked MSE
-        sq_err   = (recon - seq_t) ** 2
-        msk_exp  = msk_t.unsqueeze(-1).expand_as(sq_err)
-        err_val  = float((sq_err * msk_exp).sum() / msk_exp.sum().clamp(min=1.0))
+        # Per-sample masked MSE reconstruction error
+        sq_err  = (recon - seq_t) ** 2
+        msk_exp = msk_t.unsqueeze(-1).expand_as(sq_err)
+        err_val = float((sq_err * msk_exp).sum() / msk_exp.sum().clamp(min=1.0))
 
         anomaly_score = self._normalise(err_val)
         is_anomalous  = int(err_val > self.threshold)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import axios from './config/axiosClient.js';
 import { 
   Shield, AlertTriangle, Activity, Database, Server, Cpu, Terminal, 
   Play, Pause, RotateCcw, SkipForward, Send, Layers, GitBranch, 

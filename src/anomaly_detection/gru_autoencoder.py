@@ -6,36 +6,30 @@ Architecture
 
     Input (batch, seq_len, feature_dim)
          │
-         ▼
+         ▼  [input_proj: feature_dim → hidden_size]
     ┌─────────────────────┐
     │   GRU Encoder       │   num_layers, hidden_size, dropout
-    │                     │
+    │   (bidirectional    │
+    │    optional)        │
     │   → last hidden h   │   shape: (batch, hidden_size)
     └──────────┬──────────┘
                │  latent representation
-               ▼
-    ┌─────────────────────┐
-    │  Latent Projection  │   hidden_size → latent_dim (optional bottleneck)
-    └──────────┬──────────┘
-               │
                ▼  repeat across seq_len
     ┌─────────────────────┐
     │   GRU Decoder       │   num_layers, hidden_size, dropout
-    │                     │
     │   → all hidden h    │   shape: (batch, seq_len, hidden_size)
     └──────────┬──────────┘
                │
-               ▼
-    ┌─────────────────────┐
-    │  Output Projection  │   hidden_size → feature_dim
-    └──────────┬──────────┘
-               │
-               ▼
+               ▼  [output_proj: hidden_size → feature_dim]
     Reconstructed Sequence (batch, seq_len, feature_dim)
 
-Loss
-----
-Masked MSE – only real (non-padded) time-steps contribute to the loss.
+Loss Options
+------------
+  - MaskedMSELoss   : mean squared error  (default)
+  - MaskedMAELoss   : mean absolute error (robust to outliers)
+  - MaskedHuberLoss : Huber / smooth-L1   (optional)
+
+Only real (non-padded) time-steps contribute to any of these losses.
 """
 
 from __future__ import annotations
@@ -189,6 +183,7 @@ class GRUDecoder(nn.Module):
             dropout=dropout if num_layers > 1 else 0.0,
         )
         self.output_proj = nn.Linear(hidden_size, output_dim)
+        self.output_norm = nn.LayerNorm(output_dim)
 
     def forward(self, latent: torch.Tensor) -> torch.Tensor:
         """Decode a latent representation back to a sequence.
@@ -203,9 +198,9 @@ class GRUDecoder(nn.Module):
         """
         # Repeat latent across time-steps: (batch, seq_len, hidden_size)
         decoder_input = latent.unsqueeze(1).repeat(1, self.seq_len, 1)
-        output, _ = self.gru(decoder_input)   # (batch, seq_len, hidden_size)
-        recon = self.output_proj(output)       # (batch, seq_len, output_dim)
-        return recon
+        output, _ = self.gru(decoder_input)        # (batch, seq_len, hidden_size)
+        recon = self.output_proj(output)            # (batch, seq_len, output_dim)
+        return self.output_norm(recon)
 
 
 # ---------------------------------------------------------------------------
@@ -220,7 +215,7 @@ class GRUAutoencoder(nn.Module):
     input_dim : int
         Feature dimension of each event time-step (default 21).
     hidden_size : int
-        Number of GRU hidden units (default 128).
+        Number of GRU hidden units (default 128). Optuna will tune this.
     num_layers : int
         Number of stacked GRU layers in both encoder and decoder (default 2).
     dropout : float
@@ -229,6 +224,7 @@ class GRUAutoencoder(nn.Module):
         Fixed sequence length the model expects (default 50).
     bidirectional_encoder : bool
         Whether to use a bidirectional GRU in the encoder (default False).
+        Optuna will tune this.
 
     Example
     -------
@@ -253,9 +249,14 @@ class GRUAutoencoder(nn.Module):
         self.hidden_size = hidden_size
         self.num_layers = num_layers
         self.seq_len = seq_len
+        self.bidirectional_encoder = bidirectional_encoder
 
-        # Optional input projection for dimensionality expansion
-        self.input_proj = nn.Linear(input_dim, hidden_size) if input_dim != hidden_size else nn.Identity()
+        # Optional input projection: feature_dim → hidden_size
+        self.input_proj = (
+            nn.Linear(input_dim, hidden_size)
+            if input_dim != hidden_size
+            else nn.Identity()
+        )
 
         self.encoder = GRUEncoder(
             input_dim=hidden_size if input_dim != hidden_size else input_dim,
@@ -276,8 +277,10 @@ class GRUAutoencoder(nn.Module):
         # Initialise weights
         self.apply(_init_weights)
         logger.info(
-            "GRUAutoencoder initialised  input_dim=%d  hidden=%d  layers=%d  seq_len=%d  params=%s",
+            "GRUAutoencoder  input_dim=%d  hidden=%d  layers=%d  "
+            "seq_len=%d  bidir=%s  params=%s",
             input_dim, hidden_size, num_layers, seq_len,
+            bidirectional_encoder,
             f"{sum(p.numel() for p in self.parameters()):,}",
         )
 
@@ -293,8 +296,8 @@ class GRUAutoencoder(nn.Module):
         recon : Tensor, shape ``(batch, seq_len, input_dim)``
         """
         projected = self.input_proj(x) if not isinstance(self.input_proj, nn.Identity) else x
-        latent = self.encoder(projected)
-        recon = self.decoder(latent)
+        latent    = self.encoder(projected)    # (batch, hidden_size)
+        recon     = self.decoder(latent)       # (batch, seq_len, input_dim)
         return recon
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
@@ -315,28 +318,31 @@ class GRUAutoencoder(nn.Module):
     # Persistence
     # ------------------------------------------------------------------
 
-    def save(self, path: str) -> None:
-        """Persist the model state dictionary and hyper-parameters.
+    def save(self, path: str, extra: Optional[dict] = None) -> None:
+        """Persist the model state dictionary, hyper-parameters, and optional metadata.
 
         Parameters
         ----------
         path : str
-            File path for the saved checkpoint (e.g. ``"models/gru_autoencoder.pt"``).
+            File path for the saved checkpoint.
+        extra : dict, optional
+            Additional keys to embed in the checkpoint (e.g., threshold, scaler).
         """
         from anomaly_detection.utils import ensure_dir
         ensure_dir(Path(path).parent)
-        torch.save(
-            {
-                "state_dict": self.state_dict(),
-                "hparams": {
-                    "input_dim": self.input_dim,
-                    "hidden_size": self.hidden_size,
-                    "num_layers": self.num_layers,
-                    "seq_len": self.seq_len,
-                },
+        checkpoint = {
+            "state_dict": self.state_dict(),
+            "hparams": {
+                "input_dim":             self.input_dim,
+                "hidden_size":           self.hidden_size,
+                "num_layers":            self.num_layers,
+                "seq_len":               self.seq_len,
+                "bidirectional_encoder": self.bidirectional_encoder,
             },
-            path,
-        )
+        }
+        if extra:
+            checkpoint.update(extra)
+        torch.save(checkpoint, path)
         logger.info("Model checkpoint saved → %s", path)
 
     @classmethod
@@ -357,6 +363,10 @@ class GRUAutoencoder(nn.Module):
             device = torch.device("cpu")
         checkpoint = torch.load(path, map_location=device, weights_only=False)
         hparams = checkpoint["hparams"]
+        # Backwards-compat: old checkpoints may have extra keys — strip unknown ones
+        known = {"input_dim", "hidden_size", "num_layers", "seq_len", "bidirectional_encoder"}
+        hparams = {k: v for k, v in hparams.items() if k in known}
+        hparams.setdefault("bidirectional_encoder", False)
         model = cls(**hparams)
         model.load_state_dict(checkpoint["state_dict"])
         model.to(device)
@@ -366,11 +376,11 @@ class GRUAutoencoder(nn.Module):
 
 
 # ---------------------------------------------------------------------------
-# Loss function
+# Loss functions
 # ---------------------------------------------------------------------------
 
 class MaskedMSELoss(nn.Module):
-    """MSE loss that ignores padded time-steps.
+    """Masked MSE loss — ignores zero-padded time-steps.
 
     Parameters
     ----------
@@ -388,26 +398,95 @@ class MaskedMSELoss(nn.Module):
         target: torch.Tensor,
         mask: torch.Tensor,
     ) -> torch.Tensor:
-        """Compute masked reconstruction MSE.
-
-        Parameters
-        ----------
-        recon  : Tensor, shape ``(batch, seq_len, feature_dim)``
-        target : Tensor, shape ``(batch, seq_len, feature_dim)``
-        mask   : Tensor, shape ``(batch, seq_len)``  – 1 = real, 0 = pad
-
-        Returns
-        -------
-        loss : scalar Tensor
-        """
-        # Per-element squared error
-        sq_err = (recon - target) ** 2                   # (batch, seq_len, feat)
-        # Expand mask to feature dimension
-        mask_expanded = mask.unsqueeze(-1).expand_as(sq_err)  # (batch, seq_len, feat)
-        masked_sq_err = sq_err * mask_expanded
-
+        sq_err       = (recon - target) ** 2
+        mask_exp     = mask.unsqueeze(-1).expand_as(sq_err)
+        masked_err   = sq_err * mask_exp
         if self.reduction == "mean":
-            denom = mask_expanded.sum().clamp(min=1.0)
-            return masked_sq_err.sum() / denom
-        else:
-            return masked_sq_err.sum()
+            return masked_err.sum() / mask_exp.sum().clamp(min=1.0)
+        return masked_err.sum()
+
+
+class MaskedMAELoss(nn.Module):
+    """Masked MAE (L1) loss — more robust to outliers than MSE."""
+
+    def __init__(self, reduction: str = "mean") -> None:
+        super().__init__()
+        self.reduction = reduction
+
+    def forward(
+        self,
+        recon: torch.Tensor,
+        target: torch.Tensor,
+        mask: torch.Tensor,
+    ) -> torch.Tensor:
+        abs_err    = (recon - target).abs()
+        mask_exp   = mask.unsqueeze(-1).expand_as(abs_err)
+        masked_err = abs_err * mask_exp
+        if self.reduction == "mean":
+            return masked_err.sum() / mask_exp.sum().clamp(min=1.0)
+        return masked_err.sum()
+
+
+class MaskedHuberLoss(nn.Module):
+    """Masked Huber (Smooth-L1) loss.
+
+    Behaves like MAE for large errors and MSE for small errors,
+    giving robust gradients without being dominated by outliers.
+    This is the recommended default for anomaly detection.
+
+    Parameters
+    ----------
+    delta : float
+        Transition point between MSE and MAE regimes (default 1.0).
+    reduction : str
+        ``"mean"`` (default) or ``"sum"``.
+    """
+
+    def __init__(self, delta: float = 1.0, reduction: str = "mean") -> None:
+        super().__init__()
+        self.delta     = delta
+        self.reduction = reduction
+
+    def forward(
+        self,
+        recon: torch.Tensor,
+        target: torch.Tensor,
+        mask: torch.Tensor,
+    ) -> torch.Tensor:
+        diff     = (recon - target).abs()
+        huber    = torch.where(
+            diff < self.delta,
+            0.5 * diff ** 2,
+            self.delta * (diff - 0.5 * self.delta),
+        )
+        mask_exp   = mask.unsqueeze(-1).expand_as(huber)
+        masked_err = huber * mask_exp
+        if self.reduction == "mean":
+            return masked_err.sum() / mask_exp.sum().clamp(min=1.0)
+        return masked_err.sum()
+
+
+def build_criterion(loss_fn: str = "huber", delta: float = 1.0) -> nn.Module:
+    """Factory function to create the reconstruction loss.
+
+    Parameters
+    ----------
+    loss_fn : str
+        One of ``"mse"``, ``"mae"``, ``"huber"`` (default).
+    delta : float
+        Huber delta — only used when ``loss_fn="huber"``.
+
+    Returns
+    -------
+    nn.Module
+    """
+    if loss_fn == "mse":
+        return MaskedMSELoss(reduction="mean")
+    elif loss_fn == "mae":
+        return MaskedMAELoss(reduction="mean")
+    elif loss_fn == "huber":
+        return MaskedHuberLoss(delta=delta, reduction="mean")
+    else:
+        raise ValueError(
+            f"Unknown loss_fn='{loss_fn}'. Choose from: mse, mae, huber."
+        )

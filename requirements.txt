@@ -37,6 +37,14 @@ xgboost>=2.0.0
 
 
 # -----------------------------------------------------------------------------
+# Hyperparameter Optimisation — Optuna (GRU Architecture Search)
+# -----------------------------------------------------------------------------
+optuna>=3.5.0
+
+
+
+
+# -----------------------------------------------------------------------------
 # Explainable AI — SHAP (Phase 7 XAI Engine)
 # -----------------------------------------------------------------------------
 shap>=0.44.0
@@ -76,9 +84,9 @@ httpx>=0.27.0
 # LLM Providers (optional — install the one you actually use)
 # Uncomment the provider you need:
 # -----------------------------------------------------------------------------
-# openai>=1.30.0          # OpenAI API (GPT-4, GPT-3.5, etc.)
-# anthropic>=0.25.0       # Anthropic Claude
-# ollama>=0.1.0           # Ollama local LLM client
+openai>=1.30.0              # OpenAI API (GPT-4o-mini default provider)
+# anthropic>=0.25.0       # Anthropic Claude (uncomment if using Claude)
+# ollama>=0.1.0           # Ollama local LLM client (uncomment if using Ollama)
 
 
 # -----------------------------------------------------------------------------

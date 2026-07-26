@@ -147,7 +147,7 @@ const SYSTEM_HEALTH = [
   { name: 'SHAP Explainer',     status: 'Ready',   detail: 'TreeExplainer (v0.47.0)',     color: 'emerald', icon: Eye },
   { name: 'AI Copilot',         status: 'Active',  detail: 'TemplateLLMClient',           color: 'amber',   icon: Zap },
   { name: 'Campaign Engine',    status: 'Active',  detail: 'Correlation graph',           color: 'emerald', icon: Layers },
-  { name: 'FastAPI Gateway',    status: 'Running', detail: 'localhost:8000 / uvicorn',    color: 'emerald', icon: Server },
+  { name: 'FastAPI Gateway',    status: 'Running', detail: import.meta.env.VITE_API_URL ?? 'localhost:8000 (dev proxy)',    color: 'emerald', icon: Server },
 ];
 
 /* ─────────────────────────────────────────────
