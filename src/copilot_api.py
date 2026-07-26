@@ -27,6 +27,19 @@ _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 if _THIS_DIR not in sys.path:
     sys.path.insert(0, _THIS_DIR)
 
+import threading
+
+# Import copilot code modules at startup (sequential, single-threaded, fast).
+# These imports are lightweight and do NOT load heavy models or datasets.
+from copilot.context_builder import ContextBuilder
+from copilot.llm_client import create_client
+from copilot.report_generator import ReportGenerator
+from copilot.incident_summarizer import IncidentSummarizer
+from copilot.recommendations import RecommendationEngine
+from copilot.analyst_chat import AnalystChat
+from copilot.correlation import IncidentCorrelator
+from copilot.utils import IncidentContext
+
 try:
     from fastapi import FastAPI, HTTPException, Query
     from fastapi.middleware.cors import CORSMiddleware
@@ -86,6 +99,18 @@ _campaigns_list = None
 _campaign_index = None
 _combined_sim = None
 
+# Thread locks for safe lazy loading
+_builder_lock = threading.Lock()
+_llm_lock = threading.Lock()
+_generator_lock = threading.Lock()
+_summarizer_lock = threading.Lock()
+_rec_lock = threading.Lock()
+_chat_lock = threading.Lock()
+_correlator_lock = threading.Lock()
+_contexts_lock = threading.Lock()
+_campaign_lock = threading.Lock()
+_sim_lock = threading.Lock()
+
 # Live simulation cache
 SIMULATION_CACHE: Dict = {}
 
@@ -117,71 +142,80 @@ ATTACK_MAPPING = {
 def get_builder():
     global _builder
     if _builder is None:
-        from copilot.context_builder import ContextBuilder
-        logger.info("Lazy-loading ContextBuilder ...")
-        _builder = ContextBuilder().load()
+        with _builder_lock:
+            if _builder is None:
+                logger.info("Lazy-loading ContextBuilder ...")
+                _builder = ContextBuilder().load()
     return _builder
 
 
 def get_llm():
     global _llm
     if _llm is None:
-        from copilot.llm_client import create_client
-        logger.info("Lazy-loading LLM client ...")
-        _llm = create_client()
+        with _llm_lock:
+            if _llm is None:
+                logger.info("Lazy-loading LLM client ...")
+                _llm = create_client()
     return _llm
 
 
 def get_generator():
     global _generator
     if _generator is None:
-        from copilot.report_generator import ReportGenerator
-        logger.info("Lazy-loading ReportGenerator ...")
-        _generator = ReportGenerator(get_llm())
+        with _generator_lock:
+            if _generator is None:
+                logger.info("Lazy-loading ReportGenerator ...")
+                _generator = ReportGenerator(get_llm())
     return _generator
 
 
 def get_summarizer():
     global _summarizer
     if _summarizer is None:
-        from copilot.incident_summarizer import IncidentSummarizer
-        logger.info("Lazy-loading IncidentSummarizer ...")
-        _summarizer = IncidentSummarizer(get_llm())
+        with _summarizer_lock:
+            if _summarizer is None:
+                logger.info("Lazy-loading IncidentSummarizer ...")
+                _summarizer = IncidentSummarizer(get_llm())
     return _summarizer
 
 
 def get_rec_engine():
     global _rec_engine
     if _rec_engine is None:
-        from copilot.recommendations import RecommendationEngine
-        logger.info("Lazy-loading RecommendationEngine ...")
-        _rec_engine = RecommendationEngine()
+        with _rec_lock:
+            if _rec_engine is None:
+                logger.info("Lazy-loading RecommendationEngine ...")
+                _rec_engine = RecommendationEngine()
     return _rec_engine
 
 
 def get_chat():
     global _chat
     if _chat is None:
-        from copilot.analyst_chat import AnalystChat
-        logger.info("Lazy-loading AnalystChat ...")
-        _chat = AnalystChat(get_llm())
+        with _chat_lock:
+            if _chat is None:
+                logger.info("Lazy-loading AnalystChat ...")
+                _chat = AnalystChat(get_llm())
     return _chat
 
 
 def get_correlator():
     global _correlator
     if _correlator is None:
-        from copilot.correlation import IncidentCorrelator
-        logger.info("Lazy-loading IncidentCorrelator ...")
-        _correlator = IncidentCorrelator()
+        with _correlator_lock:
+            if _correlator is None:
+                logger.info("Lazy-loading IncidentCorrelator ...")
+                _correlator = IncidentCorrelator()
     return _correlator
 
 
 def get_all_contexts():
     global _all_contexts
     if _all_contexts is None:
-        logger.info("Lazy-loading all IncidentContexts via build_all() ...")
-        _all_contexts = get_builder().build_all()
+        with _contexts_lock:
+            if _all_contexts is None:
+                logger.info("Lazy-loading all IncidentContexts via build_all() ...")
+                _all_contexts = get_builder().build_all()
     return _all_contexts
 
 
@@ -189,9 +223,11 @@ def get_campaign_index():
     """Lazily build + correlate campaigns. Returns {campaign_id: Campaign}."""
     global _campaigns_list, _campaign_index
     if _campaign_index is None:
-        logger.info("Lazy-loading campaign correlation ...")
-        _campaigns_list = get_correlator().correlate(get_all_contexts())
-        _campaign_index = {c.campaign_id: c for c in _campaigns_list}
+        with _campaign_lock:
+            if _campaign_index is None:
+                logger.info("Lazy-loading campaign correlation ...")
+                _campaigns_list = get_correlator().correlate(get_all_contexts())
+                _campaign_index = {c.campaign_id: c for c in _campaigns_list}
     return _campaign_index
 
 
@@ -201,77 +237,82 @@ def get_combined_sim():
     if _combined_sim is not None:
         return _combined_sim
 
-    try:
-        import shap
-        import numpy as np
-        from attack_classification.utils import ATTACK_LABELS, META_COLUMNS
-        from simulator.company import Company
-        from anomaly_detection.inference import InferenceEngine
-        from attack_classification.inference import AttackInferenceEngine
-        from simulator.combined_simulator import CombinedSimulator
+    with _sim_lock:
+        if _combined_sim is not None:
+            return _combined_sim
 
-        logger.info("Lazy-loading CombinedSimulator (GRU + XGBoost + SHAP) ...")
-
-        company = Company()
-
-        gru_engine = InferenceEngine(
-            model_path="models/gru_autoencoder.pt",
-            threshold=0.05,
-        )
-        gru_engine.calibrate(err_min=0.0, err_max=1.0)
-
-        xgb_engine = AttackInferenceEngine(
-            model_path="models/xgboost_attack_classifier.pkl",
-            class_names=ATTACK_LABELS,
-        )
-
-        # Retrieve canonical feature names
-        feature_names: List[str] = []
         try:
-            from attack_classification.dataset_loader import AttackDatasetLoader
-            loader = AttackDatasetLoader().load()
-            feature_names = loader.feature_names
-            logger.info("Retrieved %d feature names from AttackDatasetLoader.", len(feature_names))
-        except Exception as dl_err:
-            logger.warning("Could not load feature names via AttackDatasetLoader: %s", dl_err)
-            tabular_csv = "data/processed/tabular_features.csv"
-            if os.path.exists(tabular_csv):
-                import csv
-                with open(tabular_csv, "r", encoding="utf-8") as f:
-                    reader = csv.DictReader(f)
-                    all_cols = reader.fieldnames or []
-                feature_names = [c for c in all_cols if c not in META_COLUMNS]
-                if "reconstruction_error" not in feature_names:
-                    feature_names.append("reconstruction_error")
-                if "anomaly_score" not in feature_names:
-                    feature_names.append("anomaly_score")
+            import shap
+            import numpy as np
+            from attack_classification.utils import ATTACK_LABELS, META_COLUMNS
+            from simulator.company import Company
+            from anomaly_detection.inference import InferenceEngine
+            from attack_classification.inference import AttackInferenceEngine
+            from simulator.combined_simulator import CombinedSimulator
 
-        xgb_engine.feature_names = feature_names
+            logger.info("Lazy-loading CombinedSimulator (GRU + XGBoost + SHAP) ...")
 
-        logger.info("Initialising SHAP TreeExplainer ...")
-        shap_explainer = shap.TreeExplainer(
-            xgb_engine.get_model(),
-            feature_perturbation="interventional",
-            model_output="raw",
-        )
+            company = Company()
 
-        _combined_sim = CombinedSimulator(
-            company=company,
-            gru_engine=gru_engine,
-            xgb_engine=xgb_engine,
-            shap_explainer=shap_explainer,
-            feature_names=feature_names,
-            class_names=ATTACK_LABELS,
-        )
-        logger.info(
-            "CombinedSimulator ready (%d features, %d classes).",
-            len(feature_names), len(ATTACK_LABELS),
-        )
-    except Exception as err:
-        logger.warning("CombinedSimulator could not be initialised: %s", err)
-        _combined_sim = None  # stay None so endpoint returns 503
+            gru_engine = InferenceEngine(
+                model_path="models/gru_autoencoder.pt",
+                threshold=0.05,
+            )
+            gru_engine.calibrate(err_min=0.0, err_max=1.0)
 
-    return _combined_sim
+            xgb_engine = AttackInferenceEngine(
+                model_path="models/xgboost_attack_classifier.pkl",
+                class_names=ATTACK_LABELS,
+            )
+
+            # Retrieve canonical feature names
+            feature_names: List[str] = []
+            try:
+                from attack_classification.dataset_loader import AttackDatasetLoader
+                loader = AttackDatasetLoader().load()
+                feature_names = loader.feature_names
+                logger.info("Retrieved %d feature names from AttackDatasetLoader.", len(feature_names))
+            except Exception as dl_err:
+                logger.warning("Could not load feature names via AttackDatasetLoader: %s", dl_err)
+                tabular_csv = "data/processed/tabular_features.csv"
+                if os.path.exists(tabular_csv):
+                    import csv
+                    with open(tabular_csv, "r", encoding="utf-8") as f:
+                        reader = csv.DictReader(f)
+                        all_cols = reader.fieldnames or []
+                    feature_names = [c for c in all_cols if c not in META_COLUMNS]
+                    if "reconstruction_error" not in feature_names:
+                        feature_names.append("reconstruction_error")
+                    if "anomaly_score" not in feature_names:
+                        feature_names.append("anomaly_score")
+
+            xgb_engine.feature_names = feature_names
+
+            logger.info("Initialising SHAP TreeExplainer ...")
+            shap_explainer = shap.TreeExplainer(
+                xgb_engine.get_model(),
+                feature_perturbation="interventional",
+                model_output="raw",
+            )
+
+            _combined_sim = CombinedSimulator(
+                company=company,
+                gru_engine=gru_engine,
+                xgb_engine=xgb_engine,
+                shap_explainer=shap_explainer,
+                feature_names=feature_names,
+                class_names=ATTACK_LABELS,
+            )
+            logger.info(
+                "CombinedSimulator ready (%d features, %d classes).",
+                len(feature_names), len(ATTACK_LABELS),
+            )
+        except Exception as err:
+            logger.warning("CombinedSimulator could not be initialised: %s", err)
+            _combined_sim = None  # stay None so endpoint returns 503
+
+        return _combined_sim
+
 
 
 # ---------------------------------------------------------------------------
