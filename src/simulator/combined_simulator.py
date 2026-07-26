@@ -183,12 +183,14 @@ class CombinedSimulator:
         # ----------------------------------------------------------------
         # Step 1 – Resolve employee
         # ----------------------------------------------------------------
+        logger.info("Step 1 – Resolve employee")
         emp = self._resolve_employee(employee_id)
         emp_id = emp.employee_id if emp else (employee_id or "EMP-0001")
 
         # ----------------------------------------------------------------
         # Step 2 – Generate baseline normal session
         # ----------------------------------------------------------------
+        logger.info("Step 2 – Generate baseline normal session")
         session = self._build_baseline_session(emp)
 
         # ----------------------------------------------------------------
@@ -286,11 +288,18 @@ class CombinedSimulator:
         # ----------------------------------------------------------------
         # Step 8 – SHAP (fresh computation on the combined vector)  [TIMED]
         # ----------------------------------------------------------------
-        _t_shap_start = time.perf_counter()
-        shap_matrix, positive_contributors, negative_contributors = self._compute_shap(
-            feature_vector, predicted_label, confidence, anomaly_score_norm, session.risk_score
-        )
-        _t_shap_ms = (time.perf_counter() - _t_shap_start) * 1000
+        try:
+            _t_shap_start = time.perf_counter()
+            shap_matrix, positive_contributors, negative_contributors = self._compute_shap(
+                feature_vector, predicted_label, confidence, anomaly_score_norm, session.risk_score
+            )
+            _t_shap_ms = (time.perf_counter() - _t_shap_start) * 1000
+        except Exception as e:
+            logger.exception("SHAP computation failed: %s", e)
+            shap_matrix = np.zeros((len(self.feature_names), len(self.class_names)))
+            positive_contributors = []
+            negative_contributors = []
+            _t_shap_ms = 0.0
 
         # ----------------------------------------------------------------
         # Step 9 – NL explanation + severity + MITRE  [TIMED]
