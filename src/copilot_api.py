@@ -2,8 +2,10 @@
 copilot_api.py – FastAPI REST server for the Cyber Cage AI Security Copilot.
 
 Enables on-demand report generation, Q&A chat, dashboard feeds, and campaign correlation
-queries directly via REST endpoints. Also hosts a simulation engine for live SOC demonstrations
-and serves the React production bundle from frontend/dist if available.
+queries directly via REST endpoints. Also hosts a simulation engine for live SOC demonstrations.
+
+Startup is intentionally lightweight: all heavy models and indexes are loaded lazily on
+first use, keeping memory well below Render's 512 MiB free-tier limit.
 """
 
 from __future__ import annotations
@@ -17,7 +19,6 @@ import sys
 from typing import Dict, List, Optional
 from datetime import datetime
 
-import numpy as np
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -36,16 +37,6 @@ except ImportError:
     print("FastAPI dependencies missing. Run: pip install fastapi uvicorn")
     sys.exit(1)
 
-from copilot.context_builder import ContextBuilder
-from copilot.llm_client import create_client
-from copilot.report_generator import ReportGenerator
-from copilot.incident_summarizer import IncidentSummarizer
-from copilot.recommendations import RecommendationEngine
-from copilot.analyst_chat import AnalystChat
-from copilot.correlation import IncidentCorrelator, Campaign
-from copilot.exporter import CopilotExporter
-from copilot.utils import IncidentContext
-
 # Initialize logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("CyberCage.CopilotAPI")
@@ -57,7 +48,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS Middleware (Enable dashboard UI access)
+# CORS Middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -66,106 +57,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load engines and indexes once at startup
-logger.info("Initializing Copilot engines ...")
-builder = ContextBuilder().load()
-llm = create_client()
-generator = ReportGenerator(llm)
-summarizer = IncidentSummarizer(llm)
-rec_engine = RecommendationEngine()
-chat = AnalystChat(llm)
-correlator = IncidentCorrelator()
-
-# Precompute campaigns for instant lookup
-all_contexts = builder.build_all()
-campaigns_list: List[Campaign] = correlator.correlate(all_contexts)
-campaign_index: Dict[str, Campaign] = {c.campaign_id: c for c in campaigns_list}
-
-# Live simulation cache (keeps simulated session contexts in memory)
-SIMULATION_CACHE: Dict[str, IncidentContext] = {}
-
 # ---------------------------------------------------------------------------
-# Load combined simulation engine at startup
+# Lazy-loading globals (all None at startup)
 # ---------------------------------------------------------------------------
+_builder = None
+_llm = None
+_generator = None
+_summarizer = None
+_rec_engine = None
+_chat = None
+_correlator = None
+_all_contexts = None
+_campaigns_list = None
+_campaign_index = None
 _combined_sim = None
-try:
-    import shap
-    from simulator.company import Company
-    from anomaly_detection.inference import InferenceEngine
-    from attack_classification.inference import AttackInferenceEngine
-    from attack_classification.utils import ATTACK_LABELS, META_COLUMNS
-    from simulator.combined_simulator import CombinedSimulator
-    import pandas as pd
 
-    _company = Company()
+# Live simulation cache
+SIMULATION_CACHE: Dict = {}
 
-    # Load GRU engine
-    _gru_engine = InferenceEngine(
-        model_path="models/gru_autoencoder.pt",
-        threshold=0.05,
-    )
-    # Calibrate with approximate training-set min/max
-    _gru_engine.calibrate(err_min=0.0, err_max=1.0)
-
-    # Load XGBoost engine and retrieve feature names
-    _xgb_model_path = "models/xgboost_attack_classifier.pkl"
-    _xgb_engine = AttackInferenceEngine(
-        model_path=_xgb_model_path,
-        class_names=ATTACK_LABELS,
-    )
-
-    # Retrieve canonical 71 feature names matching training dataset (tabular + GRU scores)
-    _feature_names: List[str] = []
-    try:
-        from attack_classification.dataset_loader import AttackDatasetLoader
-        _loader = AttackDatasetLoader().load()
-        _feature_names = _loader.feature_names
-        logger.info("Retrieved %d canonical feature names from AttackDatasetLoader.", len(_feature_names))
-    except Exception as _dl_err:
-        logger.warning("Could not load feature names via AttackDatasetLoader: %s", _dl_err)
-        _tabular_csv = "data/processed/tabular_features.csv"
-        if os.path.exists(_tabular_csv):
-            import csv
-            with open(_tabular_csv, "r", encoding="utf-8") as _f:
-                _reader = csv.DictReader(_f)
-                _all_cols = _reader.fieldnames or []
-            _feature_names = [c for c in _all_cols if c not in META_COLUMNS]
-            if "reconstruction_error" not in _feature_names:
-                _feature_names.append("reconstruction_error")
-            if "anomaly_score" not in _feature_names:
-                _feature_names.append("anomaly_score")
-
-    _xgb_engine.feature_names = _feature_names
-
-    # Build SHAP TreeExplainer (cached at startup — fast for tree models)
-    logger.info("Initialising SHAP TreeExplainer ...")
-    _shap_explainer = shap.TreeExplainer(
-        _xgb_engine.get_model(),
-        feature_perturbation="interventional",
-        model_output="raw",
-    )
-
-    _combined_sim = CombinedSimulator(
-        company=_company,
-        gru_engine=_gru_engine,
-        xgb_engine=_xgb_engine,
-        shap_explainer=_shap_explainer,
-        feature_names=_feature_names,
-        class_names=ATTACK_LABELS,
-    )
-    logger.info("CombinedSimulator ready (%d features, %d classes).", len(_feature_names), len(ATTACK_LABELS))
-except Exception as _sim_init_err:
-    logger.warning("CombinedSimulator could not be initialised: %s", _sim_init_err)
-
-# Pydantic models for request bodies
-class ChatRequest(BaseModel):
-    question: str
-
-class SimulationRequest(BaseModel):
-    behaviours: List[str]
-    employee_id: Optional[str] = None
-
-# Simulation mapping
+# Simulation behaviour → class mapping
 ATTACK_MAPPING = {
     "normal_user": "Normal",
     "normal": "Normal",
@@ -182,15 +92,196 @@ ATTACK_MAPPING = {
     "low_slow_exfiltration": "Low-and-Slow Exfiltration",
     "usb_data_theft": "USB Data Theft",
     "off_hours_access": "Off-hours Access",
-    "malware_execution": "Malware Execution"
+    "malware_execution": "Malware Execution",
 }
 
 
-# Helper to lookup context (checks simulation cache first)
-def _get_context(session_id: str) -> IncidentContext:
+# ---------------------------------------------------------------------------
+# Lazy getter functions — create on first call, cache globally
+# ---------------------------------------------------------------------------
+
+def get_builder():
+    global _builder
+    if _builder is None:
+        from copilot.context_builder import ContextBuilder
+        logger.info("Lazy-loading ContextBuilder ...")
+        _builder = ContextBuilder().load()
+    return _builder
+
+
+def get_llm():
+    global _llm
+    if _llm is None:
+        from copilot.llm_client import create_client
+        logger.info("Lazy-loading LLM client ...")
+        _llm = create_client()
+    return _llm
+
+
+def get_generator():
+    global _generator
+    if _generator is None:
+        from copilot.report_generator import ReportGenerator
+        logger.info("Lazy-loading ReportGenerator ...")
+        _generator = ReportGenerator(get_llm())
+    return _generator
+
+
+def get_summarizer():
+    global _summarizer
+    if _summarizer is None:
+        from copilot.incident_summarizer import IncidentSummarizer
+        logger.info("Lazy-loading IncidentSummarizer ...")
+        _summarizer = IncidentSummarizer(get_llm())
+    return _summarizer
+
+
+def get_rec_engine():
+    global _rec_engine
+    if _rec_engine is None:
+        from copilot.recommendations import RecommendationEngine
+        logger.info("Lazy-loading RecommendationEngine ...")
+        _rec_engine = RecommendationEngine()
+    return _rec_engine
+
+
+def get_chat():
+    global _chat
+    if _chat is None:
+        from copilot.analyst_chat import AnalystChat
+        logger.info("Lazy-loading AnalystChat ...")
+        _chat = AnalystChat(get_llm())
+    return _chat
+
+
+def get_correlator():
+    global _correlator
+    if _correlator is None:
+        from copilot.correlation import IncidentCorrelator
+        logger.info("Lazy-loading IncidentCorrelator ...")
+        _correlator = IncidentCorrelator()
+    return _correlator
+
+
+def get_all_contexts():
+    global _all_contexts
+    if _all_contexts is None:
+        logger.info("Lazy-loading all IncidentContexts via build_all() ...")
+        _all_contexts = get_builder().build_all()
+    return _all_contexts
+
+
+def get_campaign_index():
+    """Lazily build + correlate campaigns. Returns {campaign_id: Campaign}."""
+    global _campaigns_list, _campaign_index
+    if _campaign_index is None:
+        logger.info("Lazy-loading campaign correlation ...")
+        _campaigns_list = get_correlator().correlate(get_all_contexts())
+        _campaign_index = {c.campaign_id: c for c in _campaigns_list}
+    return _campaign_index
+
+
+def get_combined_sim():
+    """Lazily build the full inference pipeline (GRU + XGBoost + SHAP)."""
+    global _combined_sim
+    if _combined_sim is not None:
+        return _combined_sim
+
+    try:
+        import shap
+        import numpy as np
+        from attack_classification.utils import ATTACK_LABELS, META_COLUMNS
+        from simulator.company import Company
+        from anomaly_detection.inference import InferenceEngine
+        from attack_classification.inference import AttackInferenceEngine
+        from simulator.combined_simulator import CombinedSimulator
+
+        logger.info("Lazy-loading CombinedSimulator (GRU + XGBoost + SHAP) ...")
+
+        company = Company()
+
+        gru_engine = InferenceEngine(
+            model_path="models/gru_autoencoder.pt",
+            threshold=0.05,
+        )
+        gru_engine.calibrate(err_min=0.0, err_max=1.0)
+
+        xgb_engine = AttackInferenceEngine(
+            model_path="models/xgboost_attack_classifier.pkl",
+            class_names=ATTACK_LABELS,
+        )
+
+        # Retrieve canonical feature names
+        feature_names: List[str] = []
+        try:
+            from attack_classification.dataset_loader import AttackDatasetLoader
+            loader = AttackDatasetLoader().load()
+            feature_names = loader.feature_names
+            logger.info("Retrieved %d feature names from AttackDatasetLoader.", len(feature_names))
+        except Exception as dl_err:
+            logger.warning("Could not load feature names via AttackDatasetLoader: %s", dl_err)
+            tabular_csv = "data/processed/tabular_features.csv"
+            if os.path.exists(tabular_csv):
+                import csv
+                with open(tabular_csv, "r", encoding="utf-8") as f:
+                    reader = csv.DictReader(f)
+                    all_cols = reader.fieldnames or []
+                feature_names = [c for c in all_cols if c not in META_COLUMNS]
+                if "reconstruction_error" not in feature_names:
+                    feature_names.append("reconstruction_error")
+                if "anomaly_score" not in feature_names:
+                    feature_names.append("anomaly_score")
+
+        xgb_engine.feature_names = feature_names
+
+        logger.info("Initialising SHAP TreeExplainer ...")
+        shap_explainer = shap.TreeExplainer(
+            xgb_engine.get_model(),
+            feature_perturbation="interventional",
+            model_output="raw",
+        )
+
+        _combined_sim = CombinedSimulator(
+            company=company,
+            gru_engine=gru_engine,
+            xgb_engine=xgb_engine,
+            shap_explainer=shap_explainer,
+            feature_names=feature_names,
+            class_names=ATTACK_LABELS,
+        )
+        logger.info(
+            "CombinedSimulator ready (%d features, %d classes).",
+            len(feature_names), len(ATTACK_LABELS),
+        )
+    except Exception as err:
+        logger.warning("CombinedSimulator could not be initialised: %s", err)
+        _combined_sim = None  # stay None so endpoint returns 503
+
+    return _combined_sim
+
+
+# ---------------------------------------------------------------------------
+# Pydantic request models
+# ---------------------------------------------------------------------------
+
+class ChatRequest(BaseModel):
+    question: str
+
+
+class SimulationRequest(BaseModel):
+    behaviours: List[str]
+    employee_id: Optional[str] = None
+
+
+# ---------------------------------------------------------------------------
+# Internal helpers
+# ---------------------------------------------------------------------------
+
+def _get_context(session_id: str):
+    from copilot.utils import IncidentContext
     if session_id in SIMULATION_CACHE:
         return SIMULATION_CACHE[session_id]
-    return builder.build(session_id)
+    return get_builder().build(session_id)
 
 
 # ---------------------------------------------------------------------------
@@ -199,33 +290,35 @@ def _get_context(session_id: str) -> IncidentContext:
 
 @app.get("/health")
 def health():
+    """Lightweight health check — does NOT initialise any heavy component."""
     return {
         "status": "healthy",
-        "provider": llm.provider_name,
-        "indexed_sessions": builder.total_sessions,
-        "active_campaigns": len(campaigns_list),
-        "simulated_sessions_count": len(SIMULATION_CACHE)
+        "simulation_cache_size": len(SIMULATION_CACHE),
+        "components_loaded": {
+            "builder": _builder is not None,
+            "llm": _llm is not None,
+            "combined_sim": _combined_sim is not None,
+            "campaign_index": _campaign_index is not None,
+        },
     }
 
 
 @app.get("/sessions")
 def list_sessions(
     severity: Optional[str] = Query(None, description="Filter by severity: Low/Medium/High/Critical"),
-    anomalous_only: bool = Query(True, description="Filter out normal sessions")
+    anomalous_only: bool = Query(True, description="Filter out normal sessions"),
 ):
     try:
-        # Merge precomputed and simulated sessions
         sessions = list(SIMULATION_CACHE.values())
-        
+
         if anomalous_only:
-            sessions += [s for s in builder.get_anomalous()]
+            sessions += [s for s in get_builder().get_anomalous()]
         else:
-            sessions += [s for s in builder.build_all()]
+            sessions += [s for s in get_builder().build_all()]
 
         if severity:
             sessions = [s for s in sessions if s.severity.lower() == severity.lower()]
 
-        # Remove duplicates by session ID
         seen = set()
         unique_sessions = []
         for s in sessions:
@@ -263,7 +356,7 @@ def get_session(session_id: str):
 def get_report(session_id: str):
     try:
         ctx = _get_context(session_id)
-        return generator.generate_report(ctx)
+        return get_generator().generate_report(ctx)
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
@@ -274,7 +367,7 @@ def get_report(session_id: str):
 def get_report_markdown(session_id: str):
     try:
         ctx = _get_context(session_id)
-        report = generator.generate_report(ctx)
+        report = get_generator().generate_report(ctx)
         return report["report_text_markdown"]
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
@@ -286,7 +379,7 @@ def get_report_markdown(session_id: str):
 def get_summary(session_id: str):
     try:
         ctx = _get_context(session_id)
-        return summarizer.generate_all(ctx)
+        return get_summarizer().generate_all(ctx)
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
@@ -297,7 +390,7 @@ def get_summary(session_id: str):
 def get_recommendations(session_id: str):
     try:
         ctx = _get_context(session_id)
-        recs = rec_engine.generate(ctx)
+        recs = get_rec_engine().generate(ctx)
         return recs.__dict__
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
@@ -309,7 +402,7 @@ def get_recommendations(session_id: str):
 def post_chat(session_id: str, request: ChatRequest):
     try:
         ctx = _get_context(session_id)
-        response = chat.ask(ctx, request.question)
+        response = get_chat().ask(ctx, request.question)
         return {
             "session_id": session_id,
             "question": request.question,
@@ -326,11 +419,10 @@ def get_dashboard_cards(high_severity_only: bool = False):
     try:
         sessions = list(SIMULATION_CACHE.values())
         if high_severity_only:
-            sessions += builder.get_high_critical()
+            sessions += get_builder().get_high_critical()
         else:
-            sessions += builder.get_anomalous()
+            sessions += get_builder().get_anomalous()
 
-        # Remove duplicates
         seen = set()
         unique_sessions = []
         for s in sessions:
@@ -340,8 +432,8 @@ def get_dashboard_cards(high_severity_only: bool = False):
 
         cards = []
         for s in unique_sessions:
-            recs = rec_engine.generate(s)
-            sums = summarizer.generate_all(s)
+            recs = get_rec_engine().generate(s)
+            sums = get_summarizer().generate_all(s)
             cards.append({
                 "session_id": s.session_id,
                 "employee": s.employee_id,
@@ -353,8 +445,8 @@ def get_dashboard_cards(high_severity_only: bool = False):
                 "recommended_action": recs.priority_action,
                 "mitre": {
                     "tactic": s.mitre_tactic,
-                    "technique": s.mitre_technique
-                }
+                    "technique": s.mitre_technique,
+                },
             })
         return cards
     except Exception as e:
@@ -363,12 +455,12 @@ def get_dashboard_cards(high_severity_only: bool = False):
 
 @app.get("/campaigns")
 def list_campaigns():
-    return list(campaign_index.values())
+    return list(get_campaign_index().values())
 
 
 @app.get("/campaign/{campaign_id}")
 def get_campaign(campaign_id: str):
-    camp = campaign_index.get(campaign_id.upper())
+    camp = get_campaign_index().get(campaign_id.upper())
     if not camp:
         raise HTTPException(status_code=404, detail=f"Campaign {campaign_id} not found.")
     return camp
@@ -377,18 +469,20 @@ def get_campaign(campaign_id: str):
 @app.post("/simulate")
 def post_simulate_multi(request: SimulationRequest):
     """Generate a combined multi-behaviour session using the full inference pipeline."""
-    if _combined_sim is None:
+    from copilot.utils import IncidentContext
+
+    sim = get_combined_sim()
+    if sim is None:
         raise HTTPException(
             status_code=503,
-            detail="CombinedSimulator not available. Check server startup logs."
+            detail="CombinedSimulator not available. Check server startup logs.",
         )
     try:
-        result = _combined_sim.simulate(
+        result = sim.simulate(
             behaviours=request.behaviours,
             employee_id=request.employee_id,
         )
 
-        # Cache as IncidentContext so downstream endpoints (/chat, /report) work
         sim_id = result["session_id"]
         sim_ctx = IncidentContext(
             session_id=sim_id,
@@ -415,9 +509,8 @@ def post_simulate_multi(request: SimulationRequest):
         )
         SIMULATION_CACHE[sim_id] = sim_ctx
 
-        # Generate report and recommendations
-        report = generator.generate_report(sim_ctx)
-        recs = rec_engine.generate(sim_ctx)
+        report = get_generator().generate_report(sim_ctx)
+        recs = get_rec_engine().generate(sim_ctx)
         result["report"] = report
         result["recommendations"] = recs.__dict__
 
@@ -431,52 +524,45 @@ def post_simulate_multi(request: SimulationRequest):
 @app.post("/simulate/{attack_type}")
 def post_simulate(attack_type: str):
     """Generate one synthetic session matching the attack type using model output cache."""
+    from copilot.utils import IncidentContext
+    from config.config import RISK_ALERT_THRESHOLD
+
     try:
         mapped_class = ATTACK_MAPPING.get(attack_type.lower())
         if not mapped_class:
             raise HTTPException(
-                status_code=400, 
-                detail=f"Unknown attack type: {attack_type}. Supported: {list(ATTACK_MAPPING.keys())}"
+                status_code=400,
+                detail=f"Unknown attack type: {attack_type}. Supported: {list(ATTACK_MAPPING.keys())}",
             )
 
-        # Filter the explanations list to find sessions matching mapped_class
-        candidates = [s for s in all_contexts if s.attack_type == mapped_class]
+        all_ctx = get_all_contexts()
+        candidates = [s for s in all_ctx if s.attack_type == mapped_class]
         if not candidates:
-            # Fall back to a random anomalous session if no direct matches
-            candidates = [s for s in all_contexts if s.is_anomalous]
+            candidates = [s for s in all_ctx if s.is_anomalous]
 
         base_ctx = random.choice(candidates)
 
-        # Generate unique simulated session keys
         sim_id = f"SIM-{random.randint(100000, 999999)}"
         sim_emp = f"EMP-{random.randint(1000, 9999)}"
-        
-        # Build fresh timestamp
         now = datetime.utcnow()
         timestamp_str = now.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-        # Set up a campaign relationship if simulated attack is not normal
         camp_id = None
-        if mapped_class != "Normal":
-            # Link to one of the active campaigns to show correlation
-            camp_id = random.choice(list(campaign_index.keys()))
-            # Append this session to that campaign's internal list
-            camp = campaign_index[camp_id]
+        ci = get_campaign_index()
+        if mapped_class != "Normal" and ci:
+            camp_id = random.choice(list(ci.keys()))
+            camp = ci[camp_id]
             if sim_id not in camp.sessions:
                 camp.sessions.append(sim_id)
                 camp.session_count += 1
                 if sim_emp not in camp.affected_employees:
                     camp.affected_employees.append(sim_emp)
 
-        # Add minor random jitter to the scores to simulate fresh model outputs
         jitter_factor = random.uniform(0.95, 1.05)
         new_risk = min(100.0, max(0.0, base_ctx.risk_score * jitter_factor))
         new_anomaly = min(2.0, max(0.0, base_ctx.anomaly_score * jitter_factor))
         new_confidence = min(1.0, max(0.1, base_ctx.confidence * jitter_factor))
 
-        # Clone context with risk threshold checks
-        from config.config import RISK_ALERT_THRESHOLD
-        
         sim_attack = base_ctx.attack_type
         sim_severity = base_ctx.severity
         sim_mitre = base_ctx.mitre
@@ -489,9 +575,9 @@ def post_simulate(attack_type: str):
             "campaign_id": camp_id,
             "risk_score": new_risk,
             "anomaly_score": new_anomaly,
-            "confidence": new_confidence
+            "confidence": new_confidence,
         }
-        
+
         if new_risk < RISK_ALERT_THRESHOLD:
             sim_attack = "Normal"
             sim_severity = "Low"
@@ -511,7 +597,7 @@ def post_simulate(attack_type: str):
             sim_top3 = [
                 {"attack": "Normal", "probability": round(new_confidence, 4)},
                 {"attack": "Device Spoofing", "probability": 0.0},
-                {"attack": "Lateral Movement", "probability": 0.0}
+                {"attack": "Lateral Movement", "probability": 0.0},
             ]
 
         sim_ctx = IncidentContext(
@@ -534,17 +620,14 @@ def post_simulate(attack_type: str):
             session_duration=base_ctx.session_duration,
             source_ip=f"10.10.{random.randint(1, 254)}.{random.randint(1, 254)}",
             device_id=f"DEV-{random.randint(1000, 9999)}",
-            timestamp=timestamp_str
+            timestamp=timestamp_str,
         )
 
-        # Save to memory cache
         SIMULATION_CACHE[sim_id] = sim_ctx
 
-        # Generate fresh report and playbooks
-        report = generator.generate_report(sim_ctx)
-        recs = rec_engine.generate(sim_ctx)
+        report = get_generator().generate_report(sim_ctx)
+        recs = get_rec_engine().generate(sim_ctx)
 
-        # Attach reports back to dict representation for API return
         result = sim_ctx.__dict__.copy()
         result["report"] = report
         result["recommendations"] = recs.__dict__
@@ -558,15 +641,14 @@ def post_simulate(attack_type: str):
 
 
 # ---------------------------------------------------------------------------
-# Static Files & React Frontend Server Routes
+# Static Files & React Frontend (optional — skip on Render if using Vercel)
 # ---------------------------------------------------------------------------
 
+_SERVE_FRONTEND = os.environ.get("SERVE_FRONTEND", "true").lower() != "false"
 dist_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
 
-if os.path.exists(dist_path):
+if _SERVE_FRONTEND and os.path.exists(dist_path):
     logger.info("Mounting React production assets from: %s", dist_path)
-    
-    # Mount build assets
     app.mount("/assets", StaticFiles(directory=os.path.join(dist_path, "assets")), name="assets")
 
     @app.get("/")
@@ -575,13 +657,19 @@ if os.path.exists(dist_path):
 
     @app.get("/{full_path:path}")
     def catch_all(full_path: str):
-        # Allow client-side routing fallback to index.html
         file_path = os.path.join(dist_path, full_path)
         if os.path.exists(file_path) and os.path.isfile(file_path):
             return FileResponse(file_path)
         return FileResponse(os.path.join(dist_path, "index.html"))
+
 else:
-    logger.warning("Vite dist folder not found at %s. Serve app locally via Vite: 'npm run dev' inside frontend/", dist_path)
+    if not _SERVE_FRONTEND:
+        logger.info("Frontend serving disabled (SERVE_FRONTEND=false). API-only mode.")
+    else:
+        logger.warning(
+            "Vite dist folder not found at %s. Serve app locally via: cd frontend && npm run dev",
+            dist_path,
+        )
 
     @app.get("/")
     def serve_fallback():
@@ -589,21 +677,20 @@ else:
             "<html>"
             "<body style='font-family: sans-serif; background: #0b0f19; color: #f8fafc; text-align: center; padding-top: 100px;'>"
             "<h1>🛡️ Cyber Cage XDR AI Dashboard</h1>"
-            "<p style='color: #94a3b8;'>React production build ('frontend/dist/') not found.</p>"
-            "<p style='color: #34d399;'>Start development mode by running:</p>"
-            "<pre style='background: #0f172a; padding: 15px; border-radius: 8px; width: max-content; margin: 10px auto; color: #a7f3d0;'>cd frontend; npm run dev</pre>"
-            "<p style='color: #94a3b8;'>Or generate a production build with:</p>"
-            "<pre style='background: #0f172a; padding: 15px; border-radius: 8px; width: max-content; margin: 10px auto; color: #a7f3d0;'>cd frontend; npm run build</pre>"
+            "<p style='color: #94a3b8;'>API is running. Frontend is served separately.</p>"
             "</body>"
             "</html>"
         )
 
 
-# Entry point for runner
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
+
 def start_server(host: str = "0.0.0.0", port: int = 8000) -> None:
     import uvicorn
     uvicorn.run("copilot_api:app", host=host, port=port, reload=False)
 
 
 if __name__ == "__main__":
-    start_server(port=8000)
+    start_server(port=int(os.environ.get("PORT", 8000)))
