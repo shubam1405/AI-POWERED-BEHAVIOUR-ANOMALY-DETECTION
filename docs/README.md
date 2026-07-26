@@ -133,15 +133,21 @@ The GRU Autoencoder then produces:
 
 These outputs are appended to create the final **71-feature vector**, which is used by the XGBoost attack classifier.
 
-### 🔍 Anomaly Detection
+### 🔍 Behavioural Anomaly Detection
 
-Uses a **GRU/LSTM Autoencoder** trained exclusively on normal user behavior.
+Cyber Cage uses a **2-layer GRU Autoencoder** trained exclusively on normal user sessions to learn behavioural patterns without requiring labelled attack data.
 
-- Learns normal behavioral patterns
-- Computes reconstruction error
-- Flags sessions with unusually high reconstruction errors as anomalies
+The model reconstructs each behavioural sequence and computes a reconstruction error. Sessions whose reconstruction error exceeds an automatically learned **F1-optimal threshold** are flagged as anomalous.
 
----
+**Model Details**
+
+- Architecture: 2-layer GRU Autoencoder
+- Input: 50 × 21 behavioural sequence
+- Parameters: 418,815
+- Output:
+  - Reconstruction Error
+  - Anomaly Score
+- Threshold Selection: F1-optimal threshold
 
 ### 🎯 Attack Classification
 
@@ -311,19 +317,69 @@ If the uploaded dataset lacks sufficient behavioural information, Cyber Cage gen
 
 Evaluation performed on **1,953 held-out sessions**.
 
-| Model | Metric | Score |
-|--------|---------|------:|
-| GRU Autoencoder | ROC-AUC | **0.82** |
-| GRU Autoencoder | F1 Score (Anomaly) | **0.46** |
-| XGBoost | Accuracy | **0.71** |
-| XGBoost | ROC-AUC (OvR) | **0.97** |
-| XGBoost | Macro Recall | **0.76** |
+## GRU Autoencoder (Behavioural Anomaly Detection)
+
+| Metric | Score |
+|---------|------:|
+| ROC-AUC | **0.8465** |
+| Precision | **0.7115** |
+| Recall | **0.4744** |
+| F1 Score | **0.5692** |
 
 ---
 
+## XGBoost Attack Classifier
+
+| Metric | Score |
+|---------|------:|
+| Accuracy | **95.80%** |
+| ROC-AUC (OvR) | **0.9697** |
+| Precision (Macro) | **0.6259** |
+| Recall (Macro) | **0.6678** |
+| F1 Score (Macro) | **0.6401** |
+| F1 Score (Weighted) | **0.9589** |
+
+---
+
+## Model Summary
+
+| Model | Purpose |
+|--------|---------|
+| **GRU Autoencoder** | Detects behavioural anomalies using reconstruction error |
+| **XGBoost Classifier** | Predicts the specific cyberattack category from behavioural features |
+| **SHAP** | Explains every prediction using feature attribution |
+| **AI Security Copilot** | Generates incident summaries and response recommendations |
 # 📂 Project Structure
 
 ```text
+# 🚀 Recent Improvements
+
+The latest version of Cyber Cage includes several enhancements to improve detection performance and deployment readiness.
+
+### GRU Autoencoder
+
+- ✅ StandardScaler-based feature normalization
+- ✅ Automatic F1-optimal anomaly threshold selection
+- ✅ Threshold and scaler embedded into model checkpoint
+- ✅ Reconstruction error distribution analysis
+- ✅ Automatic evaluation report generation
+- ✅ ROC, Precision–Recall, Confusion Matrix and Loss Curve visualization
+
+### XGBoost Classifier
+
+- ✅ 71-feature behavioural representation
+- ✅ Multi-class attack classification (16 classes)
+- ✅ SHAP-based explainability
+- ✅ Automatic feature importance reporting
+- ✅ High-accuracy inference pipeline
+
+### Deployment
+
+- ✅ React + FastAPI integration
+- ✅ Interactive SOC Dashboard
+- ✅ AI Security Copilot
+- ✅ Live attack simulation
+- ✅ Universal Dataset Adapter
 Cyber-Cage/
 │
 ├── README.md
@@ -663,7 +719,7 @@ python -m unittest src/tests/test_validation.py
 ## Machine Learning
 
 - PyTorch
-- GRU/LSTM Autoencoder
+- 2-layer GRU Autoencoder (PyTorch)
 - XGBoost
 - SHAP
 - scikit-learn
@@ -704,7 +760,7 @@ docs/
 - ✅ Synthetic enterprise data generation
 - ✅ 15 realistic cyberattack simulations
 - ✅ 71 engineered behavioral features
-- ✅ GRU/LSTM Autoencoder anomaly detection
+- ✅ 2-layer GRU Autoencoder behavioural anomaly detection
 - ✅ XGBoost multi-class attack classification
 - ✅ SHAP explainability
 - ✅ LLM-powered Security Copilot
