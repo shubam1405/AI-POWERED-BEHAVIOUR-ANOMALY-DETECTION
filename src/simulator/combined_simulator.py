@@ -136,6 +136,7 @@ class CombinedSimulator:
         class_names: Optional[List[str]] = None,
         rng: Optional[random.Random] = None,
     ) -> None:
+        logger.info("CombinedSimulator.__init__ started")
         self.company = company
         self.gru_engine = gru_engine
         self.xgb_engine = xgb_engine
@@ -143,15 +144,21 @@ class CombinedSimulator:
 
         # Resolve feature_names to canonical 71 features matching training dataset if omitted/incomplete
         if not feature_names or len(feature_names) < 71:
+            logger.info("CombinedSimulator.__init__: feature_names incomplete (%s), loading from AttackDatasetLoader",
+                        len(feature_names) if feature_names else 0)
             try:
                 from attack_classification.dataset_loader import AttackDatasetLoader
                 feature_names = AttackDatasetLoader().load().feature_names
+                logger.info("CombinedSimulator.__init__: loaded %d feature names", len(feature_names))
             except Exception as e:
-                logger.warning("Could not auto-load canonical feature_names: %s", e)
+                logger.warning("CombinedSimulator.__init__: Could not auto-load canonical feature_names: %s", e)
 
         self.feature_names = feature_names or []
         self.class_names = class_names or []
         self.rng = rng or random.Random()
+        logger.info("CombinedSimulator.__init__ finished — %d features, %d classes, shap=%s",
+                    len(self.feature_names), len(self.class_names),
+                    type(self.shap_explainer).__name__ if self.shap_explainer else "None")
 
     # ------------------------------------------------------------------
     # Public API

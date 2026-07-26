@@ -235,13 +235,18 @@ def get_combined_sim():
     """Lazily build the full inference pipeline (GRU + XGBoost + SHAP)."""
     global _combined_sim
     if _combined_sim is not None:
+        logger.info("GCS-0: returning cached CombinedSimulator")
         return _combined_sim
 
+    logger.info("GCS-1: acquiring _sim_lock")
     with _sim_lock:
+        logger.info("GCS-2: _sim_lock acquired")
         if _combined_sim is not None:
+            logger.info("GCS-3: returning cached CombinedSimulator (inside lock)")
             return _combined_sim
 
         try:
+            logger.info("GCS-4: importing heavy dependencies")
             import shap
             import numpy as np
             from attack_classification.utils import ATTACK_LABELS, META_COLUMNS
@@ -249,31 +254,37 @@ def get_combined_sim():
             from anomaly_detection.inference import InferenceEngine
             from attack_classification.inference import AttackInferenceEngine
             from simulator.combined_simulator import CombinedSimulator
+            logger.info("GCS-5: imports done")
 
-            logger.info("Lazy-loading CombinedSimulator (GRU + XGBoost + SHAP) ...")
-
+            logger.info("GCS-6: creating Company")
             company = Company()
+            logger.info("GCS-7: Company created")
 
+            logger.info("GCS-8: creating InferenceEngine (GRU)")
             gru_engine = InferenceEngine(
                 model_path="models/gru_autoencoder.pt",
                 threshold=0.05,
             )
             gru_engine.calibrate(err_min=0.0, err_max=1.0)
+            logger.info("GCS-9: GRU InferenceEngine ready")
 
+            logger.info("GCS-10: creating AttackInferenceEngine (XGBoost)")
             xgb_engine = AttackInferenceEngine(
                 model_path="models/xgboost_attack_classifier.pkl",
                 class_names=ATTACK_LABELS,
             )
+            logger.info("GCS-11: XGBoost AttackInferenceEngine ready")
 
             # Retrieve canonical feature names
             feature_names: List[str] = []
+            logger.info("GCS-12: loading feature names")
             try:
                 from attack_classification.dataset_loader import AttackDatasetLoader
                 loader = AttackDatasetLoader().load()
                 feature_names = loader.feature_names
-                logger.info("Retrieved %d feature names from AttackDatasetLoader.", len(feature_names))
+                logger.info("GCS-13: retrieved %d feature names from AttackDatasetLoader", len(feature_names))
             except Exception as dl_err:
-                logger.warning("Could not load feature names via AttackDatasetLoader: %s", dl_err)
+                logger.warning("GCS-13-WARN: could not load feature names via AttackDatasetLoader: %s", dl_err)
                 tabular_csv = "data/processed/tabular_features.csv"
                 if os.path.exists(tabular_csv):
                     import csv
@@ -285,16 +296,45 @@ def get_combined_sim():
                         feature_names.append("reconstruction_error")
                     if "anomaly_score" not in feature_names:
                         feature_names.append("anomaly_score")
+                    logger.info("GCS-13b: retrieved %d feature names from CSV fallback", len(feature_names))
 
             xgb_engine.feature_names = feature_names
 
-            logger.info("Initialising SHAP TreeExplainer ...")
-            shap_explainer = shap.TreeExplainer(
-                xgb_engine.get_model(),
-                feature_perturbation="interventional",
-                model_output="raw",
-            )
+            # ----------------------------------------------------------------
+            # SHAP TreeExplainer — run in a background thread with a 30-second
+            # timeout so it cannot hang the server indefinitely.
+            # ----------------------------------------------------------------
+            logger.info("GCS-14: initialising SHAP TreeExplainer (timeout=30s)")
+            shap_explainer = None
+            _shap_exc: list = []
 
+            def _init_shap():
+                try:
+                    shap_explainer_inner = shap.TreeExplainer(
+                        xgb_engine.get_model(),
+                        feature_perturbation="interventional",
+                        model_output="raw",
+                    )
+                    _shap_exc.append(("ok", shap_explainer_inner))
+                except Exception as _se:
+                    _shap_exc.append(("err", _se))
+
+            _shap_thread = threading.Thread(target=_init_shap, daemon=True)
+            _shap_thread.start()
+            _shap_thread.join(timeout=30)
+
+            if _shap_thread.is_alive():
+                logger.warning("GCS-15-WARN: SHAP TreeExplainer timed out after 30s — proceeding without SHAP")
+                shap_explainer = None
+            elif _shap_exc and _shap_exc[0][0] == "ok":
+                shap_explainer = _shap_exc[0][1]
+                logger.info("GCS-15: SHAP TreeExplainer ready")
+            else:
+                err_detail = _shap_exc[0][1] if _shap_exc else "unknown"
+                logger.warning("GCS-15-WARN: SHAP TreeExplainer failed: %s — proceeding without SHAP", err_detail)
+                shap_explainer = None
+
+            logger.info("GCS-16: creating CombinedSimulator")
             _combined_sim = CombinedSimulator(
                 company=company,
                 gru_engine=gru_engine,
@@ -304,11 +344,11 @@ def get_combined_sim():
                 class_names=ATTACK_LABELS,
             )
             logger.info(
-                "CombinedSimulator ready (%d features, %d classes).",
+                "GCS-17: CombinedSimulator ready (%d features, %d classes).",
                 len(feature_names), len(ATTACK_LABELS),
             )
         except Exception as err:
-            logger.warning("CombinedSimulator could not be initialised: %s", err)
+            logger.exception("GCS-ERR: CombinedSimulator could not be initialised: %s", err)
             _combined_sim = None  # stay None so endpoint returns 503
 
         return _combined_sim
@@ -553,19 +593,28 @@ def post_simulate_multi(request: SimulationRequest):
     """Generate a combined multi-behaviour session using the full inference pipeline."""
     from copilot.utils import IncidentContext
 
-    logger.info("Triggering multi-behaviour simulation for %s", request.employee_id)
+    logger.info("STEP-A: entered /simulate endpoint — employee=%s behaviours=%s",
+                request.employee_id, request.behaviours)
+
+    logger.info("STEP-B: calling get_combined_sim()")
     sim = get_combined_sim()
+    logger.info("STEP-C: get_combined_sim() returned — sim is %s", type(sim).__name__ if sim else None)
+
     if sim is None:
+        logger.error("STEP-C-ERR: CombinedSimulator is None — returning 503")
         raise HTTPException(
             status_code=503,
             detail="CombinedSimulator not available. Check server startup logs.",
         )
     try:
+        logger.info("STEP-D: calling sim.simulate()")
         result = sim.simulate(
             behaviours=request.behaviours,
             employee_id=request.employee_id,
         )
+        logger.info("STEP-E: sim.simulate() returned — session_id=%s", result.get("session_id"))
 
+        logger.info("STEP-F: building IncidentContext")
         sim_id = result["session_id"]
         sim_ctx = IncidentContext(
             session_id=sim_id,
@@ -591,16 +640,19 @@ def post_simulate_multi(request: SimulationRequest):
             true_label=result.get("true_label", result["attack_type"]),
         )
         SIMULATION_CACHE[sim_id] = sim_ctx
+        logger.info("STEP-G: IncidentContext cached")
 
+        logger.info("STEP-H: generating report")
         report = get_generator().generate_report(sim_ctx)
+        logger.info("STEP-I: generating recommendations")
         recs = get_rec_engine().generate(sim_ctx)
         result["report"] = report
         result["recommendations"] = recs.__dict__
 
-        logger.info("Multi-behaviour simulation %s → %s complete.", sim_id, result["attack_type"])
+        logger.info("STEP-J: multi-behaviour simulation %s → %s complete.", sim_id, result["attack_type"])
         return result
     except Exception as e:
-        logger.exception("Multi-behaviour simulation failed")
+        logger.exception("STEP-ERR: multi-behaviour simulation failed")
         raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
