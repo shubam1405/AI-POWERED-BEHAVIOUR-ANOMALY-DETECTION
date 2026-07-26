@@ -54,12 +54,6 @@ dist/
 # ==========================
 # Trained Models
 # ==========================
-models/*.pt
-models/*.pth
-models/*.h5
-models/*.keras
-models/*.joblib
-models/*.pkl
 
 # ==========================
 # Generated Data
