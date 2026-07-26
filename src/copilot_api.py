@@ -49,22 +49,22 @@ app = FastAPI(
 )
 
 # ---------------------------------------------------------------------------
-# CORS — explicit origin whitelist (wildcard + allow_credentials is invalid)
+# CORS — dynamically matches all Vercel production/preview deployments
 # ---------------------------------------------------------------------------
 _ALLOWED_ORIGINS = [
-    # Production Vercel deployment
-    "https://ai-powered-behaviour-anomaly-detect.vercel.app",
-    # Git-branch preview deployments
-    "https://ai-powered-behaviour-anomaly-detection-git-main-shubam1.vercel.app",
     # Local development
     "http://localhost:5173",
     "http://localhost:3000",
     "http://127.0.0.1:5173",
+    "http://127.0.0.1:3000",
 ]
+
+_ALLOWED_ORIGIN_REGEX = r"https://ai-powered-behaviour-anomaly-detect.*\.vercel\.app"
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_ALLOWED_ORIGINS,
+    allow_origin_regex=_ALLOWED_ORIGIN_REGEX,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
