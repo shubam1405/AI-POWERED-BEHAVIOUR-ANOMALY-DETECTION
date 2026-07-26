@@ -150,8 +150,18 @@ class ContextBuilder:
         t0 = time.time()
         with open(self._exp_path, encoding="utf-8") as f:
             data = json.load(f)
-        self._exp_index = {row["session_id"]: row for row in data}
-        logger.info("  Loaded %d session explanations in %s.", len(self._exp_index), elapsed_str(t0))
+        
+        self._total_sessions_count = len(data)
+        
+        # Keep only anomalous/non-zero-risk sessions to drastically reduce RAM
+        self._exp_index = {}
+        for row in data:
+            pred_class = row.get("prediction", "Normal")
+            risk_val = row.get("risk_score", 0.0)
+            if pred_class != "Normal" or risk_val > 0.0:
+                self._exp_index[row["session_id"]] = row
+                
+        logger.info("  Indexed %d anomalous/high-risk session explanations in %s.", len(self._exp_index), elapsed_str(t0))
 
     def _load_predictions(self) -> None:
         if not self._pred_path.exists():
@@ -160,8 +170,12 @@ class ContextBuilder:
             return
         logger.info("Loading %s …", self._pred_path)
         df = pd.read_csv(self._pred_path)
-        self._pred_index = {str(r["session_id"]): r.to_dict() for _, r in df.iterrows()}
-        logger.info("  Loaded %d prediction rows.", len(self._pred_index))
+        self._pred_index = {}
+        for _, r in df.iterrows():
+            sid = str(r["session_id"])
+            if sid in self._exp_index:
+                self._pred_index[sid] = r.to_dict()
+        logger.info("  Loaded %d prediction rows for anomalous sessions.", len(self._pred_index))
 
     def _load_dataset(self) -> None:
         if not self._ds_path.exists():
@@ -169,19 +183,37 @@ class ContextBuilder:
             self._ds_index = {}
             return
         logger.info("Loading %s (sampling metadata columns) …", self._ds_path)
-        # Only load necessary metadata columns to save memory
         needed = [
             "session_id", "employee_id", "session_start_hour",
             "session_duration_minutes", "risk_score",
         ]
         df = pd.read_csv(self._ds_path, usecols=lambda c: c in needed)
-        self._ds_index = {str(r["session_id"]): r.to_dict() for _, r in df.iterrows()}
-        logger.info("  Loaded %d dataset rows.", len(self._ds_index))
+        self._ds_index = {}
+        for _, r in df.iterrows():
+            sid = str(r["session_id"])
+            if sid in self._exp_index:
+                self._ds_index[sid] = r.to_dict()
+        logger.info("  Loaded %d dataset rows for anomalous sessions.", len(self._ds_index))
 
     def _build_one(self, session_id: str) -> IncidentContext:
         self._ensure_loaded()
 
-        exp = self._exp_index.get(session_id, {})
+        exp = self._exp_index.get(session_id)
+        
+        # Fallback for unindexed/normal sessions
+        if exp is None:
+            return IncidentContext(
+                session_id=session_id,
+                employee_id="Unknown",
+                attack_type="Normal",
+                confidence=1.0,
+                severity="Low",
+                risk_score=0.0,
+                anomaly_score=0.0,
+                nl_explanation="No significant anomalies were detected. The session conforms to the user's established baseline.",
+                summary="No significant anomalies were detected. The session conforms to the user's established baseline.",
+            )
+
         pred = self._pred_index.get(session_id, {})
         ds   = self._ds_index.get(session_id, {})
 
