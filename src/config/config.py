@@ -321,6 +321,9 @@ RISK_WEIGHTS = {
     "classifier_confidence": 0.15
 }
 
+# Calculated risk threshold to trigger alert popups and incidents (Issue 1)
+RISK_ALERT_THRESHOLD = 35.0
+
 # Behavior Knowledge Base settings
 ENABLE_DRIFT_MONITORING = True   # Compute continuous behavioral deviations for all sessions
 DRIFT_WINDOW_SIZE = 10           # Slide baseline over the last 10 sessions

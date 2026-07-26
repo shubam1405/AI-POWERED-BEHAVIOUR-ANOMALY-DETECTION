@@ -77,6 +77,26 @@ class ContextBuilder:
         if session_id in self._ctx_cache:
             return self._ctx_cache[session_id]
         ctx = self._build_one(session_id)
+        
+        # Enforce RISK_ALERT_THRESHOLD checks
+        from config.config import RISK_ALERT_THRESHOLD
+        if ctx.risk_score < RISK_ALERT_THRESHOLD:
+            ctx.attack_type = "Normal"
+            ctx.severity = "Low"
+            ctx.mitre = None
+            ctx.investigation_steps = []
+            ctx.nl_explanation = "No significant anomalies were detected. The session conforms to the user's established baseline."
+            ctx.summary = "No significant anomalies were detected. The session conforms to the user's established baseline."
+            if isinstance(ctx.copilot_context, dict):
+                ctx.copilot_context["predicted_primary_attack"] = "Normal"
+                ctx.copilot_context["severity"] = "Low"
+                ctx.copilot_context["mitre"] = None
+            ctx.top3_predictions = [
+                {"attack": "Normal", "probability": round(ctx.confidence, 4)},
+                {"attack": "Device Spoofing", "probability": 0.0},
+                {"attack": "Lateral Movement", "probability": 0.0}
+            ]
+
         self._ctx_cache[session_id] = ctx
         return ctx
 

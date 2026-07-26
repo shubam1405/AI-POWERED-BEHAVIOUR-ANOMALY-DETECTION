@@ -18,6 +18,8 @@ from typing import Dict, List, Optional
 from datetime import datetime
 
 import numpy as np
+from dotenv import load_dotenv
+load_dotenv()
 
 # Path setup
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -472,29 +474,62 @@ def post_simulate(attack_type: str):
         new_anomaly = min(2.0, max(0.0, base_ctx.anomaly_score * jitter_factor))
         new_confidence = min(1.0, max(0.1, base_ctx.confidence * jitter_factor))
 
-        # Clone context
+        # Clone context with risk threshold checks
+        from config.config import RISK_ALERT_THRESHOLD
+        
+        sim_attack = base_ctx.attack_type
+        sim_severity = base_ctx.severity
+        sim_mitre = base_ctx.mitre
+        sim_steps = base_ctx.investigation_steps
+        sim_top3 = base_ctx.top3_predictions
+        sim_nl = base_ctx.nl_explanation
+        sim_summary = base_ctx.summary
+        sim_copilot = {
+            **base_ctx.copilot_context,
+            "campaign_id": camp_id,
+            "risk_score": new_risk,
+            "anomaly_score": new_anomaly,
+            "confidence": new_confidence
+        }
+        
+        if new_risk < RISK_ALERT_THRESHOLD:
+            sim_attack = "Normal"
+            sim_severity = "Low"
+            sim_mitre = None
+            sim_steps = []
+            sim_nl = "No significant anomalies were detected. The session conforms to the user's established baseline."
+            sim_summary = "No significant anomalies were detected. The session conforms to the user's established baseline."
+            sim_copilot = {
+                "detected_behaviours": [],
+                "predicted_primary_attack": "Normal",
+                "confidence": round(new_confidence, 4),
+                "risk_score": new_risk,
+                "anomaly_score": new_anomaly,
+                "reconstruction_error": new_anomaly,
+                "severity": "Low",
+            }
+            sim_top3 = [
+                {"attack": "Normal", "probability": round(new_confidence, 4)},
+                {"attack": "Device Spoofing", "probability": 0.0},
+                {"attack": "Lateral Movement", "probability": 0.0}
+            ]
+
         sim_ctx = IncidentContext(
             session_id=sim_id,
             employee_id=sim_emp,
-            attack_type=base_ctx.attack_type,
+            attack_type=sim_attack,
             confidence=new_confidence,
-            severity=base_ctx.severity,
+            severity=sim_severity,
             risk_score=new_risk,
             anomaly_score=new_anomaly,
-            mitre=base_ctx.mitre,
+            mitre=sim_mitre,
             positive_contributors=base_ctx.positive_contributors,
             negative_contributors=base_ctx.negative_contributors,
-            investigation_steps=base_ctx.investigation_steps,
-            nl_explanation=base_ctx.nl_explanation,
-            summary=base_ctx.summary,
-            copilot_context={
-                **base_ctx.copilot_context,
-                "campaign_id": camp_id,
-                "risk_score": new_risk,
-                "anomaly_score": new_anomaly,
-                "confidence": new_confidence
-            },
-            top3_predictions=base_ctx.top3_predictions,
+            investigation_steps=sim_steps,
+            nl_explanation=sim_nl,
+            summary=sim_summary,
+            copilot_context=sim_copilot,
+            top3_predictions=sim_top3,
             session_start_hour=now.hour,
             session_duration=base_ctx.session_duration,
             source_ip=f"10.10.{random.randint(1, 254)}.{random.randint(1, 254)}",

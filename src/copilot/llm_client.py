@@ -23,6 +23,9 @@ import time
 from abc import ABC, abstractmethod
 from typing import Optional
 
+from dotenv import load_dotenv
+load_dotenv()
+
 logger = logging.getLogger("Copilot.LLMClient")
 
 # ---------------------------------------------------------------------------
@@ -199,6 +202,67 @@ class OllamaClient(LLMClient):
 
 
 # ---------------------------------------------------------------------------
+# Google GenAI / Gemini
+# ---------------------------------------------------------------------------
+
+class GoogleGenAIClient(LLMClient):
+    """Google GenAI / Gemini chat completion client using direct REST API calls."""
+
+    def __init__(
+        self,
+        api_key: Optional[str] = None,
+        model: str = "gemini-3.5-flash",
+        temperature: float = 0.2,
+    ) -> None:
+        import requests
+        self._requests = requests
+        self.api_key = api_key or os.environ.get("GOOGLE_API_KEY")
+        if not self.api_key:
+            raise ValueError("GOOGLE_API_KEY not configured.")
+        self.model = model
+        self.temperature = temperature
+        logger.info("Google GenAI client initialised (model=%s).", model)
+
+    def generate(self, prompt: str, system: str = "") -> str:
+        t0 = time.time()
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent?key={self.api_key}"
+        
+        payload = {
+            "contents": [
+                {
+                    "role": "user",
+                    "parts": [
+                        {"text": prompt}
+                    ]
+                }
+            ],
+            "generationConfig": {
+                "temperature": self.temperature,
+            }
+        }
+        
+        if system:
+            payload["systemInstruction"] = {
+                "parts": [
+                    {"text": system}
+                ]
+            }
+
+        headers = {"Content-Type": "application/json"}
+        response = self._requests.post(url, json=payload, headers=headers)
+        response.raise_for_status()
+        
+        data = response.json()
+        try:
+            text = data["candidates"][0]["content"]["parts"][0]["text"]
+        except (KeyError, IndexError):
+            text = ""
+            
+        logger.debug("Google GenAI response in %.2fs (%d chars).", time.time() - t0, len(text))
+        return text
+
+
+# ---------------------------------------------------------------------------
 # Template fallback (zero dependencies)
 # ---------------------------------------------------------------------------
 
@@ -216,12 +280,9 @@ class TemplateLLMClient(LLMClient):
         # The report_generator and summarizer handle all real formatting —
         # this fallback is only called for freeform analyst Q&A.
         return (
-            "**[Template Mode — No LLM Configured]**\n\n"
-            "The structured incident report and recommendations below are generated "
-            "from the Cyber Cage pipeline outputs (SHAP evidence, MITRE mapping, "
-            "behavioural indicators) without an external LLM.\n\n"
-            "To enable AI-enhanced narrative generation, set the OPENAI_API_KEY "
-            "environment variable, or start Ollama locally."
+            "Error: LLM API key not configured.\n\n"
+            "To enable the AI Security Copilot narrative generation, please configure the GOOGLE_API_KEY "
+            "or OPENAI_API_KEY environment variable in your .env file."
         )
 
 
@@ -253,6 +314,16 @@ def create_client(provider: Optional[str] = None) -> LLMClient:
             return client
         except Exception as e:
             logger.warning("OpenAI init failed: %s — falling back.", e)
+
+    if forced in ("google", "gemini") or (not forced and os.environ.get("GOOGLE_API_KEY")):
+        try:
+            client = GoogleGenAIClient(
+                model=os.environ.get("GOOGLE_MODEL", "gemini-3.5-flash"),
+            )
+            logger.info("LLM provider: Google GenAI (%s)", client.model)
+            return client
+        except Exception as e:
+            logger.warning("Google GenAI init failed: %s — falling back.", e)
 
     if forced == "azure" or (not forced and os.environ.get("AZURE_OPENAI_KEY")):
         try:

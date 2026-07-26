@@ -22,17 +22,17 @@ import {
    Static evaluation metrics (training-time results)
    ───────────────────────────────────────────── */
 const GRU_METRICS = {
-  roc_auc: 0.82,
-  f1: 0.46,
-  precision: 0.51,
-  recall: 0.43,
-  threshold: 0.05,
+  roc_auc: 0.8465,
+  f1: 0.5692,
+  precision: 0.7115,
+  recall: 0.4744,
+  threshold: 1.048547,
   architecture: '2-layer GRU Autoencoder',
   input_dim: '50 × 21 (sequence × features)',
   output: 'Reconstruction Error + Anomaly Score',
   purpose: 'Behavioural anomaly detection',
-  file: 'gru_autoencoder_v1.pt',
-  params: '~148 K parameters',
+  file: 'gru_autoencoder.pt',
+  params: '418,815 parameters',
 };
 
 const XGB_METRICS = {
@@ -100,7 +100,7 @@ const PR_DATA = [
   { recall: 0.20, precision: 0.81 },
   { recall: 0.30, precision: 0.74 },
   { recall: 0.40, precision: 0.68 },
-  { recall: 0.46, precision: 0.51 },
+  { recall: 0.4744, precision: 0.7115 },
   { recall: 0.55, precision: 0.44 },
   { recall: 0.65, precision: 0.38 },
   { recall: 0.75, precision: 0.31 },
@@ -492,7 +492,7 @@ export default function ModelEvaluation({ sessionDetail }) {
           <div className="rounded-2xl border border-slate-800 bg-slate-900/30 p-5">
             <div className="flex items-center justify-between mb-4">
               <h4 className="text-sm font-semibold text-slate-100">GRU ROC Curve</h4>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-900/60 text-violet-300 border border-violet-700/40">AUC = 0.82</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-900/60 text-violet-300 border border-violet-700/40">AUC = 0.8465</span>
             </div>
             <div className="h-52">
               <ResponsiveContainer width="100%" height="100%">
@@ -517,7 +517,7 @@ export default function ModelEvaluation({ sessionDetail }) {
           <div className="rounded-2xl border border-slate-800 bg-slate-900/30 p-5">
             <div className="flex items-center justify-between mb-4">
               <h4 className="text-sm font-semibold text-slate-100">Precision-Recall</h4>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-900/60 text-cyan-300 border border-cyan-700/40">F1 = 0.46</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-900/60 text-cyan-300 border border-cyan-700/40">F1 = 0.5692</span>
             </div>
             <div className="h-52">
               <ResponsiveContainer width="100%" height="100%">

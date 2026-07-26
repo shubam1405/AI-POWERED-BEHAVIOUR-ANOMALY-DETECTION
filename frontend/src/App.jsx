@@ -195,6 +195,15 @@ export default function App() {
 
   // --- Shared pipeline animation helper ---
   const runPipelineAnimation = async (sessionData) => {
+    const RISK_ALERT_THRESHOLD = 35.0;
+    if ((sessionData.risk_score ?? 0) < RISK_ALERT_THRESHOLD) {
+      sessionData = {
+        ...sessionData,
+        attack_type: 'Normal',
+        severity: 'Low',
+        mitre: null
+      };
+    }
     setSimulatedSessions(prev => [sessionData, ...prev]);
     await delay(800); setSimulationStage(2);
     await delay(850); setSimulationStage(3);

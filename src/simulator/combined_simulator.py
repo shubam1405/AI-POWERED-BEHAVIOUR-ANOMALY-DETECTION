@@ -299,9 +299,21 @@ class CombinedSimulator:
         from explainability.explanation_generator import ExplanationGenerator
 
         _t_copilot_start = time.perf_counter()
-        severity = compute_severity(confidence, anomaly_score_norm, session.risk_score)
-        mitre = MITRE_MAPPING.get(predicted_label)
-        steps = INVESTIGATION_STEPS.get(predicted_label, INVESTIGATION_STEPS.get("Normal", []))
+        from config.config import RISK_ALERT_THRESHOLD
+        if session.risk_score < RISK_ALERT_THRESHOLD:
+            predicted_label = "Normal"
+            severity = "Low"
+            mitre = None
+            steps = INVESTIGATION_STEPS.get("Normal", [])
+            top3_predictions = [
+                {"attack": "Normal", "probability": round(confidence, 4)},
+                {"attack": "Device Spoofing", "probability": 0.0},
+                {"attack": "Lateral Movement", "probability": 0.0}
+            ]
+        else:
+            severity = compute_severity(confidence, anomaly_score_norm, session.risk_score)
+            mitre = MITRE_MAPPING.get(predicted_label)
+            steps = INVESTIGATION_STEPS.get(predicted_label, INVESTIGATION_STEPS.get("Normal", []))
 
         explanation_dict = {
             "session_id": sim_id,
