@@ -58,12 +58,7 @@ dist/
 # ==========================
 # Generated Data
 # ==========================
-data/raw/*.csv
-data/raw/*.json
 
-data/processed/*.csv
-data/processed/*.json
-data/processed/*.pkl
 
 # ==========================
 # Large Exports

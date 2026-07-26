@@ -1,0 +1,65 @@
+{
+    "SES-AD-000001": {
+        "session_context": {
+            "entity_id": "emp_sarah",
+            "entity_type": "user",
+            "office_location": "Office",
+            "device_fingerprint": "PC-FINANCE-01",
+            "duration_seconds": 1810.0,
+            "start_time": "2026-07-26 09:00:00"
+        },
+        "risk_metadata": {
+            "integrated_risk_score": 0.0,
+            "attack_type": "None",
+            "is_anomalous": false,
+            "behavior_score": 0.0,
+            "severity": 0.0
+        },
+        "behavior_metadata": {
+            "deviations": {
+                "location_deviation": 0.0,
+                "device_deviation": 0.0,
+                "browser_deviation": 0.0,
+                "operating_system_deviation": 0.0,
+                "working_hours_deviation": 0.0,
+                "resource_access_deviation": 0.0
+            }
+        },
+        "shap_event_mapping": [
+            "bb0acd1b-f20e-4b83-a329-5219f1c3d29d",
+            "8fdd7e1e-b67d-4367-8d3f-b840c162b345",
+            "dff9c525-4ca8-4d16-ba6b-80bd772580ff"
+        ]
+    },
+    "SES-AD-000002": {
+        "session_context": {
+            "entity_id": "emp_alex",
+            "entity_type": "user",
+            "office_location": "Office",
+            "device_fingerprint": "LAPTOP-DEV-99",
+            "duration_seconds": 312.0,
+            "start_time": "2026-07-26 23:45:00"
+        },
+        "risk_metadata": {
+            "integrated_risk_score": 0.0,
+            "attack_type": "None",
+            "is_anomalous": false,
+            "behavior_score": 0.0,
+            "severity": 0.0
+        },
+        "behavior_metadata": {
+            "deviations": {
+                "location_deviation": 0.0,
+                "device_deviation": 0.0,
+                "browser_deviation": 0.0,
+                "operating_system_deviation": 0.0,
+                "working_hours_deviation": 0.0,
+                "resource_access_deviation": 0.0
+            }
+        },
+        "shap_event_mapping": [
+            "dc3114bc-1c7e-4906-9ad2-5491de755ab1",
+            "3776930c-0432-4517-95b0-4aa50aff5dcb"
+        ]
+    }
+}

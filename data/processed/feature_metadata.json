@@ -1,0 +1,447 @@
+{
+    "session_duration": {
+        "category": "Temporal Features",
+        "description": "Session duration in seconds",
+        "fields": [
+            "session_duration"
+        ]
+    },
+    "login_hour": {
+        "category": "Temporal Features",
+        "description": "Hour of login",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "logout_hour": {
+        "category": "Temporal Features",
+        "description": "Hour of logout",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "day_of_week": {
+        "category": "Temporal Features",
+        "description": "Day of the week (0-6)",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "weekend_flag": {
+        "category": "Temporal Features",
+        "description": "1.0 if session is on weekend, else 0.0",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "remote_session": {
+        "category": "Location Features",
+        "description": "1.0 if remote connection, else 0.0",
+        "fields": [
+            "auth_method",
+            "source_ip"
+        ]
+    },
+    "vpn_used": {
+        "category": "Network Features",
+        "description": "1.0 if VPN authentication was used, else 0.0",
+        "fields": [
+            "auth_method"
+        ]
+    },
+    "browser": {
+        "category": "Device Features",
+        "description": "Numerical code for the browser used",
+        "fields": [
+            "device_fingerprint"
+        ]
+    },
+    "operating_system": {
+        "category": "Device Features",
+        "description": "Numerical code for the operating system used",
+        "fields": [
+            "device_fingerprint"
+        ]
+    },
+    "department": {
+        "category": "Behavior Features",
+        "description": "Numerical code for the entity department",
+        "fields": [
+            "entity_id"
+        ]
+    },
+    "failed_login_count": {
+        "category": "Authentication Features",
+        "description": "Number of failed login attempts",
+        "fields": [
+            "auth_method",
+            "label"
+        ]
+    },
+    "successful_login_count": {
+        "category": "Authentication Features",
+        "description": "Number of successful logins",
+        "fields": [
+            "auth_method",
+            "label"
+        ]
+    },
+    "login_method": {
+        "category": "Authentication Features",
+        "description": "Authentication method type",
+        "fields": [
+            "auth_method"
+        ]
+    },
+    "authentication_attempts": {
+        "category": "Authentication Features",
+        "description": "Total authentication attempts",
+        "fields": [
+            "auth_method"
+        ]
+    },
+    "failed_login_ratio": {
+        "category": "Authentication Features",
+        "description": "Ratio of failed logins over total attempts",
+        "fields": [
+            "auth_method"
+        ]
+    },
+    "total_resource_accesses": {
+        "category": "Resource Features",
+        "description": "Total resource access counts",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "unique_resources": {
+        "category": "Resource Features",
+        "description": "Count of unique resources accessed",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "admin_resource_accesses": {
+        "category": "Resource Features",
+        "description": "Count of admin-level resource accesses",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "sensitive_resource_accesses": {
+        "category": "Resource Features",
+        "description": "Count of sensitive database/server accesses",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "github_access_count": {
+        "category": "Resource Features",
+        "description": "Access counts to GitHub",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "database_query_count": {
+        "category": "Resource Features",
+        "description": "Count of database queries performed",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "confluence_access_count": {
+        "category": "Resource Features",
+        "description": "Access counts to Confluence",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "hrms_access_count": {
+        "category": "Resource Features",
+        "description": "Access counts to HRMS system",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "erp_access_count": {
+        "category": "Resource Features",
+        "description": "Access counts to ERP system",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "files_read": {
+        "category": "Resource Features",
+        "description": "Count of file read events",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "files_written": {
+        "category": "Resource Features",
+        "description": "Count of file write events",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "files_uploaded": {
+        "category": "Resource Features",
+        "description": "Count of file upload events",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "files_downloaded": {
+        "category": "Resource Features",
+        "description": "Count of file download events",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "total_upload_bytes": {
+        "category": "Resource Features",
+        "description": "Bytes transferred in upload events",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "total_download_bytes": {
+        "category": "Resource Features",
+        "description": "Bytes transferred in download events",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "upload_download_ratio": {
+        "category": "Resource Features",
+        "description": "Ratio of uploaded bytes over downloaded bytes",
+        "fields": [
+            "resource_accessed"
+        ]
+    },
+    "processes_started": {
+        "category": "Command Features",
+        "description": "Count of process executions started",
+        "fields": [
+            "command_sequence"
+        ]
+    },
+    "processes_stopped": {
+        "category": "Command Features",
+        "description": "Count of process executions stopped",
+        "fields": [
+            "command_sequence"
+        ]
+    },
+    "powershell_executions": {
+        "category": "Command Features",
+        "description": "Count of PowerShell script executions",
+        "fields": [
+            "command_sequence"
+        ]
+    },
+    "suspicious_process_count": {
+        "category": "Command Features",
+        "description": "Count of administrative or privilege escalation tools run",
+        "fields": [
+            "command_sequence"
+        ]
+    },
+    "malware_execution_count": {
+        "category": "Command Features",
+        "description": "Count of recognized malware signatures executed",
+        "fields": [
+            "command_sequence"
+        ]
+    },
+    "network_connections": {
+        "category": "Network Features",
+        "description": "Total network connections",
+        "fields": [
+            "source_ip"
+        ]
+    },
+    "vpn_connections": {
+        "category": "Network Features",
+        "description": "VPN connection count",
+        "fields": [
+            "auth_method"
+        ]
+    },
+    "vpn_disconnections": {
+        "category": "Network Features",
+        "description": "VPN disconnection count",
+        "fields": [
+            "auth_method"
+        ]
+    },
+    "unique_destination_ips": {
+        "category": "Network Features",
+        "description": "Count of unique destination servers/domains",
+        "fields": [
+            "command_sequence"
+        ]
+    },
+    "unique_source_ips": {
+        "category": "Network Features",
+        "description": "Count of unique source IPs used",
+        "fields": [
+            "source_ip"
+        ]
+    },
+    "external_connections": {
+        "category": "Network Features",
+        "description": "Count of connections to external domains",
+        "fields": [
+            "command_sequence"
+        ]
+    },
+    "beaconing_event_count": {
+        "category": "Network Features",
+        "description": "Count of periodic outbound C2 beacons",
+        "fields": [
+            "command_sequence"
+        ]
+    },
+    "total_events": {
+        "category": "Temporal Features",
+        "description": "Total count of events in session",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "events_per_minute": {
+        "category": "Temporal Features",
+        "description": "Average number of events per minute",
+        "fields": [
+            "timestamp",
+            "session_duration"
+        ]
+    },
+    "average_time_between_events": {
+        "category": "Temporal Features",
+        "description": "Average gap between consecutive events in seconds",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "maximum_idle_time": {
+        "category": "Temporal Features",
+        "description": "Maximum idle time between events in seconds",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "minimum_idle_time": {
+        "category": "Temporal Features",
+        "description": "Minimum idle time between events in seconds",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "off_hours_access": {
+        "category": "Temporal Features",
+        "description": "1.0 if session started during off-hours, else 0.0",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "session_start_hour": {
+        "category": "Temporal Features",
+        "description": "Session starting hour (0-23)",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "first_event_type": {
+        "category": "Sequence Features",
+        "description": "Type of the first event in the session",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "last_event_type": {
+        "category": "Sequence Features",
+        "description": "Type of the last event in the session",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "event_sequence_length": {
+        "category": "Sequence Features",
+        "description": "Event sequence length",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "login_to_first_resource_time": {
+        "category": "Sequence Features",
+        "description": "Inactivity delay between login and first resource access",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "admin_access_position": {
+        "category": "Sequence Features",
+        "description": "Relative timeline position of first administrative access",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "file_download_position": {
+        "category": "Sequence Features",
+        "description": "Relative timeline position of first file download",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "process_execution_position": {
+        "category": "Sequence Features",
+        "description": "Relative timeline position of first process start",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "location_deviation": {
+        "category": "Behavior Features",
+        "description": "Continuous deviation (0.0\u20131.0) based on location frequency in recent normal sessions",
+        "fields": [
+            "geo_location"
+        ]
+    },
+    "device_deviation": {
+        "category": "Behavior Features",
+        "description": "Continuous deviation (0.0\u20131.0) based on device frequency in recent normal sessions",
+        "fields": [
+            "device_fingerprint"
+        ]
+    },
+    "browser_deviation": {
+        "category": "Behavior Features",
+        "description": "Continuous deviation (0.0\u20131.0) based on browser frequency in recent normal sessions",
+        "fields": [
+            "device_fingerprint"
+        ]
+    },
+    "operating_system_deviation": {
+        "category": "Behavior Features",
+        "description": "Continuous deviation (0.0\u20131.0) based on OS frequency in recent normal sessions",
+        "fields": [
+            "device_fingerprint"
+        ]
+    },
+    "working_hours_deviation": {
+        "category": "Behavior Features",
+        "description": "Continuous deviation (0.0\u20131.0) via normalized linear distance from mean login hour",
+        "fields": [
+            "timestamp"
+        ]
+    },
+    "resource_access_deviation": {
+        "category": "Behavior Features",
+        "description": "Mean Laplace-smoothed deviation (0.0\u20131.0) across unique resources accessed vs. recent normal sessions; ~0.25\u20130.45 for normal, higher for anomalous",
+        "fields": [
+            "resource_accessed"
+        ]
+    }
+}

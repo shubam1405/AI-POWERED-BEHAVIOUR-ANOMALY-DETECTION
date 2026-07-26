@@ -1,0 +1,25 @@
+resource_name,resource_type,sensitivity_level,allowed_departments
+Payroll,Web Application,Restricted,Finance;HR;IT
+FinanceDB,Database,Restricted,Finance;IT
+Email,SaaS,Internal,Finance;Engineering;HR;Sales;IT;Marketing
+GitHub,SaaS,Confidential,Engineering;IT
+Jira,SaaS,Internal,Engineering;Sales;IT;HR;Finance;Marketing
+Slack,SaaS,Internal,Finance;Engineering;HR;Sales;IT;Marketing
+FileServer,Network Share,Confidential,Engineering;IT;Finance;HR;Marketing
+HRPortal,Web Application,Confidential,HR;IT
+CRM,SaaS,Confidential,Sales;IT;Marketing
+AdminConsole,Web Application,Restricted,IT
+Servers,Infrastructure,Restricted,IT
+VPN,Network Service,Restricted,IT;Engineering;Finance;HR;Sales;Marketing
+Confluence,SaaS,Internal,Engineering;IT;Finance;HR;Sales;Marketing
+Terminal,App,Confidential,Engineering;IT
+HRMS,Web Application,Restricted,HR;IT
+EmployeeRecords,Database,Restricted,HR;IT
+ERP,Web Application,Restricted,Finance;IT
+Accounting,Web Application,Restricted,Finance;IT
+Invoices,Database,Confidential,Finance;IT
+Meetings,SaaS,Internal,Finance;Engineering;HR;Sales;IT;Marketing
+Analytics,SaaS,Confidential,Marketing;Sales;Finance;IT
+CampaignDashboard,Web Application,Confidential,Marketing;IT
+Monitoring,Web Application,Restricted,IT
+Firewall,Network Service,Restricted,IT
