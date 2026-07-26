@@ -36,11 +36,11 @@ const GRU_METRICS = {
 };
 
 const XGB_METRICS = {
-  accuracy: 71.2,
-  macro_roc_auc: 0.9707,
-  macro_recall: 0.76,
-  macro_f1: 0.55,
-  weighted_f1: 0.81,
+  accuracy: 95.80,
+  macro_roc_auc: 0.9697,
+  macro_recall: 0.6678,
+  macro_f1: 0.6401,
+  weighted_f1: 0.9589,
   n_estimators: 300,
   max_depth: 6,
   purpose: 'Multi-class attack classification',
