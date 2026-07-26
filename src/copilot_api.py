@@ -50,6 +50,37 @@ except ImportError:
     print("FastAPI dependencies missing. Run: pip install fastapi uvicorn")
     sys.exit(1)
 
+# ---------------------------------------------------------------------------
+# Eagerly import heavy scientific libraries at startup.
+# Importing inside a request handler (especially inside a lock) can cause
+# the first /simulate call to block for 30-120 s on Render's free tier while
+# shap/torch/scipy load their native extensions.  Importing here means the
+# cost is paid once during server startup, never during a live request.
+# ---------------------------------------------------------------------------
+import numpy as np          # noqa: E402  (always fast)
+
+try:
+    import shap as _shap    # noqa: E402  (slow first import — do it at startup)
+    logger_startup = logging.getLogger("CyberCage.CopilotAPI")
+    logger_startup.info("shap imported successfully at startup (version %s)", _shap.__version__)
+except Exception as _shap_import_err:
+    logging.getLogger("CyberCage.CopilotAPI").warning(
+        "shap could not be imported at startup: %s — SHAP explanations disabled", _shap_import_err
+    )
+    _shap = None  # type: ignore
+
+try:
+    from attack_classification.utils import ATTACK_LABELS as _ATTACK_LABELS_PRELOAD  # noqa
+    from simulator.company import Company as _Company_PRELOAD                         # noqa
+    from anomaly_detection.inference import InferenceEngine as _GRU_PRELOAD           # noqa
+    from attack_classification.inference import AttackInferenceEngine as _XGB_PRELOAD # noqa
+    from simulator.combined_simulator import CombinedSimulator as _CS_PRELOAD         # noqa
+    logging.getLogger("CyberCage.CopilotAPI").info("Simulator modules pre-imported at startup.")
+except Exception as _sim_import_err:
+    logging.getLogger("CyberCage.CopilotAPI").warning(
+        "Simulator module pre-import failed: %s", _sim_import_err
+    )
+
 # Initialize logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("CyberCage.CopilotAPI")
@@ -232,11 +263,29 @@ def get_campaign_index():
 
 
 def get_combined_sim():
-    """Lazily build the full inference pipeline (GRU + XGBoost + SHAP)."""
+    """Lazily build the full inference pipeline (GRU + XGBoost + SHAP).
+
+    All heavy imports are done BEFORE acquiring _sim_lock to avoid holding
+    the lock during slow native-library loading (e.g. shap, torch).
+    """
     global _combined_sim
     if _combined_sim is not None:
         logger.info("GCS-0: returning cached CombinedSimulator")
         return _combined_sim
+
+    # ----------------------------------------------------------------
+    # Phase 1 – imports were already done at module startup.
+    # All names are available from the pre-import block above.
+    # These aliases are kept so the rest of the function is unchanged.
+    # ----------------------------------------------------------------
+    logger.info("GCS-4: using pre-imported module-level references")
+    shap = _shap  # may be None if shap failed to import at startup
+    from attack_classification.utils import ATTACK_LABELS, META_COLUMNS
+    from simulator.company import Company
+    from anomaly_detection.inference import InferenceEngine
+    from attack_classification.inference import AttackInferenceEngine
+    from simulator.combined_simulator import CombinedSimulator
+    logger.info("GCS-5: all aliases resolved — acquiring _sim_lock")
 
     logger.info("GCS-1: acquiring _sim_lock")
     with _sim_lock:
@@ -246,15 +295,6 @@ def get_combined_sim():
             return _combined_sim
 
         try:
-            logger.info("GCS-4: importing heavy dependencies")
-            import shap
-            import numpy as np
-            from attack_classification.utils import ATTACK_LABELS, META_COLUMNS
-            from simulator.company import Company
-            from anomaly_detection.inference import InferenceEngine
-            from attack_classification.inference import AttackInferenceEngine
-            from simulator.combined_simulator import CombinedSimulator
-            logger.info("GCS-5: imports done")
 
             logger.info("GCS-6: creating Company")
             company = Company()
@@ -303,36 +343,40 @@ def get_combined_sim():
             # ----------------------------------------------------------------
             # SHAP TreeExplainer — run in a background thread with a 30-second
             # timeout so it cannot hang the server indefinitely.
+            # If shap failed to import at startup, skip silently.
             # ----------------------------------------------------------------
             logger.info("GCS-14: initialising SHAP TreeExplainer (timeout=30s)")
             shap_explainer = None
-            _shap_exc: list = []
-
-            def _init_shap():
-                try:
-                    shap_explainer_inner = shap.TreeExplainer(
-                        xgb_engine.get_model(),
-                        feature_perturbation="interventional",
-                        model_output="raw",
-                    )
-                    _shap_exc.append(("ok", shap_explainer_inner))
-                except Exception as _se:
-                    _shap_exc.append(("err", _se))
-
-            _shap_thread = threading.Thread(target=_init_shap, daemon=True)
-            _shap_thread.start()
-            _shap_thread.join(timeout=30)
-
-            if _shap_thread.is_alive():
-                logger.warning("GCS-15-WARN: SHAP TreeExplainer timed out after 30s — proceeding without SHAP")
-                shap_explainer = None
-            elif _shap_exc and _shap_exc[0][0] == "ok":
-                shap_explainer = _shap_exc[0][1]
-                logger.info("GCS-15: SHAP TreeExplainer ready")
+            if shap is None:
+                logger.warning("GCS-14-SKIP: shap module not available — skipping TreeExplainer")
             else:
-                err_detail = _shap_exc[0][1] if _shap_exc else "unknown"
-                logger.warning("GCS-15-WARN: SHAP TreeExplainer failed: %s — proceeding without SHAP", err_detail)
-                shap_explainer = None
+                _shap_exc: list = []
+
+                def _init_shap():
+                    try:
+                        shap_explainer_inner = shap.TreeExplainer(
+                            xgb_engine.get_model(),
+                            feature_perturbation="interventional",
+                            model_output="raw",
+                        )
+                        _shap_exc.append(("ok", shap_explainer_inner))
+                    except Exception as _se:
+                        _shap_exc.append(("err", _se))
+
+                _shap_thread = threading.Thread(target=_init_shap, daemon=True)
+                _shap_thread.start()
+                _shap_thread.join(timeout=30)
+
+                if _shap_thread.is_alive():
+                    logger.warning("GCS-15-WARN: SHAP TreeExplainer timed out after 30s — proceeding without SHAP")
+                    shap_explainer = None
+                elif _shap_exc and _shap_exc[0][0] == "ok":
+                    shap_explainer = _shap_exc[0][1]
+                    logger.info("GCS-15: SHAP TreeExplainer ready")
+                else:
+                    err_detail = _shap_exc[0][1] if _shap_exc else "unknown"
+                    logger.warning("GCS-15-WARN: SHAP TreeExplainer failed: %s — proceeding without SHAP", err_detail)
+                    shap_explainer = None
 
             logger.info("GCS-16: creating CombinedSimulator")
             _combined_sim = CombinedSimulator(
