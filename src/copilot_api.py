@@ -48,13 +48,27 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS Middleware
+# ---------------------------------------------------------------------------
+# CORS — explicit origin whitelist (wildcard + allow_credentials is invalid)
+# ---------------------------------------------------------------------------
+_ALLOWED_ORIGINS = [
+    # Production Vercel deployment
+    "https://ai-powered-behaviour-anomaly-detect.vercel.app",
+    # Git-branch preview deployments
+    "https://ai-powered-behaviour-anomaly-detection-git-main-shubam1.vercel.app",
+    # Local development
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:5173",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # ---------------------------------------------------------------------------
@@ -338,6 +352,7 @@ def list_sessions(
             for s in unique_sessions
         ]
     except Exception as e:
+        logger.error("GET /sessions failed", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -349,6 +364,7 @@ def get_session(session_id: str):
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
+        logger.error("GET /session/%s failed", session_id, exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -360,6 +376,7 @@ def get_report(session_id: str):
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
+        logger.error("GET /report/%s failed", session_id, exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -372,6 +389,7 @@ def get_report_markdown(session_id: str):
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
+        logger.error("GET /report/%s/markdown failed", session_id, exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -383,6 +401,7 @@ def get_summary(session_id: str):
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
+        logger.error("GET /summary/%s failed", session_id, exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -395,6 +414,7 @@ def get_recommendations(session_id: str):
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
+        logger.error("GET /recommendations/%s failed", session_id, exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -411,6 +431,7 @@ def post_chat(session_id: str, request: ChatRequest):
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
     except Exception as e:
+        logger.error("POST /chat/%s failed", session_id, exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -450,20 +471,31 @@ def get_dashboard_cards(high_severity_only: bool = False):
             })
         return cards
     except Exception as e:
+        logger.error("GET /dashboard failed", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/campaigns")
 def list_campaigns():
-    return list(get_campaign_index().values())
+    try:
+        return list(get_campaign_index().values())
+    except Exception as e:
+        logger.error("GET /campaigns failed", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/campaign/{campaign_id}")
 def get_campaign(campaign_id: str):
-    camp = get_campaign_index().get(campaign_id.upper())
-    if not camp:
-        raise HTTPException(status_code=404, detail=f"Campaign {campaign_id} not found.")
-    return camp
+    try:
+        camp = get_campaign_index().get(campaign_id.upper())
+        if not camp:
+            raise HTTPException(status_code=404, detail=f"Campaign {campaign_id} not found.")
+        return camp
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error("GET /campaign/%s failed", campaign_id, exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/simulate")
